@@ -1,121 +1,104 @@
 import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
+    <div className="app">
+
+      {/* 상단 헤더 */}
+      <header className="header">
+
+        {/* 햄버거 메뉴 */}
         <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
+          className="menu-button"
+          onClick={() => setMenuOpen(true)}
         >
-          Count is {count}
+          ☰ 메뉴
         </button>
-      </section>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+        {/* 로고 */}
+        <div className="logo">
+          ChalFit
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+        {/* 오른쪽 메뉴 */}
+        <div className="header-right">
+          <span>로그인</span>
+          <span>장바구니</span>
+          <span>◎</span>
+        </div>
+
+      </header>
+
+
+      {/* 메인 화면 */}
+      <main className="main-content">
+        <h1>ChalFit</h1>
+        <p>선글라스 쇼핑몰 메인 화면</p>
+      </main>
+
+
+      {/* 메뉴가 열렸을 때 */}
+      {menuOpen && (
+        <div className="menu-container">
+
+          {/* 오른쪽 블러 영역 */}
+          <div
+            className="menu-overlay"
+            onClick={() => setMenuOpen(false)}
+          ></div>
+
+
+          {/* 왼쪽 메뉴 */}
+          <aside className="side-menu">
+
+            {/* 메뉴 */}
+            <nav className="menu-list">
+
+              <div className="menu-item active">
+                <span>CELEB PICK</span>
+                <span>›</span>
+              </div>
+
+              <div className="menu-item">
+                <span>종류</span>
+                <span>›</span>
+              </div>
+
+              <div className="menu-item">
+                <span>AI 맞춤 서비스</span>
+                <span>›</span>
+              </div>
+
+              <div className="menu-item">
+                <span>스타일</span>
+                <span>›</span>
+              </div>
+
+            </nav>
+
+
+            {/* 아래쪽 */}
+            <div className="menu-bottom">
+
+              <div className="user-icon">
+                ♟
+              </div>
+
+              <div className="customer-center">
+                고객센터
+              </div>
+
+            </div>
+
+          </aside>
+
+        </div>
+      )}
+
+    </div>
   )
 }
 
