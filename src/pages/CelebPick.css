@@ -1,0 +1,248 @@
+/* 기본 초기화 */
+* {
+  box-sizing: border-box;
+}
+
+.celeb-page-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif;
+  color: #111111;
+}
+
+/* ================= 1. 상단 Chalfit 헤더 ================= */
+.chalfit-header {
+  width: 100%;
+  border-bottom: 1px solid #eeeeee;
+  background-color: #ffffff;
+}
+
+.chalfit-header-inner {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 16px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.menu-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #111111;
+}
+
+.header-center {
+  flex: 2;
+  text-align: center;
+}
+
+.chalfit-logo-text {
+  font-family: 'Playfair Display', 'Didot', 'Georgia', serif;
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: #111111;
+}
+
+.header-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.header-link-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 13.5px;
+  font-weight: 400;
+  color: #222222;
+  padding: 0;
+}
+
+.profile-icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ================= 2. 본문 컨테이너 ================= */
+.celeb-page-container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 36px 40px 80px 40px;
+  border: none;
+}
+
+.celeb-header-wrap {
+  margin-bottom: 24px;
+}
+
+.celeb-main-title {
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: #111111;
+  margin: 0;
+}
+
+/* ================= 3. 3열 카드 그리드 ================= */
+.celeb-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 24px;
+  row-gap: 32px;
+  width: 100%;
+}
+
+.celeb-card-item {
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+.celeb-card-item:hover {
+  transform: translateY(-5px);
+}
+
+.celeb-img-box {
+  width: 100%;
+  aspect-ratio: 1 / 1.38;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #f2f2f2;
+}
+
+.celeb-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* ================= 4. 반투명 바 (위로 올림 + 정렬 조정) ================= */
+.card-glass-bottom-bar,
+.card-glass-badge {
+  position: absolute;
+  /* ▼ 바닥에서 조금 더 위로 띄워 올림 */
+  bottom: 22px;
+  left: 16px;
+  right: 16px;
+  height: 76px;
+  background: rgba(30, 30, 30, 0.58);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border: none;
+}
+
+/* 안경 흰색 네모: 왼쪽에 그대로 고정 */
+.glass-icon-wrapper {
+  width: 62px;
+  height: 48px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.glass-icon-wrapper svg {
+  display: block;
+}
+
+/* 텍스트 영역: 남은 공간 전체를 차지하며 정중앙 정렬 */
+.glass-text-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* 가로 가운데 정렬 */
+  text-align: center;  /* 텍스트 줄바꿈 시에도 가운데 */
+  gap: 3px;
+  line-height: 1.25;
+  /* 안경 박스만큼 반대쪽 여백을 줘서 바 전체 기준 시각적 정중앙으로 유도 */
+  padding-right: 16px; 
+}
+
+.celeb-tag {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #ff3838;
+  letter-spacing: -0.2px;
+}
+
+.celeb-item-title {
+  font-size: 14.5px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.celeb-item-price {
+  font-size: 13px;
+  font-weight: 400;
+  color: #e5e5e5;
+}
+
+/* ================= 5. 반응형 처리 ================= */
+@media (max-width: 1024px) {
+  .chalfit-header-inner,
+  .celeb-page-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .celeb-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .celeb-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-glass-bottom-bar,
+  .card-glass-badge {
+    bottom: 16px;
+    left: 12px;
+    right: 12px;
+    height: 70px;
+    padding: 0 12px;
+  }
+
+  .glass-icon-wrapper {
+    width: 54px;
+    height: 42px;
+  }
+}

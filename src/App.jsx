@@ -1,9 +1,10 @@
-import SidebarNav from './components/SidebarNav';
+import React from 'react';
+import CelebPick from './pages/CelebPick';
 
 function App() {
   return (
     <div>
-      <SidebarNav />
+      <CelebPick />
     </div>
   );
 }

@@ -2,23 +2,17 @@ import React, { useState } from 'react';
 import './SidebarNav.css';
 
 export default function SidebarNav() {
-  const [isOpen, setIsOpen] = useState(true); // 사이드바 열림 상태
-  const [isCategoryOpen, setIsCategoryOpen] = useState(true); // '종류' 서브메뉴 열림 여부
+  const [isOpen, setIsOpen] = useState(true);
+  // 'celeb'이면 셀럽픽 선택 상태, 'category'면 종류(2단 펼침) 상태
+  const [selectedMenu, setSelectedMenu] = useState('celeb');
 
-  // '종류'의 하위 메뉴 데이터만 관리
   const categorySubItems = ['스퀘어', '라운드', '캣아이', '스포츠'];
-
-  // '종류' 메뉴 클릭 시 토글 (열기/닫기)
-  const handleCategoryClick = () => {
-    setIsCategoryOpen(!isCategoryOpen);
-  };
 
   return (
     <div className="layout-container">
       {/* 1. 상단 헤더 */}
       <header className="header">
         <div className="header-inner">
-          {/* 메뉴 버튼 (클릭 시 전체 사이드바 열림/닫힘) */}
           <button className="menu-btn" onClick={() => setIsOpen(!isOpen)}>
             <span className="hamburger-icon">
               <span></span>
@@ -28,12 +22,10 @@ export default function SidebarNav() {
             <span className="menu-text">메뉴</span>
           </button>
 
-          {/* 중앙 로고 */}
           <div className="logo notranslate" translate="no">
             <a href="/">ChalFit</a>
           </div>
 
-          {/* 우측 메뉴 */}
           <div className="right-nav">
             <a href="#like" className="nav-item">좋아요</a>
             <a href="#cart" className="nav-item">장바구니</a>
@@ -48,41 +40,44 @@ export default function SidebarNav() {
         </div>
       </header>
 
-      {/* 2. 뒷배경 어두운 오버레이 */}
+      {/* 2. 어두운 배경 오버레이 */}
       {isOpen && (
         <div className="overlay" onClick={() => setIsOpen(false)}></div>
       )}
 
-      {/* 3. 사이드 드로어 메뉴 영역 */}
+      {/* 3. 사이드바 영역 */}
       <aside className={`sidebar-container ${isOpen ? 'open' : ''}`}>
         
-        {/* [1차 메뉴 패널 - 흰색] */}
+        {/* 1차 메뉴 패널 */}
         <div className="primary-panel">
           <nav className="primary-menu-list">
             
-            {/* CELEB PICK (클릭 동작 없음) */}
-            <div className="primary-menu-item">
-              <span className="menu-title">CELEB PICK</span>
+            {/* CELEB PICK 클릭 시: CELEB PICK 활성화 & 옆 패널 닫힘 */}
+            <div 
+              className={`primary-menu-item ${selectedMenu === 'celeb' ? 'active' : ''}`}
+              onClick={() => setSelectedMenu('celeb')}
+            >
+              <span className="menu-title notranslate" translate="no">CELEB PICK</span>
               <span className="arrow">&gt;</span>
             </div>
 
-            {/* 종류 (클릭 시 열림/닫힘 토글 및 색상 하이라이트) */}
-            <div
-              className={`primary-menu-item ${isCategoryOpen ? 'active' : ''}`}
-              onClick={handleCategoryClick}
+            {/* 종류 클릭 시: 종류 활성화 & 옆 2차 패널 펼쳐짐 */}
+            <div 
+              className={`primary-menu-item ${selectedMenu === 'category' ? 'active' : ''}`}
+              onClick={() => setSelectedMenu('category')}
             >
               <span className="menu-title">종류</span>
               <span className="arrow">&gt;</span>
             </div>
 
-            {/* AI 맞춤 서비스 (클릭 동작 없음) */}
-            <div className="primary-menu-item">
+            {/* AI 맞춤 서비스 */}
+            <div className="primary-menu-item" onClick={() => setSelectedMenu(null)}>
               <span className="menu-title">AI 맞춤 서비스</span>
               <span className="arrow">&gt;</span>
             </div>
 
-            {/* 스타일 (클릭 동작 없음) */}
-            <div className="primary-menu-item">
+            {/* 스타일 */}
+            <div className="primary-menu-item" onClick={() => setSelectedMenu(null)}>
               <span className="menu-title">스타일</span>
               <span className="arrow">&gt;</span>
             </div>
@@ -101,8 +96,8 @@ export default function SidebarNav() {
           </div>
         </div>
 
-        {/* [2차 서브메뉴 패널 - 연회색] ('종류'가 켜져 있을 때만 옆에 표시) */}
-        {isCategoryOpen && (
+        {/* 2차 서브메뉴 패널 ('종류'가 눌렸을 때만 오른쪽에 붙어서 펼쳐짐) */}
+        {selectedMenu === 'category' && (
           <div className="secondary-panel">
             <div className="secondary-menu-list">
               {categorySubItems.map((sub, idx) => (
@@ -116,10 +111,6 @@ export default function SidebarNav() {
         )}
 
       </aside>
-
-      <main className="main-content">
-        {/* 본문 영역 */}
-      </main>
     </div>
   );
 }
