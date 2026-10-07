@@ -1,12 +1,13 @@
 import "./App.css";
-import Header from "./components/Header.jsx";
+import Header from "./components/Header";
+import Home from "./pages/Home";
 
 function App() {
   return (
-    <div className="app">
+    <>
       <Header />
-      {/* 메인 페이지 내용추가 */}
-    </div>
+      <Home />
+    </>
   );
 }
 
