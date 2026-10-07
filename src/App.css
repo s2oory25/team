@@ -6,21 +6,24 @@
 
 body {
   margin: 0;
-  font-family: 'SUIT', sans-serif;
+  font-family: "SUIT", Arial, sans-serif;
   color: #111;
+  background: #fff;
 }
 
 button {
   font-family: inherit;
 }
 
+select {
+  font: inherit;
+}
+
 .app {
-  width: 100%;
   min-height: 100vh;
   background: #fff;
 }
 
-/* Header */
 .header {
   width: 100%;
   height: 60px;
@@ -28,16 +31,16 @@ button {
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   padding: 0 50px;
-  box-sizing: border-box;
   border-bottom: 1px solid #111;
 }
 
-/* PC + 태블릿 + 모바일 공통 메인 영상*/
+/* 메인 영상 */
 .home {
   width: 100%;
   height: calc(100vh - 60px);
   overflow: hidden;
 }
+
 .main-video {
   display: block;
   width: 100%;
@@ -45,15 +48,18 @@ button {
   object-fit: cover;
 }
 
-/* 왼쪽 */
-.header-left {
+/* Header */
+.header-left,
+.header-right {
   display: flex;
   align-items: center;
-  gap: 20px;
-  justify-self: start;
 }
 
-/* 햄버거 */
+.header-left {
+  justify-self: start;
+  gap: 20px;
+}
+
 .menu-button {
   border: none;
   background: none;
@@ -64,23 +70,21 @@ button {
   line-height: 1;
 }
 
-/* 메뉴 */
 .header-menu {
   display: block;
 }
 
 .header-menu a {
-  text-decoration: none;
-  color: #000;
+  color: #111;
   font-size: 17px;
   font-weight: 600;
+  text-decoration: none;
 }
 
-/* 로고 */
 .logo {
+  display: flex;
   width: 200px;
   height: 60px;
-  display: flex;
   align-items: center;
   justify-content: center;
   justify-self: center;
@@ -88,32 +92,24 @@ button {
 }
 
 .logo img {
+  display: block;
   width: 200px;
   height: auto;
-  display: block;
   transform: translateY(5px);
 }
 
-
-/* 오른쪽 */
 .header-right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
   justify-self: end;
+  gap: 20px;
 }
 
-
-/* 데스크톱 좋아요 / 장바구니 */
 .desktop-text {
-  display: block;
-  color: #000;
+  color: #111;
   font-size: 17px;
   font-weight: 600;
+  text-decoration: none;
 }
 
-
-/* 로그인 */
 .login-button {
   border: none;
   background: none;
@@ -122,13 +118,12 @@ button {
 }
 
 .login-button img {
+  display: block;
   width: 24px;
   height: 24px;
   object-fit: contain;
 }
 
-
-/* 태블릿 좋아요 / 장바구니 이미지 */
 .tablet-icon {
   display: none;
   border: none;
@@ -143,30 +138,23 @@ button {
   object-fit: contain;
 }
 
-/* 푸터 */
+/* Footer */
 .footer {
   width: 100%;
   min-height: 140px;
-
   display: grid;
   grid-template-columns: 220px 1fr 360px;
   align-items: center;
-
   gap: 40px;
-
   padding: 24px 50px;
-
   background: #d9d9d9;
 }
 
 .footer-logo {
   height: 100%;
-
   display: flex;
   align-items: center;
-
   padding-right: 40px;
-
   border-right: 1px solid #888;
 }
 
@@ -179,29 +167,24 @@ button {
 .footer-center {
   display: flex;
   flex-direction: column;
-
   gap: 24px;
 }
 
 .footer-menu {
   display: flex;
   justify-content: space-between;
-
   gap: 24px;
 }
 
 .footer-menu a {
   color: #111;
-
   text-decoration: none;
-
   font-size: 15px;
   font-weight: 600;
 }
 
 .footer-info p {
   margin: 4px 0;
-
   font-size: 14px;
 }
 
@@ -211,7 +194,6 @@ button {
 
 .footer-right p {
   margin: 0 0 18px;
-
   font-size: 17px;
   font-weight: 600;
 }
@@ -220,8 +202,92 @@ button {
   font-size: 14px;
 }
 
-@media (max-width: 1024px) {
+/* Classic 페이지 */
+.classic-page {
+  width: min(100% - 56px, 1200px);
+  margin: 46px auto 80px;
+}
 
+.hero-banner {
+  position: relative;
+  height: clamp(210px, 26.7vw, 320px);
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(6, 23, 30, 0.1), transparent 70%),
+    linear-gradient(
+      180deg,
+      #c8dbe0 0%,
+      #83aeb2 44%,
+      #d0b08a 45%,
+      #d7c1a0 100%
+    );
+}
+
+.hero-banner img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 55%;
+}
+
+.collection-heading {
+  display: flex;
+  min-height: 110px;
+  align-items: center;
+  gap: 38px;
+  padding: 0 48px;
+}
+
+.collection-heading h1 {
+  flex: 0 0 auto;
+  margin: 0;
+  font-size: 36px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.collection-heading p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.sort-select {
+  min-width: 64px;
+  margin-left: auto;
+  padding: 3px 5px;
+  border: 1px solid #d1d1d1;
+  border-radius: 0;
+  color: #555;
+  background: #fff;
+  font-size: 13px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 44px;
+  padding: 10px 38px 0;
+}
+
+.favorite-button {
+  float: right;
+  border: 0;
+  padding: 0 2px;
+  background: transparent;
+  color: #777;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.favorite-button[aria-pressed="true"] {
+  color: #111;
+}
+
+/* 태블릿 */
+@media (max-width: 1024px) {
   .header {
     padding: 0 30px;
   }
@@ -230,12 +296,10 @@ button {
     gap: 15px;
   }
 
-  /* 글자 숨기기 */
   .desktop-text {
     display: none;
   }
 
-  /* 좋아요 / 장바구니 이미지 표시 */
   .tablet-icon {
     display: block;
   }
@@ -250,44 +314,105 @@ button {
     height: 22px;
   }
 
-  /* 태블릿 로고 */
-  /* .logo img { */
-    /* width: 160px; */
-  /* } */
+  .footer {
+    grid-template-columns: 180px 1fr 280px;
+    gap: 25px;
+    padding: 24px 30px;
+  }
 }
 
-@media (max-width: 768px) {
+/* Classic 모바일 */
+@media (max-width: 760px) {
+  .classic-page {
+    width: min(100% - 32px, 560px);
+    margin-top: 24px;
+  }
 
+  .hero-banner {
+    height: clamp(180px, 44vw, 250px);
+  }
+
+  .collection-heading {
+    min-height: 120px;
+    flex-wrap: wrap;
+    gap: 5px 16px;
+    padding: 22px 4px;
+  }
+
+  .collection-heading h1 {
+    font-size: 30px;
+  }
+
+  .collection-heading p {
+    flex-basis: 100%;
+    order: 2;
+    font-size: 14px;
+  }
+
+  .sort-select {
+    order: 1;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 26px 16px;
+    padding: 0;
+  }
+}
+
+@media (max-width: 380px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
   .header {
     padding: 0 20px;
   }
 
-  /* 메뉴 글씨 숨김 */
   .header-menu {
     display: none;
   }
 
-  /* 좋아요 / 장바구니 숨김 */
   .tablet-icon {
     display: none;
   }
 
-  /* 햄버거 */
-  .menu-button img {
-    width: 22px;
-    height: 22px;
+  .menu-button {
+    font-size: 24px;
   }
 
-  /* 로그인 */
   .login-button img {
     width: 20px;
     height: 20px;
   }
-}
 
-/* 모바일만 추가 조정 메인 영상*/
-@media (max-width: 768px) {
   .main-video {
     object-position: center;
+  }
+
+  .footer {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 30px 20px;
+  }
+
+  .footer-logo {
+    height: auto;
+    padding-right: 0;
+    padding-bottom: 20px;
+    border-right: none;
+    border-bottom: 1px solid #888;
+  }
+
+  .footer-menu {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .footer-right {
+    text-align: left;
   }
 }
