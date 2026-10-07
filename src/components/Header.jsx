@@ -17,7 +17,7 @@ function Header() {
 
   {/* 로고 */}
   <div className="logo">
-    <img src="logo.png" alt="CHALFIT" />
+    <img src="/team/header_png/logo.png" alt="CHALFIT" />
   </div>
 
   {/* 오른쪽 */}
@@ -28,19 +28,19 @@ function Header() {
 
         {/* 태블릿에서만 추가로 보여줄 이미지 */}
     <button className="tablet-icon heart-icon">
-      <img src="heart.png" alt="좋아요" />
+      <img src="/team/header_png/heart.png" alt="좋아요" />
     </button>
 
     {/* 장바구니 */}
     <span className="desktop-text">장바구니</span>
 
         <button className="tablet-icon cart-icon">
-      <img src="cart.png" alt="장바구니" />
+      <img src="/team/header_png/cart.png" alt="장바구니" />
     </button>
 
     {/* 로그인 - 데스크톱/태블릿/모바일 모두 이미지 */}
     <button className="login-button">
-      <img src="login.png" alt="로그인" />
+      <img src="/team/header_png/login.png" alt="로그인" />
     </button>
 
   </div>
