@@ -1,15 +1,39 @@
+/* =========================
+   기본 설정
+========================= */
+
 * {
   box-sizing: border-box;
 }
 
-body {
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
   margin: 0;
-  font-family: Arial, sans-serif;
-  color: #111;
+  padding: 0;
 }
 
+body {
+  font-family: Arial, sans-serif;
+  color: #111;
+  overflow-x: hidden;
+}
+
+
 /* =========================
-   헤더
+   전체 앱
+========================= */
+
+.app {
+  width: 100%;
+  min-height: 100vh;
+}
+
+
+/* =========================
+   상단 헤더
 ========================= */
 
 .header {
@@ -18,7 +42,7 @@ body {
   left: 0;
 
   width: 100%;
-  height: 40px;
+  height: 56px;
 
   background: #fff;
   border-bottom: 1px solid #e5e5e5;
@@ -30,38 +54,45 @@ body {
   z-index: 1000;
 }
 
+
 /* 왼쪽 메뉴 버튼 */
 
 .menu-button {
   position: absolute;
-  left: 10px;
+  left: 24px;
 
   border: none;
   background: transparent;
 
-  font-size: 11px;
+  padding: 0;
+
+  font-size: 13px;
   color: #111;
 
   cursor: pointer;
 }
 
+
 /* 가운데 로고 */
 
 .logo {
   font-family: Georgia, serif;
-  font-size: 14px;
+  font-size: 18px;
+  font-weight: 400;
 }
 
-/* 오른쪽 */
+
+/* 오른쪽 메뉴 */
 
 .header-right {
   position: absolute;
-  right: 10px;
+  right: 24px;
 
   display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 18px;
 
-  font-size: 8px;
+  font-size: 11px;
 }
 
 
@@ -73,9 +104,10 @@ body {
   width: 100%;
   height: 100vh;
 
+  padding-top: 56px;
+
   display: flex;
   flex-direction: column;
-
   align-items: center;
   justify-content: center;
 
@@ -86,7 +118,8 @@ body {
   margin: 0 0 8px;
 
   font-family: Georgia, serif;
-  font-size: 36px;
+  font-size: 42px;
+  font-weight: 400;
 }
 
 .main-content p {
@@ -104,39 +137,20 @@ body {
 .menu-container {
   position: fixed;
 
-  top: 40px;
+  top: 56px;
   left: 0;
   right: 0;
   bottom: 0;
 
   z-index: 900;
+
+  overflow: hidden;
 }
 
 
 /* =========================
-   오른쪽 블러
-========================= */
-
-.menu-overlay {
-  position: absolute;
-
-  top: 0;
-  right: 0;
-  bottom: 0;
-
-  left: 40vw;
-
-  background: rgba(0, 0, 0, 0.72);
-
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-
-  cursor: pointer;
-}
-
-
-/* =========================
-   왼쪽 메뉴
+   데스크톱 메뉴
+   왼쪽
 ========================= */
 
 .side-menu {
@@ -145,19 +159,8 @@ body {
   top: 0;
   left: 0;
 
-  /* ★ 화면의 정확히 40% */
-
-  width: 40vw;
-
-  /* 너무 커지지 않도록 */
-
-  max-width: 600px;
-
-  /* 너무 작아지지 않도록 */
-
-  min-width: 360px;
-
-  height: calc(100vh - 40px);
+  width: 32vw;
+  height: 100%;
 
   background: #fff;
 
@@ -166,6 +169,62 @@ body {
   justify-content: space-between;
 
   z-index: 2;
+
+  animation: menuSlideIn 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* =========================
+   데스크톱 블러
+   오른쪽
+========================= */
+
+.menu-overlay {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 32vw;
+
+  background: rgba(0, 0, 0, 0.58);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  cursor: pointer;
+
+  animation: overlayFadeIn 0.55s ease;
+}
+
+
+/* =========================
+   메뉴 등장
+========================= */
+
+@keyframes menuSlideIn {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+
+/* =========================
+   블러 등장
+========================= */
+
+@keyframes overlayFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 
@@ -174,7 +233,8 @@ body {
 ========================= */
 
 .menu-list {
-  padding-top: 24px;
+  width: 100%;
+  padding-top: 40px;
 }
 
 
@@ -184,63 +244,55 @@ body {
 
 .menu-item {
   width: 100%;
+  height: 72px;
 
-  height: 64px;
-
-  padding: 0 34px;
+  padding: 0 40px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
 
   color: #111;
 
   cursor: pointer;
 
-  transition: background 0.2s;
+  transition: background 0.2s ease;
 }
-
-
-/* 마우스를 올렸을 때 */
 
 .menu-item:hover {
   background: #f7f7f7;
 }
 
 
-/* =========================
-   CELEB PICK
-========================= */
+/* 선택된 메뉴 */
 
 .menu-item.active {
-  margin: 0 20px;
-
-  width: calc(100% - 40px);
-
-  padding: 0 16px;
+  width: 100%;
+  margin: 0;
 
   background: #f1f1f1;
 }
 
 
-/* =========================
-   오른쪽 화살표
-========================= */
+/* 화살표 */
 
 .menu-item span:last-child {
-  font-size: 18px;
+  font-size: 24px;
+  font-weight: 300;
 }
 
 
 /* =========================
-   아래쪽
+   메뉴 아래쪽
 ========================= */
 
 .menu-bottom {
-  padding: 24px 34px;
+  width: 100%;
+
+  padding: 30px 40px;
 
   display: flex;
   align-items: center;
@@ -251,57 +303,215 @@ body {
 /* 사람 아이콘 */
 
 .user-icon {
-  font-size: 15px;
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 3px;
+}
+
+.user-head {
+  width: 10px;
+  height: 10px;
+
+  border: 1.8px solid #111;
+  border-radius: 50%;
+}
+
+.user-body {
+  width: 20px;
+  height: 11px;
+
+  border: 1.8px solid #111;
+  border-radius: 10px 10px 3px 3px;
 }
 
 
 /* 고객센터 */
 
 .customer-center {
-  font-size: 12px;
+  font-size: 16px;
   color: #222;
 }
 
 
-/* =========================
-   모바일
-========================= */
+/* ==================================================
+   태블릿 / 모바일
+   메뉴 = 위
+   블러 = 아래
+================================================== */
 
-@media (max-width: 700px) {
+@media (max-width: 1024px) {
 
-  .side-menu {
-    width: 82vw;
-    min-width: 0;
+  /* =========================
+     메뉴 전체
+  ========================= */
+
+  .menu-container {
+    position: fixed;
+
+    top: 56px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
   }
 
+
+  /* =========================
+     메뉴
+     항상 위쪽
+  ========================= */
+
+  .side-menu {
+    position: relative;
+
+    top: auto;
+    left: auto;
+
+    width: 100%;
+    height: auto;
+
+    flex-shrink: 0;
+
+    background: #fff;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    z-index: 2;
+
+    animation: none;
+  }
+
+
+  /* =========================
+     메뉴 목록
+  ========================= */
+
+  .menu-list {
+    width: 100%;
+
+    padding-top: 20px;
+  }
+
+
+  /* =========================
+     메뉴 하나
+  ========================= */
+
+  .menu-item {
+    width: 100%;
+    height: 55px;
+
+    padding: 0 28px;
+
+    font-size: 16px;
+  }
+
+
+  /* =========================
+     고객센터 영역
+  ========================= */
+
+  .menu-bottom {
+    width: 100%;
+
+    padding: 20px 28px;
+  }
+
+
+  .customer-center {
+    font-size: 16px;
+  }
+
+
+  /* =========================
+     블러
+     메뉴 아래 남은 공간
+  ========================= */
+
   .menu-overlay {
-    left: 82vw;
+    position: relative;
+
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+
+    width: 100%;
+
+    flex: 1;
+    min-height: 0;
+
+    background: rgba(0, 0, 0, 0.58);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    z-index: 1;
+
+    animation: overlayFadeIn 0.55s ease;
+  }
+}
+
+
+/* ==================================================
+   작은 모바일
+================================================== */
+
+@media (max-width: 600px) {
+
+  .header {
+    height: 52px;
+  }
+
+  .menu-container {
+    top: 52px;
+  }
+
+  .menu-button {
+    left: 18px;
+  }
+
+  .header-right {
+    right: 18px;
+    gap: 12px;
+  }
+
+  .logo {
+    font-size: 17px;
+  }
+
+
+  /* 메뉴는 계속 위 */
+
+  .menu-list {
+    padding-top: 12px;
   }
 
   .menu-item {
-    height: 58px;
+    height: 52px;
 
-    padding: 0 24px;
+    padding: 0 22px;
 
     font-size: 15px;
   }
 
-  .menu-item.active {
-    margin: 0 14px;
-
-    width: calc(100% - 28px);
-  }
-
   .menu-bottom {
-    padding: 20px 24px;
+    padding: 18px 22px;
   }
-}
 
-/* 메뉴 오른쪽에 이상하게 보이는 기존 요소 숨기기 */
-
-.ticks,
-#spacer,
-#center,
-#next-steps {
-  display: none !important;
+  .customer-center {
+    font-size: 14px;
+  }
 }
