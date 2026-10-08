@@ -2,15 +2,15 @@ import { useMemo, useState } from "react";
 import ProductCard from "../components/ProductCard.jsx";
 
 const products = [
-  { id: 1, brand: "RAY-BEN", name: "ORIGINAL WAYFARER CLASSIC", price: 270000, shape: "oval",  image: "/team/classic/rayclassic.png" },
-  { id: 2, brand: "Persol", name: "PO0649NE - Total Black Arrow", price: 351515, originalPrice: 676334, shape: "soft-square", image: "/team/classic/persol.png" },
-  { id: 3, brand: "GENTLE MONSTER", name: "뉴 허 01", price: 289000, shape: "square", image: "/team/classic/gmNewHer.png" },
-  { id: 4, brand: "CELENE", name: "트리옹프 01", price: 730000, shape: "oval", image: "/team/classic/celine.png"},
-  { id: 5, brand: "BLUE ELEPHANT", name: "MARINA-S black", price: 69900, shape: "soft-square", image: "/team/classic/blueSblack.png" },
-  { id: 6, brand: "GENTLE MONSTER", name: "소호 01", price: 279000, shape: "square", image: "/team/classic/gmsoho.png"},
+  { id: 1, brand: "CHARLES&KEITH", name: "브레아 라운드 선글라스", price: 109900, shape: "oval",  image: "/team/casual/charles.png" },
+  { id: 2, brand: "오클리", name: "아이 자켓 리덕스", price: 261000, shape: "soft-square", image: "/team/casual/okelyi.png" },
+  { id: 3, brand: "RAY-BEN", name: "클럽 마스터", price: 204800, originalPrice: 256000, shape: "square", image: "/team/casual/rayclub.png" },
+  { id: 4, brand: "LE SPECS", name: "마스카라 1475 블랙", price: 138000, originalPrice: 230000, shape: "oval", image: "/team/casual/lespecs1475.png"},
+  { id: 5, brand: "베나코 폰타나", name: "BWF513BK", price: 89000, originalPrice: 179000, shape: "soft-square", image: "/team/casual/venaco.png" },
+  { id: 6, brand: "IZIPIZI", name: "#E Black", price: 99000, shape: "square", image: "/team/casual/izipizi.png"},
 ];
 
-function Classic() {
+function Casual() {
   const [sortOrder, setSortOrder] = useState("popular");
   const sortedProducts = useMemo(() => {
     if (sortOrder === "price-low") {
@@ -24,14 +24,14 @@ function Classic() {
 
   return (
     <main className="classic-page">
-      <section className="hero-banner" aria-label="클래식 선글라스 컬렉션">
-        <img src="/team/classic.png" alt="클래식 선글라스 이미지" />
+      <section className="hero-banner" aria-label="캐주얼 선글라스 컬렉션">
+        <img src="/team/casual.png" alt="캐주얼 선글라스 이미지" />
       </section>
 
       <section aria-labelledby="collection-title">
         <div className="collection-heading">
-          <h1 id="collection-title">CLASSIC</h1>
-          <p>오랜 시간 동안 사랑받아 온 시대를 초월한 디자인의 선글라스</p>
+          <h1 id="collection-title">CASUAL</h1>
+          <p>휴양지나 특별한 야외 활동뿐만 아니라, 일상적인 옷차림(캐주얼 룩)에 자연스럽고 편안하게 매치할 수 있는 데일리용 선글라스</p>
           {/* <label className="visually-hidden" htmlFor="product-sort">상품 정렬</label> */}
           <select
             className="sort-select"
@@ -55,4 +55,4 @@ function Classic() {
   );
 }
 
-export default Classic;
+export default Casual;
