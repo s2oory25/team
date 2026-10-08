@@ -1,5 +1,5 @@
-function Header() {
-  return (
+function Header({ onLoginClick }) {
+    return (
     <header className="header">
 
   {/* 왼쪽 */}
@@ -39,7 +39,7 @@ function Header() {
     </button>
 
     {/* 로그인 - 데스크톱/태블릿/모바일 모두 이미지 */}
-    <button className="login-button">
+    <button className="header-login-button" onClick={onLoginClick}>
       <img src="/team/header_png/login.png" alt="로그인" />
     </button>
 
