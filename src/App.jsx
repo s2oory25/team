@@ -123,7 +123,7 @@ function App() {
     // CELEB PICK
     // =========================
 
-    // 이 메뉴는 서브메뉴를 펼치는 것이 아니라
+    // CELEB PICK은 메뉴를 펼치는 것이 아니라
     // 별도의 페이지로 이동할 예정
 
     if (menu === 'CELEB PICK') {
@@ -138,7 +138,7 @@ function App() {
     // AI 맞춤 서비스
     // =========================
 
-    // 이 메뉴도 별도의 페이지로 이동할 예정
+    // AI 맞춤 서비스도 별도의 페이지로 이동
 
     if (menu === 'AI 맞춤 서비스') {
 
@@ -318,8 +318,7 @@ function App() {
     setIsLoggedIn(true)
 
 
-    // 로그인하면
-    // 다른 서브메뉴는 닫기
+    // 로그인하면 다른 서브메뉴 닫기
 
     setCategoryOpen(false)
 
@@ -331,7 +330,12 @@ function App() {
 
     setSelectedCustomerItem(null)
 
-    setActiveMenu('CELEB PICK')
+
+    // ★ 중요
+    // 로그인했다고 CELEB PICK을 활성화하지 않음
+    // 아무 메뉴도 선택되지 않은 상태로 유지
+
+    setActiveMenu('')
 
   }
 
@@ -369,7 +373,19 @@ function App() {
 
     setSelectedCustomerItem(null)
 
-    setActiveMenu('CELEB PICK')
+
+    // 로그인 상태에서는
+    // CELEB PICK을 강제로 활성화하지 않음
+
+    if (isLoggedIn) {
+
+      setActiveMenu('')
+
+    } else {
+
+      setActiveMenu('CELEB PICK')
+
+    }
 
   }
 
@@ -618,6 +634,7 @@ function App() {
 
               {/* =========================
                   모바일 고객센터
+                  메인 버튼에는 화살표 없음
               ========================= */}
 
               <div className="mobile-customer">
@@ -980,9 +997,9 @@ function App() {
 
           {/* =========================
               PC 마이페이지
-              
+
               로그인했을 때만 표시
-              종류/스타일/고객센터가
+              종류 / 스타일 / 고객센터가
               열려 있으면 숨김
           ========================= */}
 
@@ -1082,10 +1099,8 @@ function App() {
 
           {/* =========================
               오른쪽 블러 영역
-              
-              중요:
-              로그인 상태는 여기 조건에
-              넣지 않음
+
+              로그인 상태는 넣지 않음
           ========================= */}
 
           <div
