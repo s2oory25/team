@@ -13,9 +13,15 @@ body {
 button {
   font-family: inherit;
 }
+
+select {
+  font: inherit;
+}
 .app {
   width: 100%;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   background: #fff;
 }
 .header {
@@ -89,6 +95,7 @@ button {
   color: #000;
   font-size: 17px;
   font-weight: 600;
+  text-decoration: none;
 }
 .login-button {
   border: none;
@@ -181,7 +188,10 @@ button {
 }
 .header-login-button img {
   display: block;
+  width: 24px;
+  height: 24px;
   border: 0;
+  object-fit: contain;
 }
 .main-area {
   position: relative;
@@ -549,6 +559,89 @@ button {
 }
 .welcome-brand {
   margin-top: auto;
+}
+
+/* Classic 상품 페이지 (main 브랜치) */.classic-page {
+  width: min(100% - 56px, 1200px);
+  margin: 46px auto 80px;
+}
+
+.hero-banner {
+  position: relative;
+  height: clamp(210px, 26.7vw, 320px);
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(6, 23, 30, 0.1), transparent 70%),
+    linear-gradient(
+      180deg,
+      #c8dbe0 0%,
+      #83aeb2 44%,
+      #d0b08a 45%,
+      #d7c1a0 100%
+    );
+}
+
+.hero-banner img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 55%;
+}
+
+.collection-heading {
+  display: flex;
+  min-height: 110px;
+  align-items: center;
+  gap: 38px;
+  padding: 0 48px;
+}
+
+.collection-heading h1 {
+  flex: 0 0 auto;
+  margin: 0;
+  font-size: 36px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.collection-heading p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.sort-select {
+  min-width: 64px;
+  margin-left: auto;
+  padding: 3px 5px;
+  border: 1px solid #d1d1d1;
+  border-radius: 0;
+  color: #555;
+  background: #fff;
+  font-size: 13px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 44px;
+  padding: 10px 38px 0;
+}
+
+.favorite-button {
+  float: right;
+  border: 0;
+  padding: 0 2px;
+  background: transparent;
+  color: #777;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.favorite-button[aria-pressed="true"] {
+  color: #111;
 }
 
 /* 작은 데스크탑 푸터 조정 */
@@ -1191,5 +1284,50 @@ button {
   margin-bottom: 14px;
   background: #000;
   color: #fff;
+  }
+}
+
+
+/* Classic 상품 페이지 모바일 (main 브랜치) */@media (max-width: 760px) {
+  .classic-page {
+    width: min(100% - 32px, 560px);
+    margin-top: 24px;
+  }
+
+  .hero-banner {
+    height: clamp(180px, 44vw, 250px);
+  }
+
+  .collection-heading {
+    min-height: 120px;
+    flex-wrap: wrap;
+    gap: 5px 16px;
+    padding: 22px 4px;
+  }
+
+  .collection-heading h1 {
+    font-size: 30px;
+  }
+
+  .collection-heading p {
+    flex-basis: 100%;
+    order: 2;
+    font-size: 14px;
+  }
+
+  .sort-select {
+    order: 1;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 26px 16px;
+    padding: 0;
+  }
+}
+
+@media (max-width: 380px) {
+  .product-grid {
+    grid-template-columns: 1fr;
   }
 }
