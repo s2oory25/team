@@ -294,7 +294,7 @@ select {
 .signup-page {
   width: 100%;
   min-height: calc(100vh - 80px);
-  background: #fff;
+  background: #F8F8F8;
 }
 .signup-content {
   display: grid;
@@ -315,7 +315,7 @@ select {
 }
 .signup-intro h1 {
   margin: 0 0 8px;
-  font-size: 26px;
+  font-size: 30px;
   font-weight: 500;
 }
 .signup-intro p {
@@ -649,7 +649,7 @@ select {
       and (orientation: portrait)
       and (pointer: coarse) {
   .footer {
-    grid-template-columns: 110px minmax(0, 1fr) 145px;
+    grid-template-columns: 110px minmax(0, 1fr) 250px;
     gap: 20px;
     padding: 16px 20px;
     min-height: 105px;
@@ -812,6 +812,9 @@ select {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
+  }
+  .signup-right {
+  min-height: calc(100vh - 60px);
   }
   .header-left {
   display: flex;
@@ -1029,6 +1032,7 @@ select {
   .signup-page {
   width: 100%;
   min-height: auto;
+  flex: 1;
   }
   .signup-content {
   display: flex;
@@ -1040,7 +1044,7 @@ select {
   display: block;
   order: 1;
   width: calc(100% - 40px);
-  height: 200px;
+  height: 260px;
   min-height: 0;
   margin: 20px auto 0;
   overflow: hidden;
@@ -1051,7 +1055,7 @@ select {
   height: 100%;
   display: block;
   object-fit: cover;
-  object-position: center 5%;
+  object-position: center 12%;
   }
   .signup-left {
   order: 2;
@@ -1329,5 +1333,16 @@ select {
 @media (max-width: 380px) {
   .product-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* 데스크탑 회원가입 박스 가로폭 조정 */
+@media (min-width: 1101px) {
+  .social-signup,
+  .signup-divider,
+  .signup-form {
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
