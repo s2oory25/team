@@ -16,6 +16,7 @@ function App() {
   const [mobileMypageOpen, setMobileMypageOpen] = useState(false)
   const [selectedCustomerItem, setSelectedCustomerItem] = useState(null)
   const [currentPage, setCurrentPage] = useState('home')
+  const [selectedOrder, setSelectedOrder] = useState(null)
 
   const [selectedPhoto, setSelectedPhoto] = useState(null)
   const [photoPreview, setPhotoPreview] = useState('')
@@ -341,6 +342,11 @@ function App() {
 
   const selectedCartItems = cartItems.filter((item) => item.selected)
   const cartSubtotal = selectedCartItems.reduce((sum, item) => sum + item.price * item.quantity, 0)
+  const orderDetail = selectedOrder || {
+    number: 'CF20260907-1234', date: '2026.09.07 10:23', brand: 'GENTLE MONSTER',
+    name: '뉴 허 01', option: '블랙/블랙', quantity: 1, price: 289000,
+    image: '/cocoa-01.png', status: '배송중',
+  }
 
   return (
     <div
@@ -771,7 +777,7 @@ function App() {
                 <header className="order-card-header">
                   <span>주문일　 2026.09.07　10:23</span>
                   <span>주문번호　<strong>CF20260907-1234</strong></span>
-                  <button type="button">주문 상세보기 ›</button>
+                  <button type="button" onClick={() => { setSelectedOrder({ number: 'CF20260907-1234', date: '2026.09.07 10:23', brand: 'GENTLE MONSTER', name: '뉴 허 01', option: '블랙/블랙', quantity: 1, price: 289000, image: '/cocoa-01.png', status: '배송중' }); navigateTo('order-detail') }}>주문 상세보기 ›</button>
                 </header>
                 <div className="order-card-body">
                   <div className="order-product">
@@ -798,7 +804,7 @@ function App() {
                 <header className="order-card-header">
                   <span>주문일　 2026.08.12　11:25</span>
                   <span>주문번호　<strong>CF20260812-5678</strong></span>
-                  <button type="button">주문 상세보기 ›</button>
+                  <button type="button" onClick={() => { setSelectedOrder({ number: 'CF20260812-5678', date: '2026.08.12 11:25', brand: 'RIETI', name: 'MANO C2', option: '블랙/블랙', quantity: 1, price: 49000, image: '/july-01.png', status: '배송완료' }); navigateTo('order-detail') }}>주문 상세보기 ›</button>
                 </header>
                 <div className="order-card-body">
                   <div className="order-product">
@@ -817,7 +823,58 @@ function App() {
                   </div>
                 </div>
               </article>
+
             </section>
+          </div>
+          <footer className="site-footer">
+            <div className="footer-brand">Chalfit</div>
+            <div className="footer-links"><div className="footer-link-row"><span>문의하기</span><span>고객센터</span><span>배송안내</span><span>이용약관</span><span>FAQ</span></div><p>ChalFit 대표자 홍길동 사업자등록번호 123-45-67890</p><p>주소 : 서울특별시 강남구 선릉로 340 이메일 : support@chalfit.com</p></div>
+            <div className="footer-copyright"><span>© 2026 ChalFit. All rights reserved.</span><small>STYLE FITS YOU</small></div>
+          </footer>
+        </main>
+      ) : currentPage === 'order-detail' ? (
+        <main className="order-detail-page">
+          <section className="order-detail-title-bar"><h1>주문상세</h1></section>
+          <p className="order-detail-number">주문번호 : {orderDetail.number}</p>
+          <div className="order-detail-content">
+            <section className="order-detail-section">
+              <h2>주문 정보</h2>
+              <div className="order-detail-product">
+                <div className="order-detail-image"><img src={orderDetail.image} alt={`${orderDetail.brand} ${orderDetail.name}`} /></div>
+                <div className="order-detail-product-info">
+                  <span>{orderDetail.brand}</span>
+                  <strong>{orderDetail.name}</strong>
+                  <small>{orderDetail.quantity}개　{orderDetail.option}</small>
+                </div>
+                <button className="order-detail-shipping-link" type="button" onClick={() => navigateTo('shipping')}>배송 조회 ›</button>
+              </div>
+            </section>
+            <section className="order-detail-section">
+              <h2>배송지 정보</h2>
+              <dl className="order-detail-info-box">
+                <dt>받는 사람</dt><dd>김찰떡</dd>
+                <dt>연락처</dt><dd>010-1234-5678</dd>
+                <dt>배송지</dt><dd>(12345) 서울특별시 찰떡구 찰떡동 12-345 607호</dd>
+              </dl>
+            </section>
+            <section className="order-detail-section">
+              <h2>결제 정보</h2>
+              <dl className="order-detail-info-box payment">
+                <dt>상품 금액</dt><dd>{orderDetail.price.toLocaleString('ko-KR')}원</dd>
+                <dt>배송비</dt><dd>무료</dd>
+                <dt>주문 금액</dt><dd>{orderDetail.price.toLocaleString('ko-KR')}원</dd>
+                <dt>카드</dt><dd>{orderDetail.price.toLocaleString('ko-KR')}원</dd>
+              </dl>
+            </section>
+            <section className="order-detail-section">
+              <h2>주문자 정보</h2>
+              <dl className="order-detail-info-box">
+                <dt>받는 사람</dt><dd>김찰떡</dd>
+                <dt>연락처</dt><dd>010-1234-5678</dd>
+                <dt>이메일</dt><dd>chalfit@naver.com</dd>
+              </dl>
+            </section>
+            <button className="order-detail-back" type="button" onClick={() => navigateTo('orders')}>주문내역으로 돌아가기</button>
           </div>
           <footer className="site-footer">
             <div className="footer-brand">Chalfit</div>
@@ -895,13 +952,15 @@ function App() {
               )}
             </section>
             <aside className="cart-summary">
-              <h2>결제금액</h2>
-              <dl>
-                <dt>상품 금액</dt><dd>{cartSubtotal.toLocaleString('ko-KR')}원</dd>
-                <dt>할인 금액</dt><dd>0원</dd>
-                <dt>배송비</dt><dd>{cartSubtotal > 0 ? '무료배송' : '0원'}</dd>
-              </dl>
-              <div className="cart-total"><strong>총 결제 금액</strong><strong>{cartSubtotal.toLocaleString('ko-KR')}원</strong></div>
+              <h2>구매 금액</h2>
+              <div className="cart-price-box">
+                <dl>
+                  <dt>상품 금액</dt><dd>{cartSubtotal.toLocaleString('ko-KR')}원</dd>
+                  <dt>할인 금액</dt><dd>0원</dd>
+                  <dt>배송비</dt><dd>{cartSubtotal > 0 ? '무료배송' : '0원'}</dd>
+                </dl>
+                <div className="cart-total"><strong>총 금액</strong><strong>{cartSubtotal.toLocaleString('ko-KR')}원</strong></div>
+              </div>
               <label className="cart-agreement">
                 <input type="checkbox" checked={cartAgreement} onChange={(event) => setCartAgreement(event.target.checked)} />
                 <span>AI 피팅 구매 상품의 교환 및 반품 제한에 동의합니다.</span>
@@ -935,6 +994,19 @@ function App() {
                 <div className="shipping-step current"><span aria-hidden="true"><svg viewBox="0 0 36 32"><path d="M2.5 6h19v18h-19zM21.5 12h7l5 6v6h-12z" /><circle cx="9" cy="26" r="3" /><circle cx="28" cy="26" r="3" /><path d="M22 18h10" /></svg></span><strong>배송중</strong><small>09.08 06:15</small></div>
                 <div className="shipping-step"><span aria-hidden="true"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="12" /><path d="m10 16 4 4 8-9" /></svg></span><strong>배송 완료</strong><small>배송 전</small></div>
               </div>
+            </section>
+            <section className="shipping-product-card">
+              <h2>상품 정보</h2>
+              <div className="shipping-product-row">
+                <div className="shipping-product-image"><img src="/cocoa-01.png" alt="GENTLE MONSTER 뉴 허 01" /></div>
+                <div className="shipping-product-info">
+                  <span>GENTLE MONSTER</span>
+                  <strong>뉴 허 01</strong>
+                  <small>블랙/블랙　59-11</small>
+                  <small>289,000원　1개</small>
+                </div>
+              </div>
+              <button className="shipping-product-tracking" type="button">CJ 대한통운 배송조회 바로가기</button>
             </section>
             <div className="shipping-detail-grid">
               <section className="shipping-detail-card">
