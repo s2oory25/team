@@ -31,7 +31,19 @@ function Sports() {
       <section aria-labelledby="collection-title">
         <div className="collection-heading">
           <h1 id="collection-title">SPORTS</h1>
-          <p>격렬한 야외 활동 중 눈과 얼굴을 보호하고 시야를 선명하게 유지하기 위해 특수 제작된 기능성 안경</p>
+
+          <p className="sports-intro-desktop">
+            격렬한 야외 활동 중 눈과 얼굴을 보호하고 시야를 선명하게 유지하기 위해 특수 제작된 기능성 안경
+          </p>
+
+          <p className="sports-intro-tablet">
+            격렬한 야외 활동에서 눈을 보호하고 선명한 시야를 제공하는 기능성 안경
+          </p>
+
+          <p className="sports-intro-mobile">
+            야외 활동에 최적화된 기능성 안경
+          </p>
+
           {/* <label className="visually-hidden" htmlFor="product-sort">상품 정렬</label> */}
           <select
             className="sort-select"

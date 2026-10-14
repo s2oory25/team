@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
 
-function Header({ onLoginClick }) {
+function Header({ onMenuClick, onLogoClick, onLoginClick }) {
   return (
     <header className="header">
       <div className="header-left">
@@ -7,6 +8,7 @@ function Header({ onLoginClick }) {
           className="menu-button"
           type="button"
           aria-label="메뉴 열기"
+          onClick={onMenuClick}
         >
           ☰
         </button>
@@ -16,9 +18,14 @@ function Header({ onLoginClick }) {
         </nav>
       </div>
 
-      <a className="logo" href="#" aria-label="Chalfit 홈">
+      <Link
+        className="logo"
+        to="/"
+        aria-label="Chalfit 홈"
+        onClick={onLogoClick}
+      >
         <img src="/team/header_png/logo.png" alt="Chalfit" />
-      </a>
+      </Link>
 
       <nav className="header-right" aria-label="회원 메뉴">
         <a className="desktop-text" href="#favorites">

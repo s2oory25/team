@@ -33,6 +33,8 @@ select {
   padding: 0 50px;
   box-sizing: border-box;
   border-bottom: 1px solid #111;
+  position: relative;
+  flex-shrink: 0;
 }
 .home {
   width: 100%;
@@ -644,10 +646,58 @@ select {
   color: #111;
 }
 
+/* 스포츠 소개글 */
+.sports-intro-desktop {
+  display: block;
+}
+
+.sports-intro-tablet,
+.sports-intro-mobile {
+  display: none;
+}
+
+/* 태블릿 */
+@media (max-width: 1024px) {
+  .header {
+    padding: 0 30px;
+  }
+
+  .header-left {
+    gap: 15px;
+  }
+
+  .desktop-text {
+    display: none;
+  }
+
+  .tablet-icon {
+    display: block;
+  }
+
+  .header-right {
+    gap: 15px;
+  }
+
+  .tablet-icon img,
+  .header-login-button img {
+    width: 22px;
+    height: 22px;
+  }
+
+  .sports-intro-desktop {
+    display: none;
+  }
+
+  .sports-intro-tablet {
+    display: block;
+  }
+}
+
 /* 작은 데스크탑 푸터 조정 */
 @media (min-width: 1025px) and (max-width: 1200px)
-      and (orientation: portrait)
-      and (pointer: coarse) {
+  and (orientation: portrait)
+  and (pointer: coarse) {
+
   .footer {
     grid-template-columns: 110px minmax(0, 1fr) 250px;
     gap: 20px;
@@ -1336,6 +1386,7 @@ select {
   }
 }
 
+
 /* 데스크탑 회원가입 박스 가로폭 조정 */
 @media (min-width: 1101px) {
   .social-signup,
@@ -1345,4 +1396,59 @@ select {
     margin-left: auto;
     margin-right: auto;
   }
+
+  .header-menu {
+    display: block;
+  }
+
+  .tablet-icon {
+    display: none;
+  }
+}
+
+/* 메인 영상 */
+.main-video {
+  object-position: center;
+}
+
+/* 스포츠 소개글 반응형 */
+.sports-intro-desktop {
+  display: block;
+}
+
+.sports-intro-tablet,
+.sports-intro-mobile {
+  display: none;
+}
+
+/* 태블릿 스포츠 소개글 */
+@media (max-width: 1024px) {
+  .sports-intro-desktop {
+    display: none;
+  }
+
+  .sports-intro-tablet {
+    display: block;
+  }
+
+  .sports-intro-mobile {
+    display: none;
+  }
+}
+
+/* 모바일 스포츠 소개글 */
+@media (max-width: 767px) {
+  .sports-intro-desktop,
+  .sports-intro-tablet {
+    display: none;
+  }
+
+  .sports-intro-mobile {
+    display: block;
+  }
+}
+
+/* 스크롤바 공간 유지 */
+html {
+  scrollbar-gutter: stable;
 }

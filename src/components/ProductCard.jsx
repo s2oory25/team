@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import "./ProductCard.css";
 
 function formatPrice(price) {
@@ -5,7 +6,9 @@ function formatPrice(price) {
 }
 
 function ProductCard({ product }) {
-  const { brand, name, price, originalPrice, image } = product;
+  const navigate = useNavigate();
+
+  const { id, brand, name, price, originalPrice, image } = product;
 
   const hasDiscount =
     Number.isFinite(originalPrice) && originalPrice > price;
@@ -14,8 +17,24 @@ function ProductCard({ product }) {
     ? Math.round(((originalPrice - price) / originalPrice) * 100)
     : 0;
 
+function handleCardClick() {
+  navigate(`/product/${id}`);
+}
+
   return (
-    <article className="product-card">
+      <article
+        className="product-card"
+        onClick={handleCardClick}
+        role="link"
+        tabIndex={0}
+        onKeyDown={(event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            handleCardClick();
+          }
+        }}
+        style={{ cursor: "pointer" }}
+      >
       <div className="product-art">
         <img
           className="product-image"
@@ -23,7 +42,11 @@ function ProductCard({ product }) {
           alt={`${brand} ${name}`}
         />
 
-        <button className="fit-label" type="button">
+        <button
+          className="fit-label"
+          type="button"
+          onClick={(event) => event.stopPropagation()}
+        >
           AI 피팅
         </button>
       </div>
