@@ -1,4 +1,7 @@
+
+import { useEffect, useState } from "react";
 import "./SideMenu.css";
+
 function SideMenu({
   menuOpen,
   activeMenu,
@@ -30,10 +33,29 @@ function SideMenu({
   handleLogoutClick,
   navigateTo,
 }) {
-  if (!menuOpen) return null;
+  const [isVisible, setIsVisible] = useState(menuOpen);
+  const [isClosing, setIsClosing] = useState(false);
+
+  useEffect(() => {
+    if (menuOpen) {
+      setIsVisible(true);
+      setIsClosing(false);
+    } else if (isVisible) {
+      setIsClosing(true);
+
+      const timer = setTimeout(() => {
+        setIsVisible(false);
+        setIsClosing(false);
+      }, 200);
+
+      return () => clearTimeout(timer);
+    }
+  }, [menuOpen, isVisible]);
+
+  if (!isVisible) return null;
 
   return (
-    <div className="menu-container">
+    <div className={`menu-container ${isClosing ? "is-closing" : ""}`}>
       <aside className="side-menu">
         <nav className="menu-list">
           {menuItems.map((menu) => (
@@ -91,64 +113,36 @@ function SideMenu({
             </div>
           ))}
 
-          <div className="mobile-customer">
-            <div
-              className={`customer-mobile-button ${
-                activeMenu === "고객센터" ? "active" : ""
-              }`}
-              onClick={() => handleMenuClick("고객센터")}
-            >
-              <span>고객센터</span>
-            </div>
-
-            {customerOpen && (
-              <div className="mobile-customer-menu">
-                <div className="customer-list">
-                  {customerItems.map((item) => (
-                    <div
-                      key={item}
-                      className="customer-item"
-                      onClick={() => handleMobileCustomerClick(item)}
-                    >
-                      <span>{item}</span>
-                      <span className="menu-arrow" />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-
           {isLoggedIn && (
-          <div className="mobile-my-page">
-            <div
-              className={`menu-item ${
-                activeMenu === "마이페이지" ? "active" : ""
-              }`}
-              onClick={handleMobileMypageClick}
-            >
-              <span>마이페이지</span>
-              <span className="menu-arrow" />
-            </div>
-
-            {mobileMypageOpen && (
-              <div className="mobile-mypage-menu">
-                <div className="mypage-list">
-                  {mypageItems.map((item) => (
-                    <div
-                      key={item}
-                      className="mypage-item"
-                      onClick={() => handleSubMenuClick(item)}
-                    >
-                      <span>{item}</span>
-                      <span className="menu-arrow" />
-                    </div>
-                  ))}
-                </div>
+            <div className="mobile-my-page">
+              <div
+                className={`menu-item ${
+                  activeMenu === "마이페이지" ? "active" : ""
+                }`}
+                onClick={handleMobileMypageClick}
+              >
+                <span>마이페이지</span>
+                <span className="menu-arrow" />
               </div>
-            )}
-          </div>
-        )}
+
+              {mobileMypageOpen && (
+                <div className="mobile-mypage-menu">
+                  <div className="mypage-list">
+                    {mypageItems.map((item) => (
+                      <div
+                        key={item}
+                        className="mypage-item"
+                        onClick={() => handleSubMenuClick(item)}
+                      >
+                        <span>{item}</span>
+                        <span className="menu-arrow" />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
         </nav>
 
         <div className="menu-bottom">
@@ -189,6 +183,23 @@ function SideMenu({
         </div>
       </aside>
 
+      {/* 모바일·태블릿 고객센터 하위 메뉴 */}
+      {customerOpen && (
+        <div className="bottom-customer-menu">
+          {customerItems.map((item) => (
+            <div
+              key={item}
+              className="customer-item"
+              onClick={() => handleMobileCustomerClick(item)}
+            >
+              <span>{item}</span>
+              <span className="menu-arrow" />
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* 데스크톱 종류 메뉴 */}
       {categoryOpen && (
         <aside className="category-menu desktop-submenu">
           <div className="category-list">
@@ -206,6 +217,7 @@ function SideMenu({
         </aside>
       )}
 
+      {/* 데스크톱 스타일 메뉴 */}
       {styleOpen && (
         <aside className="style-menu desktop-submenu">
           <div className="style-list">
@@ -223,6 +235,7 @@ function SideMenu({
         </aside>
       )}
 
+      {/* 데스크톱 고객센터 메뉴 */}
       {customerOpen && (
         <aside className="customer-menu desktop-submenu">
           <div className="customer-list">
@@ -242,26 +255,25 @@ function SideMenu({
         </aside>
       )}
 
-      {isLoggedIn &&
-        !categoryOpen &&
-        !styleOpen &&
-        !customerOpen && (
-          <aside className="mypage-menu desktop-submenu">
-            <div className="mypage-list">
-              {mypageItems.map((item) => (
-                <div
-                  key={item}
-                  className="mypage-item"
-                  onClick={() => handleSubMenuClick(item)}
-                >
-                  <span>{item}</span>
-                  <span className="menu-arrow" />
-                </div>
-              ))}
-            </div>
-          </aside>
-        )}
+      {/* 데스크톱 마이페이지 메뉴 */}
+      {isLoggedIn && !categoryOpen && !styleOpen && !customerOpen && (
+        <aside className="mypage-menu desktop-submenu">
+          <div className="mypage-list">
+            {mypageItems.map((item) => (
+              <div
+                key={item}
+                className="mypage-item"
+                onClick={() => handleSubMenuClick(item)}
+              >
+                <span>{item}</span>
+                <span className="menu-arrow" />
+              </div>
+            ))}
+          </div>
+        </aside>
+      )}
 
+      {/* FAQ 콘텐츠 */}
       {customerOpen && selectedCustomerItem === "FAQ" && (
         <div className="customer-content">
           <h2>FAQ</h2>

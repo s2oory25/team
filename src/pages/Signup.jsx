@@ -1,4 +1,6 @@
+import { useNavigate } from "react-router-dom";
 function Signup() {
+  const navigate = useNavigate();
   return (
     <main className="signup-page">
       <section className="signup-content">
@@ -29,7 +31,13 @@ function Signup() {
 
           <h2 className="simple-signup-title">간편 회원가입</h2>
 
-          <form className="signup-form">
+          <form
+            className="signup-form"
+            onSubmit={(e) => {
+              e.preventDefault();
+              navigate("/welcome");
+            }}
+          >
             <div className="signup-field">
               <label htmlFor="name">이름</label>
               <input

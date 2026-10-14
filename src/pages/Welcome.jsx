@@ -1,4 +1,6 @@
+import { useNavigate } from "react-router-dom";
 function Welcome() {
+  const navigate = useNavigate();
   return (
     <main className="welcome-page">
       <section className="welcome-hero">
@@ -46,8 +48,12 @@ function Welcome() {
               AI FIT 시작하기 〉
             </button>
 
-            <button type="button" className="welcome-shop-button">
-              쇼핑하기
+            <button
+              type="button"
+              className="welcome-shop-button"
+              onClick={() => navigate("/")}
+              >
+                쇼핑하기
             </button>
           </div>
         </div>

@@ -13,6 +13,7 @@ import Casual from "./pages/Casual.jsx";
 import Sports from "./pages/Sports.jsx";
 import Trendy from "./pages/Trendy.jsx";
 import Product from "./pages/Product.jsx";
+import Payment from "./pages/Payment.jsx";
 import Footer from "./components/Footer.jsx";
 
 function PageFooter() {
@@ -152,8 +153,8 @@ function App() {
   }
 
   function handleLoginClick() {
-    setIsLoggedIn(true);
-    setIsLoginOpen(false);
+    closeMenu();
+    setIsLoginOpen(true);
   }
 
   function handleLogoutClick() {
@@ -166,8 +167,9 @@ function App() {
         <Header
           onMenuClick={openMenu}
           onLogoClick={closeMenu}
-          onLoginClick={() => setIsLoginOpen(true)}
+          onLoginClick={handleLoginClick}
         />
+
 
         <SideMenu
           menuOpen={menuOpen}
@@ -195,17 +197,11 @@ function App() {
         />
 
         <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Home />
-                {isLoginOpen && (
-                  <Login onClose={() => setIsLoginOpen(false)} />
-                )}
-              </>
-            }
-          />
+          <Route path="/" element={<Home />} />
+
+            {/* 회원가입 페이지 */}
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/welcome" element={<Welcome />} />
 
           <Route path="/classic" element={<Classic />} />
           <Route path="/sports" element={<Sports />} />
@@ -216,8 +212,12 @@ function App() {
             path="/product/:productId"
             element={<Product key={window.location.pathname} />}
           />
-        </Routes>
 
+          <Route path="/payment" element={<Payment />} />
+        </Routes>
+        {isLoginOpen && (
+          <Login onClose={() => setIsLoginOpen(false)} />
+        )}
         <PageFooter />
       </div>
     </BrowserRouter>

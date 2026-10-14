@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./ProductDetailSummary.css";
+import { useNavigate } from "react-router-dom";
 
 function formatPrice(price) {
   return `${price.toLocaleString("ko-KR")}원`;
@@ -12,6 +13,7 @@ function ProductDetailSummary({
   isAddedToCart = false,
   onAddToCart,
 }) {
+  const navigate = useNavigate();
   const [isFavorite, setIsFavorite] = useState(false);
   const { id, brand, name, color, price, originalPrice, discountRate, image } =
     product;
@@ -72,7 +74,11 @@ function ProductDetailSummary({
           >
             {isAddedToCart ? "담았어요" : "장바구니 담기"}
           </button>
-          <button className="product-buy-button" type="button">
+          <button
+            className="product-buy-button"
+            type="button"
+            onClick={() => navigate("/payment")}
+          >
             구매하기
           </button>
         </div>

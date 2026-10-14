@@ -1,3 +1,8 @@
+
+/* ==============================
+   메뉴 전체
+============================== */
+
 .menu-container {
   position: fixed;
   top: 60px;
@@ -6,6 +11,7 @@
   bottom: 0;
   display: flex;
   z-index: 20;
+  transition: opacity 0.35s ease;
 }
 
 .side-menu {
@@ -16,6 +22,7 @@
   z-index: 4;
   display: flex;
   flex-direction: column;
+  transition: transform 0.2s ease-in-out;
 }
 
 .menu-list,
@@ -27,6 +34,7 @@
   width: 100%;
   height: 72px;
   padding: 0 40px;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -52,7 +60,9 @@
   flex-shrink: 0;
 }
 
-/* PC 서브메뉴 */
+/* ==============================
+   PC 서브메뉴
+============================== */
 
 .desktop-submenu {
   position: absolute;
@@ -78,6 +88,7 @@
   width: 100%;
   height: 72px;
   padding: 0 40px;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -111,7 +122,9 @@
   z-index: 5;
 }
 
-/* 모바일 전용 메뉴 */
+/* ==============================
+   모바일 전용 메뉴 기본값
+============================== */
 
 .mobile-category-menu,
 .mobile-style-menu,
@@ -126,6 +139,7 @@
   width: 100%;
   height: 55px;
   padding: 0 28px;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   font-size: 16px;
@@ -136,18 +150,37 @@
   background: #f3f3f3;
 }
 
-/* 메뉴 하단 */
+/* ==============================
+   메뉴 하단 영역
+============================== */
 
 .menu-bottom {
   margin-top: auto;
   width: 100%;
   padding: 28px 40px;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-/* 로그인 아이콘 */
+/* 고객센터 버튼 */
+
+.customer-button {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.customer-button:hover {
+  opacity: 0.65;
+}
+
+/* ==============================
+   로그인 아이콘
+============================== */
 
 .user-icon {
   width: 24px;
@@ -187,7 +220,9 @@
   border-radius: 10px 10px 0 0;
 }
 
-/* 로그아웃 */
+/* ==============================
+   로그아웃 아이콘
+============================== */
 
 .menu-logout-button {
   width: 24px;
@@ -234,7 +269,7 @@
 }
 
 .logout-arrow::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 6px;
   height: 6px;
@@ -245,19 +280,9 @@
   transform: rotate(45deg);
 }
 
-.customer-button {
-  height: 40px;
-  display: flex;
-  align-items: center;
-  font-size: 15px;
-  cursor: pointer;
-}
-
-.customer-button:hover {
-  opacity: 0.65;
-}
-
-/* 메뉴 바깥 블러 */
+/* ==============================
+   메뉴 바깥 블러
+============================== */
 
 .menu-overlay {
   position: absolute;
@@ -270,13 +295,26 @@
   -webkit-backdrop-filter: blur(14px);
   z-index: 2;
   cursor: pointer;
+  transition: opacity 0.35s ease;
 }
 
 .menu-overlay.submenu-active {
   left: 64vw;
 }
 
-/* FAQ */
+/* 메뉴가 닫힐 때 */
+
+.menu-container.is-closing .side-menu {
+  transform: translateX(-100%);
+}
+
+.menu-container.is-closing .menu-overlay {
+  opacity: 0;
+}
+
+/* ==============================
+   FAQ
+============================== */
 
 .customer-content {
   position: absolute;
@@ -309,6 +347,7 @@
   width: 100%;
   min-height: 64px;
   padding: 0 20px;
+  box-sizing: border-box;
   border-top: 1px solid #c5c5c5;
   display: flex;
   align-items: center;
@@ -331,19 +370,30 @@
   margin-left: 10px;
 }
 
+/* PC에서는 하단용 고객센터 메뉴 숨김 */
 
-/* 태블릿 및 모바일: 사이드메뉴를 아래로 펼치기 */
-@media (max-width: 1024px) {
-.menu-container {
-  position: fixed;
-  top: 60px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: block;
-  overflow: hidden;
-  background: transparent;
+.bottom-customer-menu {
+  display: none;
 }
+
+/* ==============================
+  태블릿 및 모바일
+============================== */
+
+@media (max-width: 1024px) {
+  /* 메뉴 전체 */
+
+  .menu-container {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: transparent;
+  }
 
   .side-menu {
     width: 100%;
@@ -357,21 +407,24 @@
     width: 100%;
   }
 
+  /* 상위 메뉴 */
+
   .menu-item {
     height: 60px;
     padding: 0 28px;
     font-size: 16px;
   }
 
-  /* 데스크톱용 옆 서브메뉴는 숨김 */
+  /* PC용 옆 서브메뉴 숨김 */
+
   .desktop-submenu {
     display: none;
   }
 
-  /* 모바일용 하위 메뉴는 펼쳐서 표시 */
+  /* 종류·스타일·마이페이지 하위 메뉴 */
+
   .mobile-category-menu,
   .mobile-style-menu,
-  .mobile-customer-menu,
   .mobile-mypage-menu {
     display: block;
     width: 100%;
@@ -383,52 +436,68 @@
   .style-item,
   .customer-item,
   .mypage-item {
-    height: 52px;
+    height: 60px;
     padding: 0 28px;
-    font-size: 15px;
     box-sizing: border-box;
+    font-size: 15px;
   }
 
-  /* 모바일 전용 고객센터와 마이페이지 표시 */
   .mobile-my-page {
     display: block;
     width: 100%;
   }
 
-  .mobile-customer {
-    display: none;
+  /* 메뉴 하단 영역 */
+
+  .menu-bottom {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 0;
+    padding: 12px 28px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid #eee;
   }
 
-  .customer-mobile-button {
+  .customer-button {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  /* 하단 고객센터 하위 메뉴
+     SideMenu.jsx에서 side-menu 다음에 렌더링 */
+
+  .bottom-customer-menu {
+    display: block;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    background: #d9d9d9;
+    z-index: 6;
+  }
+
+  .bottom-customer-menu .customer-item {
+    width: 100%;
     height: 60px;
     padding: 0 28px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 15px;
+    cursor: pointer;
   }
 
-  /* 메뉴 하단 영역 */
-.menu-bottom {
-  width: 100%;
-  box-sizing: border-box;
-  margin-top: 0;
-  padding: 12px 28px;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  border-top: 1px solid #eee;
-}
+  /* 메뉴 뒤 블러 */
 
-.customer-button {
-  display: flex;
-  align-items: center;
-  height: 40px;
-  padding: 0;
-  background: transparent;
-  border: none;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-  /* 메뉴 뒤 블러 오버레이는 화면 전체를 덮지 않도록 */
   .menu-overlay {
     position: fixed;
     top: 60px;
@@ -445,7 +514,8 @@
     left: 0;
   }
 
-  /* FAQ 내용은 메뉴 아래에서 표시 */
+  /* FAQ 콘텐츠 */
+
   .customer-content {
     position: static;
     width: 100%;
@@ -469,15 +539,14 @@
     padding: 0 28px;
   }
 
-  /* 태블릿·모바일 상위 메뉴 화살표 */
+  /* 상위 메뉴 화살표 */
+
   .menu-item .menu-arrow {
     transform: rotate(45deg);
     transition: transform 0.2s ease;
   }
 
-  /* 하위 메뉴가 열린 경우 아래 방향 */
   .menu-item .menu-arrow.is-open {
     transform: rotate(135deg);
   }
-
 }

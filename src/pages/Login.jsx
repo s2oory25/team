@@ -1,4 +1,6 @@
+import { useNavigate } from "react-router-dom";
 function Login({ onClose }) {
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -48,12 +50,18 @@ function Login({ onClose }) {
       <div className="signup-area">
         <span>계정이 없으신가요?</span>
 
-        <button
-          type="button"
-          className="signup-button"
-        >
-          회원가입
-        </button>
+
+      <button
+        type="button"
+        className="signup-button"
+        onClick={() => {
+          onClose();
+          navigate("/signup");
+        }}
+      >
+        회원가입
+      </button>
+
       </div>
 
       <div className="login-or">
