@@ -5,6 +5,9 @@ import "./App.css";
 import Header from "./components/Header.jsx";
 import SideMenu from "./components/SideMenu.jsx";
 import Home from "./pages/Home.jsx";
+import Login from "./pages/Login.jsx";
+import Signup from "./pages/Signup.jsx";
+import Welcome from "./pages/Welcome.jsx";
 import Classic from "./pages/Classic.jsx";
 import Casual from "./pages/Casual.jsx";
 import Sports from "./pages/Sports.jsx";
@@ -21,19 +24,20 @@ function PageFooter() {
 
   return <Footer />;
 }
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
 
-useEffect(() => {
-  document.body.style.overflow = menuOpen ? "hidden" : "";
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
 
-  return () => {
-    document.body.style.overflow = "";
-  };
-}, [menuOpen]);
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
 
   const [activeMenu, setActiveMenu] = useState("");
-
   const [categoryOpen, setCategoryOpen] = useState(false);
   const [styleOpen, setStyleOpen] = useState(false);
   const [customerOpen, setCustomerOpen] = useState(false);
@@ -82,6 +86,7 @@ useEffect(() => {
       setMenuOpen(true);
     }
   }
+
   function navigateTo(path) {
     closeMenu();
     window.location.hash = path;
@@ -111,18 +116,18 @@ useEffect(() => {
     closeMenu();
 
     const pagePaths = {
-    클래식: "/team/classic",
-    스포츠: "/team/sports",
-    캐주얼: "/team/casual",
-    트렌디: "/team/trendy",
-  };
+      클래식: "/classic",
+      스포츠: "/sports",
+      캐주얼: "/casual",
+      트렌디: "/trendy",
+    };
 
-  if (pagePaths[item]) {
-    window.location.href = pagePaths[item];
-  } else {
-    console.log(`${item} 선택`);
+    if (pagePaths[item]) {
+      window.location.href = `/team${pagePaths[item]}`;
+    } else {
+      console.log(`${item} 선택`);
+    }
   }
-}
 
   function handleMobileCustomerClick(item) {
     setSelectedCustomerItem(item);
@@ -148,6 +153,7 @@ useEffect(() => {
 
   function handleLoginClick() {
     setIsLoggedIn(true);
+    setIsLoginOpen(false);
   }
 
   function handleLogoutClick() {
@@ -157,8 +163,11 @@ useEffect(() => {
   return (
     <BrowserRouter basename="/team">
       <div className="app">
-        <Header onMenuClick={openMenu}
-                    onLogoClick={closeMenu}/>
+        <Header
+          onMenuClick={openMenu}
+          onLogoClick={closeMenu}
+          onLoginClick={() => setIsLoginOpen(true)}
+        />
 
         <SideMenu
           menuOpen={menuOpen}
@@ -185,9 +194,18 @@ useEffect(() => {
           closeMenu={closeMenu}
         />
 
-        
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={
+              <>
+                <Home />
+                {isLoginOpen && (
+                  <Login onClose={() => setIsLoginOpen(false)} />
+                )}
+              </>
+            }
+          />
 
           <Route path="/classic" element={<Classic />} />
           <Route path="/sports" element={<Sports />} />
@@ -199,7 +217,6 @@ useEffect(() => {
             element={<Product key={window.location.pathname} />}
           />
         </Routes>
-
 
         <PageFooter />
       </div>
