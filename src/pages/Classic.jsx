@@ -2,9 +2,9 @@ import { useMemo, useState } from "react";
 import ProductCard from "../components/ProductCard.jsx";
 
 const products = [
-  { id: 1, brand: "RAY-BEN", name: "ORIGINAL WAYFARER CLASSIC", price: 270000, shape: "oval",  image: "/team/classic/rayclassic.png" },
+  { id: "rayclassic", brand: "RAY-BEN", name: "ORIGINAL WAYFARER CLASSIC", price: 270000, shape: "oval",  image: "/team/classic/rayclassic.png" },
   { id: 2, brand: "Persol", name: "PO0649NE - Total Black Arrow", price: 351515, originalPrice: 676334, shape: "soft-square", image: "/team/classic/persol.png" },
-  { id: 3, brand: "GENTLE MONSTER", name: "뉴 허 01", price: 289000, shape: "square", image: "/team/classic/gmNewHer.png" },
+  { id: "new-her", brand: "GENTLE MONSTER", name: "뉴 허 01", price: 289000, shape: "square", image: "/team/classic/gmNewHer.png" },
   { id: 4, brand: "CELENE", name: "트리옹프 01", price: 730000, shape: "oval", image: "/team/classic/celine.png"},
   { id: 5, brand: "BLUE ELEPHANT", name: "MARINA-S black", price: 69900, shape: "soft-square", image: "/team/classic/blueSblack.png" },
   { id: 6, brand: "GENTLE MONSTER", name: "소호 01", price: 279000, shape: "square", image: "/team/classic/gmsoho.png"},

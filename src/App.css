@@ -32,6 +32,8 @@ select {
   align-items: center;
   padding: 0 50px;
   border-bottom: 1px solid #111;
+  position: relative;
+  flex-shrink: 0;
 }
 
 /* 메인 영상 */
@@ -286,6 +288,16 @@ select {
   color: #111;
 }
 
+/* 스포츠 소개글 */
+.sports-intro-desktop {
+  display: block;
+}
+
+.sports-intro-tablet,
+.sports-intro-mobile {
+  display: none;
+}
+
 /* 태블릿 */
 @media (max-width: 1024px) {
   .header {
@@ -312,6 +324,14 @@ select {
   .login-button img {
     width: 22px;
     height: 22px;
+  }
+
+  .sports-intro-desktop {
+    display: none;
+  }
+
+  .sports-intro-tablet {
+    display: block;
   }
 
   .footer {
@@ -393,6 +413,15 @@ select {
     object-position: center;
   }
 
+    .sports-intro-desktop,
+  .sports-intro-tablet {
+    display: none;
+  }
+
+  .sports-intro-mobile {
+    display: block;
+  }
+
   .footer {
     grid-template-columns: 1fr;
     gap: 24px;
@@ -415,4 +444,8 @@ select {
   .footer-right {
     text-align: left;
   }
+}
+
+html {
+  scrollbar-gutter: stable;
 }

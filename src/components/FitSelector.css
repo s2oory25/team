@@ -1,0 +1,76 @@
+.fit-selector {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding: 0 8px;
+}
+
+.fit-selector::before {
+  position: absolute;
+  top: 36.5px;
+  right: 8px;
+  left: 8px;
+  z-index: 0;
+  height: 1px;
+  background: #aaa;
+  content: "";
+}
+
+.fit-selector-option {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  padding: 0;
+  color: #555;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+}
+
+.fit-selector-label {
+  line-height: 1.5;
+}
+
+.fit-selector-marker {
+  width: 10px;
+  height: 10px;
+  flex: 0 0 10px;
+  border-radius: 50%;
+  background: #d9d9d9;
+}
+
+.fit-selector-option.is-selected {
+  color: #111;
+  font-weight: 500;
+}
+
+.fit-selector-option.is-selected .fit-selector-marker {
+  background: #111;
+}
+
+.fit-selector-option:focus-visible {
+  outline: 2px solid #777;
+  outline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+  .fit-selector::before {
+    top: 26px;
+  }
+
+  .fit-selector-option {
+    gap: 6px;
+    font-size: 11px;
+  }
+
+  .fit-selector-marker {
+    width: 8px;
+    height: 8px;
+    flex-basis: 8px;
+  }
+}
