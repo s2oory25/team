@@ -193,7 +193,14 @@ function SideMenu({
               onClick={() => handleMobileCustomerClick(item)}
             >
               <span>{item}</span>
-              <span className="menu-arrow" />
+
+              <span
+                className={`menu-arrow ${
+                  item === "FAQ" && selectedCustomerItem === "FAQ"
+                    ? "is-open"
+                    : ""
+                }`}
+              />
             </div>
           ))}
         </div>
@@ -248,7 +255,11 @@ function SideMenu({
                 onClick={() => handleCustomerItemClick(item)}
               >
                 <span>{item}</span>
-                <span className="menu-arrow" />
+                <span
+                  className={`menu-arrow ${
+                    selectedCustomerItem === item ? "is-open" : ""
+                  }`}
+                />
               </div>
             ))}
           </div>

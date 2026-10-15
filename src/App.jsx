@@ -133,11 +133,13 @@ function App() {
   }
 
   function handleMobileCustomerClick(item) {
-    setSelectedCustomerItem(item);
-
-    if (item === "FAQ") {
-      setCustomerOpen(true);
+    if (selectedCustomerItem === item) {
+      setSelectedCustomerItem("");
     } else {
+      setSelectedCustomerItem(item);
+    }
+
+    if (item === "1:1문의") {
       console.log(`${item} 선택`);
     }
   }
@@ -150,9 +152,13 @@ function App() {
     setCustomerOpen(false);
   }
 
-  function handleCustomerItemClick(item) {
+function handleCustomerItemClick(item) {
+  if (selectedCustomerItem === item) {
+    setSelectedCustomerItem("");
+  } else {
     setSelectedCustomerItem(item);
   }
+}
 
   function handleLoginClick() {
     closeMenu();

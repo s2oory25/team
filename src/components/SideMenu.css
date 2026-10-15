@@ -376,6 +376,11 @@
   display: none;
 }
 
+/* PC에서는 사이드 메뉴 내부 푸터 숨김 */
+.mobile-menu-footer {
+  display: none;
+}
+
 /* ==============================
   태블릿 및 모바일
 ============================== */
@@ -539,8 +544,8 @@
     padding: 0 28px;
   }
 
+  
   /* 상위 메뉴 화살표 */
-
   .menu-item .menu-arrow {
     transform: rotate(45deg);
     transition: transform 0.2s ease;
@@ -548,5 +553,62 @@
 
   .menu-item .menu-arrow.is-open {
     transform: rotate(135deg);
+  }
+
+  /* 고객센터 하위 메뉴 화살표 */
+  .bottom-customer-menu .customer-item .menu-arrow {
+    transform: rotate(45deg);
+    transition: transform 0.2s ease;
+  }
+
+  .bottom-customer-menu .customer-item .menu-arrow.is-open {
+    transform: rotate(135deg);
+  }
+
+  /* FAQ 콘텐츠 여백 */
+  .customer-content {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 24px 20px;
+    text-align: left;
+  }
+
+  .customer-content h2 {
+    margin: 0 0 12px;
+  }
+
+  .customer-content p {
+    margin: 0 0 24px;
+    line-height: 1.5;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .faq-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 18px 0;
+  }
+
+  .faq-item span:first-child {
+    flex: 1;
+    min-width: 0;
+    line-height: 1.5;
+  }
+
+  .faq-item .content-arrow {
+    flex-shrink: 0;
   }
 }
