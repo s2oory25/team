@@ -31,7 +31,14 @@ function Trendy() {
       <section aria-labelledby="collection-title">
         <div className="collection-heading">
           <h1 id="collection-title">TRENDY</h1>
-          <p>시대의 유행과 감각을 반영하여 개인의 개성과 패션 스타일을 극대화해 주는 선글라스</p>
+          <p className="trendy-intro trendy-intro-desktop">
+            시대의 유행과 감각을 반영하여 개인의 개성과 패션 스타일을 극대화해 주는 선글라스.
+          </p>
+
+          <p className="trendy-intro trendy-intro-mobile">
+            개성과 패션 감각을 살려주는 트렌디한 선글라스.
+          </p>
+
           {/* <label className="visually-hidden" htmlFor="product-sort">상품 정렬</label> */}
           <select
             className="sort-select"

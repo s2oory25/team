@@ -12,8 +12,6 @@ const products = {
     name: "뉴 허 01",
     color: "블랙/블랙",
     price: 289000,
-    originalPrice: 580000,
-    discountRate: 10,
     image: "/team/classic/gmNewHer.png",
     video: "/team/classic/gmnewher.mp4",
     description: "클래식한 블랙 컬러와 여유로운 오버핏의 스퀘어 선글라스",
@@ -44,14 +42,12 @@ const products = {
   defaultFit: "Regular"
 },
 
-  soho: {
-    id: "soho",
+  "gmsoho": {
+    id: "gmsoho",
     brand: "GENTLE MONSTER",
     name: "소호 01",
     color: "블랙",
     price: 279000,
-    originalPrice: 580000,
-    discountRate: 10,
     image: "/team/classic/gmsoho.png",
     video: "",
     description: "블랙 아세테이트 리뉴 소재의 스퀘어 선글라스.",
@@ -64,8 +60,8 @@ const products = {
     defaultFit: "Regular"
   },
 
-  blueelephant: {
-    id: "blueelephant",
+  "blueSblack": {
+    id: "blueSblack",
     brand: "BLUE ELEPHANT",
     name: "MARINA-S black",
     color: "블랙",
@@ -80,6 +76,43 @@ const products = {
     ],
     defaultFit: "Over"
   },
+
+  "persol": {
+  id: "persol",
+  brand: "Persol",
+  name: "PO0649NE - Total Black Arrow",
+  color: "블랙",
+  price: 351515,
+  originalPrice: 676334,
+  image: "/team/classic/persol.png",
+  video: "",
+  description: "클래식한 블랙 프레임과 아이코닉한 애로우 디테일이 돋보이는 선글라스.",
+  size: ["54mm", "47mm", "20mm", "140mm", "145mm"],
+  features: [
+    "블랙 프레임",
+    "UV 차단 렌즈",
+    "클래식한 쉐입"
+  ],
+  defaultFit: "Over"
+  },
+
+  "celine": {
+  id: "celine",
+  brand: "CELINE",
+  name: "트리옹프 01",
+  color: "블랙",
+  price: 730000,
+  image: "/team/classic/celine.png",
+  video: "",
+  description: "시그니처 트리옹프 디테일이 돋보이는 클래식 선글라스.",
+  size: ["확인 필요", "확인 필요", "확인 필요", "확인 필요", "확인 필요"],
+  features: [
+    "블랙 프레임",
+    "UV 차단 렌즈",
+    "트리옹프 디테일"
+  ],
+  defaultFit: "Regular"
+  },
 };
 
 
@@ -92,14 +125,14 @@ const recommendedProducts = [
     image: "/team/classic/rayclassic.png",
   },
   {
-    id: "soho",
+    id: "gmsoho",
     brand: "GENTLE MONSTER",
     name: "소호 01",
     price: 279000,
     image: "/team/classic/gmsoho.png",
   },
   {
-    id: "blueelephant",
+    id: "blueSblack",
     brand: "BLUE ELEPHANT",
     name: "MARINA-S black",
     price: 69900,
@@ -111,6 +144,21 @@ const recommendedProducts = [
     name: "뉴 허 01",
     price: 289000,
     image: "/team/classic/gmNewHer.png",
+  },
+  {
+    id: "celine",
+    brand: "CELINE",
+    name: "트리옹프 01",
+    price: 730000,
+    image: "/team/classic/celine.png",
+  },
+  {
+    id: "persol",
+    brand: "Persol",
+    name: "PO0649NE - Total Black Arrow",
+    originalPrice: 676334,
+    price: 351515,
+    image: "/team/classic/persol.png",
   },
 ];
 
@@ -137,8 +185,8 @@ function Product() {
 
       <ProductDetailSummary
         product={product}
-        showDiscountRate={false}
-        showOriginalPrice={false}
+        showDiscountRate={true}
+        showOriginalPrice={true}
         isAddedToCart={isAddedToCart}
         onAddToCart={() => setIsAddedToCart(true)}
       />

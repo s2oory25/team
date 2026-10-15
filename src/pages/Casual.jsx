@@ -31,7 +31,14 @@ function Casual() {
       <section aria-labelledby="collection-title">
         <div className="collection-heading">
           <h1 id="collection-title">CASUAL</h1>
-          <p>휴양지나 특별한 야외 활동뿐만 아니라, 일상적인 옷차림(캐주얼 룩)에 자연스럽고 편안하게 매치할 수 있는 데일리용 선글라스</p>
+          <p className="casual-intro casual-intro-desktop">
+            휴양지나 특별한 야외 활동뿐만 아니라, 일상적인 옷차림(캐주얼 룩)에 자연스럽고 <br />편안하게 매치할 수 있는 데일리용 선글라스.
+          </p>
+
+          <p className="casual-intro casual-intro-mobile">
+            일상과 야외 활동에 자연스럽게 어울리는 데일리 선글라스.
+          </p>
+
           {/* <label className="visually-hidden" htmlFor="product-sort">상품 정렬</label> */}
           <select
             className="sort-select"

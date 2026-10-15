@@ -15,6 +15,14 @@ function ProductDetailSummary({
 }) {
   const navigate = useNavigate();
   const [isFavorite, setIsFavorite] = useState(false);
+  const [quantity, setQuantity] = useState(1);
+  const decreaseQuantity = () => {
+  setQuantity((prev) => Math.max(1, prev - 1));
+  };
+
+  const increaseQuantity = () => {
+    setQuantity((prev) => prev + 1);
+  };
   const { id, brand, name, color, price, originalPrice, discountRate, image } =
     product;
   const hasDiscount =
@@ -47,21 +55,52 @@ function ProductDetailSummary({
         <h1 id={`product-title-${id}`}>{name}</h1>
         {color && <p className="product-color">{color}</p>}
 
-        <div
-          className={`product-detail-price${hasDiscount && (showDiscountRate || showOriginalPrice) ? " has-discount" : ""}`}
-        >
+
+        <div className="product-price-quantity">
+          {/* 할인율: 오른쪽 위 */}
           {hasDiscount && showDiscountRate && (
-            <span className="product-discount-rate">{saleRate}%</span>
+            <div className="product-discount-top">
+              <span className="product-discount-rate">{saleRate}%</span>
+            </div>
           )}
-          <div className="product-detail-prices">
-            {hasDiscount && showOriginalPrice && (
-              <del className="product-original-price">
-                {formatPrice(originalPrice)}
-              </del>
-            )}
-            <span>{formatPrice(price)}</span>
+
+          {/* 아래 줄: 수량 버튼 + 가격 */}
+          <div className="product-price-bottom">
+            <div className="product-quantity-control">
+              <button
+                type="button"
+                onClick={decreaseQuantity}
+                disabled={quantity === 1}
+                aria-label="수량 줄이기"
+              >
+                −
+              </button>
+
+              <span className="product-quantity-value">{quantity}</span>
+
+              <button
+                type="button"
+                onClick={increaseQuantity}
+                aria-label="수량 늘리기"
+              >
+                +
+              </button>
+            </div>
+
+            <div className="product-detail-price">
+              <div className="product-detail-prices">
+                {hasDiscount && showOriginalPrice && (
+                  <del className="product-original-price">
+                    {formatPrice(originalPrice)}
+                  </del>
+                )}
+
+                <span>{formatPrice(price * quantity)}</span>
+              </div>
+            </div>
           </div>
         </div>
+
 
         <div className="product-actions">
           <button className="product-ai-button" type="button">
@@ -77,7 +116,14 @@ function ProductDetailSummary({
           <button
             className="product-buy-button"
             type="button"
-            onClick={() => navigate("/payment")}
+            onClick={() =>
+              navigate("/payment", {
+                state: {
+                  product,
+                  quantity,
+                },
+              })
+            }
           >
             구매하기
           </button>

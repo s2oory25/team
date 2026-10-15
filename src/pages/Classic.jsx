@@ -3,11 +3,11 @@ import ProductCard from "../components/ProductCard.jsx";
 
 const products = [
   { id: "rayclassic", brand: "RAY-BEN", name: "ORIGINAL WAYFARER CLASSIC", price: 270000, shape: "oval",  image: "/team/classic/rayclassic.png" },
-  { id: 2, brand: "Persol", name: "PO0649NE - Total Black Arrow", price: 351515, originalPrice: 676334, shape: "soft-square", image: "/team/classic/persol.png" },
+  { id: "persol", brand: "Persol", name: "PO0649NE - Total Black Arrow", price: 351515, originalPrice: 676334, shape: "soft-square", image: "/team/classic/persol.png" },
   { id: "new-her", brand: "GENTLE MONSTER", name: "뉴 허 01", price: 289000, shape: "square", image: "/team/classic/gmNewHer.png" },
-  { id: 4, brand: "CELENE", name: "트리옹프 01", price: 730000, shape: "oval", image: "/team/classic/celine.png"},
-  { id: 5, brand: "BLUE ELEPHANT", name: "MARINA-S black", price: 69900, shape: "soft-square", image: "/team/classic/blueSblack.png" },
-  { id: 6, brand: "GENTLE MONSTER", name: "소호 01", price: 279000, shape: "square", image: "/team/classic/gmsoho.png"},
+  { id: "celine", brand: "CELENE", name: "트리옹프 01", price: 730000, shape: "oval", image: "/team/classic/celine.png"},
+  { id: "blueSblack", brand: "BLUE ELEPHANT", name: "MARINA-S black", price: 69900, shape: "soft-square", image: "/team/classic/blueSblack.png" },
+  { id: "gmsoho", brand: "GENTLE MONSTER", name: "소호 01", price: 279000, shape: "square", image: "/team/classic/gmsoho.png"},
 ];
 
 function Classic() {
@@ -31,7 +31,7 @@ function Classic() {
       <section aria-labelledby="collection-title">
         <div className="collection-heading">
           <h1 id="collection-title">CLASSIC</h1>
-          <p>오랜 시간 동안 사랑받아 온 시대를 초월한 디자인의 선글라스</p>
+          <p>오랜 시간 동안 사랑받아 온 시대를 초월한 디자인의 선글라스.</p>
           {/* <label className="visually-hidden" htmlFor="product-sort">상품 정렬</label> */}
           <select
             className="sort-select"

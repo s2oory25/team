@@ -58,6 +58,23 @@
   outline-offset: 3px;
 }
 
+/* 태블릿 */
+@media (min-width: 761px) and (max-width: 1024px) {
+  .fit-selector-option {
+    font-size: 14px;
+  }
+
+  .fit-selector-option .fit-selector-marker {
+    width: 9px;
+    height: 9px;
+    flex-basis: 9px;
+  }
+
+  .fit-selector::before {
+    top: 33px;
+  }
+}
+
 @media (max-width: 760px) {
   .fit-selector::before {
     top: 26px;
