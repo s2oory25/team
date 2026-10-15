@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.celeb-page-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #111111;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 1. 상단 Sticky Header */
+.chalfit-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  border-bottom: 1px solid #eeeeee;
+  z-index: 100;
+}
+
+.chalfit-header-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+}
+
+.menu-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #111111;
+  padding: 0;
+}
+
+/* 2. 메인 컨텐츠 컨테이너 */
+.celeb-page-container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 30px 24px 80px 24px;
+  flex: 1;
+}
+
+.celeb-header-wrap {
+  margin-bottom: 24px;
+}
+
+.celeb-main-title {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #111111;
+}
+
+/* 3. 3열 나란히 가로 배치 그리드 */
+.celeb-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+.celeb-card-item {
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+.celeb-card-item:hover {
+  transform: translateY(-4px);
+}
+
+/* 카드 이미지 박스 */
+.celeb-img-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1.36;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #f7f7f7;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.celeb-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 하단 플로팅 반투명 뱃지 */
+.card-glass-badge {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  right: 14px;
+  background-color: rgba(30, 30, 30, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 2;
+}
+
+/* 좌측 흰색 네모 안 선글라스 썸네일 */
+.glass-icon-wrapper {
+  width: 38px;
+  height: 32px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 2px;
+}
+
+.glasses-thumb-img {
+  width: 90% !important;
+  height: auto !important;
+  object-fit: contain !important;
+}
+
+/* 우측 텍스트 정보 (중앙 정렬) */
+.glass-text-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  text-align: center;
+}
+
+.celeb-tag {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #ff3b30;
+  line-height: 1.25;
+  margin-bottom: 2px;
+}
+
+.celeb-item-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.3;
+}
+
+.celeb-item-price {
+  font-size: 11.5px;
+  font-weight: 400;
+  color: #d1d1d1;
+  line-height: 1.25;
+  margin-top: 1px;
+}
+
+/* 4. 푸터 */
+.celeb-footer {
+  width: 100%;
+  margin-top: auto;
+}
+
+.footer-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 반응형 */
+@media (max-width: 992px) {
+  .celeb-card-grid {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .celeb-card-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}

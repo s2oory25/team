@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Pretendard:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Pretendard:wght@300;400;500;600;700&display=swap');
 
 * {
   box-sizing: border-box;
@@ -28,7 +28,6 @@
   -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid #eeeeee;
   z-index: 100;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
 }
 
 .chalfit-header-inner {
@@ -85,7 +84,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 400;
   color: #222222;
   padding: 0;
@@ -104,65 +103,85 @@
 /* 2. Main Content Container */
 .product-main-container {
   width: 100%;
-  max-width: 1120px;
+  max-width: 960px;
   margin: 0 auto;
-  padding: 40px 32px 80px 32px;
+  padding: 40px 24px 100px 24px;
   flex: 1;
 }
 
 .product-page-title {
-  font-size: 26px;
-  font-weight: 500;
+  font-size: 24px;
+  font-weight: 600;
   letter-spacing: 0.5px;
-  margin-bottom: 36px;
+  color: #111111;
+  margin-bottom: 24px;
   text-align: left;
 }
 
-/* 3. Product Hero Section (선글라스 + 구매 정보) */
+/* 3. Hero Section */
 .product-hero-section {
   display: flex;
-  gap: 48px;
-  align-items: flex-end;
-  margin-bottom: 36px;
+  gap: 40px;
+  align-items: stretch;
 }
 
 .product-hero-img-box {
-  flex: 1;
-  max-width: 380px;
-  aspect-ratio: 1.15 / 1;
+  width: 380px;
+  height: 380px;
   background-color: #f7f7f7;
-  border-radius: 4px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  flex-shrink: 0;
 }
 
 .product-hero-img-box img {
-  width: 100%;
-  height: 100%;
+  width: 84%;
+  height: 84%;
   object-fit: contain;
   display: block;
 }
 
 .product-info-box {
-  flex: 1.3;
+  flex: 1;
+  max-width: 460px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  padding: 10px 0 8px 0;
 }
 
 .info-top-row {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  margin-bottom: 8px;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.model-text-wrap {
+  display: flex;
+  flex-direction: column;
 }
 
 .brand-name {
-  font-size: 17px;
-  font-weight: 500;
+  font-size: 13.5px;
+  font-weight: 600;
   letter-spacing: 0.5px;
+  color: #555555;
+  margin-bottom: 12px;
+}
+
+.product-model-name {
+  font-size: 24px;
+  font-weight: 700;
   color: #111111;
+  margin-bottom: 6px;
+}
+
+.product-color-name {
+  font-size: 13px;
+  color: #888888;
 }
 
 .heart-btn {
@@ -173,55 +192,46 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.2s;
 }
 
-.product-model-name {
-  font-size: 20px;
-  font-weight: 500;
-  margin-bottom: 6px;
-  color: #111111;
-}
-
-.product-color-name {
-  font-size: 12px;
-  font-weight: 400;
-  color: #777777;
-  margin-bottom: 40px;
+.heart-btn:hover {
+  transform: scale(1.1);
 }
 
 .price-row {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 20px;
+  text-align: right;
+  margin-top: auto;
+  margin-bottom: 18px;
 }
 
 .product-price {
-  font-size: 17px;
-  font-weight: 500;
+  font-size: 20px;
+  font-weight: 700;
   color: #111111;
 }
 
-/* 버튼 스타일 (피그마 시안 기준) */
 .action-buttons-wrap {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   gap: 16px;
 }
 
 .btn-ai-fit {
-  height: 40px;
-  padding: 0 16px;
-  background-color: #eeeeee;
-  border: 1px solid #d4d4d4;
-  border-radius: 2px;
-  font-size: 13.5px;
+  padding: 9px 16px;
+  background-color: #f2f2f2;
+  color: #333333;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 13px;
   font-weight: 500;
-  color: #111111;
   cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
+  transition: background-color 0.2s;
+}
+
+.btn-ai-fit:hover {
+  background-color: #e5e5e5;
 }
 
 .cart-buy-group {
@@ -230,96 +240,365 @@
 }
 
 .btn-cart {
-  height: 40px;
-  padding: 0 18px;
+  padding: 10px 20px;
   background-color: #ffffff;
+  color: #111111;
   border: 1px solid #111111;
-  border-radius: 2px;
+  border-radius: 4px;
   font-size: 13.5px;
   font-weight: 500;
-  color: #111111;
   cursor: pointer;
+  transition: opacity 0.2s;
 }
 
 .btn-buy {
-  height: 40px;
-  padding: 0 24px;
-  background-color: #000000;
-  border: 1px solid #000000;
-  border-radius: 2px;
+  padding: 10px 24px;
+  background-color: #111111;
+  color: #ffffff;
+  border: 1px solid #111111;
+  border-radius: 4px;
   font-size: 13.5px;
   font-weight: 500;
-  color: #ffffff;
   cursor: pointer;
+  transition: opacity 0.2s;
 }
 
-/* 4. 구분선 */
+.btn-cart:hover, .btn-buy:hover {
+  opacity: 0.85;
+}
+
+/* 4. Divider */
 .product-divider {
   border: none;
-  height: 1px;
-  background-color: #e5e5e5;
-  margin: 28px 0 32px 0;
+  border-top: 1px solid #eeeeee;
+  margin: 48px 0 36px 0;
 }
 
-/* 5. 셀럽 착용샷 섹션 (안효섭 + 제니) */
+/* 5. Celeb Shots */
 .celeb-shots-section {
-  width: 100%;
+  margin-bottom: 48px;
 }
 
 .celeb-shots-title {
-  font-size: 18px;
-  font-weight: 500;
-  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111111;
+  margin-bottom: 18px;
   text-align: left;
 }
 
 .celeb-shots-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  width: 100%;
+  gap: 20px;
 }
 
 .shot-img-box {
   width: 100%;
-  aspect-ratio: 1 / 1.05;
-  border-radius: 4px;
+  aspect-ratio: 1 / 1.34;
+  border-radius: 8px;
   overflow: hidden;
-  background-color: #f2f2f2;
+  background-color: #f7f7f7;
 }
 
 .shot-img-box img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
   display: block;
 }
 
-/* 📱 반응형 분기 */
-@media (max-width: 900px) {
+/* 6. Detail Gallery */
+.product-detail-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.detail-gallery-card {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detail-gallery-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ------------------------------------------------------------- */
+/* 7. Info, Size, Features Section                               */
+/* ------------------------------------------------------------- */
+.product-spec-section {
+  margin-top: 50px;
+  text-align: left;
+}
+
+.spec-main-title {
+  font-size: 26px;
+  font-weight: 500;
+  color: #111111;
+  margin-bottom: 14px;
+}
+
+.spec-sub-desc {
+  font-size: 15.5px;
+  color: #111111;
+  font-weight: 400;
+  margin-bottom: 22px;
+}
+
+.spec-inner-divider {
+  border: none;
+  border-top: 1px solid #dddddd;
+  margin-bottom: 40px;
+}
+
+.spec-details-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 64px;
+}
+
+.spec-col {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Size 영역: 좌측 정렬 */
+.size-col {
+  width: 320px;
+}
+
+/* Features 영역: 우측 끝 정렬 */
+.features-col {
+  width: 260px;
+  margin-left: auto;
+}
+
+.spec-header-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 18px;
+}
+
+.spec-title-text {
+  font-size: 22px;
+  font-weight: 500;
+  color: #111111;
+  margin: 0;
+}
+
+.size-guide-text {
+  font-size: 13px;
+  color: #888888;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.spec-item-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.spec-item-list li {
+  font-size: 13.5px;
+  color: #222222;
+  line-height: 1.45;
+  font-weight: 400;
+}
+
+/* ------------------------------------------------------------- */
+/* 8. Fit Section                                               */
+/* ------------------------------------------------------------- */
+.product-fit-section {
+  margin-bottom: 72px;
+  text-align: left;
+}
+
+.fit-bar-container {
+  max-width: 600px;
+  margin: 32px auto 0 auto;
+}
+
+.fit-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  color: #111111;
+  font-weight: 400;
+  margin-bottom: 12px;
+}
+
+.fit-line-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 12px;
+}
+
+.fit-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #cccccc;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.fit-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #cccccc;
+  position: relative;
+  z-index: 2;
+}
+
+.fit-dot.active {
+  background-color: #111111;
+  width: 7px;
+  height: 7px;
+}
+
+/* ------------------------------------------------------------- */
+/* 9. Fit for you (피그마 시안 기준 카드 디자인)                 */
+/* ------------------------------------------------------------- */
+.product-fit-for-you {
+  margin-bottom: 80px;
+  text-align: left;
+}
+
+.fit-recommend-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
+  margin-top: 36px;
+}
+
+.fit-item-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.fit-img-wrap {
+  width: 100%;
+  aspect-ratio: 1.7 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.fit-img-wrap img {
+  width: 90%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.25s ease;
+}
+
+.fit-item-card:hover .fit-img-wrap img {
+  transform: translateY(-3px);
+}
+
+.fit-info-wrap {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.fit-brand-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.fit-brand-name {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #111111;
+  letter-spacing: 0.3px;
+}
+
+.fit-heart-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fit-product-name {
+  font-size: 13px;
+  color: #444444;
+  margin-bottom: 12px;
+}
+
+.fit-price-row {
+  text-align: right;
+  width: 100%;
+}
+
+.fit-product-price {
+  font-size: 14px;
+  font-weight: 500;
+  color: #111111;
+}
+
+/* ------------------------------------------------------------- */
+/* 10. 반응형 (태블릿 & 모바일)                                  */
+/* ------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .chalfit-header-inner,
   .product-main-container {
-    padding: 30px 20px 60px 20px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 
   .product-hero-section {
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
     gap: 24px;
   }
 
   .product-hero-img-box {
+    width: 100%;
+    max-width: 340px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .product-info-box {
+    width: 100%;
     max-width: 100%;
+    padding: 0;
   }
 
   .action-buttons-wrap {
     flex-direction: column;
     align-items: stretch;
-    gap: 10px;
-  }
-
-  .btn-ai-fit {
-    justify-content: center;
+    gap: 12px;
   }
 
   .cart-buy-group {
@@ -328,10 +607,67 @@
 
   .btn-cart, .btn-buy {
     flex: 1;
+    text-align: center;
   }
 
   .celeb-shots-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+  }
+
+  /* 모바일 Size / Features 5:5 비율 유지 및 겹침 방지 */
+  .spec-details-row {
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .size-col {
+    flex: 1 1 50%;
+    width: auto;
+    min-width: 0;
+  }
+
+  .features-col {
+    flex: 1 1 50%;
+    width: auto;
+    min-width: 0;
+    margin-left: 0;
+  }
+
+  .spec-header-row {
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+
+  .spec-title-text {
+    font-size: 16px;
+  }
+
+  .size-guide-text {
+    font-size: 11px;
+  }
+
+  .spec-item-list li {
+    font-size: 11.5px;
+    line-height: 1.35;
+    white-space: nowrap;
+  }
+
+  /* 모바일 Fit for you: 카드 1열 또는 작은 그리드 */
+  .fit-recommend-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .fit-brand-name {
+    font-size: 11px;
+  }
+
+  .fit-product-name {
+    font-size: 11px;
+    margin-bottom: 6px;
+  }
+
+  .fit-product-price {
+    font-size: 11.5px;
   }
 }

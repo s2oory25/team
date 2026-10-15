@@ -1,386 +1,118 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Pretendard:wght@300;400;500;600&display=swap');
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-.celeb-page-wrapper {
+.celeb-pick-wrapper {
   width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
   background-color: #ffffff;
+  padding: 40px 24px 80px 24px;
+  box-sizing: border-box;
   font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
-  color: #111111;
-  -webkit-font-smoothing: antialiased;
-  border-left: none !important;
-  border-right: none !important;
 }
 
-/* 1. Header (Sticky) */
-.chalfit-header {
-  position: sticky;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-bottom: 1px solid #eeeeee;
-  border-left: none !important;
-  border-right: none !important;
-  z-index: 100;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-}
-
-.chalfit-header-inner {
-  width: 100%;
-  max-width: 1380px;
+.celeb-pick-container {
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 16px 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-left: none !important;
-  border-right: none !important;
 }
 
-.header-left {
-  flex: 1;
-  display: flex;
-  align-items: center;
-}
-
-.menu-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 0;
-  font-size: 14px;
-  font-weight: 400;
-  color: #111111;
-}
-
-.header-center {
-  flex: 2;
-  text-align: center;
-}
-
-.chalfit-logo-text {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 32px;
-  font-weight: 400;
+.celeb-pick-heading {
+  font-size: 20px;
+  font-weight: 700;
   letter-spacing: 0.5px;
   color: #111111;
-}
-
-.header-right {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 24px;
-}
-
-.header-link-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 13.5px;
-  font-weight: 400;
-  color: #222222;
-  padding: 0;
-}
-
-.profile-icon-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* 2. Main Content Container */
-.celeb-page-container {
-  width: 100%;
-  max-width: 1380px;
-  margin: 0 auto;
-  padding: 48px 40px 60px 40px;
-  flex: 1;
-  border-left: none !important;
-  border-right: none !important;
-}
-
-.celeb-header-wrap {
   margin-bottom: 24px;
   text-align: left;
 }
 
-.celeb-main-title {
-  font-size: 26px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  color: #111111;
-  margin: 0;
-}
-
-/* Grid Layout (Default PC: 3 columns) */
-.celeb-card-grid {
+.celeb-cards-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  column-gap: 28px;
-  row-gap: 32px;
-  width: 100%;
+  gap: 20px;
 }
 
-.celeb-card-item {
-  width: 100%;
+.celeb-card {
   position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #f5f5f5;
   cursor: pointer;
+  aspect-ratio: 1 / 1.45;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
   transition: transform 0.25s ease;
 }
 
-.celeb-card-item:hover {
+.celeb-card:hover {
   transform: translateY(-4px);
-}
-
-/* PC에서는 4번째 카드를 숨겨 3장 유지 */
-.celeb-card-item:nth-child(4) {
-  display: none;
 }
 
 .celeb-img-box {
   width: 100%;
-  aspect-ratio: 1 / 1.34;
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
-  background-color: #f2f2f2;
+  height: 100%;
 }
 
 .celeb-img-box img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
   display: block;
 }
 
-/* Card Bottom Badge */
-.card-glass-badge {
+/* 하단 플로팅 뱃지 */
+.celeb-card-badge {
   position: absolute;
-  bottom: 14px;
+  bottom: 12px;
   left: 12px;
   right: 12px;
-  height: 68px;
-  background: rgba(30, 30, 30, 0.55);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(30, 30, 30, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-radius: 8px;
+  padding: 8px 12px;
   display: flex;
   align-items: center;
-  padding: 0 14px;
+  gap: 12px;
+  box-sizing: border-box;
 }
 
-.glass-icon-wrapper {
-  width: 54px;
-  height: 44px;
-  background-color: #ffffff;
+.badge-icon-box {
+  width: 34px;
+  height: 30px;
+  background: #ffffff;
   border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  overflow: hidden;
 }
 
-.glasses-thumb-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-  padding: 4px;
-}
-
-.glass-text-info {
-  flex: 1;
+.badge-text-box {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  text-align: center;
-  gap: 2px;
-  line-height: 1.25;
-  padding-right: 10px;
+  flex: 1;
+  min-width: 0;
 }
 
-.celeb-tag {
+.badge-tag {
   font-size: 11px;
+  color: #ff4d4f;
   font-weight: 600;
-  color: #ff3333;
+  line-height: 1.2;
 }
 
-.celeb-item-title {
+.badge-name {
   font-size: 13.5px;
-  font-weight: 400;
   color: #ffffff;
+  font-weight: 700;
+  line-height: 1.3;
 }
 
-.celeb-item-price {
-  font-size: 12px;
-  font-weight: 300;
-  color: #dedede;
+.badge-price {
+  font-size: 11px;
+  color: #cccccc;
+  line-height: 1.2;
 }
 
-/* 3. Footer Wrap & Responsive Visibility */
-.chalfit-footer-img-wrap {
-  width: 100%;
-  background-color: #eeeeee;
-  border-top: 1px solid #e0e0e0;
-  border-left: none !important;
-  border-right: none !important;
-  margin-top: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer-image {
-  width: 100%;
-  max-width: 1380px;
-  height: auto;
-  display: block;
-}
-
-/* PC: PC 푸터만 노출 */
-.footer-pc {
-  display: block;
-}
-
-.footer-tablet,
-.footer-mobile {
-  display: none;
-}
-
-/* 4. Tablet Breakpoint (1024px and below) */
-@media (max-width: 1024px) {
-  .chalfit-header-inner,
-  .celeb-page-container {
-    padding-left: 24px;
-    padding-right: 24px;
-  }
-
-  /* 2x2 그리드 */
-  .celeb-card-grid {
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 20px;
-    row-gap: 28px;
-  }
-
-  /* 태블릿에서는 4장(2x2) 모두 표시 */
-  .celeb-card-item:nth-child(3),
-  .celeb-card-item:nth-child(4) {
-    display: block;
-  }
-
-  /* 태블릿 푸터 노출 */
-  .footer-pc {
-    display: none;
-  }
-
-  .footer-tablet {
-    display: block;
-  }
-
-  .footer-mobile {
-    display: none;
-  }
-}
-
-/* 5. Mobile Breakpoint (640px and below) */
-@media (max-width: 640px) {
-  .chalfit-header-inner {
-    padding: 14px 16px;
-  }
-
-  .chalfit-logo-text {
-    font-size: 24px;
-  }
-
-  .header-link-btn,
-  .menu-btn {
-    font-size: 12px;
-  }
-
-  .header-right {
-    gap: 12px;
-  }
-
-  .celeb-page-container {
-    padding: 24px 16px 40px 16px;
-  }
-
-  .celeb-main-title {
-    font-size: 20px;
-  }
-
-  /* 모바일 1열 세로 배치 */
-  .celeb-card-grid {
+/* 모바일 반응형 */
+@media (max-width: 768px) {
+  .celeb-cards-grid {
     grid-template-columns: 1fr;
-    row-gap: 24px;
-  }
-
-  /* 1번(제니), 2번(원빈), 3번(카리나) 모두 노출 */
-  .celeb-card-item:nth-child(1),
-  .celeb-card-item:nth-child(2),
-  .celeb-card-item:nth-child(3) {
-    display: block;
-  }
-
-  /* 4번째 중복 카리나만 모바일에서 숨김 (총 3장 스크롤 노출) */
-  .celeb-card-item:nth-child(4) {
-    display: none;
-  }
-
-  .card-glass-badge {
-    bottom: 12px;
-    left: 10px;
-    right: 10px;
-    height: 60px;
-    padding: 0 10px;
-  }
-
-  .glass-icon-wrapper {
-    width: 48px;
-    height: 38px;
-  }
-
-  .celeb-tag {
-    font-size: 10px;
-  }
-
-  .celeb-item-title {
-    font-size: 12.5px;
-  }
-
-  .celeb-item-price {
-    font-size: 11px;
-  }
-
-  /* 모바일 푸터 노출 */
-  .footer-pc,
-  .footer-tablet {
-    display: none;
-  }
-
-  .footer-mobile {
-    display: block;
+    gap: 16px;
   }
 }
