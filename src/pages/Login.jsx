@@ -1,8 +1,25 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-function Login({ onClose }) {
+
+function Login({ onClose, onLoginSuccess }) {
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const testEmail = "test@gmail.com";
+    const testPassword = "chalfit2026";
+
+    if (email === testEmail && password === testPassword) {
+      setError("");
+      onLoginSuccess();
+      navigate("/");
+    } else {
+      setError("이메일 또는 비밀번호가 올바르지 않습니다.");
+    }
   };
 
   return (
@@ -29,6 +46,8 @@ function Login({ onClose }) {
           <input
             type="email"
             placeholder="이메일"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
 
@@ -36,8 +55,15 @@ function Login({ onClose }) {
           <input
             type="password"
             placeholder="비밀번호"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
+        {error && (
+          <p className="login-error-message">
+            {error}
+          </p>
+        )}
 
         <button
           type="submit"
@@ -51,16 +77,16 @@ function Login({ onClose }) {
         <span>계정이 없으신가요?</span>
 
 
-      <button
-        type="button"
-        className="signup-button"
-        onClick={() => {
-          onClose();
-          navigate("/signup");
-        }}
-      >
-        회원가입
-      </button>
+        <button
+          type="button"
+          className="signup-button"
+          onClick={() => {
+            onClose();
+            navigate("/signup");
+          }}
+        >
+          회원가입
+        </button>
 
       </div>
 
