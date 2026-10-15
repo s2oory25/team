@@ -245,6 +245,14 @@ select {
 .login-input input::placeholder {
   color: #555;
 }
+
+/* 로그인 실패 오류 메시지 */
+.login-error-message {
+  color: #d93025;
+  font-size: 12px;
+  margin: 8px 0 8px;
+  text-align: left;
+}
 .login-submit-button {
   width: 100%;
   height: 48px;

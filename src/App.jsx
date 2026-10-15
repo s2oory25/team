@@ -45,7 +45,9 @@ function App() {
   const [mobileMypageOpen, setMobileMypageOpen] = useState(false);
 
   const [selectedCustomerItem, setSelectedCustomerItem] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(() => {
+    return sessionStorage.getItem("chalfitLogin") === "true";
+  });
 
   const menuItems = [
     "CELEB PICK",
@@ -158,8 +160,9 @@ function App() {
   }
 
   function handleLogoutClick() {
-    setIsLoggedIn(false);
-  }
+  sessionStorage.removeItem("chalfitLogin");
+  setIsLoggedIn(false);
+}
 
   return (
     <BrowserRouter basename="/team">
@@ -199,7 +202,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
 
-            {/* 회원가입 페이지 */}
+          {/* 회원가입 페이지 */}
           <Route path="/signup" element={<Signup />} />
           <Route path="/welcome" element={<Welcome />} />
 
@@ -216,7 +219,14 @@ function App() {
           <Route path="/payment" element={<Payment />} />
         </Routes>
         {isLoginOpen && (
-          <Login onClose={() => setIsLoginOpen(false)} />
+          <Login
+            onClose={() => setIsLoginOpen(false)}
+            onLoginSuccess={() => {
+              sessionStorage.setItem("chalfitLogin", "true");
+              setIsLoggedIn(true);
+              setIsLoginOpen(false);
+            }}
+          />
         )}
         <PageFooter />
       </div>
