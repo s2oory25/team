@@ -12,17 +12,32 @@ function Signup() {
 
           <div className="social-signup">
             <button type="button" className="social-button">
-              <span className="social-icon">●</span>
+              <span className="social-icon">
+                <img
+                  src={`${import.meta.env.BASE_URL}social/kakao.png`}
+                  alt=""
+                />
+              </span>
               카카오톡으로 시작하기
             </button>
 
             <button type="button" className="social-button">
-              <span className="social-icon">N</span>
+              <span className="social-icon">
+                <img
+                  src={`${import.meta.env.BASE_URL}social/naver.png`}
+                  alt=""
+                />
+              </span>
               네이버로 시작하기
             </button>
 
             <button type="button" className="social-button">
-              <span className="social-icon">G</span>
+              <span className="social-icon">
+                <img
+                  src={`${import.meta.env.BASE_URL}social/google.png`}
+                  alt=""
+                />
+              </span>
               구글로 시작하기
             </button>
           </div>
