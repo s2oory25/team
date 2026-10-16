@@ -522,14 +522,17 @@
   /* FAQ 콘텐츠 */
 
   .customer-content {
-    position: static;
-    width: 100%;
-    height: auto;
-    max-height: none;
-    overflow: visible;
-    background: #f5f5f5;
-    padding-bottom: 24px;
-  }
+  position: static;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  box-sizing: border-box;
+  overflow: visible;
+  background: #f5f5f5;
+  margin: 0;
+  padding: 24px 20px;
+  text-align: left;
+}
 
   .customer-content h2 {
     margin: 24px 28px 12px;

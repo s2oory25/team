@@ -1,6 +1,60 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 function Signup() {
   const navigate = useNavigate();
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+  const [errors, setErrors] = useState({});
+
+  function handleChange(e) {
+    const { name, value } = e.target;
+
+    setForm((prevForm) => ({
+      ...prevForm,
+      [name]: value,
+    }));
+
+    if (errors[name]) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        [name]: "",
+      }));
+    }
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const nextErrors = {};
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const specialCharacterPattern = /[^\p{L}\p{N}\s]/u;
+
+    if (!form.name.trim()) {
+      nextErrors.name = "이름을 입력해주세요.";
+    }
+
+    if (!form.email.trim()) {
+      nextErrors.email = "이메일을 입력해주세요.";
+    } else if (!emailPattern.test(form.email)) {
+      nextErrors.email = "올바른 이메일 형식을 입력해주세요.";
+    }
+
+    if (form.password.length < 8) {
+      nextErrors.password = "비밀번호는 8자 이상이어야 합니다.";
+    } else if (!specialCharacterPattern.test(form.password)) {
+      nextErrors.password = "비밀번호에 특수문자를 포함해주세요.";
+    }
+
+    setErrors(nextErrors);
+
+    if (Object.keys(nextErrors).length === 0) {
+      navigate("/welcome");
+    }
+  }
+
   return (
     <main className="signup-page">
       <section className="signup-content">
@@ -48,27 +102,49 @@ function Signup() {
 
           <form
             className="signup-form"
-            onSubmit={(e) => {
-              e.preventDefault();
-              navigate("/welcome");
-            }}
+            onSubmit={handleSubmit}
+            noValidate
           >
             <div className="signup-field">
               <label htmlFor="name">이름</label>
-              <input
-                id="name"
-                type="text"
-                placeholder="이름을 입력해주세요."
-              />
+              <div className="password-field">
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  value={form.name}
+                  onChange={handleChange}
+                  placeholder="이름을 입력해주세요."
+                  aria-invalid={Boolean(errors.name)}
+                  aria-describedby={errors.name ? "name-error" : undefined}
+                />
+                {errors.name && (
+                  <span id="name-error" className="password-guide" role="alert">
+                    {errors.name}
+                  </span>
+                )}
+              </div>
             </div>
 
             <div className="signup-field">
               <label htmlFor="email">이메일</label>
-              <input
-                id="email"
-                type="email"
-                placeholder="이메일을 입력해주세요."
-              />
+              <div className="password-field">
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  placeholder="이메일을 입력해주세요."
+                  aria-invalid={Boolean(errors.email)}
+                  aria-describedby={errors.email ? "email-error" : undefined}
+                />
+                {errors.email && (
+                  <span id="email-error" className="password-guide" role="alert">
+                    {errors.email}
+                  </span>
+                )}
+              </div>
             </div>
 
             <div className="signup-field">
@@ -76,12 +152,23 @@ function Signup() {
               <div className="password-field">
                 <input
                   id="password"
+                  name="password"
                   type="password"
+                  value={form.password}
+                  onChange={handleChange}
                   placeholder="비밀번호를 입력해주세요."
+                  aria-invalid={Boolean(errors.password)}
+                  aria-describedby={errors.password ? "password-error" : undefined}
                 />
-                <span className="password-guide">
-                  *8자 이상, 특수문자 포함
-                </span>
+                {errors.password && (
+                  <span
+                    id="password-error"
+                    className="password-guide"
+                    role="alert"
+                  >
+                    {errors.password}
+                  </span>
+                )}
               </div>
             </div>
 
