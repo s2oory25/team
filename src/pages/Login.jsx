@@ -99,6 +99,10 @@ function Login({ onClose, onLoginSuccess }) {
       <button
         type="button"
         className="guest-button"
+        onClick={() => {
+          onClose();
+          navigate("/");
+        }}
       >
         비회원 이용하기
       </button>
