@@ -28,15 +28,15 @@ const products = {
   id: "rayclassic",
   brand: "RAY-BAN",
   name: "ORIGINAL WAYFARER CLASSIC",
-  color: "블랙",
+  color: "52mm",
   price: 270000,
   image: "/team/classic/rayclassic.png",
-  video: "",
-  description: "레이벤 오리지널 웨이페어러 클래식 선글라스",
-  size: ["52mm", "48mm", "22mm", "145mm", "150mm"],
+  video: "/team/classic/rayclassic.mp4",
+  description: "대체 불가능한 헤리티지, 선글라스의 영원한 세계 표준.",
+  size: ["52mm", "44mm", "22mm", "145mm", "150mm"],
   features: [
     "블랙 아세테이트 프레임",
-    "UV 100%차단 그린 렌즈",
+    "UV 100%차단 그린 블랙 글라스 렌즈",
     "스퀘어 쉐입"
   ],
   defaultFit: "Regular"
@@ -81,19 +81,19 @@ const products = {
   id: "persol",
   brand: "Persol",
   name: "PO0649NE - Total Black Arrow",
-  color: "블랙",
-  price: 351515,
-  originalPrice: 676334,
+  color: "54mm",
+  price: 615000,
+  originalPrice: 1065000,
   image: "/team/classic/persol.png",
-  video: "",
-  description: "클래식한 블랙 프레임과 아이코닉한 애로우 디테일이 돋보이는 선글라스.",
-  size: ["54mm", "47mm", "20mm", "140mm", "145mm"],
+  video: "/team/classic/persol.mp4",
+  description: "올블랙의 시크함으로 재해석한 페르솔의 독보적인 클래식 아이콘.",
+  size: ["54mm", "49.3mm", "20mm", "141mm", "140mm"],
   features: [
-    "블랙 프레임",
-    "UV 차단 렌즈",
+    "블랙 아세테이트 프레임",
+    "블루 그라데이션 편광 크리스탈 렌즈",
     "클래식한 쉐입"
   ],
-  defaultFit: "Over"
+  defaultFit: "Regular"
   },
 
   "celine": {
