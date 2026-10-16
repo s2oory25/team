@@ -99,8 +99,24 @@ function Login({ onClose, onLoginSuccess }) {
       <button
         type="button"
         className="guest-button"
+        onClick={() => {
+          onClose();
+          navigate("/");
+        }}
       >
         비회원 이용하기
+      </button>
+
+      <button
+        type="button"
+        className="signup-button"
+        style={{ display: "block", margin: "18px auto 0" }}
+        onClick={() => {
+          onClose();
+          navigate("/guest-order-lookup");
+        }}
+      >
+        비회원 주문조회
       </button>
 
     </section>

@@ -1,5 +1,10 @@
 
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  GUEST_TEST_ORDERS_STORAGE_KEY,
+  GUEST_TEST_ORDER_PHONE,
+} from "../constants/guestOrder.js";
 import "./Payment.css";
 
 const KAKAO_POSTCODE_SCRIPT_ID = "kakao-postcode-script";
@@ -96,7 +101,27 @@ function createTestOrderNumber() {
   return `CHF-${date}-${suffix}`;
 }
 
+function saveGuestTestOrder(order) {
+  try {
+    const savedOrders = localStorage.getItem(GUEST_TEST_ORDERS_STORAGE_KEY);
+    const orders = savedOrders ? JSON.parse(savedOrders) : [];
+
+    if (!Array.isArray(orders)) {
+      throw new Error("저장된 테스트 주문 데이터 형식이 올바르지 않습니다.");
+    }
+
+    localStorage.setItem(
+      GUEST_TEST_ORDERS_STORAGE_KEY,
+      JSON.stringify([...orders, order]),
+    );
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 function Payment() {
+  const navigate = useNavigate();
   const [shipping, setShipping] = useState({
     receiver: "",
     phone: "",
@@ -275,6 +300,11 @@ function Payment() {
     closeOrderModal();
   };
 
+  const goToGuestOrderLookup = () => {
+    closeOrderModal();
+    navigate("/guest-order-lookup");
+  };
+
   const handlePayment = () => {
     setPhoneTouched({ shipping: true, customer: true });
 
@@ -319,18 +349,32 @@ function Payment() {
     }
 
     orderSubmittedRef.current = true;
+    const orderNumber = createTestOrderNumber();
+    const orderedAt = new Date().toISOString();
+    const product = {
+      brand: "GENTLE MONSTER",
+      name: "뉴 허 01",
+      option: "블랙/블랙",
+      quantity: 1,
+      amount: price,
+    };
+    const isStored = saveGuestTestOrder({
+      orderNumber,
+      orderedAt,
+      productName: product.name,
+      option: product.option,
+      quantity: product.quantity,
+      amount: product.amount,
+      testPhone: GUEST_TEST_ORDER_PHONE,
+    });
 
     setCompletedOrder({
-      orderNumber: createTestOrderNumber(),
+      orderNumber,
+      orderedAt,
+      isStored,
       customer: { ...customer },
       shipping: { ...shipping },
-      product: {
-        brand: "GENTLE MONSTER",
-        name: "뉴 허 01",
-        option: "블랙/블랙",
-        quantity: 1,
-        amount: price,
-      },
+      product,
       paymentMethod:
         method === "card"
           ? `카드 · ${CARD_NAMES[card]} · ${installment}`
@@ -760,6 +804,20 @@ function Payment() {
                   <small className="payment-order-test-notice">
                     테스트 주문이며 실제 결제는 이루어지지 않았습니다.
                   </small>
+                  <small className="payment-order-test-notice" role="status">
+                    {completedOrder.isStored
+                      ? "테스트 주문정보가 브라우저에 저장되었습니다."
+                      : "주문은 완료되었지만 브라우저 저장에 실패하여 추후 주문조회가 불가능합니다."}
+                  </small>
+                  {completedOrder.isStored && (
+                    <button
+                      type="button"
+                      className="payment-order-lookup-link"
+                      onClick={goToGuestOrderLookup}
+                    >
+                      비회원 주문조회
+                    </button>
+                  )}
                 </div>
 
                 <div className="payment-order-actions">

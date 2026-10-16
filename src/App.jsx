@@ -14,6 +14,7 @@ import Sports from "./pages/Sports.jsx";
 import Trendy from "./pages/Trendy.jsx";
 import Product from "./pages/Product.jsx";
 import Payment from "./pages/Payment.jsx";
+import GuestOrderLookup from "./pages/GuestOrderLookup.jsx";
 import Footer from "./components/Footer.jsx";
 
 function PageFooter() {
@@ -223,6 +224,7 @@ function handleCustomerItemClick(item) {
           />
 
           <Route path="/payment" element={<Payment />} />
+          <Route path="/guest-order-lookup" element={<GuestOrderLookup />} />
         </Routes>
         {isLoginOpen && (
           <Login
