@@ -360,30 +360,6 @@ export default function CelebPick({ onSelectWonbin }) {
         }
       `}</style>
 
-      {/* 1. 상단 Sticky Header */}
-      <header className="chalfit-nav-header">
-        <div className="chalfit-nav-inner">
-          <button className="nav-left-btn" type="button">
-            <svg width="18" height="12" viewBox="0 0 18 12" fill="none">
-              <path d="M1 1H17M1 6H17M1 11H17" stroke="#111111" strokeWidth="1.6" strokeLinecap="round" />
-            </svg>
-            <span>메뉴</span>
-          </button>
-
-          <span className="nav-logo-text">ChalFit</span>
-
-          <div className="nav-right-group">
-            <button className="nav-text-link" type="button">좋아요</button>
-            <button className="nav-text-link" type="button">장바구니</button>
-            <button className="nav-icon-link" type="button" aria-label="프로필">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111111" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </header>
 
       {/* 2. 중앙 메인 컨텐츠 영역 */}
       <main className="celeb-main-content">
@@ -408,8 +384,6 @@ export default function CelebPick({ onSelectWonbin }) {
           {/* 카드 2: 원빈 (상세페이지 이동) */}
           <div 
             className="celeb-card" 
-            style={{ cursor: 'pointer' }}
-            onClick={onSelectWonbin}
           >
             <img src="/celeb/wonbin.png" alt="라이즈 원빈 착용컷" className="celeb-card-img" />
             <div className="celeb-card-overlay">
