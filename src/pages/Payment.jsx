@@ -1,12 +1,15 @@
 
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  GUEST_TEST_ORDERS_STORAGE_KEY,
+  GUEST_TEST_ORDER_PHONE,
+} from "../constants/guestOrder.js";
 import "./Payment.css";
 
 const KAKAO_POSTCODE_SCRIPT_ID = "kakao-postcode-script";
 const KAKAO_POSTCODE_SCRIPT_URL =
   "https://t1.kakaocdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
-export const GUEST_TEST_ORDERS_STORAGE_KEY = "chalfitGuestTestOrders";
-export const GUEST_TEST_ORDER_PHONE = "010-0000-0000";
 
 let kakaoPostcodePromise;
 
@@ -118,6 +121,7 @@ function saveGuestTestOrder(order) {
 }
 
 function Payment() {
+  const navigate = useNavigate();
   const [shipping, setShipping] = useState({
     receiver: "",
     phone: "",
@@ -294,6 +298,11 @@ function Payment() {
 
   const continueShopping = () => {
     closeOrderModal();
+  };
+
+  const goToGuestOrderLookup = () => {
+    closeOrderModal();
+    navigate("/guest-order-lookup");
   };
 
   const handlePayment = () => {
@@ -800,6 +809,15 @@ function Payment() {
                       ? "테스트 주문정보가 브라우저에 저장되었습니다."
                       : "주문은 완료되었지만 브라우저 저장에 실패하여 추후 주문조회가 불가능합니다."}
                   </small>
+                  {completedOrder.isStored && (
+                    <button
+                      type="button"
+                      className="payment-order-lookup-link"
+                      onClick={goToGuestOrderLookup}
+                    >
+                      비회원 주문조회
+                    </button>
+                  )}
                 </div>
 
                 <div className="payment-order-actions">

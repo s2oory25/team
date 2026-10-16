@@ -631,6 +631,18 @@
   text-align: center;
 }
 
+.payment-order-lookup-link {
+  margin-top: 14px;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  background: transparent;
+  color: #333;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
 .payment-order-actions {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
