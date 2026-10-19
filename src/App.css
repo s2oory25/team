@@ -383,6 +383,11 @@ body {
 .inquiry-faq-toggle > span:last-child {
   font-size: 22px;
   line-height: 1;
+  transition: transform 160ms ease;
+}
+
+.inquiry-faq-toggle[aria-expanded="true"] > span:last-child {
+  transform: rotate(-90deg);
 }
 
 .inquiry-faq-list {
@@ -689,6 +694,17 @@ body {
   background: #fff;
 }
 
+.mypage-profile-avatar.has-photo {
+  overflow: hidden;
+}
+
+.mypage-profile-avatar > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .mypage-profile-avatar span {
   position: absolute;
   top: 9px;
@@ -836,8 +852,26 @@ body {
   font-weight: 500;
 }
 
-.account-mobile-intro,
+.account-mobile-intro {
+  display: none;
+}
+
 .account-profile-photo-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  padding: 8px 12px;
+  border: 1px solid #aaa;
+  background: #fff;
+  color: #222;
+  font: inherit;
+  font-size: 12px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.account-profile-photo-input {
   display: none;
 }
 
@@ -3359,7 +3393,7 @@ body {
   left: 64vw;
   width: 36vw;
   height: 100%;
-  background: rgba(255, 255, 255, 0.82);
+  background: #fff;
   z-index: 7;
   overflow-y: auto;
 }
@@ -3383,12 +3417,21 @@ body {
 .faq-item {
   width: 100%;
   min-height: 64px;
-  padding: 0 20px;
   border-top: 1px solid #c5c5c5;
+  font-size: 15px;
+}
+
+.faq-question {
+  width: 100%;
+  min-height: 64px;
+  padding: 0 20px;
+  border: 0;
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 15px;
+  text-align: left;
+  font: inherit;
   cursor: pointer;
 }
 
@@ -3396,7 +3439,7 @@ body {
   border-bottom: 1px solid #c5c5c5;
 }
 
-.faq-item:hover {
+.faq-question:hover {
   background: rgba(255, 255, 255, 0.35);
 }
 
@@ -3404,6 +3447,18 @@ body {
   font-size: 22px;
   font-weight: 300;
   margin-left: 10px;
+  transition: transform 160ms ease;
+}
+
+.faq-item.expanded .content-arrow {
+  transform: rotate(90deg);
+}
+
+.faq-answer {
+  margin: -4px 20px 20px;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.7;
 }
 
 /* =========================
@@ -4428,6 +4483,10 @@ body {
     font-size: 30px;
   }
 
+  .inquiry-title-bar h1 {
+    font-size: 30px;
+  }
+
   .faq-page-title p {
     margin-top: 6px;
     font-size: 13px;
@@ -4809,7 +4868,14 @@ body {
 
   .guide-grid {
     flex: initial;
+    width: min(100%, 400px);
+    margin: 0 auto;
     gap: 24px 16px;
+  }
+
+  .guide-item {
+    align-items: flex-start;
+    text-align: left;
   }
 
   .guide-item strong {
@@ -4822,6 +4888,7 @@ body {
 
   .analyze-button {
     min-height: 42px;
+    margin: 22px 0 0;
     font-size: 13px;
   }
 
@@ -4947,6 +5014,10 @@ body {
   display: none;
 }
 
+.app.local-menu-preview > .header .menu-button {
+  display: block;
+}
+
 .app .menu-container,
 .app.ai-page-active .menu-container {
   top: 52px;
@@ -4955,6 +5026,7 @@ body {
 .app .site-footer {
   display: none;
 }
+
 
 @media (min-width: 601px) and (max-width: 900px) {
   .ai-fitting-page {
@@ -5021,14 +5093,16 @@ body {
 
   .guide-grid {
     flex: initial;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    width: min(100%, 400px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     align-content: start;
-    gap: 16px;
+    gap: 24px 16px;
+    margin: 0 auto;
   }
 
   .guide-item {
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
   }
 
   .guide-icon {
@@ -5061,6 +5135,163 @@ body {
     min-height: 48px;
     display: block;
     margin: 22px auto 0;
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .app.local-menu-preview:not(.ai-page-active) > .header {
+    height: 48px;
+    padding: 0 16px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .app.local-menu-preview:not(.ai-page-active) > .header .logo {
+    display: block;
+    font-size: 20px;
+  }
+
+  .app.local-menu-preview:not(.ai-page-active) > .header .header-right {
+    display: flex;
+    gap: 10px;
+    font-size: 11px;
+  }
+
+  .app.local-menu-preview:not(.ai-page-active) > .header .menu-button {
+    display: block;
+    font-size: 12px;
+  }
+
+  .faq-page,
+  .inquiry-page {
+    min-height: calc(100vh - 48px);
+    min-height: calc(100dvh - 48px);
+  }
+
+  .app.local-menu-preview .faq-page .site-footer,
+  .app.local-menu-preview .inquiry-page .site-footer {
+    display: grid;
+    margin-top: auto;
+    padding: 10px 12px;
+  }
+
+  .faq-page-title,
+  .inquiry-title-bar {
+    padding: 14px 12px 10px;
+  }
+
+  .faq-page-title h1 {
+    font-size: 30px;
+  }
+
+  .inquiry-title-bar h1 {
+    font-size: 30px;
+  }
+
+  .inquiry-mypage-return {
+    display: none;
+  }
+
+  .faq-page-title p,
+  .inquiry-title-bar .inquiry-intro {
+    margin-top: 6px;
+    font-size: 13px;
+  }
+
+  .inquiry-title-bar .inquiry-intro {
+    font-size: 15px;
+  }
+
+  .faq-page-tabs,
+  .inquiry-mobile-tabs {
+    display: grid;
+    width: min(760px, calc(100% - 32px));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin: 28px auto 0;
+  }
+
+  .inquiry-title-bar + .inquiry-mobile-tabs {
+    display: grid;
+  }
+
+  .faq-page-tabs button,
+  .inquiry-mobile-tabs button {
+    min-height: 44px;
+    padding: 0 12px;
+    font-size: 13px;
+  }
+
+  .faq-page-list {
+    width: min(760px, calc(100% - 20px));
+    margin: 48px auto 30px;
+    padding: 12px 6px 20px;
+  }
+
+  .faq-page-item > button {
+    min-height: 46px;
+    padding: 0 10px;
+    font-size: 12px;
+  }
+
+  .faq-page-item > p {
+    padding: 0 10px 12px;
+    font-size: 12px;
+  }
+
+  .inquiry-content {
+    width: min(760px, calc(100% - 32px));
+    margin: 28px auto 20px;
+  }
+
+  .inquiry-faq-toggle {
+    min-height: 46px;
+    padding: 0 14px;
+    font-size: 13px;
+  }
+
+  .inquiry-faq-list {
+    padding: 8px 12px;
+  }
+
+  .inquiry-faq-list button {
+    padding: 10px 0;
+    font-size: 12px;
+  }
+
+  .inquiry-form {
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .inquiry-email-field,
+  .inquiry-type-field {
+    min-height: 40px;
+  }
+
+  .inquiry-email-field svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .inquiry-email-field input,
+  .inquiry-type-field {
+    font-size: 12px;
+  }
+
+  .inquiry-form textarea {
+    flex: 0 0 142px;
+    min-height: 142px;
+    padding: 14px;
+    font-size: 12px;
+  }
+
+  .inquiry-form textarea::placeholder {
+    line-height: 110px;
+  }
+
+  .inquiry-submit-button {
+    min-height: 40px;
     font-size: 16px;
   }
 }

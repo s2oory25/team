@@ -42,12 +42,14 @@ function App() {
   const [showInquiryFaq, setShowInquiryFaq] = useState(false)
   const [inquiryMessage, setInquiryMessage] = useState('')
   const [accountMessage, setAccountMessage] = useState('')
+  const [profilePhoto, setProfilePhoto] = useState('')
   const [isChangingPassword, setIsChangingPassword] = useState(false)
   const [openFaqIndex, setOpenFaqIndex] = useState(null)
+  const [sidebarFaqIndex, setSidebarFaqIndex] = useState(null)
   const [cartAgreement, setCartAgreement] = useState(false)
   const [cartItems, setCartItems] = useState([
-    { id: 'cocoa', brand: 'GENTLE MONSTER', name: '뉴 허 01', option: '블랙/블랙', price: 289000, image: '/new-her-order.jpg', quantity: 1, selected: true },
-    { id: 'july', brand: 'Roy Bon', name: 'WAYFARER', option: '블랙/카키', price: 262200, image: '/ray-ban-wayfarer.jpg', quantity: 1, selected: true },
+    { id: 'cocoa', brand: 'GENTLE MONSTER', name: '뉴 허 01', option: '블랙/블랙', price: 289000, image: '/cocoa-01.jpg', quantity: 1, selected: true },
+    { id: 'july', brand: 'Roy Bon', name: 'WAYFARER', option: '블랙/카키', price: 262200, image: '/july-01.png', quantity: 1, selected: true },
   ])
 
   const menuItems = ['CELEB PICK', '종류', 'AI 맞춤 서비스', '스타일']
@@ -252,6 +254,11 @@ function App() {
   }
 
   const handleCustomerItemClick = (item) => {
+    if (item === 'FAQ' && window.matchMedia('(max-width: 1024px)').matches) {
+      navigateTo('faq')
+      return
+    }
+
     setSelectedCustomerItem(item)
     if (item === '1:1문의') {
       navigateTo('inquiry')
@@ -336,6 +343,15 @@ function App() {
     setHasAnalyzed(false)
   }
 
+  const handleProfilePhotoChange = (event) => {
+    const file = event.target.files?.[0]
+    if (!file || !file.type.startsWith('image/')) return
+
+    const reader = new FileReader()
+    reader.onload = () => setProfilePhoto(String(reader.result))
+    reader.readAsDataURL(file)
+  }
+
   const handleAnalyze = () => {
     if (!selectedPhoto) {
       setAnalysisMessage('먼저 분석할 사진을 업로드해 주세요.')
@@ -358,15 +374,15 @@ function App() {
   const orderDetail = selectedOrder || {
     number: 'CF20260907-1234', date: '2026.09.07 10:23', brand: 'GENTLE MONSTER',
     name: '뉴 허 01', option: '블랙/블랙', quantity: 1, price: 289000,
-    image: '/new-her-order.jpg', status: '배송중',
+    image: '/cocoa-01.jpg', status: '배송중',
   }
 
-  const pageProps = { activeMenu, setActiveMenu, menuOpen, setMenuOpen, categoryOpen, setCategoryOpen, styleOpen, setStyleOpen, customerOpen, setCustomerOpen, isLoggedIn, setIsLoggedIn, mobileMypageOpen, setMobileMypageOpen, selectedCustomerItem, setSelectedCustomerItem, currentPage, setCurrentPage, selectedOrder, setSelectedOrder, selectedPhoto, setSelectedPhoto, photoPreview, setPhotoPreview, analysisMessage, setAnalysisMessage, isAnalyzing, setIsAnalyzing, hasAnalyzed, setHasAnalyzed, inquiryType, setInquiryType, inquiryEmail, setInquiryEmail, inquiryContent, setInquiryContent, showInquiryFaq, setShowInquiryFaq, inquiryMessage, setInquiryMessage, accountMessage, setAccountMessage, isChangingPassword, setIsChangingPassword, openFaqIndex, setOpenFaqIndex, cartAgreement, setCartAgreement, cartItems, setCartItems, menuItems, categoryItems, styleItems, customerItems, mypageItems, faqItems, faqDetails, products, closeSubmenus, navigateTo, handleMenuClick, handleMobileMypageClick, handleSubMenuClick, handleMobileCustomerClick, handleCustomerItemClick, handleInquirySubmit, handleLoginClick, handleLogoutClick, handleProfileCardClick, handleAccountMenuClick, openMenu, closeMenu, handlePhotoChange, handleAnalyze, handleRetry, selectedCartItems, cartSubtotal, orderDetail, sampleFaceShape }
+  const pageProps = { activeMenu, setActiveMenu, menuOpen, setMenuOpen, categoryOpen, setCategoryOpen, styleOpen, setStyleOpen, customerOpen, setCustomerOpen, isLoggedIn, setIsLoggedIn, mobileMypageOpen, setMobileMypageOpen, selectedCustomerItem, setSelectedCustomerItem, currentPage, setCurrentPage, selectedOrder, setSelectedOrder, selectedPhoto, setSelectedPhoto, photoPreview, setPhotoPreview, analysisMessage, setAnalysisMessage, isAnalyzing, setIsAnalyzing, hasAnalyzed, setHasAnalyzed, inquiryType, setInquiryType, inquiryEmail, setInquiryEmail, inquiryContent, setInquiryContent, showInquiryFaq, setShowInquiryFaq, inquiryMessage, setInquiryMessage, accountMessage, setAccountMessage, profilePhoto, setProfilePhoto, isChangingPassword, setIsChangingPassword, openFaqIndex, setOpenFaqIndex, sidebarFaqIndex, setSidebarFaqIndex, cartAgreement, setCartAgreement, cartItems, setCartItems, menuItems, categoryItems, styleItems, customerItems, mypageItems, faqItems, faqDetails, products, closeSubmenus, navigateTo, handleMenuClick, handleMobileMypageClick, handleSubMenuClick, handleMobileCustomerClick, handleCustomerItemClick, handleInquirySubmit, handleLoginClick, handleLogoutClick, handleProfileCardClick, handleAccountMenuClick, openMenu, closeMenu, handlePhotoChange, handleProfilePhotoChange, handleAnalyze, handleRetry, selectedCartItems, cartSubtotal, orderDetail, sampleFaceShape }
   return (
     <div
       className={`app ${
         currentPage === 'ai-fitting' ? 'ai-page-active' : ''
-      }`}
+      } ${import.meta.env.DEV ? 'local-menu-preview' : ''}`}
     >
       <header className="header">
         <button

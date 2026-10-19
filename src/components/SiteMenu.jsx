@@ -5,7 +5,7 @@ export default function SiteMenu(props) {
     styleOpen, styleItems, customerOpen, customerItems,
     mobileMypageOpen, mypageItems, isLoggedIn,
     handleLoginClick, handleLogoutClick, selectedCustomerItem,
-    handleCustomerItemClick, faqItems, handleMobileCustomerClick,
+    handleCustomerItemClick, faqDetails, sidebarFaqIndex, setSidebarFaqIndex, handleMobileCustomerClick,
     handleMobileMypageClick, closeMenu,
   } = props
 
@@ -237,14 +237,18 @@ export default function SiteMenu(props) {
               <p>자주 묻는 질문을 확인해보세요.</p>
 
               <div className="faq-list">
-                {faqItems.map((question, index) => (
-                  <div
-                    key={index}
-                    className="faq-item"
-                    onClick={() => console.log(`${question} 선택`)}
-                  >
-                    <span>{question}</span>
-                    <span className="content-arrow">→</span>
+                {faqDetails.map((item, index) => (
+                  <div key={item.question} className={`faq-item ${sidebarFaqIndex === index ? 'expanded' : ''}`}>
+                    <button
+                      type="button"
+                      className="faq-question"
+                      aria-expanded={sidebarFaqIndex === index}
+                      onClick={() => setSidebarFaqIndex((open) => open === index ? null : index)}
+                    >
+                      <span>{item.question}</span>
+                      <span className="content-arrow" aria-hidden="true">→</span>
+                    </button>
+                    {sidebarFaqIndex === index && <p className="faq-answer">{item.answer}</p>}
                   </div>
                 ))}
               </div>

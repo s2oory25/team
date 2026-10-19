@@ -27,11 +27,11 @@ export default function OrdersPage(props) {
                 <header className="order-card-header">
                   <span>주문일　 2026.09.07　10:23</span>
                   <span>주문번호　<strong>CF20260907-1234</strong></span>
-                  <button type="button" onClick={() => { setSelectedOrder({ number: 'CF20260907-1234', date: '2026.09.07 10:23', brand: 'GENTLE MONSTER', name: '뉴 허 01', option: '블랙/블랙', quantity: 1, price: 289000, image: '/new-her-order.jpg', status: '배송중' }); navigateTo('order-detail') }}>주문 상세보기 ›</button>
+                  <button type="button" onClick={() => { setSelectedOrder({ number: 'CF20260907-1234', date: '2026.09.07 10:23', brand: 'GENTLE MONSTER', name: '뉴 허 01', option: '블랙/블랙', quantity: 1, price: 289000, image: '/cocoa-01.jpg', status: '배송중' }); navigateTo('order-detail') }}>주문 상세보기 ›</button>
                 </header>
                 <div className="order-card-body">
                   <div className="order-product">
-                    <div className="order-product-image"><img src="/new-her-order.jpg" alt="코코아 선글라스" /></div>
+                    <div className="order-product-image"><img src="/cocoa-01.jpg" alt="코코아 선글라스" /></div>
                     <div className="order-product-info">
                       <span>GENTLE MONSTER</span>
                       <strong>뉴 허 01</strong>
@@ -54,11 +54,11 @@ export default function OrdersPage(props) {
                 <header className="order-card-header">
                   <span>주문일　 2026.08.12　11:25</span>
                   <span>주문번호　<strong>CF20260812-5678</strong></span>
-                  <button type="button" onClick={() => { setSelectedOrder({ number: 'CF20260812-5678', date: '2026.08.12 11:25', brand: 'RIETI', name: 'MANO C2', option: '블랙/블랙', quantity: 1, price: 49000, image: '/mano-order.jpg', status: '배송완료' }); navigateTo('order-detail') }}>주문 상세보기 ›</button>
+                  <button type="button" onClick={() => { setSelectedOrder({ number: 'CF20260812-5678', date: '2026.08.12 11:25', brand: 'RIETI', name: 'MANO C2', option: '블랙/블랙', quantity: 1, price: 49000, image: '/july-01.png', status: '배송완료' }); navigateTo('order-detail') }}>주문 상세보기 ›</button>
                 </header>
                 <div className="order-card-body">
                   <div className="order-product">
-                    <div className="order-product-image"><img src="/mano-order.jpg" alt="MANO C2 선글라스" /></div>
+                    <div className="order-product-image"><img src="/july-01.png" alt="MANO C2 선글라스" /></div>
                     <div className="order-product-info">
                       <span>RIETI</span>
                       <strong>MANO C2</strong>

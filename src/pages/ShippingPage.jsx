@@ -24,7 +24,7 @@ export default function ShippingPage(props) {
             <section className="shipping-product-card">
               <h2>상품 정보</h2>
               <div className="shipping-product-row">
-                <div className="shipping-product-image"><img src="/new-her-order.jpg" alt="GENTLE MONSTER 뉴 허 01" /></div>
+                <div className="shipping-product-image"><img src="/cocoa-01.jpg" alt="GENTLE MONSTER 뉴 허 01" /></div>
                 <div className="shipping-product-info">
                   <span>GENTLE MONSTER</span>
                   <strong>뉴 허 01</strong>
