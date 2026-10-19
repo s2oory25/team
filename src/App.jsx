@@ -31,6 +31,78 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
 
+  // 좋아요 상품 ID 목록
+  const [favorites, setFavorites] = useState(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem("chalfitFavorites"));
+      return Array.isArray(saved) ? saved : [];
+    } catch {
+      return [];
+    }
+  });
+
+  // 장바구니 상품별 수량
+  const [cartItems, setCartItems] = useState(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem("chalfitCart"));
+      return saved &&
+        typeof saved === "object" &&
+        !Array.isArray(saved)
+        ? saved
+        : {};
+    } catch {
+      return {};
+    }
+  });
+
+  // 좋아요 추가 및 취소
+  function toggleFavorite(productId) {
+    setFavorites((prev) =>
+      prev.includes(productId)
+        ? prev.filter((id) => id !== productId)
+        : [...prev, productId]
+    );
+  }
+
+  // 같은 상품은 기존 수량을 새로운 수량으로 변경
+  function updateCart(productId, quantity) {
+    if (!Number.isInteger(quantity) || quantity < 1) return;
+
+    setCartItems((prev) => ({
+      ...prev,
+      [productId]: quantity,
+    }));
+  }
+
+  // 장바구니에서 해당 상품 삭제
+  function removeFromCart(productId) {
+    setCartItems((prev) => {
+      const updated = { ...prev };
+      delete updated[productId];
+      return updated;
+    });
+  }
+
+  // 헤더에 표시할 장바구니 총수량
+  const cartCount = Object.values(cartItems).reduce(
+    (total, quantity) =>
+      total + (Number.isInteger(quantity) && quantity > 0 ? quantity : 0),
+    0
+  );
+
+  // 좋아요 상품 개수
+  const favoriteCount = favorites.length;
+
+  // 좋아요 저장
+  useEffect(() => {
+    localStorage.setItem("chalfitFavorites", JSON.stringify(favorites));
+  }, [favorites]);
+
+  // 장바구니 저장
+  useEffect(() => {
+    localStorage.setItem("chalfitCart", JSON.stringify(cartItems));
+  }, [cartItems]);
+
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
 
@@ -153,13 +225,13 @@ function App() {
     setCustomerOpen(false);
   }
 
-function handleCustomerItemClick(item) {
-  if (selectedCustomerItem === item) {
-    setSelectedCustomerItem("");
-  } else {
-    setSelectedCustomerItem(item);
+  function handleCustomerItemClick(item) {
+    if (selectedCustomerItem === item) {
+      setSelectedCustomerItem("");
+    } else {
+      setSelectedCustomerItem(item);
+    }
   }
-}
 
   function handleLoginClick() {
     closeMenu();
@@ -167,9 +239,9 @@ function handleCustomerItemClick(item) {
   }
 
   function handleLogoutClick() {
-  sessionStorage.removeItem("chalfitLogin");
-  setIsLoggedIn(false);
-}
+    sessionStorage.removeItem("chalfitLogin");
+    setIsLoggedIn(false);
+  }
 
   return (
     <BrowserRouter basename="/team">
@@ -178,6 +250,8 @@ function handleCustomerItemClick(item) {
           onMenuClick={openMenu}
           onLogoClick={closeMenu}
           onLoginClick={handleLoginClick}
+          favoriteCount={favoriteCount}
+          cartCount={cartCount}
         />
 
 
@@ -220,7 +294,15 @@ function handleCustomerItemClick(item) {
 
           <Route
             path="/product/:productId"
-            element={<Product key={window.location.pathname} />}
+            element={
+              <Product
+                favorites={favorites}
+                toggleFavorite={toggleFavorite}
+                cartItems={cartItems}
+                updateCart={updateCart}
+                removeFromCart={removeFromCart}
+              />
+            }
           />
 
           <Route path="/payment" element={<Payment />} />
