@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from "react";
 import "./SideMenu.css";
+import { useNavigate } from "react-router-dom";
 
 function SideMenu({
   menuOpen,
@@ -33,6 +34,8 @@ function SideMenu({
   handleLogoutClick,
   navigateTo,
 }) {
+  const navigate = useNavigate();
+  
   const [isVisible, setIsVisible] = useState(menuOpen);
   const [isClosing, setIsClosing] = useState(false);
 
@@ -64,7 +67,16 @@ function SideMenu({
                 className={`menu-item ${
                   activeMenu === menu ? "active" : ""
                 }`}
-                onClick={() => handleMenuClick(menu)}
+                onClick={() => {
+                  console.log("클릭한 메뉴:", menu);
+
+                  if (menu === "CELEB PICK") {
+                    navigate("/celeb");
+                    closeMenu();
+                  } else {
+                    handleMenuClick(menu);
+                  }
+                }}
               >
                 <span>{menu}</span>
                 <span

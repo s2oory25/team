@@ -18,7 +18,7 @@ const products = {
     size: ["63.9 mm", "53.7 mm", "15 mm", "148.9 mm", "147 mm"],
     features: [
       "블랙 아세테이트 프레임",
-      "UV 99.9%차단 렌즈",
+      "UV 99.9% 차단 렌즈",
       "스퀘어 쉐입"
     ],
     defaultFit: "Over"
@@ -36,7 +36,7 @@ const products = {
   size: ["52mm", "44mm", "22mm", "145mm", "150mm"],
   features: [
     "블랙 아세테이트 프레임",
-    "UV 100%차단 그린 블랙 글라스 렌즈",
+    "UV 100% 차단 그린 블랙 글라스 렌즈",
     "스퀘어 쉐입"
   ],
   defaultFit: "Regular"
@@ -49,12 +49,12 @@ const products = {
     color: "블랙",
     price: 279000,
     image: "/team/classic/gmsoho.png",
-    video: "",
-    description: "블랙 아세테이트 리뉴 소재의 스퀘어 선글라스.",
+    video: "/team/classic/gmsoho.mp4",
+    description: "도회적인 카리스마를 더하는 볼드한 스퀘어의 정석.",
     size: ["53mm", "38.4mm", "22mm", "145.5mm", "147.1mm"],
     features: [
-      "블랙 아세테이트 리뉴 프레임",
-      "UV 99.9%차단 렌즈",
+      "블랙 아세테이트 프레임",
+      "UV 99.9% 차단 렌즈",
       "스퀘어 쉐입",
     ],
     defaultFit: "Regular"
@@ -67,8 +67,8 @@ const products = {
     color: "블랙",
     price: 69900,
     image: "/team/classic/blueSblack.png",
-    video: "",
-    description: "MARINA-S black 상품 설명을 입력해 주세요.",
+    video: "/team/classic/blueSblack.mp4",
+    description: "가볍게 일상을 빛내는 트렌디한 데일리 스퀘어의 정석.",
     size: ["55mm", "43mm", "19mm", "146mm", "148mm"],
     features: [
       "블랙 아세테이트 프레임",
@@ -91,7 +91,6 @@ const products = {
   features: [
     "블랙 아세테이트 프레임",
     "블루 그라데이션 편광 크리스탈 렌즈",
-    "클래식한 쉐입"
   ],
   defaultFit: "Regular"
   },
@@ -103,13 +102,14 @@ const products = {
   color: "블랙",
   price: 730000,
   image: "/team/classic/celine.png",
-  video: "",
-  description: "시그니처 트리옹프 디테일이 돋보이는 클래식 선글라스.",
-  size: ["확인 필요", "확인 필요", "확인 필요", "확인 필요", "확인 필요"],
+  video: "/team/classic/celine.mp4",
+  description: "골드 트리옹프의 우아함이 돋보이는 트렌디한 오발 셰이프의 정석.",
+  size: ["52mm", "38mm", "22mm", "144mm", "145mm"],
   features: [
-    "블랙 프레임",
-    "UV 차단 렌즈",
-    "트리옹프 디테일"
+    "블랙 아세테이트 프레임",
+    "UVA 및 UVB 차단 렌즈",
+    "트리옹프 시그니처 디테일의 템플",
+    "오벌 프레임"
   ],
   defaultFit: "Regular"
   },
@@ -156,8 +156,8 @@ const recommendedProducts = [
     id: "persol",
     brand: "Persol",
     name: "PO0649NE - Total Black Arrow",
-    originalPrice: 676334,
-    price: 351515,
+    originalPrice: 1065000,
+    price: 615000,
     image: "/team/classic/persol.png",
   },
 ];

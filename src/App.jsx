@@ -12,6 +12,7 @@ import Classic from "./pages/Classic.jsx";
 import Casual from "./pages/Casual.jsx";
 import Sports from "./pages/Sports.jsx";
 import Trendy from "./pages/Trendy.jsx";
+import Celeb from "./pages/Celeb";
 import Product from "./pages/Product.jsx";
 import Payment from "./pages/Payment.jsx";
 import GuestOrderLookup from "./pages/GuestOrderLookup.jsx";
@@ -208,6 +209,7 @@ function handleCustomerItemClick(item) {
 
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/celeb" element={<Celeb />} />
 
           {/* 회원가입 페이지 */}
           <Route path="/signup" element={<Signup />} />
