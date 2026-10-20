@@ -41,6 +41,7 @@ function App() {
   const [inquiryContent, setInquiryContent] = useState('')
   const [showInquiryFaq, setShowInquiryFaq] = useState(false)
   const [inquiryMessage, setInquiryMessage] = useState('')
+  const [showInquirySuccess, setShowInquirySuccess] = useState(false)
   const [accountMessage, setAccountMessage] = useState('')
   const [profilePhoto, setProfilePhoto] = useState('')
   const [isChangingPassword, setIsChangingPassword] = useState(false)
@@ -269,7 +270,7 @@ function App() {
 
   const handleInquirySubmit = (event) => {
     event.preventDefault()
-    setInquiryMessage('문의 접수 기능은 아직 연결되지 않았습니다.')
+    setShowInquirySuccess(true)
   }
 
   const handleLoginClick = () => {
@@ -377,7 +378,7 @@ function App() {
     image: '/cocoa-01.jpg', status: '배송중',
   }
 
-  const pageProps = { activeMenu, setActiveMenu, menuOpen, setMenuOpen, categoryOpen, setCategoryOpen, styleOpen, setStyleOpen, customerOpen, setCustomerOpen, isLoggedIn, setIsLoggedIn, mobileMypageOpen, setMobileMypageOpen, selectedCustomerItem, setSelectedCustomerItem, currentPage, setCurrentPage, selectedOrder, setSelectedOrder, selectedPhoto, setSelectedPhoto, photoPreview, setPhotoPreview, analysisMessage, setAnalysisMessage, isAnalyzing, setIsAnalyzing, hasAnalyzed, setHasAnalyzed, inquiryType, setInquiryType, inquiryEmail, setInquiryEmail, inquiryContent, setInquiryContent, showInquiryFaq, setShowInquiryFaq, inquiryMessage, setInquiryMessage, accountMessage, setAccountMessage, profilePhoto, setProfilePhoto, isChangingPassword, setIsChangingPassword, openFaqIndex, setOpenFaqIndex, sidebarFaqIndex, setSidebarFaqIndex, cartAgreement, setCartAgreement, cartItems, setCartItems, menuItems, categoryItems, styleItems, customerItems, mypageItems, faqItems, faqDetails, products, closeSubmenus, navigateTo, handleMenuClick, handleMobileMypageClick, handleSubMenuClick, handleMobileCustomerClick, handleCustomerItemClick, handleInquirySubmit, handleLoginClick, handleLogoutClick, handleProfileCardClick, handleAccountMenuClick, openMenu, closeMenu, handlePhotoChange, handleProfilePhotoChange, handleAnalyze, handleRetry, selectedCartItems, cartSubtotal, orderDetail, sampleFaceShape }
+  const pageProps = { activeMenu, setActiveMenu, menuOpen, setMenuOpen, categoryOpen, setCategoryOpen, styleOpen, setStyleOpen, customerOpen, setCustomerOpen, isLoggedIn, setIsLoggedIn, mobileMypageOpen, setMobileMypageOpen, selectedCustomerItem, setSelectedCustomerItem, currentPage, setCurrentPage, selectedOrder, setSelectedOrder, selectedPhoto, setSelectedPhoto, photoPreview, setPhotoPreview, analysisMessage, setAnalysisMessage, isAnalyzing, setIsAnalyzing, hasAnalyzed, setHasAnalyzed, inquiryType, setInquiryType, inquiryEmail, setInquiryEmail, inquiryContent, setInquiryContent, showInquiryFaq, setShowInquiryFaq, inquiryMessage, setInquiryMessage, showInquirySuccess, setShowInquirySuccess, accountMessage, setAccountMessage, profilePhoto, setProfilePhoto, isChangingPassword, setIsChangingPassword, openFaqIndex, setOpenFaqIndex, sidebarFaqIndex, setSidebarFaqIndex, cartAgreement, setCartAgreement, cartItems, setCartItems, menuItems, categoryItems, styleItems, customerItems, mypageItems, faqItems, faqDetails, products, closeSubmenus, navigateTo, handleMenuClick, handleMobileMypageClick, handleSubMenuClick, handleMobileCustomerClick, handleCustomerItemClick, handleInquirySubmit, handleLoginClick, handleLogoutClick, handleProfileCardClick, handleAccountMenuClick, openMenu, closeMenu, handlePhotoChange, handleProfilePhotoChange, handleAnalyze, handleRetry, selectedCartItems, cartSubtotal, orderDetail, sampleFaceShape }
   return (
     <div
       className={`app ${

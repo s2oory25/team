@@ -5295,3 +5295,70 @@ body {
     font-size: 16px;
   }
 }
+
+
+.inquiry-success-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgb(0 0 0 / 42%);
+}
+
+.inquiry-success-modal {
+  position: relative;
+  width: min(100%, 380px);
+  padding: 20px 22px 22px;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  background: #fff;
+  text-align: center;
+  box-shadow: 0 12px 40px rgb(0 0 0 / 16%);
+}
+
+.inquiry-success-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  border: 0;
+  background: transparent;
+  color: #555;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.inquiry-success-check {
+  display: grid;
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 14px;
+  place-items: center;
+  border-radius: 50%;
+  background: #f0f0f0;
+  font-size: 24px;
+}
+
+.inquiry-success-modal h2 {
+  margin: 0 0 12px;
+  font-size: 20px;
+}
+
+.inquiry-success-modal p {
+  margin: 0 0 18px;
+  color: #777;
+  line-height: 1.8;
+}
+
+.inquiry-success-confirm {
+  width: 100%;
+  min-height: 50px;
+  border: 0;
+  border-radius: 4px;
+  background: #111;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
