@@ -42,7 +42,7 @@
 }
 
 .product-gallery-image-alt video {
-  transform: scaleX(-1);
+  transform: none;
 }
 
 .product-information h2,

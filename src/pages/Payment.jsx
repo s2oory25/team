@@ -1,11 +1,12 @@
 
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   GUEST_TEST_ORDERS_STORAGE_KEY,
   GUEST_TEST_ORDER_PHONE,
 } from "../constants/guestOrder.js";
 import "./Payment.css";
+import PaymentProduct from "../components/PaymentProduct.jsx";
 
 const KAKAO_POSTCODE_SCRIPT_ID = "kakao-postcode-script";
 const KAKAO_POSTCODE_SCRIPT_URL =
@@ -122,6 +123,20 @@ function saveGuestTestOrder(order) {
 
 function Payment() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const orderProduct = location.state?.product ?? {
+  id: "new-her",
+  brand: "GENTLE MONSTER",
+  name: "뉴 허 01",
+  color: "블랙/블랙",
+  price: 289000,
+  image: "/team/classic/gmNewHer.png",
+};
+
+  const [orderQuantity, setOrderQuantity] = useState(() =>
+    Math.max(1, Number(location.state?.quantity) || 1)
+  );
+
   const [shipping, setShipping] = useState({
     receiver: "",
     phone: "",
@@ -154,9 +169,9 @@ function Payment() {
   const addressSearchRef = useRef(null);
   const orderSubmittedRef = useRef(false);
 
-  const price = 289000;
-  const formatPrice = (value) => value.toLocaleString("ko-KR");
-
+const price = orderProduct.price * orderQuantity;
+const formatPrice = (value) =>
+  value.toLocaleString("ko-KR");
   const changeShipping = (e) => {
     const { name, value } = e.target;
     const nextValue = name === "phone" ? formatPhoneNumber(value) : value;
@@ -352,10 +367,10 @@ function Payment() {
     const orderNumber = createTestOrderNumber();
     const orderedAt = new Date().toISOString();
     const product = {
-      brand: "GENTLE MONSTER",
-      name: "뉴 허 01",
-      option: "블랙/블랙",
-      quantity: 1,
+      brand: orderProduct.brand,
+      name: orderProduct.name,
+      option: orderProduct.color,
+      quantity: orderQuantity,
       amount: price,
     };
     const isStored = saveGuestTestOrder({
@@ -403,18 +418,16 @@ function Payment() {
                 주문 정보 <span>1건</span>
               </h2>
 
-              <div className="payment-product">
-                <img
-                  src="/team/newher01.png"
-                  alt="젠틀몬스터 뉴 허 01 선글라스"
+              <PaymentProduct
+                  product={orderProduct}
+                  quantity={orderQuantity}
+                  onDecrease={() =>
+                    setOrderQuantity((prev) => Math.max(1, prev - 1))
+                  }
+                  onIncrease={() =>
+                    setOrderQuantity((prev) => prev + 1)
+                  }
                 />
-                <div className="payment-product-info">
-                  <p>GENTLE MONSTER</p>
-                  <strong>뉴 허 01</strong>
-                  <small>블랙/블랙</small>
-                </div>
-                <span className="payment-quantity">1개</span>
-              </div>
             </section>
 
             {/* 배송 정보 */}

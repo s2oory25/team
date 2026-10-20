@@ -2,12 +2,55 @@ import { useMemo, useState } from "react";
 import ProductCard from "../components/ProductCard.jsx";
 
 const products = [
-  { id: 1, brand: "BLUE ELEPHANT", name: "AVRO purple crystal", price: 69900, shape: "oval",  image: "/team/sports/blueavro.png" },
-  { id: 2, brand: "오클리", name: "수처 자켓", price: 294400, originalPrice: 368000, shape: "soft-square", image: "/team/sports/okely.png" },
-  { id: 3, brand: "REVO", name: "THUNDER 00", price: 240000, shape: "square", image: "/team/sports/revo.png" },
-  { id: 4, brand: "POC", name: "Elicit 선글라스", price: 340000, shape: "oval", image: "/team/sports/poc.png"},
-  { id: 5, brand: "RUDY PROJECT", name: "스핀쉴드 프로", price: 25000, shape: "soft-square", image: "/team/sports/rudyspin.png" },
-  { id: 6, brand: "VAN RYSEL", name: "미러렌즈 선글라스 타이엔", price: 69900, shape: "square", image: "/team/sports/vanmirror.png"},
+  {
+    id: "blue-avro",
+    brand: "BLUE ELEPHANT",
+    name: "AVRO purple crystal",
+    price: 69900,
+    shape: "oval",
+    image: "/team/sports/blueavro.png",
+  },
+  {
+    id: "oakley-sutro",
+    brand: "오클리",
+    name: "수처 자켓",
+    price: 328800,
+    originalPrice: 411000,
+    shape: "soft-square",
+    image: "/team/sports/okely.png",
+  },
+  {
+    id: "revo-thunder",
+    brand: "REVO",
+    name: "THUNDER 00",
+    price: 240000,
+    shape: "square",
+    image: "/team/sports/revo.png",
+  },
+  {
+    id: "poc-elicit",
+    brand: "POC",
+    name: "Elicit 선글라스",
+    price: 460000,
+    shape: "oval",
+    image: "/team/sports/poc.png",
+  },
+  {
+    id: "rudy-spinshield",
+    brand: "RUDY PROJECT",
+    name: "스핀쉴드 프로",
+    price: 250000,
+    shape: "soft-square",
+    image: "/team/sports/rudyspin.png",
+  },
+  {
+    id: "van-rysel",
+    brand: "VAN RYSEL",
+    name: "미러렌즈 선글라스 타이엔",
+    price: 69900,
+    shape: "square",
+    image: "/team/sports/vanmirror.png",
+  },
 ];
 
 function Sports() {

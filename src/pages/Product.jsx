@@ -114,7 +114,100 @@ const products = {
     ],
     defaultFit: "Regular"
   },
+
+    "blue-avro": {
+    id: "blue-avro",
+    category: "SPORTS",
+    brand: "BLUE ELEPHANT",
+    name: "AVRO purple crystal",
+    color: "퍼플 크리스탈",
+    price: 69900,
+    image: "/team/sports/blueavro.png",
+    video: "/team/sports/blueavro.mp4",
+    description: "영롱한 보랏빛 투명 프레임이 돋보이는 고글 선글라스.",
+    size: ["143mm", "48mm", "0mm", "148mm", "128mm"],
+    features: ["TR-90 프레임", "UV 99% 차단 나일론 렌즈",],
+    defaultFit: "Over",
+  },
+
+  "oakley-sutro": {
+    id: "oakley-sutro",
+    category: "SPORTS",
+    brand: "오클리",
+    name: "수처 자켓",
+    color: "블랙",
+    price: 328800,
+    originalPrice: 411000,
+    image: "/team/sports/okely.png",
+    video: "/team/sports/okely.mp4",
+    description: "강렬한 스포티함과 넓은 시야를 선사하는 일체형 선글라스.",
+    size: ["64mm", "44mm", "12mm", "135mm", "138mm"],
+    features: ["오 매터 프레임", "플루토나이트 렌즈"],
+    defaultFit: "Over",
+  },
+
+  "revo-thunder": {
+    id: "revo-thunder",
+    category: "SPORTS",
+    brand: "REVO",
+    name: "THUNDER 00",
+    color: "그래파이트",
+    price: 240000,
+    image: "/team/sports/revo.png",
+    video: "/team/sports/revo.mp4",
+    description: "고성능 변색·편광 렌즈로 시야를 보호하는 스포티 선글라스.",
+    size: ["136mm", "53mm", "0mm", "140mm", "130mm"],
+    features: ["TR-90 프레임", "폴리카보네이트 렌즈"],
+    defaultFit: "Over",
+  },
+
+  "poc-elicit": {
+    id: "poc-elicit",
+    category: "SPORTS",
+    brand: "POC",
+    name: "Elicit 선글라스",
+    color: "투명 베이지 / 골드 미러",
+    price: 460000,
+    image: "/team/sports/poc.png",
+    video: "/team/sports/poc.mp4",
+    description: "23g 초경량 프레임리스 구조로 탁 트인 시야를 선사하는 선글라스.",
+    size: ["142mm", "59mm", "0mm", "142mm", "120mm"],
+    features: ["하이드로젠 화이트 프레임", "클래러티 트레일 / 파틀리 써니 실버"],
+    defaultFit: "Over",
+  },
+
+  "rudy-spinshield": {
+    id: "rudy-spinshield",
+    category: "SPORTS",
+    brand: "RUDY PROJECT",
+    name: "스핀쉴드 프로",
+    color: "블랙 매트",
+    price: 250000,
+    image: "/team/sports/rudyspin.png",
+    video: "/team/sports/rudyspin.mp4",
+    description: "넓은 시야와 뛰어난 밀착감을 선사하는 대형 쉴드 렌즈 스포츠 선글라스.",
+    size: ["147mm", "59mm", "0mm", "147mm", "125mm"],
+    features: ["블랙 매트 프레임", "스모크 블랙 렌즈"],
+    defaultFit: "Over",
+  },
+
+  "van-rysel": {
+    id: "van-rysel",
+    category: "SPORTS",
+    brand: "VAN RYSEL",
+    name: "미러렌즈 선글라스 타이엔",
+    color: "블랙",
+    price: 69900,
+    image: "/team/sports/vanmirror.png",
+    video: "/team/sports/vanmirror.mp4",
+    description: "압도적인 XXL 시야를 선사하는 가성비 사이클링 미러 선글라스.",
+    size: ["141mm", "65mm", "19mm", "142mm", "135mm"],
+    features: ["폴리카보네이트 및 TR-90 혼합 프레임", "고강도 폴리카보네이트 렌즈"],
+    defaultFit: "Over",
+  },
 };
+
+
 
 
 const recommendedProducts = [
@@ -163,24 +256,85 @@ const recommendedProducts = [
   },
 ];
 
-function Product({ favorites, toggleFavorite, cartItems, updateCart, removeFromCart, }) {
+const recommendedSportsProducts = [
+  {
+    id: "blue-avro",
+    brand: "BLUE ELEPHANT",
+    name: "AVRO purple crystal",
+    price: 69900,
+    image: "/team/sports/blueavro.png",
+  },
+  {
+    id: "oakley-sutro",
+    brand: "오클리",
+    name: "수처 자켓",
+    price: 328800,
+    originalPrice: 411000,
+    image: "/team/sports/okely.png",
+  },
+  {
+    id: "revo-thunder",
+    brand: "REVO",
+    name: "THUNDER 00",
+    price: 240000,
+    image: "/team/sports/revo.png",
+  },
+  {
+    id: "poc-elicit",
+    brand: "POC",
+    name: "Elicit 선글라스",
+    price: 460000,
+    image: "/team/sports/poc.png",
+  },
+  {
+    id: "rudy-spinshield",
+    brand: "RUDY PROJECT",
+    name: "스핀쉴드 프로",
+    price: 250000,
+    image: "/team/sports/rudyspin.png",
+  },
+  {
+    id: "van-rysel",
+    brand: "VAN RYSEL",
+    name: "미러렌즈 선글라스 타이엔",
+    price: 69900,
+    image: "/team/sports/vanmirror.png",
+  },
+];
+
+function Product({
+  favorites,
+  toggleFavorite,
+  cartItems,
+  updateCart,
+  removeFromCart,
+}) {
   const { productId = "new-her" } = useParams();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [productId]);
   const [isSizeGuideOpen, setIsSizeGuideOpen] = useState(false);
   const product = products[productId] ?? products["new-her"];
+  const currentRecommendations =
+    product.category === "SPORTS"
+      ? recommendedSportsProducts
+      : recommendedProducts;
+
   const randomRecommendedProducts = useMemo(() => {
-    return [...recommendedProducts]
+    return [...currentRecommendations]
       .filter((item) => item.id !== product.id)
       .sort(() => Math.random() - 0.5)
       .slice(0, 3);
-  }, [product.id]);
+  }, [product.id, currentRecommendations]);
 
   return (
     <main className="product-detail">
-      <Link className="product-breadcrumb" to="/classic">
-        <span aria-hidden="true">〈</span> CLASSIC
+      <Link
+        className="product-breadcrumb"
+        to={product.category === "SPORTS" ? "/sports" : "/classic"}
+      >
+        <span aria-hidden="true">〈</span>{" "}
+        {product.category ?? "CLASSIC"}
       </Link>
 
       <ProductDetailSummary
