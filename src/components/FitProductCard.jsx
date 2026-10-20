@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./FitProductCard.css";
 
@@ -6,8 +5,11 @@ function formatPrice(price) {
   return `${price.toLocaleString("ko-KR")}원`;
 }
 
-function FitProductCard({ product }) {
-  const [isFavorite, setIsFavorite] = useState(false);
+function FitProductCard({
+  product,
+  isFavorite = false,
+  onToggleFavorite,
+}) {
   const navigate = useNavigate();
 
   const { id, brand, name, price, originalPrice, discountRate, image } =
@@ -59,7 +61,7 @@ function FitProductCard({ product }) {
           aria-pressed={isFavorite}
           onClick={(event) => {
             event.stopPropagation();
-            setIsFavorite((favorite) => !favorite);
+            onToggleFavorite?.();
           }}
         >
           <svg viewBox="0 0 24 24" aria-hidden="true">

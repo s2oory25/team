@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-import { Link, useParams} from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import FitProductCard from "../components/FitProductCard.jsx";
 import ProductDetailSummary from "../components/ProductDetailSummary.jsx";
 import FitSelector from "../components/FitSelector.jsx";
@@ -25,22 +25,22 @@ const products = {
   },
 
   "rayclassic": {
-  id: "rayclassic",
-  brand: "RAY-BAN",
-  name: "ORIGINAL WAYFARER CLASSIC",
-  color: "52mm",
-  price: 270000,
-  image: "/team/classic/rayclassic.png",
-  video: "/team/classic/rayclassic.mp4",
-  description: "대체 불가능한 헤리티지, 선글라스의 영원한 세계 표준.",
-  size: ["52mm", "44mm", "22mm", "145mm", "150mm"],
-  features: [
-    "블랙 아세테이트 프레임",
-    "UV 100% 차단 그린 블랙 글라스 렌즈",
-    "스퀘어 쉐입"
-  ],
-  defaultFit: "Regular"
-},
+    id: "rayclassic",
+    brand: "RAY-BAN",
+    name: "ORIGINAL WAYFARER CLASSIC",
+    color: "52mm",
+    price: 270000,
+    image: "/team/classic/rayclassic.png",
+    video: "/team/classic/rayclassic.mp4",
+    description: "대체 불가능한 헤리티지, 선글라스의 영원한 세계 표준.",
+    size: ["52mm", "44mm", "22mm", "145mm", "150mm"],
+    features: [
+      "블랙 아세테이트 프레임",
+      "UV 100% 차단 그린 블랙 글라스 렌즈",
+      "스퀘어 쉐입"
+    ],
+    defaultFit: "Regular"
+  },
 
   "gmsoho": {
     id: "gmsoho",
@@ -78,40 +78,41 @@ const products = {
   },
 
   "persol": {
-  id: "persol",
-  brand: "Persol",
-  name: "PO0649NE - Total Black Arrow",
-  color: "54mm",
-  price: 615000,
-  originalPrice: 1065000,
-  image: "/team/classic/persol.png",
-  video: "/team/classic/persol.mp4",
-  description: "올블랙의 시크함으로 재해석한 페르솔의 독보적인 클래식 아이콘.",
-  size: ["54mm", "49.3mm", "20mm", "141mm", "140mm"],
-  features: [
-    "블랙 아세테이트 프레임",
-    "블루 그라데이션 편광 크리스탈 렌즈",
-  ],
-  defaultFit: "Regular"
+    id: "persol",
+    brand: "Persol",
+    name: "PO0649NE - Total Black Arrow",
+    color: "54mm",
+    price: 615000,
+    originalPrice: 1065000,
+    image: "/team/classic/persol.png",
+    video: "/team/classic/persol.mp4",
+    description: "올블랙의 시크함으로 재해석한 페르솔의 독보적인 클래식 아이콘.",
+    size: ["54mm", "49.3mm", "20mm", "141mm", "140mm"],
+    features: [
+      "블랙 아세테이트 프레임",
+      "블루 그라데이션 편광 크리스탈 렌즈",
+      "클래식한 쉐입"
+    ],
+    defaultFit: "Regular"
   },
 
   "celine": {
-  id: "celine",
-  brand: "CELINE",
-  name: "트리옹프 01",
-  color: "블랙",
-  price: 730000,
-  image: "/team/classic/celine.png",
-  video: "/team/classic/celine.mp4",
-  description: "골드 트리옹프의 우아함이 돋보이는 트렌디한 오발 셰이프의 정석.",
-  size: ["52mm", "38mm", "22mm", "144mm", "145mm"],
-  features: [
-    "블랙 아세테이트 프레임",
-    "UVA 및 UVB 차단 렌즈",
-    "트리옹프 시그니처 디테일의 템플",
-    "오벌 프레임"
-  ],
-  defaultFit: "Regular"
+    id: "celine",
+    brand: "CELINE",
+    name: "트리옹프 01",
+    color: "블랙",
+    price: 730000,
+    image: "/team/classic/celine.png",
+    video: "/team/classic/celine.mp4",
+    description: "골드 트리옹프의 우아함이 돋보이는 트렌디한 오발 셰이프의 정석.",
+    size: ["52mm", "38mm", "22mm", "144mm", "145mm"],
+    features: [
+      "블랙 아세테이트 프레임",
+      "UVA 및 UVB 차단 렌즈",
+      "트리옹프 시그니처 디테일의 템플",
+      "오벌 프레임"
+    ],
+    defaultFit: "Regular"
   },
 };
 
@@ -138,7 +139,7 @@ const recommendedProducts = [
     price: 69900,
     image: "/team/classic/blueSblack.png",
   },
-    {
+  {
     id: "new-her",
     brand: "GENTLE MONSTER",
     name: "뉴 허 01",
@@ -162,20 +163,19 @@ const recommendedProducts = [
   },
 ];
 
-function Product() {
+function Product({ favorites, toggleFavorite, cartItems, updateCart, removeFromCart, }) {
   const { productId = "new-her" } = useParams();
   useEffect(() => {
-  window.scrollTo(0, 0);
-}, [productId]);
-  const [isAddedToCart, setIsAddedToCart] = useState(false);
+    window.scrollTo(0, 0);
+  }, [productId]);
   const [isSizeGuideOpen, setIsSizeGuideOpen] = useState(false);
   const product = products[productId] ?? products["new-her"];
   const randomRecommendedProducts = useMemo(() => {
-  return [...recommendedProducts]
-    .filter((item) => item.id !== product.id)
-    .sort(() => Math.random() - 0.5)
-    .slice(0, 3);
-}, [product.id]);
+    return [...recommendedProducts]
+      .filter((item) => item.id !== product.id)
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 3);
+  }, [product.id]);
 
   return (
     <main className="product-detail">
@@ -184,11 +184,15 @@ function Product() {
       </Link>
 
       <ProductDetailSummary
+        key={product.id}
         product={product}
         showDiscountRate={true}
         showOriginalPrice={true}
-        isAddedToCart={isAddedToCart}
-        onAddToCart={() => setIsAddedToCart(true)}
+        isFavorite={favorites.includes(product.id)}
+        onToggleFavorite={() => toggleFavorite(product.id)}
+        cartQuantity={cartItems[product.id] ?? 0}
+        onAddToCart={(quantity) => updateCart(product.id, quantity)}
+        onRemoveFromCart={() => removeFromCart(product.id)}
       />
 
       <section className="product-gallery" aria-label="상품 이미지">
@@ -224,39 +228,39 @@ function Product() {
             <div className="product-size-heading">
               <h3>Size</h3>
               <button
-              type="button"
-              className="size-guide-button"
-              onClick={() => setIsSizeGuideOpen(true)}
+                type="button"
+                className="size-guide-button"
+                onClick={() => setIsSizeGuideOpen(true)}
               >
                 Size Guide &gt;
               </button>
             </div>
-            
-              <dl>
-                {["렌즈 가로", "렌즈 세로", "브릿지", "프레임 정면", "다리 길이"].map(
-                  (label, index) => (
-                    <div key={label}>
-                      <dt>{label}</dt>
-                      <dd>{product.size[index]}</dd>
-                    </div>
-                  )
-                )}
-              </dl>
+
+            <dl>
+              {["렌즈 가로", "렌즈 세로", "브릿지", "프레임 정면", "다리 길이"].map(
+                (label, index) => (
+                  <div key={label}>
+                    <dt>{label}</dt>
+                    <dd>{product.size[index]}</dd>
+                  </div>
+                )
+              )}
+            </dl>
           </div>
 
-  <div>
-    <h3>Features</h3>
-    <ul>
-      {product.features.map((feature) => (
-        <li key={feature}>{feature}</li>
-      ))}
-    </ul>
-  </div>
+          <div>
+            <h3>Features</h3>
+            <ul>
+              {product.features.map((feature) => (
+                <li key={feature}>{feature}</li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         <div className="product-fit">
           <h3>Fit</h3>
-          <FitSelector 
+          <FitSelector
             key={product.id}
             options={["Small", "Regular", "Over"]}
             selectedIndex={
@@ -268,11 +272,16 @@ function Product() {
 
       <section className="product-recommendations" aria-labelledby="fit-for-you-title">
         <h2 id="fit-for-you-title">Fit for you</h2>
-          <div className="recommended-products">
-            {randomRecommendedProducts.map((item) => (
-              <FitProductCard key={item.id} product={item} />
-            ))}
-          </div>
+        <div className="recommended-products">
+          {randomRecommendedProducts.map((item) => (
+            <FitProductCard
+              key={item.id}
+              product={item}
+              isFavorite={favorites.includes(item.id)}
+              onToggleFavorite={() => toggleFavorite(item.id)}
+            />
+          ))}
+        </div>
       </section>
       {isSizeGuideOpen && (
         <div

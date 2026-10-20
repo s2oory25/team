@@ -10,14 +10,18 @@ function ProductDetailSummary({
   product,
   showDiscountRate = true,
   showOriginalPrice = true,
-  isAddedToCart = false,
+  isFavorite = false,
+  onToggleFavorite,
+  cartQuantity = 0,
   onAddToCart,
+  onRemoveFromCart,
 }) {
   const navigate = useNavigate();
-  const [isFavorite, setIsFavorite] = useState(false);
   const [quantity, setQuantity] = useState(1);
+  const isInCart = cartQuantity > 0;
+  const isSameQuantity = isInCart && quantity === cartQuantity;
   const decreaseQuantity = () => {
-  setQuantity((prev) => Math.max(1, prev - 1));
+    setQuantity((prev) => Math.max(1, prev - 1));
   };
 
   const increaseQuantity = () => {
@@ -45,7 +49,7 @@ function ProductDetailSummary({
           type="button"
           aria-label={isFavorite ? `${name} 좋아요 취소` : `${name} 좋아요`}
           aria-pressed={isFavorite}
-          onClick={() => setIsFavorite((favorite) => !favorite)}
+          onClick={onToggleFavorite}
         >
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z" />
@@ -109,9 +113,15 @@ function ProductDetailSummary({
           <button
             className="product-cart-button"
             type="button"
-            onClick={onAddToCart}
+            onClick={() => {
+              if (isSameQuantity) {
+                onRemoveFromCart();
+              } else {
+                onAddToCart(quantity);
+              }
+            }}
           >
-            {isAddedToCart ? "담았어요" : "장바구니 담기"}
+            {isSameQuantity ? "장바구니에서 빼기" : "장바구니 담기"}
           </button>
           <button
             className="product-buy-button"
@@ -129,7 +139,9 @@ function ProductDetailSummary({
           </button>
         </div>
         <p className="product-cart-message" aria-live="polite">
-          {isAddedToCart ? "장바구니에 담았습니다." : ""}
+          {isInCart
+            ? `현재 장바구니에 ${cartQuantity}개 담겨 있습니다.`
+            : ""}
         </p>
       </div>
     </section>

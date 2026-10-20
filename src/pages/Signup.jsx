@@ -42,12 +42,13 @@ function Signup() {
       nextErrors.email = "올바른 이메일 형식을 입력해주세요.";
     }
 
-    if (form.password.length < 8) {
-      nextErrors.password = "비밀번호는 8자 이상이어야 합니다.";
-    } else if (!specialCharacterPattern.test(form.password)) {
-      nextErrors.password = "비밀번호에 특수문자를 포함해주세요.";
+    if (
+      form.password.length < 8 ||
+      !specialCharacterPattern.test(form.password)
+    ) {
+      nextErrors.password =
+        "비밀번호는 8자 이상, 특수문자를 포함해주세요.";
     }
-
     setErrors(nextErrors);
 
     if (Object.keys(nextErrors).length === 0) {

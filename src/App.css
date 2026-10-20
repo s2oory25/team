@@ -1698,3 +1698,36 @@ html {
     height: 15px;
   }
 }
+
+/* 헤더 좋아요·장바구니 숫자 배지 */
+.header-right .desktop-text,
+.header-right .tablet-icon {
+  position: relative;
+}
+
+.header-count {
+  position: absolute;
+  top: -12px;
+  right: -14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: #111;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* 모바일은 기존처럼 좋아요·장바구니 숨김 */
+@media (max-width: 767px) {
+  .header-right .desktop-text,
+  .header-right .tablet-icon {
+    display: none;
+  }
+}
