@@ -2,12 +2,12 @@ import { useMemo, useState } from "react";
 import ProductCard from "../components/ProductCard.jsx";
 
 const products = [
-  { id: 1, brand: "CHARLES&KEITH", name: "브레아 라운드 선글라스", price: 109900, shape: "oval",  image: "/team/casual/charles.png" },
-  { id: 2, brand: "오클리", name: "아이 자켓 리덕스", price: 261000, shape: "soft-square", image: "/team/casual/okelyi.png" },
-  { id: 3, brand: "RAY-BEN", name: "클럽 마스터", price: 204800, originalPrice: 256000, shape: "square", image: "/team/casual/rayclub.png" },
-  { id: 4, brand: "LE SPECS", name: "마스카라 1475 블랙", price: 138000, originalPrice: 230000, shape: "oval", image: "/team/casual/lespecs1475.png"},
-  { id: 5, brand: "베나코 폰타나", name: "BWF513BK", price: 89000, originalPrice: 179000, shape: "soft-square", image: "/team/casual/venaco.png" },
-  { id: 6, brand: "IZIPIZI", name: "#E Black", price: 99000, shape: "square", image: "/team/casual/izipizi.png"},
+  { id: "charles-brea", brand: "CHARLES&KEITH", name: "브레아 라운드 선글라스", price: 109900, shape: "oval", image: "/team/casual/charles.png" },
+  { id: "oakley-eye-jacket", brand: "오클리", name: "아이 자켓 리덕스", price: 261000, shape: "soft-square", image: "/team/casual/okelyi.png" },
+  { id: "rayban-clubmaster", brand: "RAY-BAN", name: "클럽 마스터", price: 204800, originalPrice: 256000, shape: "square", image: "/team/casual/rayclub.png" },
+  { id: "lespecs-mascarra", brand: "LE SPECS", name: "마스카라 1475 블랙", price: 138000, originalPrice: 230000, shape: "oval", image: "/team/casual/lespecs1475.png" },
+  { id: "venaco-bwf513bk", brand: "베나코 폰타나", name: "BWF513BK", price: 89000, originalPrice: 179000, shape: "soft-square", image: "/team/casual/venaco.png" },
+  { id: "izipizi-e-black", brand: "IZIPIZI", name: "#E Black", price: 99000, shape: "square", image: "/team/casual/izipizi.png" },
 ];
 
 function Casual() {

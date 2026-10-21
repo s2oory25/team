@@ -1,14 +1,61 @@
 import { useMemo, useState } from "react";
 import ProductCard from "../components/ProductCard.jsx";
 
+
 const products = [
-  { id: 1, brand: "RAY-BEN", name: "RB4441D", price: 172800, originalPrice: 216000, shape: "oval",  image: "/team/trendy/ray4441d.png" },
-  { id: 2, brand: "BLUE ELEPHANT", name: "POSTIQ black", price: 69900, shape: "soft-square", image: "/team/trendy/bluepostiq.png" },
-  { id: 3, brand: "MONCLER", name: "Cirsee 파일럿 선글라스", price: 700000, shape: "square", image: "/team/trendy/moncler.png" },
-  { id: 4, brand: "PRADA", name: "Linea Rossa sunglasses", price: 610000, shape: "oval", image: "/team/trendy/prada.png"},
-  { id: 5, brand: "와키윌리", name: "아세테이트 TUTU 선글라스", price: 41580, originalPrice: 99000, shape: "soft-square", image: "/team/trendy/tutu.png" },
-  { id: 6, brand: "로맨틱누어", name: "PULSE B1", price: 64960, originalPrice: 116000, shape: "square", image: "/team/trendy/pulse.png"},
+  {
+    id: "rayban-rb4441d",
+    brand: "RAY-BEN",
+    name: "RB4441D",
+    price: 172800,
+    originalPrice: 216000,
+    shape: "oval",
+    image: "/team/trendy/ray4441d.png",
+  },
+  {
+    id: "blue-elephant-postiq",
+    brand: "BLUE ELEPHANT",
+    name: "POSTIQ black",
+    price: 69900,
+    shape: "soft-square",
+    image: "/team/trendy/bluepostiq.png",
+  },
+  {
+    id: "moncler-cirsee",
+    brand: "MONCLER",
+    name: "Cirsee 파일럿 선글라스",
+    price: 700000,
+    shape: "square",
+    image: "/team/trendy/moncler.png",
+  },
+  {
+    id: "prada-linea-rossa",
+    brand: "PRADA",
+    name: "Linea Rossa sunglasses",
+    price: 610000,
+    shape: "oval",
+    image: "/team/trendy/prada.png",
+  },
+  {
+    id: "wakilly-tutu",
+    brand: "와키윌리",
+    name: "아세테이트 TUTU 선글라스",
+    price: 41580,
+    originalPrice: 99000,
+    shape: "soft-square",
+    image: "/team/trendy/tutu.png",
+  },
+  {
+    id: "romantic-noir-pulse",
+    brand: "로맨틱누어",
+    name: "PULSE B1",
+    price: 64960,
+    originalPrice: 116000,
+    shape: "square",
+    image: "/team/trendy/pulse.png",
+  },
 ];
+
 
 function Trendy() {
   const [sortOrder, setSortOrder] = useState("popular");

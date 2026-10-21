@@ -206,6 +206,188 @@ export const products = {
     defaultFit: "Over",
   },
 
+    "charles-brea": {
+    id: "charles-brea",
+    category: "CASUAL",
+    brand: "CHARLES&KEITH",
+    name: "브레아 라운드 선글라스",
+    color: "블랙",
+    price: 109900,
+    image: "/team/casual/charles.png",
+    description: "일상적인 스타일에 자연스럽게 어울리는 라운드 선글라스.",
+    size: ["정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요"],
+    features: ["라운드 프레임"],
+    defaultFit: "Regular",
+  },
+
+  "oakley-eye-jacket": {
+    id: "oakley-eye-jacket",
+    category: "CASUAL",
+    brand: "오클리",
+    name: "아이 자켓 리덕스",
+    color: "블랙",
+    price: 261000,
+    image: "/team/casual/okelyi.png",
+    description: "독특한 프레임 디자인이 돋보이는 캐주얼 선글라스.",
+    size: ["정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요"],
+    features: ["소프트 스퀘어 프레임"],
+    defaultFit: "Regular",
+  },
+
+  "rayban-clubmaster": {
+    id: "rayban-clubmaster",
+    category: "CASUAL",
+    brand: "RAY-BAN",
+    name: "클럽 마스터",
+    color: "블랙",
+    price: 204800,
+    originalPrice: 256000,
+    image: "/team/casual/rayclub.png",
+    description: "클래식한 브로우 라인이 돋보이는 선글라스.",
+    size: ["정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요"],
+    features: ["스퀘어 프레임"],
+    defaultFit: "Regular",
+  },
+
+  "lespecs-mascarra": {
+    id: "lespecs-mascarra",
+    category: "CASUAL",
+    brand: "LE SPECS",
+    name: "마스카라 1475 블랙",
+    color: "블랙",
+    price: 138000,
+    originalPrice: 230000,
+    image: "/team/casual/lespecs1475.png",
+    description: "데일리 스타일에 매치하기 좋은 블랙 선글라스.",
+    size: ["정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요"],
+    features: ["오벌 프레임"],
+    defaultFit: "Regular",
+  },
+
+  "venaco-bwf513bk": {
+    id: "venaco-bwf513bk",
+    category: "CASUAL",
+    brand: "베나코 폰타나",
+    name: "BWF513BK",
+    color: "블랙",
+    price: 89000,
+    originalPrice: 179000,
+    image: "/team/casual/venaco.png",
+    description: "편안한 일상 스타일을 위한 캐주얼 선글라스.",
+    size: ["정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요"],
+    features: ["소프트 스퀘어 프레임"],
+    defaultFit: "Regular",
+  },
+
+  "izipizi-e-black": {
+    id: "izipizi-e-black",
+    category: "CASUAL",
+    brand: "IZIPIZI",
+    name: "#E Black",
+    color: "블랙",
+    price: 99000,
+    image: "/team/casual/izipizi.png",
+    description: "간결한 디자인으로 다양한 데일리 룩에 어울리는 선글라스.",
+    size: ["정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요"],
+    features: ["스퀘어 프레임"],
+    defaultFit: "Regular",
+  },
+
+
+  // 트렌디 상품 1: RAY-BEN RB4441D
+  "rayban-rb4441d": {
+    id: "rayban-rb4441d",
+    category: "TRENDY",
+    brand: "RAY-BEN",
+    name: "RB4441D",
+    color: "블랙",
+    price: 172800,
+    originalPrice: 216000,
+    image: "/team/trendy/ray4441d.png",
+    description: "개성 있는 오벌 프레임으로 스타일을 살려주는 트렌디 선글라스.",
+    size: ["정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요"],
+    features: ["오벌 프레임"],
+    defaultFit: "Regular",
+  },
+
+  // 트렌디 상품 2: BLUE ELEPHANT POSTIQ
+  "blue-elephant-postiq": {
+    id: "blue-elephant-postiq",
+    category: "TRENDY",
+    brand: "BLUE ELEPHANT",
+    name: "POSTIQ black",
+    color: "블랙",
+    price: 69900,
+    image: "/team/trendy/bluepostiq.png",
+    description: "감각적인 소프트 스퀘어 디자인의 데일리 선글라스.",
+    size: ["정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요"],
+    features: ["소프트 스퀘어 프레임"],
+    defaultFit: "Regular",
+  },
+
+  // 트렌디 상품 3: MONCLER Cirsee
+  "moncler-cirsee": {
+    id: "moncler-cirsee",
+    category: "TRENDY",
+    brand: "MONCLER",
+    name: "Cirsee 파일럿 선글라스",
+    color: "블랙",
+    price: 700000,
+    image: "/team/trendy/moncler.png",
+    description: "파일럿 스타일의 프레임으로 개성을 강조하는 선글라스.",
+    size: ["정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요"],
+    features: ["스퀘어 프레임"],
+    defaultFit: "Regular",
+  },
+
+  // 트렌디 상품 4: PRADA Linea Rossa
+  "prada-linea-rossa": {
+    id: "prada-linea-rossa",
+    category: "TRENDY",
+    brand: "PRADA",
+    name: "Linea Rossa sunglasses",
+    color: "블랙",
+    price: 610000,
+    image: "/team/trendy/prada.png",
+    description: "세련된 디자인으로 패션 스타일을 완성하는 선글라스.",
+    size: ["정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요"],
+    features: ["오벌 프레임"],
+    defaultFit: "Regular",
+  },
+
+  // 트렌디 상품 5: 와키윌리 TUTU
+  "wakilly-tutu": {
+    id: "wakilly-tutu",
+    category: "TRENDY",
+    brand: "와키윌리",
+    name: "아세테이트 TUTU 선글라스",
+    color: "블랙",
+    price: 41580,
+    originalPrice: 99000,
+    image: "/team/trendy/tutu.png",
+    description: "아세테이트 프레임으로 개성을 더하는 캐주얼 선글라스.",
+    size: ["정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요"],
+    features: ["소프트 스퀘어 프레임"],
+    defaultFit: "Regular",
+  },
+
+  // 트렌디 상품 6: 로맨틱누어 PULSE B1
+  "romantic-noir-pulse": {
+    id: "romantic-noir-pulse",
+    category: "TRENDY",
+    brand: "로맨틱누어",
+    name: "PULSE B1",
+    color: "블랙",
+    price: 64960,
+    originalPrice: 116000,
+    image: "/team/trendy/pulse.png",
+    description: "모던한 스퀘어 프레임으로 스타일을 강조하는 선글라스.",
+    size: ["정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요"],
+    features: ["스퀘어 프레임"],
+    defaultFit: "Regular",
+  },
+
+
     // 셀럽픽 상품 1: 뷔 - 스피드
   "celeb-speed": {
     id: "celeb-speed",
@@ -375,6 +557,7 @@ function Product({
 
   return (
     <main className="product-detail">
+
     <Link
       className="product-breadcrumb"
       to={
@@ -382,12 +565,17 @@ function Product({
           ? "/sports"
           : product.category === "CELEB PICK"
           ? "/celeb"
+          : product.category === "CASUAL"
+          ? "/casual"
+          : product.category === "TRENDY"
+          ? "/trendy"
           : "/classic"
       }
     >
       <span aria-hidden="true">〈</span>{" "}
       {product.category ?? "CLASSIC"}
     </Link>
+
 
       <ProductDetailSummary
         key={product.id}
