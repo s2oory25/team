@@ -6,13 +6,14 @@
 
 .celeb-page-root {
   width: 100%;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 200px);
+  min-height: 0;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
+  background-color: #fff;
   font-family: "SUIT", Arial, sans-serif;
-  color: #111111;
+  color: #111;
 }
 
 /* 중앙 메인 컨텐츠 영역 */
@@ -20,10 +21,9 @@
   flex: 1;
   width: 100%;
   max-width: 1440px;
-  height: 100%;
   min-height: 0;
   margin: 0 auto;
-  padding: 36px 40px;
+  padding: 24px 40px;
   position: relative;
 }
 
@@ -31,29 +31,23 @@
 .celeb-title {
   text-align: left;
   font-family: "SUIT", Arial, sans-serif;
-  font-size: 36px;
+  font-size: 40px;
   font-weight: 400;
   letter-spacing: 0.01em;
-  color: #111111;
-  margin-bottom: 24px;
-
-  transform: translate(80px, 30px);
+  color: #111;
+  margin: 0  0 24px 40px;
+  transform: none;
 }
 
-/* 기본 PC 그리드: 가로 3열 */
 .celeb-cards-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 32px;
+  gap: 24px;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1080px;
   margin: 0 auto;
-
-    /* 카드 영역만 세로 중앙 배치 */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: static;
+  transform: none;
 }
 
 .card-tablet-only {
@@ -69,11 +63,12 @@
   overflow: hidden;
   background-color: #f2f2f2;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-  transition: transform 0.25s ease;
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
 .celeb-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
 }
 
 .celeb-card-img {
@@ -83,6 +78,11 @@
   display: block;
 }
 
+.celeb-card,
+.celeb-card * {
+  cursor: pointer;
+}
+
 /* 하단 반투명 정보 바 */
 .celeb-card-overlay {
   position: absolute;
@@ -90,7 +90,7 @@
   left: 14px;
   right: 14px;
   background-color: rgba(26, 26, 26, 0.74);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(1px);
   -webkit-backdrop-filter: blur(8px);
   border-radius: 8px;
   padding: 10px 14px;
@@ -150,6 +150,24 @@
   color: #e0e0e0;
   line-height: 1.2;
   margin-top: 2px;
+}
+
+@media (min-width: 1025px) {
+  .celeb-cards-grid {
+    margin-top: 70px;
+    gap: 28px;
+    max-width: 1200px;
+  }
+
+  .celeb-card {
+    height: min(58vh, 500px);
+    aspect-ratio: auto;
+  }
+
+    .celeb-title {
+    transform: translate(40px, 20px);
+    margin-top: 0;
+  }
 }
 
 /* 반응형: 태블릿 */

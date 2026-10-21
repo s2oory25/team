@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
 
-function Header({ onMenuClick, onLogoClick, onLoginClick, favoriteCount = 0, cartCount = 0, }) {
+function Header({
+  onMenuClick,
+  onLogoClick,
+  onLoginClick,
+  onCartClick,
+  favoriteCount = 0,
+  cartCount = 0,
+}){
   return (
     <header className="header">
       <div className="header-left">
@@ -46,23 +53,28 @@ function Header({ onMenuClick, onLogoClick, onLoginClick, favoriteCount = 0, car
           )}
         </a>
 
-        <a className="desktop-text" href="#cart">
+        <Link
+          className="desktop-text"
+          to="/cart"
+          onClick={onCartClick}
+        >
           장바구니
           {cartCount > 0 && (
             <span className="header-count">{cartCount}</span>
           )}
-        </a>
+        </Link>
 
-        <a
+        <Link
           className="tablet-icon cart-icon"
-          href="#cart"
+          to="/cart"
           aria-label={`장바구니 ${cartCount}개`}
+          onClick={onCartClick}
         >
           <img src="/team/header_png/cart.png" alt="" />
           {cartCount > 0 && (
             <span className="header-count">{cartCount}</span>
           )}
-        </a>
+        </Link>
 
         <button
           className="header-login-button"

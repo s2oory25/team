@@ -5,7 +5,7 @@ import ProductDetailSummary from "../components/ProductDetailSummary.jsx";
 import FitSelector from "../components/FitSelector.jsx";
 import "./Product.css";
 
-const products = {
+export const products = {
   "new-her": {
     id: "new-her",
     brand: "GENTLE MONSTER",
@@ -205,10 +205,56 @@ const products = {
     features: ["폴리카보네이트 및 TR-90 혼합 프레임", "고강도 폴리카보네이트 렌즈"],
     defaultFit: "Over",
   },
+
+    // 셀럽픽 상품 1: 뷔 - 스피드
+  "celeb-speed": {
+    id: "celeb-speed",
+    category: "CELEB PICK",
+    brand: "CARVEN",
+    name: "스피드",
+    color: "그레이",
+    price: 210000,
+    image: "/team/celeb/carven.png",
+    video: "/team/celeb/carven.mp4",
+    description: "BTS 뷔 착용, 지코 착용, 세븐틴 조슈아, 민규 착용",
+    size: ["57mm", "37mm", "21mm", "140mm", "130mm"],
+    features: ["아세테이트 프레임", "볼드 와이드 템플", "실버 메탈 힌지"],
+    defaultFit: "Regular",
+  },
+
+  // 셀럽픽 상품 2: 정해인 - 사이버 다이노
+  "celeb-cyber-dino": {
+    id: "celeb-cyber-dino",
+    category: "CELEB PICK",
+    brand: "오클리",
+    name: "사이버 다이노",
+    color: "매트 화이트",
+    price: 328800,
+    originalPrice: 411000,
+    image: "/team/celeb/syber.png",
+    video: "/team/celeb/syber.mp4",
+    description: "정해인 착용",
+    size: ["134mm", "51mm", "0mm", "153mm", "125mm"],
+    features: ["오메터 프레임", "플루토나이트 렌즈","변색 기능","UVA/UVB 100% 차단"],
+    defaultFit: "Over",
+  },
+
+  // 셀럽픽 상품 3: 카리나 - 쿠스쿠스
+  "celeb-couscous": {
+    id: "celeb-couscous",
+    category: "CELEB PICK",
+    brand: "GENTLE MONSTER",
+    name: "쿠스쿠스",
+    color: "블랙/블랙",
+    price: 290000,
+    image: "/team/celeb/cuscus.png",
+    video: "/team/celeb/cuscus.mp4",
+    description: "카리나 착용",
+    size: ["55.4mm", "34.1mm", "19mm", "146mm", "145.8mm"],
+    features: ["블랙 아세테이트 프레임", "UV 99.9% 차단"],
+    defaultFit: "Regular",
+  },
 };
-
-
-
 
 const recommendedProducts = [
   {
@@ -329,13 +375,19 @@ function Product({
 
   return (
     <main className="product-detail">
-      <Link
-        className="product-breadcrumb"
-        to={product.category === "SPORTS" ? "/sports" : "/classic"}
-      >
-        <span aria-hidden="true">〈</span>{" "}
-        {product.category ?? "CLASSIC"}
-      </Link>
+    <Link
+      className="product-breadcrumb"
+      to={
+        product.category === "SPORTS"
+          ? "/sports"
+          : product.category === "CELEB PICK"
+          ? "/celeb"
+          : "/classic"
+      }
+    >
+      <span aria-hidden="true">〈</span>{" "}
+      {product.category ?? "CLASSIC"}
+    </Link>
 
       <ProductDetailSummary
         key={product.id}

@@ -1,5 +1,11 @@
+
 import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import "./App.css";
 
 import Header from "./components/Header.jsx";
@@ -8,6 +14,9 @@ import Home from "./pages/Home.jsx";
 import Login from "./pages/Login.jsx";
 import Signup from "./pages/Signup.jsx";
 import Welcome from "./pages/Welcome.jsx";
+import Cart from "./pages/Cart.jsx";
+import { products } from "./pages/Product.jsx";
+import AiFitting from "./pages/AiFitting.jsx";
 import Classic from "./pages/Classic.jsx";
 import Casual from "./pages/Casual.jsx";
 import Sports from "./pages/Sports.jsx";
@@ -16,6 +25,7 @@ import Celeb from "./pages/Celeb";
 import Product from "./pages/Product.jsx";
 import Payment from "./pages/Payment.jsx";
 import GuestOrderLookup from "./pages/GuestOrderLookup.jsx";
+import GuestOrderLookupPage from "./pages/GuestOrderLookup.jsx";
 import Footer from "./components/Footer.jsx";
 
 function PageFooter() {
@@ -56,6 +66,69 @@ function App() {
     }
   });
 
+  // AI 맞춤 서비스 이미지 업로드 상태
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
+  const [photoPreview, setPhotoPreview] = useState("");
+  const [analysisMessage, setAnalysisMessage] = useState("");
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [hasAnalyzed, setHasAnalyzed] = useState(false);
+
+  // 이미지 선택 및 미리보기
+  function handlePhotoChange(event) {
+    const file = event.target.files?.[0];
+
+    if (!file) return;
+
+    if (!file.type.startsWith("image/")) {
+      alert("이미지 파일만 선택할 수 있어요.");
+      event.target.value = "";
+      return;
+    }
+
+    if (photoPreview) {
+      URL.revokeObjectURL(photoPreview);
+    }
+
+    setSelectedPhoto(file);
+    setPhotoPreview(URL.createObjectURL(file));
+    setAnalysisMessage("");
+    setHasAnalyzed(false);
+    setIsAnalyzing(false);
+  }
+
+  // AI 분석 화면 초기화
+  function handleRetry() {
+    setHasAnalyzed(false);
+    setIsAnalyzing(false);
+    setAnalysisMessage("");
+  }
+
+  // 분석 버튼 처리: 현재는 화면 확인용 예시 분석
+  function handleAnalyze() {
+    if (!selectedPhoto) {
+      setAnalysisMessage("먼저 얼굴 사진을 불러와 주세요.");
+      return;
+    }
+
+    setIsAnalyzing(true);
+    setAnalysisMessage("");
+
+    // 실제 AI 분석 API가 아닌 화면 테스트용 처리
+    window.setTimeout(() => {
+      setIsAnalyzing(false);
+      setHasAnalyzed(true);
+    }, 1200);
+  }
+
+  // 컴포넌트가 사라질 때 미리보기 URL 정리
+  useEffect(() => {
+    return () => {
+      if (photoPreview) {
+        URL.revokeObjectURL(photoPreview);
+      }
+    };
+  }, [photoPreview]);
+
   // 좋아요 추가 및 취소
   function toggleFavorite(productId) {
     setFavorites((prev) =>
@@ -65,7 +138,7 @@ function App() {
     );
   }
 
-  // 같은 상품은 기존 수량을 새로운 수량으로 변경
+  // 장바구니 상품 수량 변경
   function updateCart(productId, quantity) {
     if (!Number.isInteger(quantity) || quantity < 1) return;
 
@@ -75,7 +148,7 @@ function App() {
     }));
   }
 
-  // 장바구니에서 해당 상품 삭제
+  // 장바구니 상품 삭제
   function removeFromCart(productId) {
     setCartItems((prev) => {
       const updated = { ...prev };
@@ -84,7 +157,7 @@ function App() {
     });
   }
 
-  // 헤더에 표시할 장바구니 총수량
+  // 장바구니 총수량
   const cartCount = Object.values(cartItems).reduce(
     (total, quantity) =>
       total + (Number.isInteger(quantity) && quantity > 0 ? quantity : 0),
@@ -104,6 +177,7 @@ function App() {
     localStorage.setItem("chalfitCart", JSON.stringify(cartItems));
   }, [cartItems]);
 
+  // 메뉴 열림 상태에 따라 배경 스크롤 제어
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
 
@@ -117,8 +191,8 @@ function App() {
   const [styleOpen, setStyleOpen] = useState(false);
   const [customerOpen, setCustomerOpen] = useState(false);
   const [mobileMypageOpen, setMobileMypageOpen] = useState(false);
-
   const [selectedCustomerItem, setSelectedCustomerItem] = useState("");
+
   const [isLoggedIn, setIsLoggedIn] = useState(() => {
     return sessionStorage.getItem("chalfitLogin") === "true";
   });
@@ -166,7 +240,7 @@ function App() {
 
   function navigateTo(path) {
     closeMenu();
-    window.location.hash = path;
+    window.location.href = `/team${path}`;
   }
 
   function handleMenuClick(menu) {
@@ -174,6 +248,7 @@ function App() {
 
     if (menu === "CELEB PICK") {
       closeMenu();
+      navigateTo("/celeb");
       return;
     }
 
@@ -251,10 +326,10 @@ function App() {
           onMenuClick={openMenu}
           onLogoClick={closeMenu}
           onLoginClick={handleLoginClick}
-          favoriteCount={favoriteCount}
+          onCartClick={closeMenu}
           cartCount={cartCount}
+          favoriteCount={favoriteCount}
         />
-
 
         <SideMenu
           menuOpen={menuOpen}
@@ -285,9 +360,70 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/celeb" element={<Celeb />} />
 
-          {/* 회원가입 페이지 */}
+          <Route
+            path="/ai-fitting"
+            element={
+              <AiFitting
+                selectedPhoto={selectedPhoto}
+                setSelectedPhoto={setSelectedPhoto}
+                photoPreview={photoPreview}
+                setPhotoPreview={setPhotoPreview}
+                analysisMessage={analysisMessage}
+                setAnalysisMessage={setAnalysisMessage}
+                isAnalyzing={isAnalyzing}
+                setIsAnalyzing={setIsAnalyzing}
+                hasAnalyzed={hasAnalyzed}
+                setHasAnalyzed={setHasAnalyzed}
+                handlePhotoChange={handlePhotoChange}
+                handleAnalyze={handleAnalyze}
+                handleRetry={handleRetry}
+                products={[
+                  {
+                    id: 1,
+                    name: "뉴 허 01",
+                    price: "289,000원",
+                    shape: "oval",
+                    description: "블랙 오벌 선글라스",
+                    image: "/team/classic/gmNewHer.png",
+                  },
+                  {
+                    id: 2,
+                    name: "소호",
+                    price: "320,000원",
+                    shape: "square",
+                    description: "블랙 스퀘어 선글라스",
+                    image: "/team/classic/gmsoho.png",
+                  },
+                  {
+                    id: 3,
+                    name: "레이밴 클래식",
+                    price: "198,000원",
+                    shape: "round",
+                    description: "클래식 프레임 선글라스",
+                    image: "/team/classic/rayclassic.png",
+                  },
+                ]}
+                sampleFaceShape={{
+                  name: "타원형",
+                  outline: "50,8 70,15 85,35 82,65 65,88 50,95 35,88 18,65 15,35 30,15",
+                }}
+              />
+            }
+          />
+
           <Route path="/signup" element={<Signup />} />
           <Route path="/welcome" element={<Welcome />} />
+          <Route
+            path="/cart"
+            element={
+              <Cart
+                cartItems={cartItems}
+                products={products}
+                updateCart={updateCart}
+                removeFromCart={removeFromCart}
+              />
+            }
+          />
 
           <Route path="/classic" element={<Classic />} />
           <Route path="/sports" element={<Sports />} />
@@ -310,6 +446,7 @@ function App() {
           <Route path="/payment" element={<Payment />} />
           <Route path="/guest-order-lookup" element={<GuestOrderLookup />} />
         </Routes>
+
         {isLoginOpen && (
           <Login
             onClose={() => setIsLoginOpen(false)}
@@ -320,6 +457,7 @@ function App() {
             }}
           />
         )}
+
         <PageFooter />
       </div>
     </BrowserRouter>

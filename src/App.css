@@ -1731,3 +1731,18 @@ html {
     display: none;
   }
 }
+
+/* 셀럽 페이지는 헤더와 푸터 사이에서 높이 계산 */
+.app {
+  min-height: 100vh;
+}
+
+.app:has(.celeb-page-root) {
+  height: 100vh;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.app:has(.celeb-page-root) > .footer {
+  flex-shrink: 0;
+}
