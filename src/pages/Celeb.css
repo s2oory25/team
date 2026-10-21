@@ -168,39 +168,230 @@
     transform: translate(40px, 20px);
     margin-top: 0;
   }
+
+    .celeb-arrow {
+    display: none;
+  }
 }
+
 
 /* 반응형: 태블릿 */
 @media (min-width: 769px) and (max-width: 1024px) {
   .celeb-main-content {
-    padding: 30px 24px 60px 24px;
+    padding: 30px 24px 60px;
   }
+
+  /* 슬라이더 전체 영역 */
+  .celeb-carousel {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 40px auto 0;
+    padding: 0 44px;
+  }
+
+  /* 카드 가로 배치 */
   .celeb-cards-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 20px !important;
+    display: flex;
+    gap: 24px;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 12px;
   }
+
+  .celeb-cards-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* 카드 크기 고정 */
+.celeb-cards-grid .celeb-card {
+  flex: 0 0 373px;
+  width: 373px;
+  min-width: 373px;
+  max-width: 373px;
+  height: 500px;
+  aspect-ratio: auto;
+  scroll-snap-align: start;
+}
+
+  /* 좌우 화살표 */
+.celeb-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  transform: translateY(-50%);
+
+  width: 36px;
+  height: 36px;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  background: #fff;
+  color: #111;
+
+  font-family: "SUIT", sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+.celeb-arrow-icon {
+  display: block;
+  font-family: "SUIT", sans-serif;
+  font-size: 28px;
+  line-height: 1;
+  position: relative;
+}
+
+.celeb-arrow-icon-left {
+  transform: translate(-1px, -2px);
+}
+
+.celeb-arrow-icon-right {
+  transform: translate(1px, -2px);
+}
+
+.celeb-arrow-left {
+  left: 0;
+}
+
+.celeb-arrow-right {
+  right: 0;
+}
   .card-tablet-only {
     display: block !important;
   }
 }
 
 /* 반응형: 모바일 */
+
+/* 모바일 */
 @media (max-width: 768px) {
   .celeb-main-content {
-    padding: 24px 16px 50px 16px;
+    padding: 20px 16px 40px;
   }
+
   .celeb-title {
-    font-size: 20px;
-    margin-bottom: 18px;
+    font-size: 30px;
+    margin: 0 0 25px 32px;
+    transform: none;
+    text-align: left;
   }
+
+  .celeb-carousel {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
   .celeb-cards-grid {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
   }
+
+  .celeb-cards-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .celeb-cards-grid .celeb-card {
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1.15;
+    scroll-snap-align: start;
+  }
+
+  .celeb-card-overlay {
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .overlay-thumb-box {
+    width: 44px;
+    height: 34px;
+  }
+
+  .overlay-tag {
+    font-size: 10px;
+  }
+
+  .overlay-name {
+    font-size: 12px;
+  }
+
+  .overlay-price {
+    font-size: 11px;
+  }
+
+.celeb-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  transform: translateY(-50%);
+
+  width: 36px;
+  height: 36px;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  background: #fff;
+  color: #111;
+
+  font-family: "SUIT", sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.celeb-arrow-left {
+  left: 0;
+  right: auto;
+}
+
+.celeb-arrow-right {
+  right: 0;
+  left: auto;
+}
+
   .card-tablet-only {
     display: none !important;
-  }
-  .celeb-card {
-    aspect-ratio: 1 / 1.28;
   }
 }
