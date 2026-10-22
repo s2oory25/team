@@ -310,8 +310,8 @@ function App() {
   }
 
   function handleLoginClick() {
-    closeMenu();
-    setIsLoginOpen(true);
+  closeMenu();
+  setIsLoginOpen((prev) => !prev);
   }
 
   function handleLogoutClick() {
