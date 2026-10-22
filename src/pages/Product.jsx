@@ -215,9 +215,9 @@ export const products = {
     price: 109900,
     image: "/team/casual/charles.png",
     video: "/team/casual/charles.mp4",
-    description: "일상적인 스타일에 자연스럽게 어울리는 라운드 선글라스.",
-    size: ["정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요"],
-    features: ["라운드 프레임"],
+    description: "클래식한 라운드 쉐입으로 데일리룩에 세련된 포인트를 주는 선글라스.",
+    size: ["50mm", "49mm", "15mm", "134mm", "145mm"],
+    features: ["나일론 플라스틱 프레임", "틴티드 라운드 렌즈", "UV 차단"],
     defaultFit: "Regular",
   },
 
@@ -226,14 +226,14 @@ export const products = {
     category: "CASUAL",
     brand: "오클리",
     name: "아이 자켓 리덕스",
-    color: "블랙",
+    color: "매트 블랙",
     price: 261000,
     image: "/team/casual/okelyi.png",
     video: "/team/casual/okelyi.mp4",
-    description: "독특한 프레임 디자인이 돋보이는 캐주얼 선글라스.",
-    size: ["정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요"],
-    features: ["소프트 스퀘어 프레임"],
-    defaultFit: "Regular",
+    description: "90년대 감성의 타원형 고프코어 선글라스.",
+    size: ["58mm", "43mm", "19mm", "135mm", "137mm"],
+    features: ["오 메터 프레임", "UV 100% 차단 프리즘 그레이 렌즈"],
+    defaultFit: "Small",
   },
 
   "rayban-clubmaster": {
@@ -246,9 +246,9 @@ export const products = {
     originalPrice: 256000,
     image: "/team/casual/rayclub.png",
     video: "/team/casual/rayclub.mp4",
-    description: "클래식한 브로우 라인이 돋보이는 선글라스.",
-    size: ["정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요"],
-    features: ["스퀘어 프레임"],
+    description: "지적이고 클래식한 하금테 선글라스의 영원한 아이콘.",
+    size: ["51mm", "46mm", "21mm", "140mm", "145mm"],
+    features: ["아세테이트 프레임", "아랫부분과 브릿지는 메탈", "UV 100% 차단", "G-15 그린 블랙 글라스 렌즈"],
     defaultFit: "Regular",
   },
 
@@ -262,10 +262,10 @@ export const products = {
     originalPrice: 230000,
     image: "/team/casual/lespecs1475.png",
     video: "/team/casual/lespecs1475.mp4",
-    description: "데일리 스타일에 매치하기 좋은 블랙 선글라스.",
-    size: ["정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요"],
-    features: ["오벌 프레임"],
-    defaultFit: "Regular",
+    description: "트렌디한 레트로 감성의 힙하고 시크한 직사각형 블랙 선글라스.",
+    size: ["51mm", "34mm", "19mm", "150mm", "145mm"],
+    features: ["셀룰로오스 아세테이트 프레임", "CR-39 렌즈"],
+    defaultFit: "Small",
   },
 
   "venaco-bwf513bk": {
@@ -278,10 +278,10 @@ export const products = {
     originalPrice: 179000,
     image: "/team/casual/venaco.png",
     video: "/team/casual/venaco.mp4",
-    description: "편안한 일상 스타일을 위한 캐주얼 선글라스.",
-    size: ["정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요"],
-    features: ["소프트 스퀘어 프레임"],
-    defaultFit: "Regular",
+    description: "이탈리아 감성의 편안하고 힙한 오버사이즈 블랙 선글라스.",
+    size: ["54mm", "47mm", "21mm", "143mm", "145mm"],
+    features: ["와그너 스틸 프레임", "나일론 렌즈"],
+    defaultFit: "Over",
   },
 
   "izipizi-e-black": {
@@ -293,9 +293,9 @@ export const products = {
     price: 99000,
     image: "/team/casual/izipizi.png",
     video: "/team/casual/izipizi.mp4",
-    description: "간결한 디자인으로 다양한 데일리 룩에 어울리는 선글라스.",
-    size: ["정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요"],
-    features: ["스퀘어 프레임"],
+    description: "프랑스 감성의 편안하고 위트 있는 사각형 캐주얼 블랙 선글라스.",
+    size: ["46mm", "40mm", "20mm", "142mm", "145mm"],
+    features: ["폴리카보네이트 프레임", "카테고리 3렌즈", "UV 100% 차단"],
     defaultFit: "Regular",
   },
 
@@ -311,9 +311,9 @@ export const products = {
     originalPrice: 216000,
     image: "/team/trendy/ray4441d.png",
     video: "/team/trendy/ray4441d.mp4",
-    description: "개성 있는 오벌 프레임으로 스타일을 살려주는 트렌디 선글라스.",
-    size: ["정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요"],
-    features: ["오벌 프레임"],
+    description: "트렌디한 긱시크 무드의 가벼운 오벌 뿔테 선글라스.",
+    size: ["53mm", "34mm", "21mm", "143mm", "145mm"],
+    features: ["바이오 인젝티드 프레임", "바이오 나일론 렌즈", "UV 99.9% 차단"],
     defaultFit: "Regular",
   },
 
@@ -327,10 +327,10 @@ export const products = {
     price: 69900,
     image: "/team/trendy/bluepostiq.png",
     video: "/team/trendy/blue_postiq.mp4",
-    description: "감각적인 소프트 스퀘어 디자인의 데일리 선글라스.",
-    size: ["정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요"],
-    features: ["소프트 스퀘어 프레임"],
-    defaultFit: "Regular",
+    description: "힙하고 트렌디한 무드의 볼륨감 있는 직사각형 블랙 선글라스.",
+    size: ["54mm", "34mm", "19mm", "145mm", "155mm"],
+    features: ["아세테이트 프레임", "UV 100% 차단 나일론 렌즈", "블루라이트 차단"],
+    defaultFit: "Over",
   },
 
   // 트렌디 상품 3: MONCLER Cirsee
@@ -343,9 +343,9 @@ export const products = {
     price: 700000,
     image: "/team/trendy/moncler.png",
     video: "/team/trendy/moncler.mp4",
-    description: "파일럿 스타일의 프레임으로 개성을 강조하는 선글라스.",
-    size: ["정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요"],
-    features: ["스퀘어 프레임"],
+    description: "미래지향적으로 재해석한 힙하고 트렌디한 파일럿 선글라스.",
+    size: ["54mm", "49mm", "20mm", "144mm", "145mm"],
+    features: ["아세테이트 프레임", "나일론 렌즈"],
     defaultFit: "Regular",
   },
 
@@ -359,9 +359,9 @@ export const products = {
     price: 610000,
     image: "/team/trendy/prada.png",
     video: "/team/trendy/prada.mp4",
-    description: "세련된 디자인으로 패션 스타일을 완성하는 선글라스.",
-    size: ["정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요"],
-    features: ["오벌 프레임"],
+    description: "날렵한 실루엣에 상징적인 레드 라인을 더한 하이테크 선글라스.",
+    size: ["55mm", "44mm", "19mm", "143mm", "143mm"],
+    features: ["인젝티드 나일론 프레임", "폴리카보네이트 렌즈", "UVA/UVB 100% 차단"],
     defaultFit: "Regular",
   },
 
@@ -370,15 +370,15 @@ export const products = {
     id: "wakilly-tutu",
     category: "TRENDY",
     brand: "와키윌리",
-    name: "아세테이트 TUTU 선글라스",
+    name: "TUTU 선글라스",
     color: "블랙",
     price: 41580,
     originalPrice: 99000,
     image: "/team/trendy/tutu.png",
     video: "/team/trendy/tutu.mp4",
-    description: "아세테이트 프레임으로 개성을 더하는 캐주얼 선글라스.",
-    size: ["정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요"],
-    features: ["소프트 스퀘어 프레임"],
+    description: "자유로운 무드로 가볍게 매치하기 좋은 트렌디한 블랙 선글라스.",
+    size: ["51mm", "38mm", "20mm", "144mm", "145mm"],
+    features: ["아세테이트 프레임", "CR-39 렌즈", "UV 99.9% 차단" ],
     defaultFit: "Regular",
   },
 
@@ -393,9 +393,9 @@ export const products = {
     originalPrice: 116000,
     image: "/team/trendy/pulse.png",
     video: "/team/trendy/pulse.mp4",
-    description: "모던한 스퀘어 프레임으로 스타일을 강조하는 선글라스.",
-    size: ["정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요", "정보 확인 필요"],
-    features: ["스퀘어 프레임"],
+    description: "각진 실루엣으로 트렌디한 무드를 완성하는 블랙 선글라스.",
+    size: ["53mm", "34mm", "22mm", "143mm", "140mm"],
+    features: ["셀룰로오스 프로피오네이트 프레임", "나일론 렌즈", "UVA, UVB 99.9% 차단"],
     defaultFit: "Regular",
   },
 
@@ -542,6 +542,104 @@ const recommendedSportsProducts = [
   },
 ];
 
+const recommendedCasualProducts = [
+  {
+    id: "charles-brea",
+    brand: "CHARLES&KEITH",
+    name: "브레아 라운드 선글라스",
+    price: 109900,
+    image: "/team/casual/charles.png",
+  },
+  {
+    id: "oakley-eye-jacket",
+    brand: "오클리",
+    name: "아이 자켓 리덕스",
+    price: 261000,
+    image: "/team/casual/okelyi.png",
+  },
+  {
+    id: "rayban-clubmaster",
+    brand: "RAY-BAN",
+    name: "클럽 마스터",
+    price: 204800,
+    originalPrice: 256000,
+    image: "/team/casual/rayclub.png",
+  },
+  {
+    id: "lespecs-mascarra",
+    brand: "LE SPECS",
+    name: "마스카라 1475 블랙",
+    price: 138000,
+    originalPrice: 230000,
+    image: "/team/casual/lespecs1475.png",
+  },
+  {
+    id: "venaco-bwf513bk",
+    brand: "베나코 폰타나",
+    name: "BWF513BK",
+    price: 89000,
+    originalPrice: 179000,
+    image: "/team/casual/venaco.png",
+  },
+  {
+    id: "izipizi-e-black",
+    brand: "IZIPIZI",
+    name: "#E Black",
+    price: 99000,
+    image: "/team/casual/izipizi.png",
+  },
+];
+
+
+const recommendedTrendyProducts = [
+  {
+    id: "rayban-rb4441d",
+    brand: "RAY-BEN",
+    name: "RB4441D",
+    price: 172800,
+    originalPrice: 216000,
+    image: "/team/trendy/ray4441d.png",
+  },
+  {
+    id: "blue-elephant-postiq",
+    brand: "BLUE ELEPHANT",
+    name: "POSTIQ black",
+    price: 69900,
+    image: "/team/trendy/bluepostiq.png",
+  },
+  {
+    id: "moncler-cirsee",
+    brand: "MONCLER",
+    name: "Cirsee 파일럿 선글라스",
+    price: 700000,
+    image: "/team/trendy/moncler.png",
+  },
+  {
+    id: "prada-linea-rossa",
+    brand: "PRADA",
+    name: "Linea Rossa sunglasses",
+    price: 610000,
+    image: "/team/trendy/prada.png",
+  },
+  {
+    id: "wakilly-tutu",
+    brand: "와키윌리",
+    name: "TUTU 선글라스",
+    price: 41580,
+    originalPrice: 99000,
+    image: "/team/trendy/tutu.png",
+  },
+  {
+    id: "romantic-noir-pulse",
+    brand: "로맨틱누어",
+    name: "PULSE B1",
+    price: 64960,
+    originalPrice: 116000,
+    image: "/team/trendy/pulse.png",
+  },
+];
+
+
 function Product({
   favorites,
   toggleFavorite,
@@ -555,9 +653,16 @@ function Product({
   }, [productId]);
   const [isSizeGuideOpen, setIsSizeGuideOpen] = useState(false);
   const product = products[productId] ?? products["new-her"];
+
   const currentRecommendations =
     product.category === "SPORTS"
       ? recommendedSportsProducts
+      : product.category === "CASUAL"
+      ? recommendedCasualProducts
+      : product.category === "TRENDY"
+      ? recommendedTrendyProducts
+      : product.category === "CELEB PICK"
+      ? recommendedProducts
       : recommendedProducts;
 
   const randomRecommendedProducts = useMemo(() => {

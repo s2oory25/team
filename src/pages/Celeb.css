@@ -177,6 +177,8 @@
 
 /* 반응형: 태블릿 */
 @media (min-width: 769px) and (max-width: 1024px) {
+
+  
   .celeb-main-content {
     padding: 30px 24px 60px;
   }
