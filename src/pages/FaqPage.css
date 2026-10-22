@@ -1,0 +1,160 @@
+﻿.faq-page {
+  min-height: calc(100vh - 72px);
+  min-height: calc(100dvh - 72px);
+  display: flex;
+  flex-direction: column;
+  background: #f8f8f8;
+  color: #111;
+}
+
+.faq-page-title {
+  padding: 18px 16px 12px;
+  border-bottom: 1px solid #aaa;
+}
+
+.faq-page-title h1 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.faq-page-title p {
+  margin: 8px 0 0;
+  font-size: 14px;
+}
+
+.faq-page-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 32px 16px 0;
+}
+
+.faq-page-tabs button {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  border: 0;
+  background: transparent;
+  color: #111;
+  text-align: left;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.faq-page-tabs button.active {
+  background: #aaa;
+}
+
+.faq-page-tabs button > span:last-child {
+  font-size: 22px;
+}
+
+.faq-page-list {
+  width: min(1000px, calc(100% - 32px));
+  flex: 1;
+  margin: 54px auto 40px;
+  padding: 14px 8px 24px;
+  background: #fff;
+}
+
+.faq-page-count {
+  margin: 0 8px 12px;
+  color: #999;
+  text-align: right;
+  font-size: 11px;
+}
+
+.faq-page-item {
+  border-bottom: 1px solid #aaa;
+}
+
+.faq-page-item > button {
+  width: 100%;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 16px;
+  border: 0;
+  background: transparent;
+  color: #222;
+  text-align: left;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.faq-page-arrow {
+  flex: 0 0 auto;
+  font-size: 24px;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.faq-page-arrow.open {
+  transform: rotate(90deg);
+}
+
+.faq-page-item > p {
+  margin: 0;
+  padding: 0 16px 16px;
+  color: #666;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.faq-page .site-footer {
+  margin-top: auto;
+}
+
+@media (max-width: 900px) {
+  .faq-page {
+    min-height: calc(100vh - 52px);
+  }
+
+  .faq-page-title {
+    padding: 14px 12px 10px;
+  }
+
+  .faq-page-title h1 {
+    font-size: 30px;
+  }
+
+  .faq-page-title p {
+    margin-top: 6px;
+    font-size: 13px;
+  }
+
+  .faq-page-tabs {
+    gap: 8px;
+    margin: 28px 10px 0;
+  }
+
+  .faq-page-tabs button {
+    min-height: 44px;
+    padding: 0 12px;
+    font-size: 13px;
+  }
+
+  .faq-page-list {
+    width: calc(100% - 20px);
+    margin: 48px auto 30px;
+    padding: 12px 6px 20px;
+  }
+
+  .faq-page-item > button {
+    min-height: 46px;
+    padding: 0 10px;
+    font-size: 12px;
+  }
+
+  .faq-page-item > p {
+    padding: 0 10px 14px;
+    font-size: 12px;
+  }
+}

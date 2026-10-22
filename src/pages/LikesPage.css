@@ -1,0 +1,157 @@
+﻿.likes-page {
+  width: 100%;
+  min-height: calc(100vh - 72px);
+  min-height: calc(100dvh - 72px);
+  display: flex;
+  flex-direction: column;
+  background: #f8f8f8;
+  color: #111;
+}
+
+.likes-title-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px 14px;
+  border-bottom: 1px solid #aaa;
+}
+
+.likes-title-bar h1 {
+  margin: 0;
+  font-size: clamp(26px, 3vw, 34px);
+  font-weight: 500;
+}
+
+.likes-mobile-intro,
+.likes-mobile-tabs {
+  display: none;
+}
+
+.mypage-return-link {
+  padding: 6px 0;
+  border: 0;
+  background: transparent;
+  color: #555;
+  font: inherit;
+  font-size: 13px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.mypage-return-link:hover {
+  color: #111;
+  text-decoration: underline;
+}
+
+.likes-empty-state {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.likes-empty-state p {
+  margin: 8px 0;
+  color: #333;
+  font-size: clamp(17px, 2vw, 22px);
+}
+
+.likes-empty-state button {
+  width: min(360px, calc(100vw - 48px));
+  min-height: 64px;
+  margin-top: 28px;
+  padding: 0 32px;
+  border: 0;
+  background: #050505;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.likes-empty-state button:hover {
+  background: #333;
+}
+
+.likes-page .site-footer {
+  margin-top: auto;
+}
+
+@media (max-width: 600px) {
+  .likes-page {
+    min-height: calc(100vh - 52px);
+  }
+
+  .likes-title-bar {
+    padding: 14px 8px 10px;
+  }
+
+  .likes-title-bar h1 {
+    font-size: 24px;
+  }
+
+  .likes-title-bar .mypage-return-link {
+    font-size: 9px;
+  }
+
+  .likes-mobile-intro {
+    display: block;
+    margin: 0;
+    padding: 8px 10px 0;
+    color: #333;
+    font-size: 12px;
+  }
+
+  .likes-mobile-tabs {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    margin: 20px 8px 0;
+    gap: 2px;
+  }
+
+  .likes-mobile-tabs button {
+    min-width: 0;
+    min-height: 48px;
+    padding: 4px 2px;
+    border: 1px solid #ccc;
+    background: transparent;
+    color: #222;
+    font: inherit;
+    font-size: 9px;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  .likes-mobile-tabs button.active {
+    border-color: #aaa;
+    background: #aaa;
+    color: #fff;
+  }
+
+  .likes-empty-state {
+    width: calc(100% - 20px);
+    min-height: clamp(280px, 50vh, 420px);
+    flex: 1;
+    margin: 18px auto 24px;
+    padding: 24px 14px;
+    background: #fff;
+  }
+
+  .likes-empty-state p {
+    margin: 4px 0;
+    font-size: 12px;
+  }
+
+  .likes-empty-state button {
+    width: min(240px, 100%);
+    min-height: 40px;
+    margin-top: 12px;
+    padding: 0 16px;
+    font-size: 12px;
+  }
+}

@@ -1,3 +1,4 @@
+import './AiFittingPage.css'
 // 기존 App.jsx의 AI 맞춤 서비스 JSX를 그대로 분리했습니다.
 export default function AiFittingPage(props) {
   const {

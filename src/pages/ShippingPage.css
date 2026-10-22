@@ -1,0 +1,277 @@
+﻿.shipping-page {
+  width: 100%;
+  min-height: calc(100vh - 72px);
+  min-height: calc(100dvh - 72px);
+  display: flex;
+  flex-direction: column;
+  background: #f8f8f8;
+  color: #111;
+}
+
+.shipping-title-bar {
+  padding: 18px 24px 14px;
+  border-bottom: 1px solid #aaa;
+}
+
+.shipping-title-bar h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.shipping-intro {
+  margin: 0;
+  padding: 12px 24px 0;
+  color: #444;
+  font-size: 14px;
+}
+
+.shipping-content {
+  width: min(1600px, calc(100% - 64px));
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 22px auto 32px;
+}
+
+.shipping-order-summary,
+.shipping-progress-card,
+.shipping-detail-card {
+  border: 1px solid #ccc;
+  background: #fff;
+}
+
+.shipping-order-summary {
+  min-height: 68px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 5px;
+  padding: 10px 24px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.shipping-order-summary strong {
+  font-weight: 600;
+}
+
+.shipping-order-link {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.shipping-order-link:hover {
+  text-decoration: underline;
+}
+
+.shipping-progress-card {
+  min-height: 210px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px 44px;
+  border-radius: 4px;
+}
+
+.shipping-progress-card h2,
+.shipping-detail-card h2 {
+  margin: 0 0 22px;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.shipping-steps {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.shipping-steps::before {
+  content: '';
+  position: absolute;
+  top: 21px;
+  right: 12.5%;
+  left: 12.5%;
+  height: 2px;
+  background: #ccc;
+}
+
+.shipping-steps::after {
+  content: '';
+  position: absolute;
+  top: 21px;
+  left: 12.5%;
+  width: 50%;
+  height: 2px;
+  background: #777;
+}
+
+.shipping-step {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  color: #888;
+  text-align: center;
+}
+
+.shipping-step > span {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  color: #777;
+}
+
+.shipping-step > span svg {
+  width: 42px;
+  height: 42px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.35;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.shipping-step.complete > span {
+  color: #999;
+}
+
+.shipping-step.current {
+  color: #111;
+}
+
+.shipping-step.current > span {
+  color: #111;
+}
+
+.shipping-step strong {
+  padding: 5px 14px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.shipping-step.current strong {
+  background: #050505;
+  color: #fff;
+}
+
+.shipping-step small {
+  font-size: 12px;
+}
+
+.shipping-detail-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 14px;
+}
+
+.shipping-product-card {
+  display: none;
+}
+
+.shipping-detail-card {
+  min-width: 0;
+  padding: 20px 22px;
+  border-radius: 4px;
+}
+
+.shipping-detail-card h2 {
+  margin-bottom: 14px;
+  font-size: 16px;
+}
+
+.shipping-detail-card dl {
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr);
+  margin: 0;
+  font-size: 13px;
+}
+
+.shipping-detail-card dt,
+.shipping-detail-card dd {
+  min-width: 0;
+  margin: 0;
+  padding: 12px 14px;
+  border: 1px solid #e5e5e5;
+}
+
+.shipping-detail-card dt {
+  background: #f5f5f5;
+  color: #555;
+}
+
+.shipping-back-button {
+  width: 100%;
+  min-height: 42px;
+  margin-top: 10px;
+  padding: 0 16px;
+  border: 0;
+  background: #050505;
+  color: #fff;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.shipping-page .site-footer {
+  margin-top: auto;
+}
+@media (min-width: 601px) and (max-width: 900px) {
+  .shipping-content { width: min(760px, calc(100% - 48px)); flex: 0 0 auto; gap: 14px; margin: 24px auto 36px; }
+  .shipping-order-summary { min-height: 76px; gap: 7px; padding: 12px 20px; font-size: 13px; }
+  .shipping-progress-card { min-height: 166px; padding: 18px 24px; }
+  .shipping-progress-card h2 { margin-bottom: 16px; font-size: 15px; }
+  .shipping-steps::before, .shipping-steps::after { top: 18px; }
+  .shipping-step { gap: 5px; }
+  .shipping-step > span { width: 40px; height: 40px; }
+  .shipping-step > span svg { width: 32px; height: 32px; }
+  .shipping-step strong { padding: 4px 8px; font-size: 11px; }
+  .shipping-step small { font-size: 9px; }
+  .shipping-product-card { display: block; padding: 14px 16px; border: 1px solid #ccc; background: #fff; }
+  .shipping-product-card h2 { margin: 0 0 12px; font-size: 15px; font-weight: 600; }
+  .shipping-product-row { display: flex; align-items: center; gap: 12px; }
+  .shipping-product-image { width: 92px; height: 78px; flex: 0 0 auto; overflow: hidden; background: #f2f2f4; }
+  .shipping-product-image img { width: 100%; height: 100%; object-fit: contain; }
+  .shipping-product-info { display: flex; flex-direction: column; gap: 4px; font-size: 12px; }
+  .shipping-product-info strong { font-size: 14px; font-weight: 500; }
+  .shipping-product-info small { color: #555; font-size: 10px; }
+  .shipping-product-tracking { width: 82%; min-height: 34px; display: block; margin: 12px auto 0; border: 0; background: #050505; color: #fff; font: inherit; font-size: 11px; cursor: pointer; }
+  .shipping-detail-grid { flex: 0 0 auto; grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .shipping-detail-card { padding: 14px 16px; }
+  .shipping-detail-card dl { grid-template-columns: 112px minmax(0, 1fr); font-size: 12px; }
+  .shipping-detail-card dt, .shipping-detail-card dd { padding: 8px 10px; }
+  .shipping-detail-card .shipping-back-button { display: none; }
+}
+@media (max-width: 600px) {
+  .shipping-page { min-height: calc(100vh - 52px); min-height: calc(100dvh - 52px); }
+  .shipping-title-bar { padding: 16px 16px 12px; }
+  .shipping-title-bar h1 { font-size: 24px; }
+  .shipping-intro { padding: 10px 16px 0; font-size: 12px; }
+  .shipping-content { width: calc(100% - 24px); gap: 10px; margin: 16px auto 24px; }
+  .shipping-order-summary { min-height: 52px; align-items: flex-start; flex-direction: column; justify-content: center; gap: 4px; padding: 8px 12px; font-size: 11px; }
+  .shipping-progress-card { padding: 16px 10px 12px; }
+  .shipping-progress-card h2, .shipping-detail-card h2 { margin-bottom: 14px; font-size: 14px; }
+  .shipping-steps::before, .shipping-steps::after { top: 19px; }
+  .shipping-step { gap: 5px; }
+  .shipping-step > span { width: 38px; height: 38px; }
+  .shipping-step > span svg { width: 30px; height: 30px; }
+  .shipping-step strong { font-size: 9px; }
+  .shipping-step small { font-size: 8px; }
+  .shipping-detail-grid { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .shipping-detail-card { padding: 14px 12px; }
+  .shipping-detail-card dl { grid-template-columns: 92px minmax(0, 1fr); font-size: 11px; }
+  .shipping-detail-card dt, .shipping-detail-card dd { padding: 7px 8px; }
+}

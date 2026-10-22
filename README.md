@@ -1,16 +1,7 @@
-# React + Vite
+# ChalFit 페이지 분리본
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+- `src/App.jsx`: 기존 상태, 이벤트 핸들러, 헤더 및 페이지 연결
+- `src/pages/`: 기존 페이지 JSX를 별도 컴포넌트로 분리
+- `src/App.css`: 업로드한 CSS 원문을 수정 없이 복사
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+실행: `npm install` 후 `npm run dev`

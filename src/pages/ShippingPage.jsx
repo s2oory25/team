@@ -1,4 +1,5 @@
-// 기존 App.jsx의 페이지 JSX를 그대로 분리했습니다.
+﻿// 기존 App.jsx의 페이지 JSX를 그대로 분리했습니다.
+import './ShippingPage.css'
 export default function ShippingPage(props) {
   const { activeMenu, setActiveMenu, menuOpen, setMenuOpen, categoryOpen, setCategoryOpen, styleOpen, setStyleOpen, customerOpen, setCustomerOpen, isLoggedIn, setIsLoggedIn, mobileMypageOpen, setMobileMypageOpen, selectedCustomerItem, setSelectedCustomerItem, currentPage, setCurrentPage, selectedOrder, setSelectedOrder, selectedPhoto, setSelectedPhoto, photoPreview, setPhotoPreview, analysisMessage, setAnalysisMessage, isAnalyzing, setIsAnalyzing, hasAnalyzed, setHasAnalyzed, inquiryType, setInquiryType, inquiryEmail, setInquiryEmail, inquiryContent, setInquiryContent, showInquiryFaq, setShowInquiryFaq, inquiryMessage, setInquiryMessage, accountMessage, setAccountMessage, isChangingPassword, setIsChangingPassword, openFaqIndex, setOpenFaqIndex, cartAgreement, setCartAgreement, cartItems, setCartItems, menuItems, categoryItems, styleItems, customerItems, mypageItems, faqItems, faqDetails, products, closeSubmenus, navigateTo, handleMenuClick, handleMobileMypageClick, handleSubMenuClick, handleMobileCustomerClick, handleCustomerItemClick, handleInquirySubmit, handleLoginClick, handleLogoutClick, handleProfileCardClick, handleAccountMenuClick, openMenu, closeMenu, handlePhotoChange, handleAnalyze, handleRetry, selectedCartItems, cartSubtotal, orderDetail, sampleFaceShape } = props
   return (
@@ -24,7 +25,7 @@ export default function ShippingPage(props) {
             <section className="shipping-product-card">
               <h2>상품 정보</h2>
               <div className="shipping-product-row">
-                <div className="shipping-product-image"><img src="/cocoa-01.jpg" alt="GENTLE MONSTER 뉴 허 01" /></div>
+                <div className="shipping-product-image"><img src="/new-her-order.jpg" alt="GENTLE MONSTER 뉴 허 01" /></div>
                 <div className="shipping-product-info">
                   <span>GENTLE MONSTER</span>
                   <strong>뉴 허 01</strong>
@@ -54,3 +55,4 @@ export default function ShippingPage(props) {
         </main>
   )
 }
+
