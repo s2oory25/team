@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Login({ onClose, onLoginSuccess }) {
@@ -6,6 +6,27 @@ function Login({ onClose, onLoginSuccess }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const loginRef = useRef(null);
+
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (e.target.closest?.(".header-login-button")) {
+        return;
+      }
+
+      if (
+        loginRef.current &&
+        !loginRef.current.contains(e.target)
+      ) {
+        onClose();
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [onClose]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,7 +44,7 @@ function Login({ onClose, onLoginSuccess }) {
   };
 
   return (
-    <section className="login-panel">
+    <section className="login-panel" ref={loginRef}>
 
       <button
         type="button"
