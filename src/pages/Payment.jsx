@@ -29,10 +29,9 @@ function loadKakaoPostcode() {
     const handleLoad = () => {
       if (window.kakao?.Postcode) {
         resolve();
-        return;
+      } else {
+        reject(new Error("카카오 우편번호 서비스를 불러오지 못했습니다."));
       }
-
-      reject(new Error("카카오 우편번호 서비스를 불러오지 못했습니다."));
     };
 
     const handleError = () => {
@@ -49,6 +48,11 @@ function loadKakaoPostcode() {
 
     script.addEventListener("load", handleLoad, { once: true });
     script.addEventListener("error", handleError, { once: true });
+
+    // 이미 스크립트가 로드된 경우에도 확인
+    if (window.kakao?.Postcode) {
+      resolve();
+    }
   }).catch((error) => {
     kakaoPostcodePromise = undefined;
     throw error;
@@ -97,6 +101,7 @@ function createTestOrderNumber() {
     String(now.getMonth() + 1).padStart(2, "0"),
     String(now.getDate()).padStart(2, "0"),
   ].join("");
+
   const suffix = String(Math.floor(Math.random() * 1000000)).padStart(6, "0");
 
   return `CHF-${date}-${suffix}`;
@@ -104,7 +109,9 @@ function createTestOrderNumber() {
 
 function saveGuestTestOrder(order) {
   try {
-    const savedOrders = localStorage.getItem(GUEST_TEST_ORDERS_STORAGE_KEY);
+    const savedOrders = localStorage.getItem(
+      GUEST_TEST_ORDERS_STORAGE_KEY
+    );
     const orders = savedOrders ? JSON.parse(savedOrders) : [];
 
     if (!Array.isArray(orders)) {
@@ -113,8 +120,9 @@ function saveGuestTestOrder(order) {
 
     localStorage.setItem(
       GUEST_TEST_ORDERS_STORAGE_KEY,
-      JSON.stringify([...orders, order]),
+      JSON.stringify([...orders, order])
     );
+
     return true;
   } catch {
     return false;
@@ -124,18 +132,60 @@ function saveGuestTestOrder(order) {
 function Payment() {
   const navigate = useNavigate();
   const location = useLocation();
-  const orderProduct = location.state?.product ?? {
-  id: "new-her",
-  brand: "GENTLE MONSTER",
-  name: "뉴 허 01",
-  color: "블랙/블랙",
-  price: 289000,
-  image: "/team/classic/gmNewHer.png",
-};
 
-  const [orderQuantity, setOrderQuantity] = useState(() =>
-    Math.max(1, Number(location.state?.quantity) || 1)
+  // 장바구니에서 선택한 여러 상품 또는 상세페이지에서 바로 구매한 상품
+  const orderProducts = (() => {
+    const cartItems = location.state?.cartItems;
+
+    if (Array.isArray(cartItems) && cartItems.length > 0) {
+      return cartItems.map((item) => ({
+        ...item,
+        quantity: Math.max(1, Number(item.quantity) || 1),
+      }));
+    }
+
+    const product = location.state?.product ?? {
+      id: "new-her",
+      brand: "GENTLE MONSTER",
+      name: "뉴 허 01",
+      color: "블랙/블랙",
+      price: 289000,
+      image: "/team/classic/gmNewHer.png",
+    };
+
+    return [
+      {
+        ...product,
+        quantity: Math.max(1, Number(location.state?.quantity) || 1),
+      },
+    ];
+  })();
+
+  // 상품별 수량
+  const [orderQuantities, setOrderQuantities] = useState(() =>
+    orderProducts.map((item) => item.quantity)
   );
+
+  // 전체 상품 금액
+  // 할인 전 상품 금액
+  const originalTotal = orderProducts.reduce(
+    (total, item, index) =>
+      total +
+      Number(item.originalPrice ?? item.price ?? 0) *
+        orderQuantities[index],
+    0
+  );
+
+  // 실제 판매 금액
+  const price = orderProducts.reduce(
+    (total, item, index) =>
+      total + Number(item.price ?? 0) * orderQuantities[index],
+    0
+  );
+
+  // 전체 할인 금액
+  const discountPrice = Math.max(0, originalTotal - price);
+  const formatPrice = (value) => value.toLocaleString("ko-KR");
 
   const [shipping, setShipping] = useState({
     receiver: "",
@@ -158,35 +208,49 @@ function Payment() {
   const [easyPay, setEasyPay] = useState("kakao");
   const [agreed, setAgreed] = useState(false);
   const [sameAsReceiver, setSameAsReceiver] = useState(false);
+
   const [phoneTouched, setPhoneTouched] = useState({
     shipping: false,
     customer: false,
   });
+
   const [isAddressSearchOpen, setIsAddressSearchOpen] = useState(false);
   const [addressSearchStatus, setAddressSearchStatus] = useState("idle");
   const [completedOrder, setCompletedOrder] = useState(null);
   const [orderModalView, setOrderModalView] = useState(null);
+
   const addressSearchRef = useRef(null);
   const orderSubmittedRef = useRef(false);
 
-const price = orderProduct.price * orderQuantity;
-const formatPrice = (value) =>
-  value.toLocaleString("ko-KR");
   const changeShipping = (e) => {
     const { name, value } = e.target;
-    const nextValue = name === "phone" ? formatPhoneNumber(value) : value;
-    setShipping((prev) => ({ ...prev, [name]: nextValue }));
+    const nextValue =
+      name === "phone" ? formatPhoneNumber(value) : value;
+
+    setShipping((prev) => ({
+      ...prev,
+      [name]: nextValue,
+    }));
 
     if (sameAsReceiver && (name === "receiver" || name === "phone")) {
       const customerField = name === "receiver" ? "name" : "phone";
-      setCustomer((prev) => ({ ...prev, [customerField]: nextValue }));
+
+      setCustomer((prev) => ({
+        ...prev,
+        [customerField]: nextValue,
+      }));
     }
   };
 
   const changeCustomer = (e) => {
     const { name, value } = e.target;
-    const nextValue = name === "phone" ? formatPhoneNumber(value) : value;
-    setCustomer((prev) => ({ ...prev, [name]: nextValue }));
+    const nextValue =
+      name === "phone" ? formatPhoneNumber(value) : value;
+
+    setCustomer((prev) => ({
+      ...prev,
+      [name]: nextValue,
+    }));
   };
 
   const changeSameAsReceiver = (e) => {
@@ -202,6 +266,23 @@ const formatPrice = (value) =>
     }
   };
 
+  // 상품별 수량 변경
+  const decreaseQuantity = (index) => {
+    setOrderQuantities((prev) =>
+      prev.map((quantity, i) =>
+        i === index ? Math.max(1, quantity - 1) : quantity
+      )
+    );
+  };
+
+  const increaseQuantity = (index) => {
+    setOrderQuantities((prev) =>
+      prev.map((quantity, i) =>
+        i === index ? quantity + 1 : quantity
+      )
+    );
+  };
+
   const openAddress = () => {
     setAddressSearchStatus("loading");
     setIsAddressSearchOpen(true);
@@ -211,6 +292,7 @@ const formatPrice = (value) =>
     setIsAddressSearchOpen(false);
   };
 
+  // 주소검색 모달이 열려 있을 때 배경 스크롤 방지
   useEffect(() => {
     if (!isAddressSearchOpen) {
       return undefined;
@@ -237,6 +319,7 @@ const formatPrice = (value) =>
     };
   }, [isAddressSearchOpen]);
 
+  // 카카오 주소검색 연결
   useEffect(() => {
     if (!isAddressSearchOpen) {
       return undefined;
@@ -266,6 +349,7 @@ const formatPrice = (value) =>
               address: selectedAddress || data.address,
               detail: "",
             }));
+
             closeAddressSearch();
           },
           onclose: closeAddressSearch,
@@ -289,6 +373,7 @@ const formatPrice = (value) =>
     };
   }, [isAddressSearchOpen]);
 
+  // 주문 모달 배경 스크롤 방지
   useEffect(() => {
     if (!orderModalView) {
       return undefined;
@@ -320,8 +405,12 @@ const formatPrice = (value) =>
     navigate("/guest-order-lookup");
   };
 
+  // 결제하기
   const handlePayment = () => {
-    setPhoneTouched({ shipping: true, customer: true });
+    setPhoneTouched({
+      shipping: true,
+      customer: true,
+    });
 
     if (
       !isValidPhoneNumber(shipping.phone) ||
@@ -364,22 +453,31 @@ const formatPrice = (value) =>
     }
 
     orderSubmittedRef.current = true;
+
     const orderNumber = createTestOrderNumber();
     const orderedAt = new Date().toISOString();
-    const product = {
-      brand: orderProduct.brand,
-      name: orderProduct.name,
-      option: orderProduct.color,
-      quantity: orderQuantity,
-      amount: price,
-    };
+
+    // 주문한 모든 상품 정보 생성
+    const products = orderProducts.map((item, index) => ({
+      brand: item.brand,
+      name: item.name,
+      option: item.color || item.option || "-",
+      quantity: orderQuantities[index],
+      amount:
+        Number(item.price || 0) * orderQuantities[index],
+    }));
+
     const isStored = saveGuestTestOrder({
       orderNumber,
       orderedAt,
-      productName: product.name,
-      option: product.option,
-      quantity: product.quantity,
-      amount: product.amount,
+      productName: products.map((item) => item.name).join(", "),
+      option: products.map((item) => item.option).join(", "),
+      quantity: products.reduce(
+        (sum, item) => sum + item.quantity,
+        0
+      ),
+      amount: price,
+      products,
       testPhone: GUEST_TEST_ORDER_PHONE,
     });
 
@@ -389,18 +487,20 @@ const formatPrice = (value) =>
       isStored,
       customer: { ...customer },
       shipping: { ...shipping },
-      product,
+      products,
       paymentMethod:
         method === "card"
           ? `카드 · ${CARD_NAMES[card]} · ${installment}`
           : `간편결제 · ${EASY_PAY_NAMES[easyPay]}`,
       total: price,
     });
+
     setOrderModalView("complete");
   };
 
   const shippingPhoneInvalid =
     phoneTouched.shipping && !isValidPhoneNumber(shipping.phone);
+
   const customerPhoneInvalid =
     phoneTouched.customer && !isValidPhoneNumber(customer.phone);
 
@@ -411,29 +511,28 @@ const formatPrice = (value) =>
 
         <div className="payment-layout">
           <div className="payment-left">
-
             {/* 주문 정보 */}
             <section className="payment-section">
               <h2 className="payment-section-title">
-                주문 정보 <span>1건</span>
+                주문 정보 <span>{orderProducts.length}건</span>
               </h2>
 
-              <PaymentProduct
-                  product={orderProduct}
-                  quantity={orderQuantity}
-                  onDecrease={() =>
-                    setOrderQuantity((prev) => Math.max(1, prev - 1))
-                  }
-                  onIncrease={() =>
-                    setOrderQuantity((prev) => prev + 1)
-                  }
+              {orderProducts.map((product, index) => (
+                <PaymentProduct
+                  key={`${product.id ?? product.name}-${index}`}
+                  product={product}
+                  quantity={orderQuantities[index]}
+                  onDecrease={() => decreaseQuantity(index)}
+                  onIncrease={() => increaseQuantity(index)}
                 />
+              ))}
             </section>
 
             {/* 배송 정보 */}
             <section className="payment-section">
               <div className="payment-section-heading">
                 <h2>배송 정보</h2>
+
                 <button
                   type="button"
                   className="payment-default-btn"
@@ -466,29 +565,37 @@ const formatPrice = (value) =>
                     value={shipping.phone}
                     onChange={changeShipping}
                     onBlur={() =>
-                      setPhoneTouched((prev) => ({ ...prev, shipping: true }))
+                      setPhoneTouched((prev) => ({
+                        ...prev,
+                        shipping: true,
+                      }))
                     }
                     aria-invalid={shippingPhoneInvalid}
                     aria-describedby={
-                      shippingPhoneInvalid ? "shippingPhoneError" : undefined
+                      shippingPhoneInvalid
+                        ? "shippingPhoneError"
+                        : undefined
                     }
                   />
+
                   {shippingPhoneInvalid && (
-                    <p id="shippingPhoneError" className="payment-phone-error">
+                    <p
+                      id="shippingPhoneError"
+                      className="payment-phone-error"
+                    >
                       휴대폰번호 11자리를 정확히 입력해주세요.
                     </p>
                   )}
                 </div>
 
                 <label>배송지</label>
+
                 <div className="payment-address">
                   <div className="payment-address-top">
-                    <button
-                      type="button"
-                      onClick={openAddress}
-                    >
+                    <button type="button" onClick={openAddress}>
                       주소검색
                     </button>
+
                     <input
                       aria-label="우편번호"
                       name="postcode"
@@ -497,6 +604,7 @@ const formatPrice = (value) =>
                       onChange={changeShipping}
                     />
                   </div>
+
                   <div className="payment-address-bottom">
                     <input
                       aria-label="기본주소"
@@ -504,6 +612,7 @@ const formatPrice = (value) =>
                       value={shipping.address}
                       onChange={changeShipping}
                     />
+
                     <input
                       aria-label="상세주소"
                       name="detail"
@@ -517,6 +626,7 @@ const formatPrice = (value) =>
                 <label htmlFor="deliveryRequest">
                   배송 요청사항
                 </label>
+
                 <input
                   id="deliveryRequest"
                   name="request"
@@ -530,6 +640,7 @@ const formatPrice = (value) =>
             <section className="payment-section">
               <div className="payment-section-heading payment-customer-heading">
                 <h2>주문자</h2>
+
                 <label className="payment-customer-sync">
                   <span>주문자와 받는 사람이 동일</span>
                   <input
@@ -562,16 +673,25 @@ const formatPrice = (value) =>
                     value={customer.phone}
                     onChange={changeCustomer}
                     onBlur={() =>
-                      setPhoneTouched((prev) => ({ ...prev, customer: true }))
+                      setPhoneTouched((prev) => ({
+                        ...prev,
+                        customer: true,
+                      }))
                     }
                     readOnly={sameAsReceiver}
                     aria-invalid={customerPhoneInvalid}
                     aria-describedby={
-                      customerPhoneInvalid ? "customerPhoneError" : undefined
+                      customerPhoneInvalid
+                        ? "customerPhoneError"
+                        : undefined
                     }
                   />
+
                   {customerPhoneInvalid && (
-                    <p id="customerPhoneError" className="payment-phone-error">
+                    <p
+                      id="customerPhoneError"
+                      className="payment-phone-error"
+                    >
                       휴대폰번호 11자리를 정확히 입력해주세요.
                     </p>
                   )}
@@ -644,7 +764,11 @@ const formatPrice = (value) =>
                   <button
                     type="button"
                     disabled={method !== "easy"}
-                    className={method === "easy" && easyPay === "kakao" ? "selected" : ""}
+                    className={
+                      method === "easy" && easyPay === "kakao"
+                        ? "selected"
+                        : ""
+                    }
                     onClick={() => setEasyPay("kakao")}
                   >
                     <img
@@ -658,7 +782,11 @@ const formatPrice = (value) =>
                   <button
                     type="button"
                     disabled={method !== "easy"}
-                    className={method === "easy" && easyPay === "naver" ? "selected" : ""}
+                    className={
+                      method === "easy" && easyPay === "naver"
+                        ? "selected"
+                        : ""
+                    }
                     onClick={() => setEasyPay("naver")}
                   >
                     <img
@@ -672,7 +800,11 @@ const formatPrice = (value) =>
                   <button
                     type="button"
                     disabled={method !== "easy"}
-                    className={method === "easy" && easyPay === "toss" ? "selected" : ""}
+                    className={
+                      method === "easy" && easyPay === "toss"
+                        ? "selected"
+                        : ""
+                    }
                     onClick={() => setEasyPay("toss")}
                   >
                     <img
@@ -695,12 +827,16 @@ const formatPrice = (value) =>
               <div className="payment-summary">
                 <div>
                   <span>상품 금액</span>
-                  <span>{formatPrice(price)}원</span>
+                  <span>{formatPrice(originalTotal)}원</span>
                 </div>
 
                 <div>
                   <span>할인 금액</span>
-                  <span>-</span>
+                  <span className="payment-discount-price">
+                    {discountPrice > 0
+                      ? `${formatPrice(discountPrice)}원`
+                      : "0원"}
+                  </span>
                 </div>
 
                 <div>
@@ -743,6 +879,7 @@ const formatPrice = (value) =>
         </div>
       </div>
 
+      {/* 주소검색 모달 */}
       {isAddressSearchOpen && (
         <div className="payment-address-search-overlay">
           <section
@@ -753,6 +890,7 @@ const formatPrice = (value) =>
           >
             <div className="payment-address-search-header">
               <h2 id="payment-address-search-title">주소검색</h2>
+
               <button
                 type="button"
                 className="payment-address-search-close"
@@ -775,7 +913,10 @@ const formatPrice = (value) =>
             )}
 
             {addressSearchStatus === "error" && (
-              <p className="payment-address-search-status" role="alert">
+              <p
+                className="payment-address-search-status"
+                role="alert"
+              >
                 주소검색을 불러오지 못했습니다. 잠시 후 다시 시도해주세요.
               </p>
             )}
@@ -783,6 +924,7 @@ const formatPrice = (value) =>
         </div>
       )}
 
+      {/* 주문 완료 및 상세 모달 */}
       {orderModalView && completedOrder && (
         <div className="payment-order-overlay">
           <section
@@ -806,22 +948,31 @@ const formatPrice = (value) =>
                   <div className="payment-order-check" aria-hidden="true">
                     ✓
                   </div>
+
                   <h2 id="payment-order-modal-title">
                     주문이 완료되었습니다.
                   </h2>
+
                   <p>선택하신 상품이 정상적으로 주문되었습니다.</p>
                   <p>주문해주셔서 감사합니다.</p>
+
                   <strong className="payment-order-number">
                     주문번호 : {completedOrder.orderNumber}
                   </strong>
+
                   <small className="payment-order-test-notice">
                     테스트 주문이며 실제 결제는 이루어지지 않았습니다.
                   </small>
-                  <small className="payment-order-test-notice" role="status">
+
+                  <small
+                    className="payment-order-test-notice"
+                    role="status"
+                  >
                     {completedOrder.isStored
                       ? "테스트 주문정보가 브라우저에 저장되었습니다."
                       : "주문은 완료되었지만 브라우저 저장에 실패하여 추후 주문조회가 불가능합니다."}
                   </small>
+
                   {completedOrder.isStored && (
                     <button
                       type="button"
@@ -841,6 +992,7 @@ const formatPrice = (value) =>
                   >
                     주문 상세보기
                   </button>
+
                   <button
                     type="button"
                     className="payment-order-primary"
@@ -854,39 +1006,52 @@ const formatPrice = (value) =>
               <>
                 <div className="payment-order-detail">
                   <h2 id="payment-order-modal-title">주문 상세정보</h2>
+
                   <p className="payment-order-detail-number">
                     주문번호 {completedOrder.orderNumber}
                   </p>
 
                   <div className="payment-order-detail-group">
                     <h3>주문 상품</h3>
-                    <dl>
-                      <div>
-                        <dt>상품</dt>
-                        <dd>
-                          {completedOrder.product.brand} {completedOrder.product.name}
-                        </dd>
-                      </div>
-                      <div>
-                        <dt>옵션 / 수량</dt>
-                        <dd>
-                          {completedOrder.product.option} / {completedOrder.product.quantity}개
-                        </dd>
-                      </div>
-                    </dl>
+
+                    {completedOrder.products.map((product, index) => (
+                      <dl key={`${product.name}-${index}`}>
+                        <div>
+                          <dt>상품</dt>
+                          <dd>
+                            {product.brand} {product.name}
+                          </dd>
+                        </div>
+
+                        <div>
+                          <dt>옵션 / 수량</dt>
+                          <dd>
+                            {product.option} / {product.quantity}개
+                          </dd>
+                        </div>
+
+                        <div>
+                          <dt>상품 금액</dt>
+                          <dd>{formatPrice(product.amount)}원</dd>
+                        </div>
+                      </dl>
+                    ))}
                   </div>
 
                   <div className="payment-order-detail-group">
                     <h3>주문자 정보</h3>
+
                     <dl>
                       <div>
                         <dt>이름</dt>
                         <dd>{completedOrder.customer.name}</dd>
                       </div>
+
                       <div>
                         <dt>연락처</dt>
                         <dd>{completedOrder.customer.phone}</dd>
                       </div>
+
                       <div>
                         <dt>이메일</dt>
                         <dd>{completedOrder.customer.email}</dd>
@@ -896,15 +1061,18 @@ const formatPrice = (value) =>
 
                   <div className="payment-order-detail-group">
                     <h3>배송 정보</h3>
+
                     <dl>
                       <div>
                         <dt>받는 사람</dt>
                         <dd>{completedOrder.shipping.receiver}</dd>
                       </div>
+
                       <div>
                         <dt>연락처</dt>
                         <dd>{completedOrder.shipping.phone}</dd>
                       </div>
+
                       <div>
                         <dt>배송지</dt>
                         <dd>
@@ -913,20 +1081,25 @@ const formatPrice = (value) =>
                           {completedOrder.shipping.detail}
                         </dd>
                       </div>
+
                       <div>
                         <dt>배송 요청</dt>
-                        <dd>{completedOrder.shipping.request || "없음"}</dd>
+                        <dd>
+                          {completedOrder.shipping.request || "없음"}
+                        </dd>
                       </div>
                     </dl>
                   </div>
 
                   <div className="payment-order-detail-group">
                     <h3>결제 정보</h3>
+
                     <dl>
                       <div>
                         <dt>결제수단</dt>
                         <dd>{completedOrder.paymentMethod}</dd>
                       </div>
+
                       <div>
                         <dt>결제 금액</dt>
                         <dd>{formatPrice(completedOrder.total)}원</dd>
@@ -947,6 +1120,7 @@ const formatPrice = (value) =>
                   >
                     주문완료로 돌아가기
                   </button>
+
                   <button
                     type="button"
                     className="payment-order-primary"

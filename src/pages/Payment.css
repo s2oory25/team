@@ -114,19 +114,23 @@
   cursor: pointer;
 }
 
+
 /* 주문 상품 */
 
 .payment-product {
   display: flex;
   align-items: center;
-  width: 1000px;
+  width: 100%;
   max-width: 100%;
-  padding: 12px 16px;
+  min-width: 0;
+  padding: 16px;
   background: white;
-  gap: 18px;
+  gap: 24px;
 }
 
-.payment-product img {
+.payment-product img,
+.payment-product-image {
+  flex: 0 0 114px;
   width: 114px;
   height: 82px;
   object-fit: contain;
@@ -134,24 +138,25 @@
 }
 
 .payment-product-info {
-  flex: 1;
+  flex: 1 1 auto;
   min-width: 0;
 }
 
 .payment-product-info p {
-  margin: 0 0 12px;
-  font-size: 17px;
+  margin: 0 0 10px;
+  font-size: 16px;
 }
 
 .payment-product-middle {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 8px 14px;
 }
 
 .payment-product-info strong {
   font-size: 16px;
+  font-weight: 600;
 }
 
 .payment-product-info small {
@@ -160,10 +165,86 @@
   white-space: nowrap;
 }
 
-.payment-quantity {
+
+.payment-product-price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex: 0 0 110px;
+  text-align: right;
+  white-space: nowrap;
+  font-size: 16px;
+}
+
+.payment-product-price del {
+  color: #888;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.payment-product-discount {
+  color: #e53935;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.payment-product-price strong {
+  color: #111;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+
+/* 수량 조절 버튼 */
+
+.product-quantity-control {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
   white-space: nowrap;
 }
 
+.product-quantity-control button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #111;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.product-quantity-control button:disabled {
+  color: #aaa;
+  cursor: not-allowed;
+}
+
+.product-quantity-value {
+  min-width: 18px;
+  text-align: center;
+  font-size: 15px;
+}
+
+/* 상품 가격 */
+
+.payment-product-price {
+  flex: 0 0 110px;
+  text-align: right;
+  white-space: nowrap;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.payment-quantity {
+  white-space: nowrap;
+}
 
 /* =========================
   입력 폼
@@ -267,7 +348,7 @@
 }
 
 /* =========================
-   결제수단
+  결제수단
 ========================= */
 
 .payment-method {
@@ -374,8 +455,14 @@
   text-align: left;
 }
 
+/* 결제 금액의 할인 가격 */
+.payment-discount-price {
+  color: #e53935;
+  font-weight: 500;
+}
+
 /* =========================
-   오른쪽 결제 금액
+  오른쪽 결제 금액
 ========================= */
 
 .payment-right {
@@ -464,7 +551,7 @@
 }
 
 /* =========================
-   주소검색 팝업
+  주소검색 팝업
 ========================= */
 
 .payment-address-search-overlay {
@@ -542,7 +629,7 @@
 }
 
 /* =========================
-   주문완료 팝업
+  주문완료 팝업
 ========================= */
 
 .payment-order-overlay {
@@ -879,30 +966,67 @@
     font-size: 21px;
   }
 
+
   .payment-product {
     width: 100%;
-    padding: 10px;
-    gap: 10px;
+    padding: 10px 8px;
+    gap: 8px;
   }
 
-  .payment-product img {
-    width: 90px;
-    height: 75px;
+  .payment-product img,
+  .payment-product-image {
+    flex: 0 0 64px;
+    width: 64px;
+    height: 64px;
+  }
+
+  .payment-product-info {
+    flex: 1 1 auto;
+    min-width: 0;
   }
 
   .payment-product-info p {
-    font-size: 14px;
-    margin-bottom: 10px;
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+
+  .payment-product-middle {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
   }
 
   .payment-product-info strong {
-    font-size: 14px;
-    margin-right: 12px;
+    font-size: 12px;
+    overflow-wrap: anywhere;
   }
 
   .payment-product-info small {
-    font-size: 11px;
+    font-size: 10px;
+    white-space: normal;
   }
+
+  .product-quantity-control {
+    gap: 4px;
+  }
+
+  .product-quantity-control button {
+    width: 23px;
+    height: 25px;
+    font-size: 16px;
+  }
+
+  .product-quantity-value {
+    min-width: 14px;
+    font-size: 12px;
+  }
+
+  .payment-product-price {
+    flex: 0 0 auto;
+    min-width: 62px;
+    font-size: 12px;
+  }
+
 
   .payment-form {
     grid-template-columns: 125px minmax(0, 1fr);
@@ -1026,4 +1150,25 @@
   .payment-submit {
     font-size: 20px;
   }
+
+  
+  .payment-product-price {
+    flex: 0 0 auto;
+    min-width: 55px;
+    font-size: 10px;
+    gap: 3px;
+  }
+
+  .payment-product-discount {
+    font-size: 10px;
+  }
+
+  .payment-product-price del {
+    font-size: 9px;
+  }
+
+  .payment-product-price strong {
+    font-size: 11px;
+  }
+
 }

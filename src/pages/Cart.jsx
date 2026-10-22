@@ -9,22 +9,19 @@ export default function CartPage({
   removeFromCart,
 }) {
   const navigate = useNavigate();
+
   const [selectedIds, setSelectedIds] = useState(
     () => Object.keys(cartItems)
   );
   const [cartAgreement, setCartAgreement] = useState(false);
 
-  // 장바구니 객체를 화면에 표시할 상품 배열로 변환
   const items = Object.entries(cartItems)
     .map(([id, quantity]) => {
       const product = products[id];
 
       if (!product) return null;
 
-      return {
-        ...product,
-        quantity,
-      };
+      return { ...product, quantity };
     })
     .filter(Boolean);
 
@@ -32,10 +29,19 @@ export default function CartPage({
     selectedIds.includes(item.id)
   );
 
+  const cartProductAmount = selectedCartItems.reduce(
+    (total, item) =>
+      total +
+      (item.originalPrice ?? item.price) * item.quantity,
+    0
+  );
+
   const cartSubtotal = selectedCartItems.reduce(
     (total, item) => total + item.price * item.quantity,
     0
   );
+
+  const cartDiscount = cartProductAmount - cartSubtotal;
 
   const allSelected =
     items.length > 0 &&
@@ -61,9 +67,9 @@ export default function CartPage({
     );
 
     setSelectedIds((prev) =>
-      prev.filter((id) => !selectedCartItems.some(
-        (item) => item.id === id
-      ))
+      prev.filter(
+        (id) => !selectedCartItems.some((item) => item.id === id)
+      )
     );
   }
 
@@ -71,13 +77,6 @@ export default function CartPage({
     <main className="cart-page">
       <section className="cart-title-bar">
         <h1>장바구니</h1>
-        <button
-          className="mypage-return-link"
-          type="button"
-          onClick={() => navigate(-1)}
-        >
-          ← 이전 페이지로 돌아가기
-        </button>
       </section>
 
       <div className="cart-content">
@@ -107,74 +106,112 @@ export default function CartPage({
           </div>
 
           {items.length > 0 ? (
-            items.map((item) => (
-              <article className="cart-item" key={item.id}>
-                <label className="cart-item-check">
-                  <input
-                    type="checkbox"
-                    aria-label={`${item.name} 선택`}
-                    checked={selectedIds.includes(item.id)}
-                    onChange={() => toggleSelect(item.id)}
-                  />
-                </label>
+            items.map((item) => {
+              const originalPrice =
+                item.originalPrice ?? item.price;
 
-                <div className="cart-item-image">
-                  <img
-                    src={item.image}
-                    alt={`${item.name} 선글라스`}
-                  />
-                </div>
+              const hasDiscount = originalPrice > item.price;
 
-                <div className="cart-item-info">
-                  <span>{item.brand}</span>
-                  <strong>{item.name}</strong>
-                  <small>{item.color}</small>
+              const discountRate = hasDiscount
+                ? Math.round(
+                    ((originalPrice - item.price) /
+                      originalPrice) *
+                      100
+                  )
+                : 0;
 
-                  <div className="cart-quantity-control">
-                    <button
-                      type="button"
-                      aria-label="수량 줄이기"
-                      disabled={item.quantity <= 1}
-                      onClick={() =>
-                        updateCart(item.id, item.quantity - 1)
-                      }
-                    >
-                      −
-                    </button>
+              return (
+                <article className="cart-item" key={item.id}>
+                  <label className="cart-item-check">
+                    <input
+                      type="checkbox"
+                      aria-label={`${item.name} 선택`}
+                      checked={selectedIds.includes(item.id)}
+                      onChange={() => toggleSelect(item.id)}
+                    />
+                  </label>
 
-                    <span>{item.quantity}</span>
-
-                    <button
-                      type="button"
-                      aria-label="수량 늘리기"
-                      onClick={() =>
-                        updateCart(item.id, item.quantity + 1)
-                      }
-                    >
-                      ＋
-                    </button>
+                  <div className="cart-item-image">
+                    <img
+                      src={item.image}
+                      alt={`${item.name} 선글라스`}
+                    />
                   </div>
-                </div>
 
-                <strong className="cart-item-price">
-                  {(item.price * item.quantity).toLocaleString("ko-KR")}원
-                </strong>
+                  <div className="cart-item-info">
+                    <span>{item.brand}</span>
+                    <strong>{item.name}</strong>
+                    <small>{item.color}</small>
+                  </div>
 
-                <button
-                  className="cart-item-remove"
-                  type="button"
-                  aria-label={`${item.name} 삭제`}
-                  onClick={() => {
-                    removeFromCart(item.id);
-                    setSelectedIds((prev) =>
-                      prev.filter((id) => id !== item.id)
-                    );
-                  }}
-                >
-                  ×
-                </button>
-              </article>
-            ))
+                  {/* 수량과 가격을 함께 묶은 영역 */}
+                  <div className="cart-item-bottom">
+                    <div className="cart-quantity-control">
+                      <button
+                        type="button"
+                        aria-label="수량 줄이기"
+                        disabled={item.quantity <= 1}
+                        onClick={() =>
+                          updateCart(item.id, item.quantity - 1)
+                        }
+                      >
+                        −
+                      </button>
+
+                      <span>{item.quantity}</span>
+
+                      <button
+                        type="button"
+                        aria-label="수량 늘리기"
+                        onClick={() =>
+                          updateCart(item.id, item.quantity + 1)
+                        }
+                      >
+                        ＋
+                      </button>
+                    </div>
+
+                    <div className="cart-item-pricing">
+                      {hasDiscount && (
+                        <>
+                          <span className="cart-item-discount">
+                            {discountRate}%
+                          </span>
+
+                          <span className="cart-item-original-price">
+                            {(
+                              originalPrice * item.quantity
+                            ).toLocaleString("ko-KR")}
+                            원
+                          </span>
+                        </>
+                      )}
+
+                      <strong className="cart-item-price">
+                        {(
+                          item.price * item.quantity
+                        ).toLocaleString("ko-KR")}
+                        원
+                      </strong>
+                    </div>
+                  </div>
+
+                  <button
+                    className="cart-item-remove"
+                    type="button"
+                    aria-label={`${item.name} 삭제`}
+                    onClick={() => {
+                      removeFromCart(item.id);
+                      setSelectedIds((prev) =>
+                        prev.filter((id) => id !== item.id)
+                      );
+                    }}
+                  >
+                    ×
+                  </button>
+                </article>
+              );
+            })
           ) : (
             <div className="cart-empty-state">
               <p>장바구니가 비어 있어요.</p>
@@ -194,18 +231,26 @@ export default function CartPage({
           <div className="cart-price-box">
             <dl>
               <dt>상품 금액</dt>
-              <dd>{cartSubtotal.toLocaleString("ko-KR")}원</dd>
+              <dd>
+                {cartProductAmount.toLocaleString("ko-KR")}원
+              </dd>
 
               <dt>할인 금액</dt>
-              <dd>0원</dd>
+              <dd className="cart-total-discount">
+                {cartDiscount.toLocaleString("ko-KR")}원
+              </dd>
 
               <dt>배송비</dt>
-              <dd>{cartSubtotal > 0 ? "무료배송" : "0원"}</dd>
+              <dd>
+                {cartSubtotal > 0 ? "무료배송" : "0원"}
+              </dd>
             </dl>
 
             <div className="cart-total">
               <strong>총 금액</strong>
-              <strong>{cartSubtotal.toLocaleString("ko-KR")}원</strong>
+              <strong>
+                {cartSubtotal.toLocaleString("ko-KR")}원
+              </strong>
             </div>
           </div>
 
@@ -227,12 +272,19 @@ export default function CartPage({
             disabled={
               selectedCartItems.length === 0 || !cartAgreement
             }
-            onClick={() => navigate("/payment")}
+            onClick={() =>
+              navigate("/payment", {
+                state: {
+                  cartItems: selectedCartItems.map((item) => ({
+                    ...item,
+                    quantity: item.quantity,
+                  })),
+                },
+              })
+            }
           >
             결제하기
           </button>
-
-          <p>※ 결제 기능은 별도 연동이 필요합니다.</p>
         </aside>
       </div>
     </main>
