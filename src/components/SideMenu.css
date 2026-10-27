@@ -343,17 +343,15 @@
   width: 100%;
 }
 
+
 .faq-item {
+  display: block;
   width: 100%;
   min-height: 64px;
   padding: 0 20px;
   box-sizing: border-box;
   border-top: 1px solid #c5c5c5;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   font-size: 15px;
-  cursor: pointer;
 }
 
 .faq-item:last-child {
@@ -379,6 +377,105 @@
 /* PC에서는 사이드 메뉴 내부 푸터 숨김 */
 .mobile-menu-footer {
   display: none;
+}
+
+
+/* FAQ 질문 버튼 */
+.faq-item .faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  min-height: 64px;
+  padding: 12px 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+}
+
+.faq-item .faq-question:hover {
+  background-color: rgba(255, 255, 255, 0.35);
+}
+
+/* FAQ 답변 */
+.faq-item .faq-answer {
+  margin: 0;
+  padding: 0 0 16px;
+  color: #666;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* FAQ 화살표 */
+.faq-item .content-arrow {
+  flex-shrink: 0;
+  font-size: 16px;
+}
+
+/* 1:1 문의 페이지 안에서 펼쳐지는 FAQ */
+.inquiry-page-faq {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0;
+  border: 1px solid #ccc;
+  border-top: 0;
+  background: #fff;
+}
+
+/* 사이드 메뉴용 FAQ의 제목과 설명은 숨김 */
+.inquiry-page-faq .customer-content {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.inquiry-page-faq .customer-content h2,
+.inquiry-page-faq .customer-content > p {
+  display: none;
+}
+
+/* 질문 목록을 문의 페이지 너비에 맞춤 */
+.inquiry-page-faq .faq-list {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.inquiry-page-faq .faq-item {
+  width: 100%;
+  box-sizing: border-box;
+  border-bottom: 1px solid #eee;
+}
+
+.inquiry-page-faq .faq-question {
+  width: 100%;
+  min-height: 48px;
+  padding: 14px 22px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  text-align: left;
+  background: #fff;
+  border: 0;
+  font-size: 14px;
+}
+
+.inquiry-page-faq .faq-answer {
+  margin: 0;
+  padding: 14px 22px 18px;
+  background: #f8f8f8;
+  font-size: 13px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
 }
 
 /* ==============================
@@ -595,15 +692,33 @@
     padding: 0;
   }
 
-  .faq-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 18px 0;
-  }
+
+.faq-item {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0;
+  border-top: 1px solid #c5c5c5;
+}
+
+.faq-item:last-child {
+  border-bottom: 1px solid #c5c5c5;
+}
+
+.faq-item .faq-question {
+  min-height: 60px;
+  padding: 16px 0;
+}
+
+.faq-item .faq-answer {
+  padding: 0 0 16px;
+}
+
+.faq-item span:first-child {
+  flex: 1;
+  min-width: 0;
+  line-height: 1.5;
+}
 
   .faq-item span:first-child {
     flex: 1;

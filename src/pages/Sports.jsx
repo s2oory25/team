@@ -12,7 +12,7 @@ const products = [
   },
   {
     id: "oakley-sutro",
-    brand: "오클리",
+    brand: "OAKLEY",
     name: "수처 자켓",
     price: 328800,
     originalPrice: 411000,

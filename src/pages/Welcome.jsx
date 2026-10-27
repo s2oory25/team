@@ -44,7 +44,9 @@ function Welcome() {
           </article>
 
           <div className="welcome-actions">
-            <button type="button" className="welcome-ai-button">
+            <button type="button" className="welcome-ai-button"
+            onClick={() => navigate("/ai-fitting")}
+            >
               AI FIT 시작하기 〉
             </button>
 

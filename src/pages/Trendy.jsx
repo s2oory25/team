@@ -38,7 +38,7 @@ const products = [
   },
   {
     id: "wakilly-tutu",
-    brand: "와키윌리",
+    brand: "WACKY WILLY",
     name: "아세테이트 TUTU 선글라스",
     price: 41580,
     originalPrice: 99000,
@@ -47,7 +47,7 @@ const products = [
   },
   {
     id: "romantic-noir-pulse",
-    brand: "로맨틱누어",
+    brand: "ROMANTINUER",
     name: "PULSE B1",
     price: 64960,
     originalPrice: 116000,

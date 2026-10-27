@@ -16,6 +16,9 @@ import Signup from "./pages/Signup.jsx";
 import Welcome from "./pages/Welcome.jsx";
 import Cart from "./pages/Cart.jsx";
 import Favorites from "./pages/Favorites.jsx";
+import Likespage from "./pages/Likespage.jsx";
+import Mypage from "./pages/Mypage.jsx";
+import InquiryPage from "./pages/InquiryPage.jsx";
 import { products } from "./pages/Product.jsx";
 import AiFitting from "./pages/AiFitting.jsx";
 import Classic from "./pages/Classic.jsx";
@@ -26,7 +29,7 @@ import Celeb from "./pages/Celeb";
 import Product from "./pages/Product.jsx";
 import Payment from "./pages/Payment.jsx";
 import GuestOrderLookup from "./pages/GuestOrderLookup.jsx";
-import GuestOrderLookupPage from "./pages/GuestOrderLookup.jsx";
+// import GuestOrderLookupPage from "./pages/GuestOrderLookup.jsx";
 import Footer from "./components/Footer.jsx";
 
 function PageFooter() {
@@ -269,33 +272,24 @@ function App() {
     setMobileMypageOpen(false);
   }
 
-  function handleSubMenuClick(item) {
+
+
+function handleSubMenuClick(item) {
+  const pagePaths = {
+    클래식: "/classic",
+    스포츠: "/sports",
+    캐주얼: "/casual",
+    트렌디: "/trendy",
+    "마이페이지 홈": "/mypage",
+    좋아요: "/favorites",
+  };
+
+  if (pagePaths[item]) {
+    navigateTo(pagePaths[item]);
+  } else {
     closeMenu();
-
-    const pagePaths = {
-      클래식: "/classic",
-      스포츠: "/sports",
-      캐주얼: "/casual",
-      트렌디: "/trendy",
-    };
-
-    if (pagePaths[item]) {
-      window.location.href = `/team${pagePaths[item]}`;
-    } else {
-      console.log(`${item} 선택`);
-    }
+    console.log(`${item} 선택`);
   }
-
-  function handleMobileCustomerClick(item) {
-    if (selectedCustomerItem === item) {
-      setSelectedCustomerItem("");
-    } else {
-      setSelectedCustomerItem(item);
-    }
-
-    if (item === "1:1문의") {
-      console.log(`${item} 선택`);
-    }
   }
 
   function handleMobileMypageClick() {
@@ -306,6 +300,7 @@ function App() {
     setCustomerOpen(false);
   }
 
+
   function handleCustomerItemClick(item) {
     if (selectedCustomerItem === item) {
       setSelectedCustomerItem("");
@@ -314,10 +309,21 @@ function App() {
     }
   }
 
-  function handleLoginClick() {
-  closeMenu();
-  setIsLoginOpen((prev) => !prev);
+  function handleMobileCustomerClick(item) {
+    handleCustomerItemClick(item);
   }
+
+
+function handleLoginClick() {
+  closeMenu();
+
+  if (isLoggedIn) {
+    window.location.href = "/team/mypage";
+    return;
+  }
+
+  setIsLoginOpen((prev) => !prev);
+}
 
   function handleLogoutClick() {
     sessionStorage.removeItem("chalfitLogin");
@@ -364,7 +370,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/celeb" element={<Celeb />} />
-
+          <Route path="/inquiry" element={<InquiryPage />} />
+          <Route path="/ai-fitting" element={<AiFitting />} />
           <Route
             path="/ai-fitting"
             element={
@@ -418,6 +425,17 @@ function App() {
 
           <Route path="/signup" element={<Signup />} />
           <Route path="/welcome" element={<Welcome />} />
+          <Route path="/mypage" element={<Mypage />} />
+          <Route
+            path="/favorites"
+            element={
+              <Likespage
+                favorites={favorites}
+                products={products}
+                toggleFavorite={toggleFavorite}
+              />
+            }
+          />
           <Route
             path="/cart"
             element={
@@ -481,5 +499,4 @@ function App() {
     </BrowserRouter>
   );
 }
-
 export default App;

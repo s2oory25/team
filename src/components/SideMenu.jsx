@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import "./SideMenu.css";
 import { useNavigate } from "react-router-dom";
+import Faq from "../pages/Faq.jsx";
 
 function SideMenu({
   menuOpen,
@@ -124,37 +125,6 @@ function SideMenu({
               )}
             </div>
           ))}
-
-          {isLoggedIn && (
-            <div className="mobile-my-page">
-              <div
-                className={`menu-item ${
-                  activeMenu === "마이페이지" ? "active" : ""
-                }`}
-                onClick={handleMobileMypageClick}
-              >
-                <span>마이페이지</span>
-                <span className="menu-arrow" />
-              </div>
-
-              {mobileMypageOpen && (
-                <div className="mobile-mypage-menu">
-                  <div className="mypage-list">
-                    {mypageItems.map((item) => (
-                      <div
-                        key={item}
-                        className="mypage-item"
-                        onClick={() => handleSubMenuClick(item)}
-                      >
-                        <span>{item}</span>
-                        <span className="menu-arrow" />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-          )}
         </nav>
 
         <div className="menu-bottom">
@@ -202,7 +172,15 @@ function SideMenu({
             <div
               key={item}
               className="customer-item"
-              onClick={() => handleMobileCustomerClick(item)}
+              onClick={() => {
+                if (item === "1:1 문의" || item === "1:1문의") {
+                  closeMenu();
+                  navigate("/inquiry");
+                  return;
+                }
+
+                handleMobileCustomerClick(item);
+              }}
             >
               <span>{item}</span>
 
@@ -264,7 +242,15 @@ function SideMenu({
                 className={`customer-item ${
                   selectedCustomerItem === item ? "selected" : ""
                 }`}
-                onClick={() => handleCustomerItemClick(item)}
+                onClick={() => {
+                  if (item === "1:1 문의" || item === "1:1문의") {
+                    closeMenu();
+                    navigate("/inquiry");
+                    return;
+                  }
+
+                  handleCustomerItemClick(item);
+                }}
               >
                 <span>{item}</span>
                 <span
@@ -278,45 +264,10 @@ function SideMenu({
         </aside>
       )}
 
-      {/* 데스크톱 마이페이지 메뉴 */}
-      {isLoggedIn && !categoryOpen && !styleOpen && !customerOpen && (
-        <aside className="mypage-menu desktop-submenu">
-          <div className="mypage-list">
-            {mypageItems.map((item) => (
-              <div
-                key={item}
-                className="mypage-item"
-                onClick={() => handleSubMenuClick(item)}
-              >
-                <span>{item}</span>
-                <span className="menu-arrow" />
-              </div>
-            ))}
-          </div>
-        </aside>
-      )}
-
-      {/* FAQ 콘텐츠 */}
-      {customerOpen && selectedCustomerItem === "FAQ" && (
-        <div className="customer-content">
-          <h2>FAQ</h2>
-          <p>자주 묻는 질문을 확인해보세요.</p>
-
-          <div className="faq-list">
-            {faqItems.map((question, index) => (
-              <div
-                key={index}
-                className="faq-item"
-                onClick={() => console.log(`${question} 선택`)}
-              >
-                <span>{question}</span>
-                <span className="content-arrow">→</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
+{/* FAQ 콘텐츠 */}
+{customerOpen && selectedCustomerItem === "FAQ" && (
+  <Faq />
+)}
       <div
         className={`menu-overlay ${
           categoryOpen || styleOpen || customerOpen

@@ -35,7 +35,7 @@ function Header({
       </Link>
 
       <nav className="header-right" aria-label="회원 메뉴">
-        <Link className="desktop-text" to="/favorites" onClick={onCartClick}>
+<Link className="desktop-text" to="/favorites" onClick={onCartClick}>
           좋아요
           {favoriteCount > 0 && (
             <span className="header-count">{favoriteCount}</span>

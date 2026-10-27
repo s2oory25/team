@@ -3,10 +3,10 @@ import ProductCard from "../components/ProductCard.jsx";
 
 const products = [
   { id: "charles-brea", brand: "CHARLES&KEITH", name: "브레아 라운드 선글라스", price: 109900, shape: "oval", image: "/team/casual/charles.png" },
-  { id: "oakley-eye-jacket", brand: "오클리", name: "아이 자켓 리덕스", price: 261000, shape: "soft-square", image: "/team/casual/okelyi.png" },
+  { id: "oakley-eye-jacket", brand: "OAKLEY", name: "아이 자켓 리덕스", price: 261000, shape: "soft-square", image: "/team/casual/okelyi.png" },
   { id: "rayban-clubmaster", brand: "RAY-BAN", name: "클럽 마스터", price: 204800, originalPrice: 256000, shape: "square", image: "/team/casual/rayclub.png" },
   { id: "lespecs-mascarra", brand: "LE SPECS", name: "마스카라 1475 블랙", price: 138000, originalPrice: 230000, shape: "oval", image: "/team/casual/lespecs1475.png" },
-  { id: "venaco-bwf513bk", brand: "베나코 폰타나", name: "BWF513BK", price: 89000, originalPrice: 179000, shape: "soft-square", image: "/team/casual/venaco.png" },
+  { id: "venaco-bwf513bk", brand: "BENACOFONTANA", name: "BWF513BK", price: 89000, originalPrice: 179000, shape: "soft-square", image: "/team/casual/venaco.png" },
   { id: "izipizi-e-black", brand: "IZIPIZI", name: "#E Black", price: 99000, shape: "square", image: "/team/casual/izipizi.png" },
 ];
 

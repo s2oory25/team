@@ -3,7 +3,7 @@ import ProductCard from "../components/ProductCard.jsx";
 
 const products = [
   { id: "rayclassic", brand: "RAY-BEN", name: "ORIGINAL WAYFARER CLASSIC", price: 270000, shape: "oval",  image: "/team/classic/rayclassic.png" },
-  { id: "persol", brand: "Persol", name: "PO0649NE - Total Black Arrow", price: 615000, originalPrice: 1065000, shape: "soft-square", image: "/team/classic/persol.png" },
+  { id: "persol", brand: "PERSOL", name: "PO0649NE - Total Black Arrow", price: 615000, originalPrice: 1065000, shape: "soft-square", image: "/team/classic/persol.png" },
   { id: "new-her", brand: "GENTLE MONSTER", name: "뉴 허 01", price: 289000, shape: "square", image: "/team/classic/gmNewHer.png" },
   { id: "celine", brand: "CELENE", name: "트리옹프 01", price: 730000, shape: "oval", image: "/team/classic/celine.png"},
   { id: "blueSblack", brand: "BLUE ELEPHANT", name: "MARINA-S black", price: 69900, shape: "soft-square", image: "/team/classic/blueSblack.png" },
