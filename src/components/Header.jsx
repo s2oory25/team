@@ -35,23 +35,24 @@ function Header({
       </Link>
 
       <nav className="header-right" aria-label="회원 메뉴">
-        <a className="desktop-text" href="#favorites">
+        <Link className="desktop-text" to="/favorites" onClick={onCartClick}>
           좋아요
           {favoriteCount > 0 && (
             <span className="header-count">{favoriteCount}</span>
           )}
-        </a>
+        </Link>
 
-        <a
+        <Link
           className="tablet-icon heart-icon"
-          href="#favorites"
+          to="/favorites"
           aria-label={`좋아요 ${favoriteCount}개`}
+          onClick={onCartClick}
         >
           <img src="/team/header_png/heart.png" alt="" />
           {favoriteCount > 0 && (
             <span className="header-count">{favoriteCount}</span>
           )}
-        </a>
+        </Link>
 
         <Link
           className="desktop-text"

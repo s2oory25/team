@@ -15,6 +15,7 @@ import Login from "./pages/Login.jsx";
 import Signup from "./pages/Signup.jsx";
 import Welcome from "./pages/Welcome.jsx";
 import Cart from "./pages/Cart.jsx";
+import Favorites from "./pages/Favorites.jsx";
 import { products } from "./pages/Product.jsx";
 import AiFitting from "./pages/AiFitting.jsx";
 import Classic from "./pages/Classic.jsx";
@@ -136,6 +137,10 @@ function App() {
         ? prev.filter((id) => id !== productId)
         : [...prev, productId]
     );
+  }
+
+  function clearFavorites() {
+    setFavorites([]);
   }
 
   // 장바구니 상품 수량 변경
@@ -421,6 +426,19 @@ function App() {
                 products={products}
                 updateCart={updateCart}
                 removeFromCart={removeFromCart}
+              />
+            }
+          />
+          <Route
+            path="/favorites"
+            element={
+              <Favorites
+                favorites={favorites}
+                products={products}
+                toggleFavorite={toggleFavorite}
+                clearFavorites={clearFavorites}
+                cartItems={cartItems}
+                updateCart={updateCart}
               />
             }
           />
