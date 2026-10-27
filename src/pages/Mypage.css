@@ -10,7 +10,7 @@
 
 .mypage-title-bar {
   width: 100%;
-  padding: 18px 28px 14px;
+  padding: 18px 16px 12px;
   border-bottom: 1px solid #aaa;
 }
 
@@ -22,10 +22,12 @@
 
 .mypage-screen .mypage-welcome {
   width: 100%;
-  margin: 0;
-  padding: 10px 20px 0;
-  color: #555;
+  margin: 12px 0 0;
+  padding: 0 16px;
+  color: #111;
   font-size: 13px;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .mypage-dashboard {
@@ -206,16 +208,6 @@
     width: calc(100% - 28px);
     gap: 0;
     padding: 8px 0 20px;
-  }
-
-  .mypage-welcome {
-    width: 100%;
-    padding: 10px 16px 0;
-    font-size: 13px;
-  }
-
-  .mypage-title-bar {
-    padding: 14px 16px 12px;
   }
 
   .mypage-profile-card {

@@ -5,6 +5,7 @@ import {
   Routes,
   Route,
   useLocation,
+  useNavigate,
 } from "react-router-dom";
 import "./App.css";
 
@@ -16,7 +17,6 @@ import Signup from "./pages/Signup.jsx";
 import Welcome from "./pages/Welcome.jsx";
 import Cart from "./pages/Cart.jsx";
 import Favorites from "./pages/Favorites.jsx";
-import Likespage from "./pages/Likespage.jsx";
 import Mypage from "./pages/Mypage.jsx";
 import InquiryPage from "./pages/InquiryPage.jsx";
 import { products } from "./pages/Product.jsx";
@@ -40,6 +40,12 @@ function PageFooter() {
   }
 
   return <Footer />;
+}
+
+function AppContent() {
+  const navigate = useNavigate();
+
+  return <AppInner navigate={navigate} />;
 }
 
 function App() {
@@ -135,11 +141,14 @@ function App() {
 
   // 좋아요 추가 및 취소
   function toggleFavorite(productId) {
-    setFavorites((prev) =>
-      prev.includes(productId)
-        ? prev.filter((id) => id !== productId)
-        : [...prev, productId]
-    );
+    setFavorites((prev) => {
+      const current = Array.isArray(prev) ? prev : [];
+      const id = String(productId);
+
+      return current.some((item) => String(item) === id)
+        ? current.filter((item) => String(item) !== id)
+        : [...current, id];
+    });
   }
 
   function clearFavorites() {
@@ -174,6 +183,8 @@ function App() {
 
   // 좋아요 상품 개수
   const favoriteCount = favorites.length;
+  console.log("좋아요 ID 목록:", favorites);
+  console.log("전체 상품 ID 목록:", Object.keys(products));
 
   // 좋아요 저장
   useEffect(() => {
@@ -238,17 +249,22 @@ function App() {
     closeSubmenus();
   }
 
+  function navigateTo(path) {
+  closeMenu();
+
+  const cleanPath = path.startsWith("/")
+    ? path
+    : `/${path}`;
+
+  window.location.href = `/team${cleanPath}`;
+}
+
   function openMenu() {
     if (menuOpen) {
       closeMenu();
     } else {
       setMenuOpen(true);
     }
-  }
-
-  function navigateTo(path) {
-    closeMenu();
-    window.location.href = `/team${path}`;
   }
 
   function handleMenuClick(menu) {
@@ -425,14 +441,14 @@ function handleLoginClick() {
 
           <Route path="/signup" element={<Signup />} />
           <Route path="/welcome" element={<Welcome />} />
-          <Route path="/mypage" element={<Mypage />} />
           <Route
-            path="/favorites"
+            path="/mypage"
             element={
-              <Likespage
-                favorites={favorites}
-                products={products}
-                toggleFavorite={toggleFavorite}
+              <Mypage
+                isLoggedIn={isLoggedIn}
+                setIsLoggedIn={setIsLoggedIn}
+                handleLogoutClick={handleLogoutClick}
+                navigateTo={navigateTo}
               />
             }
           />

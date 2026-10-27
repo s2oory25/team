@@ -12,17 +12,16 @@
 }
 
 .cart-title-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 18px 24px 14px;
+  width: 100%;
+  padding: 18px 16px 12px;
   border-bottom: 1px solid #aaa;
 }
 
 .cart-title-bar h1 {
   margin: 0;
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 500;
+  letter-spacing: normal;
 }
 
 .cart-content {
@@ -363,7 +362,7 @@
 }
 
 /* =========================
-   태블릿: 601px ~ 900px
+  태블릿: 601px ~ 900px
    ========================= */
 @media (min-width: 601px) and (max-width: 900px) {
   .cart-content {
@@ -531,7 +530,7 @@
 }
 
 /* =========================
-   모바일: 600px 이하
+  모바일: 600px 이하
    ========================= */
 @media (max-width: 600px) {
   .cart-page {
@@ -539,13 +538,13 @@
     min-height: calc(100dvh - 52px);
   }
 
-  .cart-title-bar {
-    padding: 16px 14px 12px;
-  }
+.cart-title-bar {
+  padding: 14px 16px 12px;
+}
 
-  .cart-title-bar h1 {
-    font-size: 24px;
-  }
+.cart-title-bar h1 {
+  font-size: 26px;
+}
 
   .cart-title-bar .mypage-return-link {
     font-size: 9px;

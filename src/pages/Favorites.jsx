@@ -30,8 +30,17 @@ export default function Favorites({
 }) {
   const navigate = useNavigate();
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-  const favoriteProducts = favorites
-    .map((productId) => products[productId])
+  const favoriteProducts = (Array.isArray(favorites) ? favorites : [])
+    .map((item) => {
+      const id = typeof item === "object" && item !== null ? item.id : item;
+
+      return (
+        products[String(id)] ??
+        Object.values(products).find(
+          (product) => String(product.id) === String(id)
+        )
+      );
+    })
     .filter(Boolean);
 
   function openProduct(productId) {
@@ -49,18 +58,38 @@ export default function Favorites({
     updateCart(productId, (cartItems[productId] ?? 0) + 1);
   }
 
-  return (
-    <main className="favorites-page">
-      <div className="favorites-title-bar">
-        <h1>좋아요</h1>
-      </div>
+return (
+  <main className="favorites-page">
+    <div className="favorites-title-bar">
+      <h1>좋아요</h1>
+    </div>
+
+    <p className="favorites-intro">
+      마음에 드는 선글라스를 모아보세요.
+    </p>
+
+    <nav className="likes-mobile-tabs" aria-label="마이페이지 메뉴">
+    <button type="button" onClick={() => navigate("/mypage")}>
+      회원정보 수정
+    </button>
+    <button type="button" onClick={() => navigate("/mypage")}>
+      주문 내역
+    </button>
+    <button type="button" onClick={() => navigate("/mypage")}>
+      최근 본 상품
+    </button>
+    <button className="active" type="button" onClick={() => navigate("/favorites")}>
+      좋아요
+    </button>
+    <button type="button" onClick={() => navigate("/cart")}>
+      장바구니
+    </button>
+  </nav>
+
 
       <section className="favorites-body" aria-label="좋아요 상품">
         {favoriteProducts.length > 0 && (
           <div className="favorites-toolbar">
-            <h2 className="favorites-description">
-              마음에 드는 선글라스를 모아보세요.
-            </h2>
             <button
               className="favorites-clear-button"
               type="button"
