@@ -1,0 +1,374 @@
+.favorites-page {
+  width: 100%;
+  flex: 1;
+  background: #f8f8f8;
+}
+
+.favorites-title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px 14px;
+  border-bottom: 1px solid #aaa;
+}
+
+.favorites-title-bar h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}
+
+.favorites-content {
+  width: min(100%, 1440px);
+  min-height: 420px;
+  margin: 0 auto;
+  padding: 0 68px 18px;
+}
+
+.favorites-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 12px 30px 28px;
+  gap: 24px;
+}
+
+.favorites-description {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.favorites-clear-button {
+  flex: 0 0 auto;
+  padding: 5px 0;
+  border: 0;
+  border-bottom: 1px solid #777;
+  background: transparent;
+  color: #333;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.favorites-clear-button:hover {
+  color: #000;
+  border-bottom-color: #000;
+}
+
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: 28px;
+  row-gap: 28px;
+}
+
+.favorite-card {
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid #777;
+  cursor: pointer;
+}
+
+.favorite-card:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 3px;
+}
+
+.favorite-card-image {
+  display: flex;
+  height: 150px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  overflow: hidden;
+  background: #f7f7f8;
+}
+
+.favorite-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.favorite-card-row {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.favorite-card-brand,
+.favorite-card-name,
+.favorite-card-price {
+  margin: 0;
+}
+
+.favorite-card-brand {
+  overflow: hidden;
+  font-size: 20px;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.favorite-card-name {
+  min-height: 28px;
+  margin-top: 8px;
+  overflow: hidden;
+  font-size: 18px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.favorite-card-bottom {
+  margin-top: 6px;
+}
+
+.favorite-card-price {
+  font-size: 19px;
+}
+
+.favorite-card-heart,
+.favorite-card-cart {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #000;
+  cursor: pointer;
+}
+
+.favorite-card-heart svg {
+  width: 28px;
+  height: 28px;
+  fill: currentColor;
+}
+
+.favorite-card-cart svg {
+  width: 27px;
+  height: 27px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+}
+
+.favorite-card-heart:focus-visible,
+.favorite-card-cart:focus-visible,
+.favorites-empty button:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 3px;
+}
+
+.favorites-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.favorites-content.is-empty {
+  min-height: calc(100vh - 310px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favorites-empty > svg {
+  width: 46px;
+  height: 46px;
+  fill: none;
+  stroke: #999;
+  stroke-width: 1.25;
+}
+
+.favorites-empty-title,
+.favorites-empty-description {
+  margin: 0;
+  color: #111;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.favorites-empty-title {
+  margin-top: 24px;
+}
+
+.favorites-empty-description {
+  margin-top: 20px;
+}
+
+.favorites-empty button {
+  width: 360px;
+  max-width: 100%;
+  margin-top: 70px;
+  padding: 20px 24px;
+  border: 1px solid #111;
+  background: #111;
+  color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.favorites-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.42);
+}
+
+.favorites-modal {
+  position: relative;
+  width: min(100%, 430px);
+  padding: 48px 36px 32px;
+  background: #fff;
+  text-align: center;
+}
+
+.favorites-modal h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.favorites-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #222;
+  cursor: pointer;
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.favorites-modal-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 34px;
+}
+
+.favorites-modal-actions button {
+  padding: 13px 16px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.favorites-modal-cancel {
+  border: 1px solid #111;
+  background: #fff;
+  color: #111;
+}
+
+.favorites-modal-confirm {
+  border: 1px solid #111;
+  background: #111;
+  color: #fff;
+}
+
+.favorites-clear-button:focus-visible,
+.favorites-modal button:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 3px;
+}
+
+@media (max-width: 1100px) {
+  .favorites-content {
+    padding-right: 36px;
+    padding-left: 36px;
+  }
+
+  .favorites-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+  }
+}
+
+@media (max-width: 767px) {
+  .favorites-title-bar {
+    min-height: 78px;
+    padding: 0 20px;
+  }
+
+  .favorites-title-bar h1 {
+    font-size: 28px;
+  }
+
+  .favorites-content {
+    padding: 0 16px 30px;
+  }
+
+  .favorites-toolbar {
+    margin: 18px 20px 20px;
+    gap: 12px;
+  }
+
+  .favorites-description {
+    font-size: 16px;
+  }
+
+  .favorites-clear-button {
+    font-size: 13px;
+  }
+
+  .favorites-content.is-empty {
+    min-height: calc(100vh - 278px);
+  }
+
+  .favorites-empty-title,
+  .favorites-empty-description {
+    font-size: 20px;
+  }
+
+  .favorites-empty button {
+    width: 280px;
+    margin-top: 48px;
+    padding: 16px 20px;
+    font-size: 17px;
+  }
+
+  .favorites-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 10px;
+  }
+
+  .favorite-card {
+    padding: 7px;
+  }
+
+  .favorite-card-image {
+    height: 112px;
+  }
+
+  .favorite-card-brand,
+  .favorite-card-name,
+  .favorite-card-price {
+    font-size: 14px;
+  }
+
+  .favorite-card-heart svg,
+  .favorite-card-cart svg {
+    width: 23px;
+    height: 23px;
+  }
+}
