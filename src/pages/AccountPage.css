@@ -96,12 +96,6 @@
   font-weight: 500;
 }
 
-.account-description {
-  margin: 10px 0 24px;
-  color: #666;
-  font-size: 16px;
-}
-
 .account-form {
   display: flex;
   flex-direction: column;
@@ -252,6 +246,30 @@
   padding: 12px 32px 0;
   color: #666;
   font-size: 14px;
+}
+
+.account-save-toast {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+
+  width: fit-content;
+  height: fit-content;
+  margin: auto;
+  padding: 18px 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  background: #111;
+  border: 1px solid #111;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+
+  color: #fff;
+  font-size: 15px;
 }
 
 @media (max-width: 900px) {
