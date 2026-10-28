@@ -1,8 +1,46 @@
+import { useEffect, useState } from "react";
 import "./Mypage.css";
 import { useNavigate } from "react-router-dom";
 
 export default function MyPage(props) {
   const navigate = useNavigate();
+  const [favoriteCount, setFavoriteCount] = useState(() => {
+    try {
+      const favorites = JSON.parse(
+        localStorage.getItem("chalfitFavorites") || "[]"
+      );
+
+      return Array.isArray(favorites) ? favorites.length : 0;
+    } catch {
+      return 0;
+    }
+  });
+
+  useEffect(() => {
+    const updateFavoriteCount = () => {
+      try {
+        const favorites = JSON.parse(
+          localStorage.getItem("chalfitFavorites") || "[]"
+        );
+
+        setFavoriteCount(
+          Array.isArray(favorites) ? favorites.length : 0
+        );
+      } catch {
+        setFavoriteCount(0);
+      }
+    };
+
+  updateFavoriteCount();
+
+  window.addEventListener("storage", updateFavoriteCount);
+  window.addEventListener("focus", updateFavoriteCount);
+
+  return () => {
+    window.removeEventListener("storage", updateFavoriteCount);
+    window.removeEventListener("focus", updateFavoriteCount);
+  };
+}, []);
 
   const {
     isLoggedIn,
@@ -24,7 +62,14 @@ export default function MyPage(props) {
         <button
           type="button"
           className="mypage-profile-card"
-          onClick={handleProfileCardClick}
+          onClick={() => {
+            if (!isLoggedIn) {
+              props.onLoginClick();
+              return;
+            }
+
+            navigate("/account");
+          }}
         >
           <span
             className={`mypage-profile-avatar${profilePhoto ? " has-photo" : ""}`}
@@ -64,8 +109,10 @@ export default function MyPage(props) {
             type="button"
             onClick={() => navigate("/favorites")}
           >
-            <span aria-hidden="true">💘</span>
-            <strong>0</strong>
+          
+        <span aria-hidden="true">💘</span>
+        <strong>{favoriteCount}</strong>
+        
             <small>좋아요</small>
           </button>
 
@@ -94,7 +141,7 @@ export default function MyPage(props) {
           onClick={() => navigate("/ai-fitting")}
         >
           <strong>MY FIT</strong>
-          <span>나의 분석 결과 보기　›</span>
+          <span>다시 분석하기　›</span>
         </button>
 
         <section className="mypage-shortcuts">

@@ -43,11 +43,11 @@
 
 .mypage-profile-card {
   width: 100%;
-  min-height: 112px;
+  min-height: 132px;
   display: flex;
   align-items: center;
-  gap: 20px;
-  padding: 18px 24px;
+  gap: 24px;
+  padding: 24px 30px;
   border: 1px solid #ccc;
   background: #fff;
   color: #111;
@@ -117,22 +117,22 @@
 .mypage-summary {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
+  gap: 20px;
 }
 
 .mypage-summary button {
-  min-height: 120px;
+  min-height: 145px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  gap: 10px;
+  padding: 20px 12px;
   border: 1px solid #ccc;
   background: #fff;
   color: #111;
   cursor: pointer;
 }
-
 .mypage-summary button > span {
   font-size: 27px;
   line-height: 1;
@@ -147,12 +147,13 @@
 }
 
 .mypage-fit-button {
-  min-height: 84px;
+  min-height: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 8px;
+  padding: 16px;
   border: 0;
   background: #050505;
   color: #fff;
@@ -170,15 +171,15 @@
 .mypage-shortcuts {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px 16px;
+  gap: 18px 20px;
 }
 
 .mypage-shortcuts button {
-  min-height: 76px;
+  min-height: 88px;
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 0 20px;
+  gap: 16px;
+  padding: 0 26px;
   border: 1px solid #ccc;
   background: #fff;
   color: #111;
@@ -206,14 +207,14 @@
 
   .mypage-dashboard {
     width: calc(100% - 28px);
-    gap: 0;
-    padding: 8px 0 20px;
+    gap: 16px;
+    padding: 16px 0 24px;
   }
 
   .mypage-profile-card {
-    min-height: 92px;
+    min-height: 104px;
     gap: 14px;
-    padding: 12px 16px;
+    padding: 16px;
   }
 
   .mypage-profile-avatar {
@@ -234,7 +235,9 @@
   }
 
   .mypage-summary button {
-    min-height: 100px;
+    min-height: 112px;
+    padding: 12px 6px;
+    gap: 8px;
   }
 
   .mypage-summary button small {
@@ -242,15 +245,16 @@
   }
 
   .mypage-fit-button {
-    min-height: 72px;
+    min-height: 84px;
+    padding: 12px;
   }
 
   .mypage-shortcuts {
-    gap: 10px;
+    gap: 12px;
   }
 
   .mypage-shortcuts button {
-    min-height: 64px;
+    min-height: 72px;
     padding: 0 14px;
     font-size: 14px;
   }
