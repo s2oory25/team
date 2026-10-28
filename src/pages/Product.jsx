@@ -8,111 +8,116 @@ import "./Product.css";
 export const products = {
   "new-her": {
     id: "new-her",
+    category: "CAT-EYE",
     brand: "GENTLE MONSTER",
-    name: "뉴 허 01",
+    name: "던 01",
     color: "블랙/블랙",
-    price: 289000,
-    image: "/team/classic/gmNewHer.png",
-    video: "/team/classic/gmnewher.mp4",
-    description: "클래식한 블랙 컬러와 여유로운 오버핏의 스퀘어 선글라스",
-    size: ["63.9 mm", "53.7 mm", "15 mm", "148.9 mm", "147 mm"],
+    price: 340000,
+    image: "/team/cat-eye-products/dawn.png",
+    description: "날렵한 블랙 프레임의 캣아이 선글라스.",
+    size: ["53.5 mm", "21 mm", "147.2 mm", "146.3 mm", "33.3 mm"],
+    sizeLabels: ["렌즈 폭", "브리지", "프레임 전면", "사원 길이", "렌즈 높이"],
     features: [
       "블랙 아세테이트 프레임",
-      "UV 99.9% 차단 렌즈",
-      "스퀘어 쉐입"
+      "블랙 렌즈",
+      "캣아이 모양"
     ],
-    defaultFit: "Over"
+    defaultFit: "Regular"
   },
 
   "rayclassic": {
     id: "rayclassic",
-    brand: "RAY-BAN",
-    name: "ORIGINAL WAYFARER CLASSIC",
+    category: "CAT-EYE",
+    brand: "CELINE",
+    name: "트리옹프 15",
     color: "52mm",
-    price: 270000,
-    image: "/team/classic/rayclassic.png",
-    video: "/team/classic/rayclassic.mp4",
-    description: "대체 불가능한 헤리티지, 선글라스의 영원한 세계 표준.",
-    size: ["52mm", "44mm", "22mm", "145mm", "150mm"],
+    price: 730000,
+    image: "/team/cat-eye-products/celine-triomphe.png",
+    description: "블랙 아세테이트 프레임과 골드 트리옹프 장식이 돋보이는 클래식한 캣아이 선글라스",
+    size: ["55mm", "18mm", "145mm"],
+    sizeLabels: ["렌즈 가로", "브리지 너비", "다리 길이"],
     features: [
       "블랙 아세테이트 프레임",
-      "UV 100% 차단 그린 블랙 글라스 렌즈",
-      "스퀘어 쉐입"
+      "블랙 렌즈",
+      "캣아이 모양"
     ],
     defaultFit: "Regular"
   },
 
   "gmsoho": {
     id: "gmsoho",
-    brand: "GENTLE MONSTER",
-    name: "소호 01",
+    category: "CAT-EYE",
+    brand: "PRADA",
+    name: "SPRA09",
     color: "블랙",
-    price: 279000,
-    image: "/team/classic/gmsoho.png",
-    video: "/team/classic/gmsoho.mp4",
-    description: "도회적인 카리스마를 더하는 볼드한 스퀘어의 정석.",
-    size: ["53mm", "38.4mm", "22mm", "145.5mm", "147.1mm"],
+    price: 700000,
+    image: "/team/cat-eye-products/spra09.png",
+    description: "블랙 아세테이트 소재의 모던한 캣아이 선글라스",
+    size: ["55mm", "16mm", "145 mm"],
+    sizeLabels: ["렌즈 너비", "브리지", "다리길이"],
     features: [
-      "블랙 아세테이트 프레임",
-      "UV 99.9% 차단 렌즈",
-      "스퀘어 쉐입",
+      "아세테이트 프레임 전면 - 색상: 검정",
+      "눈곱 렌즈와 호환되는 프레임",
+      "100% UVA / UVB 차단",
     ],
     defaultFit: "Regular"
   },
 
   "blueSblack": {
     id: "blueSblack",
-    brand: "BLUE ELEPHANT",
-    name: "MARINA-S black",
+    category: "CAT-EYE",
+    brand: "GENTLE MONSTER",
+    name: "데본 01",
     color: "블랙",
-    price: 69900,
-    image: "/team/classic/blueSblack.png",
-    video: "/team/classic/blueSblack.mp4",
-    description: "가볍게 일상을 빛내는 트렌디한 데일리 스퀘어의 정석.",
-    size: ["55mm", "43mm", "19mm", "146mm", "148mm"],
+    price: 340000,
+    image: "/team/cat-eye-products/devon.png",
+    description: "볼드한 프레임과 날렵한 캣아이 실루엣이 돋보이는 감각적인 선글라스.",
+    size: ["55.4 mm", "22 mm", "150 mm", "145.8 mm", "33.5 mm"],
+    sizeLabels: ["렌즈 너비", "브릿지", "프레임 프론트", "템플 길이", "렌즈 높이"],
     features: [
       "블랙 아세테이트 프레임",
-      "UV 100% 차단 나일론 렌즈",
+      "블랙 렌즈",
+      "캣아이 쉐입",
     ],
-    defaultFit: "Over"
+    defaultFit: "Regular"
   },
 
   "persol": {
     id: "persol",
-    brand: "Persol",
-    name: "PO0649NE - Total Black Arrow",
+    category: "CAT-EYE",
+    brand: "CARIN",
+    name: "CELLY R_C1",
     color: "54mm",
-    price: 615000,
-    originalPrice: 1065000,
-    image: "/team/classic/persol.png",
-    video: "/team/classic/persol.mp4",
-    description: "올블랙의 시크함으로 재해석한 페르솔의 독보적인 클래식 아이콘.",
-    size: ["54mm", "49.3mm", "20mm", "141mm", "140mm"],
+    price: 218000,
+    image: "/team/cat-eye-products/carin-celly.png",
+    description: "캣아이 형태의 블랙 아세테이트 프레임과 블랙 렌즈가 돋보이는 시크하고 세련된 선글라스",
+    size: ["54mm", "46mm", "20mm", "146mm", "143mm"],
+    sizeLabels: ["렌즈 가로", "렌즈 세로", "브리지", "다리 길이", "전체 프레임 너비"],
     features: [
       "블랙 아세테이트 프레임",
-      "블루 그라데이션 편광 크리스탈 렌즈",
-      "클래식한 쉐입"
+      "블랙 렌즈",
+      "캣아이 모양"
     ],
     defaultFit: "Regular"
   },
 
   "celine": {
     id: "celine",
-    brand: "CELINE",
-    name: "트리옹프 01",
+    category: "CAT-EYE",
+    brand: "BLUE ELEPHANT",
+    name: "EVER",
     color: "블랙",
-    price: 730000,
-    image: "/team/classic/celine.png",
-    video: "/team/classic/celine.mp4",
-    description: "골드 트리옹프의 우아함이 돋보이는 트렌디한 오발 셰이프의 정석.",
-    size: ["52mm", "38mm", "22mm", "144mm", "145mm"],
+    price: 49900,
+    image: "/team/cat-eye-products/ever.png",
+    description: "블랙 프레임과 짙은 렌즈가 돋보이는 모던하고 심플한 선글라스.",
+    size: ["38mm", "19mm", "147mm", "149mm"],
+    sizeLabels: ["렌즈 높이", "브릿지", "프레임 정면", "템플길이"],
     features: [
-      "블랙 아세테이트 프레임",
-      "UVA 및 UVB 차단 렌즈",
-      "트리옹프 시그니처 디테일의 템플",
-      "오벌 프레임"
+      "블랙 프레임",
+      "블랙 렌즈",
+      "렌즈는 자외선의 99% 차단"
     ],
-    defaultFit: "Regular"
+    defaultFit: "Over"
   },
 
     "blue-avro": {
@@ -450,49 +455,142 @@ export const products = {
   },
 };
 
+const roundProducts = [
+  {
+    id: "round-nuvon",
+    brand: "TOMFORD",
+    name: "FT1244K",
+    price: 800000,
+    image: "/team/round/tomford.png",
+    description: "블랙 라운드 프레임과 메탈 디테일이 조화를 이루는 선글라스",
+    color: "블랙",
+    size: ["54mm", "48mm", "22mm", "145mm"],
+    sizeLabels: ["렌즈 너비", "렌즈 높이", "브릿지 너비", "템플 길이"],
+    features: ["블랙", "스모크 그레이", "라운드"],
+    defaultFit: "Regular",
+  },
+  {
+    id: "round-dean",
+    brand: "PRADA",
+    name: "SPRD08",
+    price: 700000,
+    image: "/team/round/prada.png",
+    description: "블랙 프레임과 볼륨감 있는 라운드 디자인이 돋보이는 선글라스.",
+    color: "블랙",
+    size: ["53mm", "21mm", "135mm"],
+    sizeLabels: ["렌즈 너비", "브릿지 너비", "템플 길이"],
+    features: ["아세테이트", "블랙", "오버사이즈 라운드", "두꺼운 프레임과 부드러운 곡선형 테두리"],
+    defaultFit: "Over",
+  },
+  {
+    id: "round-noho",
+    brand: "RAY BEN",
+    name: "RB2447",
+    price: 230000,
+    image: "/team/round/rayban.png",
+    description: "블랙 아세테이트 프레임과 그린 렌즈가 조화를 이루는 클래식한 라운드 디자인",
+    color: "유광 블랙 / G-15 그린",
+    size: ["49mm", "46.8mm", "21mm"],
+    sizeLabels: ["렌즈 너비", "렌즈 높이", "브릿지"],
+    features: ["아세테이트", "유광 블랙", "G-15 그린", "라운드"],
+    defaultFit: "Small",
+  },
+  {
+    id: "round-her",
+    brand: "Gucci",
+    name: "GG2079S",
+    price: 700000,
+    image: "/team/round/gucci.png",
+    description: "블랙 아세테이트 프레임과 그레이 렌즈가 조화를 이루는 클래식 선글라스",
+    color: "블랙 / 그레이",
+    size: ["48mm", "43mm", "22mm", "145mm"],
+    sizeLabels: ["렌즈 너비", "렌즈 높이", "브릿지 너비", "다리 길이"],
+    features: ["아세테이트/메탈", "블랙", "그레이", "라운드"],
+    defaultFit: "Small",
+  },
+  {
+    id: "round-persol",
+    brand: "Oliver Peoples",
+    name: "Gregory Peck Sun",
+    price: 690000,
+    image: "/team/round/oliver-peoples.png",
+    description: "세미 매트 블랙 프레임과 다크 그레이 편광 렌즈가 어우러진 빈티지 스타일의 라운드",
+    color: "세미 매트 블랙 / 다크 그레이",
+    size: ["47mm", "43mm", "23mm", "150mm"],
+    sizeLabels: ["렌즈 너비", "렌즈 높이", "브릿지 너비", "다리 길이"],
+    features: ["아세테이트", "세미 매트 블랙", "다크 그레이", "라운드", "편광 렌즈"],
+    defaultFit: "Regular",
+  },
+  {
+    id: "round-marina",
+    brand: "GENTLE MONSTER",
+    name: "딘 01",
+    price: 279000,
+    image: "/team/round/gm-dean.png",
+    description: "부드러운 블랙 아세테이트 소재의 라운드 선글라스",
+    color: "블랙",
+    size: ["63mm", "17mm", "147.1mm", "46.6mm"],
+    sizeLabels: ["렌즈 너비", "브릿지", "템플 길이", "렌즈 높이"],
+    features: ["2025 컬렉션", "블랙 아세테이트 프레임", "블랙 렌즈", "라운드 쉐입", "UV 99.9% 차단 렌즈"],
+    defaultFit: "Over",
+  },
+];
+
+for (const item of roundProducts) {
+  products[item.id] = {
+    ...item,
+    category: "ROUND",
+    color: item.color ?? "",
+    description: item.description ?? `${item.name} round sunglasses`,
+    size: item.size ?? ["N/A", "N/A", "N/A"],
+    sizeLabels: item.sizeLabels ?? ["Lens width", "Bridge", "Temple length"],
+    features: item.features ?? ["Round frame"],
+    defaultFit: item.defaultFit ?? "Regular",
+  };
+}
+
 const recommendedProducts = [
   {
     id: "rayclassic",
-    brand: "RAY-BAN",
-    name: "ORIGINAL WAYFARER CLASSIC",
-    price: 270000,
-    image: "/team/classic/rayclassic.png",
+    brand: "CELINE",
+    name: "트리옹프 15",
+    price: 730000,
+    image: "/team/cat-eye-products/celine-triomphe.png",
   },
   {
     id: "gmsoho",
-    brand: "GENTLE MONSTER",
-    name: "소호 01",
-    price: 279000,
-    image: "/team/classic/gmsoho.png",
+    brand: "PRADA",
+    name: "SPRA09",
+    price: 700000,
+    image: "/team/cat-eye-products/spra09.png",
   },
   {
     id: "blueSblack",
-    brand: "BLUE ELEPHANT",
-    name: "MARINA-S black",
-    price: 69900,
-    image: "/team/classic/blueSblack.png",
+    brand: "GENTLE MONSTER",
+    name: "데본 01",
+    price: 340000,
+    image: "/team/cat-eye-products/devon.png",
   },
   {
     id: "new-her",
     brand: "GENTLE MONSTER",
-    name: "뉴 허 01",
-    price: 289000,
-    image: "/team/classic/gmNewHer.png",
+    name: "던 01",
+    price: 340000,
+    image: "/team/cat-eye-products/dawn.png",
   },
   {
     id: "celine",
-    brand: "CELINE",
-    name: "트리옹프 01",
-    price: 730000,
-    image: "/team/classic/celine.png",
+    brand: "BLUE ELEPHANT",
+    name: "EVER",
+    price: 49900,
+    image: "/team/cat-eye-products/ever.png",
   },
   {
     id: "persol",
-    brand: "Persol",
-    name: "PO0649NE - Total Black Arrow",
-    originalPrice: 1065000,
-    price: 615000,
-    image: "/team/classic/persol.png",
+    brand: "CARIN",
+    name: "CELLY R_C1",
+    price: 218000,
+    image: "/team/cat-eye-products/carin-celly.png",
   },
 ];
 
@@ -655,12 +753,16 @@ function Product({
   const product = products[productId] ?? products["new-her"];
 
   const currentRecommendations =
-    product.category === "SPORTS"
+    product.category === "ROUND"
+      ? roundProducts
+      : product.category === "SPORTS"
       ? recommendedSportsProducts
       : product.category === "CASUAL"
       ? recommendedCasualProducts
       : product.category === "TRENDY"
       ? recommendedTrendyProducts
+      : product.category === "CAT-EYE"
+      ? recommendedProducts
       : product.category === "CELEB PICK"
       ? recommendedProducts
       : recommendedProducts;
@@ -673,7 +775,7 @@ function Product({
   }, [product.id, currentRecommendations]);
 
   return (
-    <main className="product-detail">
+    <main className={`product-detail${product.category === "CAT-EYE" ? " is-cat-eye" : ""}`}>
 
     <Link
       className="product-breadcrumb"
@@ -686,6 +788,10 @@ function Product({
           ? "/casual"
           : product.category === "TRENDY"
           ? "/trendy"
+          : product.category === "CAT-EYE"
+          ? "/cat-eye"
+          : product.category === "ROUND"
+          ? "/round"
           : "/classic"
       }
     >
@@ -748,7 +854,7 @@ function Product({
             </div>
 
             <dl>
-              {["렌즈 가로", "렌즈 세로", "브릿지", "프레임 정면", "다리 길이"].map(
+              {(product.sizeLabels ?? ["렌즈 가로", "렌즈 세로", "브릿지", "프레임 정면", "다리 길이"]).map(
                 (label, index) => (
                   <div key={label}>
                     <dt>{label}</dt>
