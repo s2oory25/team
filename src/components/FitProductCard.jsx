@@ -34,7 +34,7 @@ function FitProductCard({
 
   return (
     <article
-      className="fit-product-card"
+      className={`fit-product-card fit-product-card-${id}`}
       onClick={goToProduct}
       role="link"
       tabIndex={0}

@@ -26,6 +26,26 @@
   object-fit: contain;
 }
 
+.product-detail.is-cat-eye .fit-product-image img {
+  width: min(82%, 220px);
+  height: 110px;
+}
+
+.product-detail.is-cat-eye .fit-product-card-persol .fit-product-image img {
+  width: min(94%, 250px);
+  height: 126px;
+}
+
+.product-detail.is-cat-eye .fit-product-card-rayclassic .fit-product-image img {
+  width: min(68%, 174px);
+  height: 88px;
+}
+
+.product-detail.is-cat-eye .fit-product-card-celine .fit-product-image img {
+  width: min(74%, 198px);
+  height: 98px;
+}
+
 .fit-product-heading {
   display: flex;
   align-items: flex-start;
@@ -119,6 +139,26 @@
 @media (max-width: 760px) {
   .fit-product-image {
     height: 110px;
+  }
+
+  .product-detail.is-cat-eye .fit-product-image img {
+    width: min(90%, 200px);
+    height: 92px;
+  }
+
+  .product-detail.is-cat-eye .fit-product-card-persol .fit-product-image img {
+    width: min(98%, 230px);
+    height: 106px;
+  }
+
+  .product-detail.is-cat-eye .fit-product-card-rayclassic .fit-product-image img {
+    width: min(76%, 168px);
+    height: 78px;
+  }
+
+  .product-detail.is-cat-eye .fit-product-card-celine .fit-product-image img {
+    width: min(84%, 184px);
+    height: 88px;
   }
 
   .fit-product-heading {

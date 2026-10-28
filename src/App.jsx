@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import {
   BrowserRouter,
@@ -26,15 +25,16 @@ import AccountPage from "./pages/AccountPage.jsx";
 import { products } from "./pages/Product.jsx";
 import AiFitting from "./pages/AiFitting.jsx";
 import Classic from "./pages/Classic.jsx";
+import CatEye from "./pages/Cat-eye.jsx";
+import Round from "./pages/Round.jsx";
 import Casual from "./pages/Casual.jsx";
 import Sports from "./pages/Sports.jsx";
 import Square from "./pages/Square.jsx";
 import Trendy from "./pages/Trendy.jsx";
-import Celeb from "./pages/Celeb";
+import Celeb from "./pages/Celeb.jsx";
 import Product from "./pages/Product.jsx";
 import Payment from "./pages/Payment.jsx";
 import GuestOrderLookup from "./pages/GuestOrderLookup.jsx";
-// import GuestOrderLookupPage from "./pages/GuestOrderLookup.jsx";
 import Footer from "./components/Footer.jsx";
 
 function PageFooter() {
@@ -47,12 +47,6 @@ function PageFooter() {
   return <Footer />;
 }
 
-function AppContent() {
-  const navigate = useNavigate();
-
-  return <AppInner navigate={navigate} />;
-}
-
 function AppInner() {
   const navigate = useNavigate();
 
@@ -61,11 +55,54 @@ function AppInner() {
   const [isChangingPassword, setIsChangingPassword] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
+
   const [inquiryType, setInquiryType] = useState("");
   const [inquiryEmail, setInquiryEmail] = useState("");
   const [inquiryContent, setInquiryContent] = useState("");
   const [inquiryMessage, setInquiryMessage] = useState("");
   const [showInquirySuccess, setShowInquirySuccess] = useState(false);
+
+  const [selectedOrder, setSelectedOrder] = useState(null);
+
+  const [favorites, setFavorites] = useState(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem("chalfitFavorites"));
+      return Array.isArray(saved) ? saved : [];
+    } catch {
+      return [];
+    }
+  });
+
+  const [cartItems, setCartItems] = useState(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem("chalfitCart"));
+
+      return saved &&
+        typeof saved === "object" &&
+        !Array.isArray(saved)
+        ? saved
+        : {};
+    } catch {
+      return {};
+    }
+  });
+
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
+  const [photoPreview, setPhotoPreview] = useState("");
+  const [analysisMessage, setAnalysisMessage] = useState("");
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [hasAnalyzed, setHasAnalyzed] = useState(false);
+
+  const [activeMenu, setActiveMenu] = useState("");
+  const [categoryOpen, setCategoryOpen] = useState(false);
+  const [styleOpen, setStyleOpen] = useState(false);
+  const [customerOpen, setCustomerOpen] = useState(false);
+  const [mobileMypageOpen, setMobileMypageOpen] = useState(false);
+  const [selectedCustomerItem, setSelectedCustomerItem] = useState("");
+
+  const [isLoggedIn, setIsLoggedIn] = useState(() => {
+    return sessionStorage.getItem("chalfitLogin") === "true";
+  });
 
   function handleInquirySubmit(event) {
     event.preventDefault();
@@ -83,40 +120,7 @@ function AppInner() {
     setInquiryMessage("");
     setShowInquirySuccess(true);
   }
-  const [selectedOrder, setSelectedOrder] = useState(null);
 
-  // 좋아요 상품 ID 목록
-  const [favorites, setFavorites] = useState(() => {
-    try {
-      const saved = JSON.parse(localStorage.getItem("chalfitFavorites"));
-      return Array.isArray(saved) ? saved : [];
-    } catch {
-      return [];
-    }
-  });
-
-  // 장바구니 상품별 수량
-  const [cartItems, setCartItems] = useState(() => {
-    try {
-      const saved = JSON.parse(localStorage.getItem("chalfitCart"));
-      return saved &&
-        typeof saved === "object" &&
-        !Array.isArray(saved)
-        ? saved
-        : {};
-    } catch {
-      return {};
-    }
-  });
-
-  // AI 맞춤 서비스 이미지 업로드 상태
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
-  const [photoPreview, setPhotoPreview] = useState("");
-  const [analysisMessage, setAnalysisMessage] = useState("");
-  const [isAnalyzing, setIsAnalyzing] = useState(false);
-  const [hasAnalyzed, setHasAnalyzed] = useState(false);
-
-  // 이미지 선택 및 미리보기
   function handlePhotoChange(event) {
     const file = event.target.files?.[0];
 
@@ -139,14 +143,12 @@ function AppInner() {
     setIsAnalyzing(false);
   }
 
-  // AI 분석 화면 초기화
   function handleRetry() {
     setHasAnalyzed(false);
     setIsAnalyzing(false);
     setAnalysisMessage("");
   }
 
-  // 분석 버튼 처리: 현재는 화면 확인용 예시 분석
   function handleAnalyze() {
     if (!selectedPhoto) {
       setAnalysisMessage("먼저 얼굴 사진을 불러와 주세요.");
@@ -163,7 +165,6 @@ function AppInner() {
     }, 1200);
   }
 
-  // 컴포넌트가 사라질 때 미리보기 URL 정리
   useEffect(() => {
     return () => {
       if (photoPreview) {
@@ -172,7 +173,6 @@ function AppInner() {
     };
   }, [photoPreview]);
 
-  // 좋아요 추가 및 취소
   function toggleFavorite(productId) {
     setFavorites((prev) => {
       const current = Array.isArray(prev) ? prev : [];
@@ -188,7 +188,6 @@ function AppInner() {
     setFavorites([]);
   }
 
-  // 장바구니 상품 수량 변경
   function updateCart(productId, quantity) {
     if (!Number.isInteger(quantity) || quantity < 1) return;
 
@@ -198,7 +197,6 @@ function AppInner() {
     }));
   }
 
-  // 장바구니 상품 삭제
   function removeFromCart(productId) {
     setCartItems((prev) => {
       const updated = { ...prev };
@@ -207,29 +205,22 @@ function AppInner() {
     });
   }
 
-  // 장바구니 총수량
   const cartCount = Object.values(cartItems).reduce(
     (total, quantity) =>
       total + (Number.isInteger(quantity) && quantity > 0 ? quantity : 0),
     0
   );
 
-  // 좋아요 상품 개수
   const favoriteCount = favorites.length;
-  console.log("좋아요 ID 목록:", favorites);
-  console.log("전체 상품 ID 목록:", Object.keys(products));
 
-  // 좋아요 저장
   useEffect(() => {
     localStorage.setItem("chalfitFavorites", JSON.stringify(favorites));
   }, [favorites]);
 
-  // 장바구니 저장
   useEffect(() => {
     localStorage.setItem("chalfitCart", JSON.stringify(cartItems));
   }, [cartItems]);
 
-  // 메뉴 열림 상태에 따라 배경 스크롤 제어
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
 
@@ -238,24 +229,7 @@ function AppInner() {
     };
   }, [menuOpen]);
 
-  const [activeMenu, setActiveMenu] = useState("");
-  const [categoryOpen, setCategoryOpen] = useState(false);
-  const [styleOpen, setStyleOpen] = useState(false);
-  const [customerOpen, setCustomerOpen] = useState(false);
-  const [mobileMypageOpen, setMobileMypageOpen] = useState(false);
-  const [selectedCustomerItem, setSelectedCustomerItem] = useState("");
-
-  const [isLoggedIn, setIsLoggedIn] = useState(() => {
-    return sessionStorage.getItem("chalfitLogin") === "true";
-  });
-
-  const menuItems = [
-    "CELEB PICK",
-    "종류",
-    "AI 맞춤 서비스",
-    "스타일",
-  ];
-
+  const menuItems = ["CELEB PICK", "종류", "AI 맞춤 서비스", "스타일"];
   const categoryItems = ["스퀘어", "라운드", "캣아이", "스포츠"];
   const styleItems = ["클래식", "스포츠", "캐주얼", "트렌디"];
   const customerItems = ["FAQ", "1:1문의"];
@@ -285,10 +259,7 @@ function AppInner() {
   function navigateTo(path) {
     closeMenu();
 
-    const cleanPath = path.startsWith("/")
-      ? path
-      : `/${path}`;
-
+    const cleanPath = path.startsWith("/") ? path : `/${path}`;
     window.location.href = `/team${cleanPath}`;
   }
 
@@ -304,13 +275,11 @@ function AppInner() {
     setActiveMenu(menu);
 
     if (menu === "CELEB PICK") {
-      closeMenu();
       navigateTo("/celeb");
       return;
     }
 
     if (menu === "AI 맞춤 서비스") {
-      closeMenu();
       navigateTo("/ai-fitting");
       return;
     }
@@ -321,12 +290,12 @@ function AppInner() {
     setMobileMypageOpen(false);
   }
 
-
-
   function handleSubMenuClick(item) {
     const pagePaths = {
       스퀘어: "/square",
       클래식: "/classic",
+      캣아이: "/cat-eye",
+      라운드: "/round",
       스포츠: "/sports",
       캐주얼: "/casual",
       트렌디: "/trendy",
@@ -350,27 +319,19 @@ function AppInner() {
     setCustomerOpen(false);
   }
 
-
   function handleCustomerItemClick(item) {
-    if (selectedCustomerItem === item) {
-      setSelectedCustomerItem("");
-    } else {
-      setSelectedCustomerItem(item);
-    }
+    setSelectedCustomerItem((prev) => (prev === item ? "" : item));
   }
 
   function handleMobileCustomerClick(item) {
     handleCustomerItemClick(item);
   }
 
-
-
   function handleLoginClick() {
     closeMenu();
     setIsLoginOpen(false);
     navigate("/mypage");
   }
-
 
   function handleLogoutClick() {
     sessionStorage.removeItem("chalfitLogin");
@@ -416,6 +377,7 @@ function AppInner() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/celeb" element={<Celeb />} />
+
         <Route
           path="/inquiry"
           element={
@@ -435,6 +397,7 @@ function AppInner() {
             />
           }
         />
+
         <Route
           path="/account"
           element={
@@ -468,7 +431,6 @@ function AppInner() {
           }
         />
 
-        <Route path="/ai-fitting" element={<AiFitting />} />
         <Route
           path="/ai-fitting"
           element={
@@ -514,7 +476,8 @@ function AppInner() {
               ]}
               sampleFaceShape={{
                 name: "타원형",
-                outline: "50,8 70,15 85,35 82,65 65,88 50,95 35,88 18,65 15,35 30,15",
+                outline:
+                  "50,8 70,15 85,35 82,65 65,88 50,95 35,88 18,65 15,35 30,15",
               }}
             />
           }
@@ -522,6 +485,7 @@ function AppInner() {
 
         <Route path="/signup" element={<Signup />} />
         <Route path="/welcome" element={<Welcome />} />
+
         <Route
           path="/mypage"
           element={
@@ -534,6 +498,7 @@ function AppInner() {
             />
           }
         />
+
         <Route
           path="/cart"
           element={
@@ -545,6 +510,7 @@ function AppInner() {
             />
           }
         />
+
         <Route
           path="/favorites"
           element={
@@ -558,19 +524,23 @@ function AppInner() {
             />
           }
         />
+
         <Route
           path="/orders"
           element={<OrdersPage setSelectedOrder={setSelectedOrder} />}
         />
+
         <Route path="/shipping" element={<ShippingPage />} />
+
         <Route
           path="/order-detail"
           element={<OrderDetailPage selectedOrder={selectedOrder} />}
         />
 
-
         <Route path="/classic" element={<Classic />} />
-          <Route path="/square" element={<Square />} />
+        <Route path="/square" element={<Square />} />
+        <Route path="/cat-eye" element={<CatEye />} />
+        <Route path="/round" element={<Round />} />
         <Route path="/sports" element={<Sports />} />
         <Route path="/casual" element={<Casual />} />
         <Route path="/trendy" element={<Trendy />} />
@@ -589,7 +559,11 @@ function AppInner() {
         />
 
         <Route path="/payment" element={<Payment />} />
-        <Route path="/guest-order-lookup" element={<GuestOrderLookup />} />
+
+        <Route
+          path="/guest-order-lookup"
+          element={<GuestOrderLookup />}
+        />
       </Routes>
 
       {isLoginOpen && (
@@ -607,6 +581,7 @@ function AppInner() {
     </div>
   );
 }
+
 function App() {
   return (
     <BrowserRouter basename="/team">
