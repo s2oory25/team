@@ -846,14 +846,17 @@ select {
 ================================================== */
 .sports-intro-desktop,
 .trendy-intro-desktop,
-.casual-intro-desktop {
+.casual-intro-desktop,
+.cat-eye-intro-desktop {
   display: block;
 }
 
 .sports-intro-tablet,
 .sports-intro-mobile,
 .trendy-intro-mobile,
-.casual-intro-mobile {
+.casual-intro-mobile,
+.cat-eye-intro-tablet,
+.cat-eye-intro-mobile {
   display: none;
 }
 
@@ -861,6 +864,13 @@ select {
   font-size: 16px;
   line-height: 1.6;
 }
+
+.cat-eye-page,
+.cat-eye-page button,
+.cat-eye-page select {
+  font-family: "SUIT", sans-serif;
+}
+
 
 /* ==================================================
    10. 태블릿 (768px ~ 1024px)
@@ -1110,6 +1120,15 @@ select {
   }
 
   .sports-intro-tablet {
+    display: block;
+  }
+
+  .cat-eye-intro-desktop,
+  .cat-eye-intro-mobile {
+    display: none;
+  }
+
+  .cat-eye-intro-tablet {
     display: block;
   }
 
@@ -1515,6 +1534,15 @@ select {
   }
 
   .sports-intro-mobile {
+    display: block;
+  }
+
+  .cat-eye-intro-desktop,
+  .cat-eye-intro-tablet {
+    display: none;
+  }
+
+  .cat-eye-intro-mobile {
     display: block;
   }
 

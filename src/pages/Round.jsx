@@ -2,12 +2,12 @@ import { useMemo, useState } from "react";
 import ProductCard from "../components/ProductCard.jsx";
 
 const products = [
-  { id: "round-nuvon", brand: "TOMFORD", name: "FT1244K", price: 800000, shape: "round", image: "/team/classic/tomford.png" },
-  { id: "round-dean", brand: "PRADA", name: "SPRD08", price: 700000, shape: "round", image: "/team/classic/prada.png" },
-  { id: "round-noho", brand: "RAY BEN", name: "RB2447", price: 230000, shape: "round", image: "/team/classic/rayban.png" },
-  { id: "round-her", brand: "Gucci", name: "GG2079S", price: 700000, shape: "round", image: "/team/classic/gucci.png" },
-  { id: "round-persol", brand: "Oliver Peoples", name: "Gregory Peck Sun", price: 690000, shape: "round", image: "/team/classic/oliver-peoples.png" },
-  { id: "round-marina", brand: "GENTLE MONSTER", name: "딘 01", price: 279000, shape: "round", image: "/team/classic/gm-dean.png" },
+  { id: "round-nuvon", brand: "TOMFORD", name: "FT1244K", price: 800000, shape: "round", image: "/team/round/tomford.png" },
+  { id: "round-dean", brand: "PRADA", name: "SPRD08", price: 700000, shape: "round", image: "/team/round/prada.png" },
+  { id: "round-noho", brand: "RAY BEN", name: "RB2447", price: 230000, shape: "round", image: "/team/round/rayban.png" },
+  { id: "round-her", brand: "Gucci", name: "GG2079S", price: 700000, shape: "round", image: "/team/round/gucci.png" },
+  { id: "round-persol", brand: "Oliver Peoples", name: "Gregory Peck Sun", price: 690000, shape: "round", image: "/team/round/oliver-peoples.png" },
+  { id: "round-marina", brand: "GENTLE MONSTER", name: "딘 01", price: 279000, shape: "round", image: "/team/round/gm-dean.png" },
 ];
 
 export default function Round() {
@@ -21,7 +21,7 @@ export default function Round() {
   return (
     <main className="classic-page round-page">
       <section className="hero-banner" aria-label="라운드 선글라스 컬렉션">
-        <img src="/team/round.png" alt="골드 프레임 라운드 선글라스" />
+        <img src="/team/round/banner.png" alt="골드 프레임 라운드 선글라스" />
       </section>
 
       <section aria-labelledby="round-collection-title">

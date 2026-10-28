@@ -22,6 +22,8 @@ import InquiryPage from "./pages/InquiryPage.jsx";
 import { products } from "./pages/Product.jsx";
 import AiFitting from "./pages/AiFitting.jsx";
 import Classic from "./pages/Classic.jsx";
+import CatEye from "./pages/Cat-eye.jsx";
+import Round from "./pages/Round.jsx";
 import Casual from "./pages/Casual.jsx";
 import Sports from "./pages/Sports.jsx";
 import Trendy from "./pages/Trendy.jsx";
@@ -293,6 +295,8 @@ function App() {
 function handleSubMenuClick(item) {
   const pagePaths = {
     클래식: "/classic",
+    캣아이: "/cat-eye",
+    라운드: "/round",
     스포츠: "/sports",
     캐주얼: "/casual",
     트렌디: "/trendy",
@@ -478,6 +482,8 @@ function handleLoginClick() {
           />
 
           <Route path="/classic" element={<Classic />} />
+          <Route path="/cat-eye" element={<CatEye />} />
+          <Route path="/round" element={<Round />} />
           <Route path="/sports" element={<Sports />} />
           <Route path="/casual" element={<Casual />} />
           <Route path="/trendy" element={<Trendy />} />
