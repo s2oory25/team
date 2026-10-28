@@ -132,33 +132,11 @@
   font-size: 14px;
 }
 
-.inquiry-type-field > span:first-child {
-  color: #222;
-}
-
-.inquiry-type-field > span.has-value {
-  color: #111;
-}
-
-.inquiry-type-field select {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  cursor: pointer;
-  font-size: 18px;
-}
-
-.inquiry-type-field option {
-  padding: 10px 14px;
-  font-size: 18px;
-}
-
 .inquiry-select-arrow {
   position: absolute;
   right: 18px;
-  top: 4px;
+  top: 50%;
+  transform: translateY(-50%);
   font-size: 22px;
   pointer-events: none;
 }
@@ -452,4 +430,85 @@
   color: #444;
   font-size: 13px;
   line-height: 1.7;
+}
+
+/* 1:1 문의 입력폼 글씨 크기 및 정렬 조정 */
+.inquiry-email-field input {
+  font-size: 16px;
+}
+
+.inquiry-type-field {
+  font-size: 16px;
+}
+
+.inquiry-form textarea {
+  font-size: 16px;
+}
+
+.inquiry-form textarea::placeholder {
+  text-align: center;
+  line-height: 350px;
+}
+/* 질문 유형 커스텀 드롭다운 */
+.inquiry-type-field {
+  position: relative;
+  min-height: 60px;
+  padding: 0;
+  display: block;
+}
+
+.inquiry-type-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  min-height: 60px;
+  padding: 0 40px;
+  border: 0;
+  background: transparent;
+  color: #111;
+  font: inherit;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.inquiry-type-trigger .inquiry-select-arrow {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 22px;
+  pointer-events: none;
+}
+
+.inquiry-type-options {
+  position: absolute;
+  top: 100%;
+  left: -1px;
+  width: calc(100% + 2px);
+  z-index: 30;
+  border: 1px solid #ccc;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.inquiry-type-option {
+  display: block;
+  width: 100%;
+  min-height: 40px;
+  padding: 10px 16px;
+  border: 0;
+  background: #fff;
+  color: #111;
+  font: inherit;
+  font-size: 16px;
+  text-align: left;
+  cursor: pointer;
+}
+.inquiry-type-option:hover,
+.inquiry-type-option:focus-visible {
+  background: #1e66d0;
+  color: #fff;
 }
