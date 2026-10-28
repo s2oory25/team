@@ -109,8 +109,10 @@ export default function MyPage(props) {
             type="button"
             onClick={() => navigate("/favorites")}
           >
-            <span aria-hidden="true">♡</span>
-            <strong>{favoriteCount}</strong>
+          
+        <span aria-hidden="true">💘</span>
+        <strong>{favoriteCount}</strong>
+        
             <small>좋아요</small>
           </button>
 
@@ -127,7 +129,7 @@ export default function MyPage(props) {
             type="button"
             onClick={() => navigate("/orders")}
           >
-            <span aria-hidden="true">▢</span>
+            <span aria-hidden="true">📃</span>
             <strong>0</strong>
             <small>주문 내역</small>
           </button>
@@ -147,25 +149,25 @@ export default function MyPage(props) {
             type="button"
             onClick={() => navigate("/recent")}
           >
-            <span aria-hidden="true">◷</span> 최근 본 상품
+            <span aria-hidden="true">🕓</span> 최근 본 상품
           </button>
 
           <button
             type="button"
             onClick={() => navigate("/inquiry")}
           >
-            <span aria-hidden="true">◎</span> 1:1 문의
+            <span aria-hidden="true">💬</span> 1:1 문의
           </button>
 
           <button
             type="button"
             onClick={() => navigate("/orders")}
           >
-            <span aria-hidden="true">♧</span> 배송 조회
+            <span aria-hidden="true">🚚</span> 배송 조회
           </button>
 
           <button type="button" disabled>
-            <span aria-hidden="true">♧</span> 알림 설정 · 준비 중
+            <span aria-hidden="true">🔔︎</span> 알림 설정 · 준비 중
           </button>
         </section>
       </div>
