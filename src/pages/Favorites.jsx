@@ -1,21 +1,13 @@
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import FavoriteProductCard from "../components/FavoriteProductCard.jsx";
 import "./Favorites.css";
 
 function HeartIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <path d="M12 21s-8-4.7-8-11a4.5 4.5 0 0 1 8-3 4.5 4.5 0 0 1 8 3c0 6.3-8 11-8 11Z" />
-    </svg>
-  );
-}
-
-function CartIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M3 4h2l2.1 11.1a2 2 0 0 0 2 1.6h8.7a2 2 0 0 0 1.9-1.5L21 8H6" />
-      <circle cx="9.5" cy="20" r="1" />
-      <circle cx="18" cy="20" r="1" />
     </svg>
   );
 }
@@ -30,9 +22,11 @@ export default function Favorites({
 }) {
   const navigate = useNavigate();
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+
   const favoriteProducts = (Array.isArray(favorites) ? favorites : [])
     .map((item) => {
-      const id = typeof item === "object" && item !== null ? item.id : item;
+      const id =
+        typeof item === "object" && item !== null ? item.id : item;
 
       return (
         products[String(id)] ??
@@ -43,49 +37,57 @@ export default function Favorites({
     })
     .filter(Boolean);
 
-  function openProduct(productId) {
-    navigate(`/product/${productId}`);
-  }
-
-  function handleCardKeyDown(event, productId) {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      openProduct(productId);
-    }
-  }
-
   function addToCart(productId) {
     updateCart(productId, (cartItems[productId] ?? 0) + 1);
   }
 
-return (
-  <main className="favorites-page">
-    <div className="favorites-title-bar">
-      <h1>좋아요</h1>
-    </div>
+  return (
+    <main className="favorites-page">
+      <div className="favorites-title-bar">
+        <h1>좋아요</h1>
+      </div>
 
-    <p className="favorites-intro">
-      마음에 드는 선글라스를 모아보세요.
-    </p>
+      <p className="favorites-intro">
+        마음에 드는 선글라스를 모아보세요.
+      </p>
 
-    <nav className="likes-mobile-tabs" aria-label="마이페이지 메뉴">
-    <button type="button" onClick={() => navigate("/mypage")}>
-      회원정보 수정
-    </button>
-    <button type="button" onClick={() => navigate("/mypage")}>
-      주문 내역
-    </button>
-    <button type="button" onClick={() => navigate("/mypage")}>
-      최근 본 상품
-    </button>
-    <button className="active" type="button" onClick={() => navigate("/favorites")}>
-      좋아요
-    </button>
-    <button type="button" onClick={() => navigate("/cart")}>
-      장바구니
-    </button>
-  </nav>
+      <nav className="likes-mobile-tabs" aria-label="마이페이지 메뉴">
+        <button
+          type="button"
+          onClick={() => navigate("/mypage")}
+        >
+          회원정보 수정
+        </button>
 
+        <button
+          type="button"
+          onClick={() => navigate("/mypage")}
+        >
+          주문 내역
+        </button>
+
+        <button
+          type="button"
+          onClick={() => navigate("/mypage")}
+        >
+          최근 본 상품
+        </button>
+
+        <button
+          className="active"
+          type="button"
+          onClick={() => navigate("/favorites")}
+        >
+          좋아요
+        </button>
+
+        <button
+          type="button"
+          onClick={() => navigate("/cart")}
+        >
+          장바구니
+        </button>
+      </nav>
 
       <section className="favorites-body" aria-label="좋아요 상품">
         {favoriteProducts.length > 0 && (
@@ -107,67 +109,32 @@ return (
         >
           {favoriteProducts.length > 0 ? (
             <div className="favorites-grid">
-            {favoriteProducts.map((product) => (
-              <article
-                className="favorite-card"
-                key={product.id}
-                role="link"
-                tabIndex="0"
-                aria-label={`${product.brand} ${product.name} 상세 보기`}
-                onClick={() => openProduct(product.id)}
-                onKeyDown={(event) => handleCardKeyDown(event, product.id)}
-              >
-                <div className="favorite-card-image">
-                  <img src={product.image} alt={`${product.brand} ${product.name}`} />
-                </div>
-
-                <div className="favorite-card-row">
-                  <p className="favorite-card-brand">{product.brand}</p>
-                  <button
-                    className="favorite-card-heart"
-                    type="button"
-                    aria-label={`${product.name} 좋아요 취소`}
-                    aria-pressed="true"
-                    onClick={(event) => {
-                      event.stopPropagation();
-                      toggleFavorite(product.id);
-                    }}
-                  >
-                    <HeartIcon />
-                  </button>
-                </div>
-
-                <p className="favorite-card-name">{product.name}</p>
-
-                <div className="favorite-card-row favorite-card-bottom">
-                  <p className="favorite-card-price">
-                    {product.price.toLocaleString("ko-KR")}원
-                  </p>
-                  <button
-                    className="favorite-card-cart"
-                    type="button"
-                    aria-label={`${product.name} 장바구니에 담기`}
-                    onClick={(event) => {
-                      event.stopPropagation();
-                      addToCart(product.id);
-                    }}
-                  >
-                    <CartIcon />
-                  </button>
-                </div>
-              </article>
-            ))}
+              {favoriteProducts.map((product) => (
+                <FavoriteProductCard
+                  key={product.id}
+                  product={product}
+                  isFavorite={true}
+                  onToggleFavorite={() => toggleFavorite(product.id)}
+                  onAddCart={() => addToCart(product.id)}
+                />
+              ))}
             </div>
           ) : (
             <div className="favorites-empty">
               <HeartIcon />
+
               <p className="favorites-empty-title">
                 아직 좋아요한 상품이 없어요.
               </p>
+
               <p className="favorites-empty-description">
                 마음에 드는 선글라스를 저장해보세요.
               </p>
-              <button type="button" onClick={() => navigate("/classic")}>
+
+              <button
+                type="button"
+                onClick={() => navigate("/classic")}
+              >
                 상품 둘러보기
               </button>
             </div>
@@ -195,9 +162,11 @@ return (
             >
               ×
             </button>
+
             <h2 id="favorites-delete-modal-title">
               좋아요한 상품을 모두 삭제하시겠습니까?
             </h2>
+
             <div className="favorites-modal-actions">
               <button
                 className="favorites-modal-cancel"
@@ -206,6 +175,7 @@ return (
               >
                 취소
               </button>
+
               <button
                 className="favorites-modal-confirm"
                 type="button"
