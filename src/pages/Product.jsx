@@ -795,22 +795,24 @@ function Product({
   const [isSizeGuideOpen, setIsSizeGuideOpen] = useState(false);
   const product = products[productId] ?? products["new-her"];
 
+
   const currentRecommendations =
-      product.category === "SQUARE"
+    product.category === "SQUARE"
       ? recommendedSquareProducts
-      product.category === "ROUND"
-      ? roundProducts
-      : product.category === "SPORTS"
-      ? recommendedSportsProducts
-      : product.category === "CASUAL"
-      ? recommendedCasualProducts
-      : product.category === "TRENDY"
-      ? recommendedTrendyProducts
-      : product.category === "CAT-EYE"
-      ? recommendedProducts
-      : product.category === "CELEB PICK"
-      ? recommendedProducts
-      : recommendedProducts;
+      : product.category === "ROUND"
+        ? roundProducts
+        : product.category === "SPORTS"
+          ? recommendedSportsProducts
+          : product.category === "CASUAL"
+            ? recommendedCasualProducts
+            : product.category === "TRENDY"
+              ? recommendedTrendyProducts
+              : product.category === "CAT-EYE"
+                ? recommendedProducts
+                : product.category === "CELEB PICK"
+                  ? recommendedProducts
+                  : recommendedProducts;
+
 
   const randomRecommendedProducts = useMemo(() => {
     return [...currentRecommendations]
