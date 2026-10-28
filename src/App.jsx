@@ -418,6 +418,7 @@ function handleSubMenuClick(item) {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/celeb" element={<Celeb />} />
+
         <Route
           path="/inquiry"
           element={
@@ -437,6 +438,7 @@ function handleSubMenuClick(item) {
             />
           }
         />
+
         <Route
           path="/account"
           element={
@@ -470,7 +472,6 @@ function handleSubMenuClick(item) {
           }
         />
 
-        <Route path="/ai-fitting" element={<AiFitting />} />
         <Route
           path="/ai-fitting"
           element={
@@ -516,7 +517,8 @@ function handleSubMenuClick(item) {
               ]}
               sampleFaceShape={{
                 name: "타원형",
-                outline: "50,8 70,15 85,35 82,65 65,88 50,95 35,88 18,65 15,35 30,15",
+                outline:
+                  "50,8 70,15 85,35 82,65 65,88 50,95 35,88 18,65 15,35 30,15",
               }}
             />
           }
@@ -524,6 +526,7 @@ function handleSubMenuClick(item) {
 
         <Route path="/signup" element={<Signup />} />
         <Route path="/welcome" element={<Welcome />} />
+
         <Route
           path="/mypage"
           element={
@@ -536,6 +539,7 @@ function handleSubMenuClick(item) {
             />
           }
         />
+
         <Route
           path="/cart"
           element={
@@ -547,6 +551,7 @@ function handleSubMenuClick(item) {
             />
           }
         />
+
         <Route
           path="/favorites"
           element={
@@ -560,6 +565,7 @@ function handleSubMenuClick(item) {
             />
           }
         />
+
         <Route
           path="/orders"
           element={<OrdersPage setSelectedOrder={setSelectedOrder} />}
@@ -570,144 +576,46 @@ function handleSubMenuClick(item) {
           element={<OrderDetailPage selectedOrder={selectedOrder} />}
         />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/celeb" element={<Celeb />} />
-          <Route path="/inquiry" element={<InquiryPage />} />
+        <Route path="/classic" element={<Classic />} />
+        <Route path="/cat-eye" element={<CatEye />} />
+        <Route path="/round" element={<Round />} />
+        <Route path="/sports" element={<Sports />} />
+        <Route path="/casual" element={<Casual />} />
+        <Route path="/trendy" element={<Trendy />} />
 
-          <Route
-            path="/ai-fitting"
-            element={
-              <AiFitting
-                selectedPhoto={selectedPhoto}
-                setSelectedPhoto={setSelectedPhoto}
-                photoPreview={photoPreview}
-                setPhotoPreview={setPhotoPreview}
-                analysisMessage={analysisMessage}
-                setAnalysisMessage={setAnalysisMessage}
-                isAnalyzing={isAnalyzing}
-                setIsAnalyzing={setIsAnalyzing}
-                hasAnalyzed={hasAnalyzed}
-                setHasAnalyzed={setHasAnalyzed}
-                handlePhotoChange={handlePhotoChange}
-                handleAnalyze={handleAnalyze}
-                handleRetry={handleRetry}
-                products={[
-                  {
-                    id: 1,
-                    name: "뉴 허 01",
-                    price: "289,000원",
-                    shape: "oval",
-                    description: "블랙 오벌 선글라스",
-                    image: "/team/classic/gmNewHer.png",
-                  },
-                  {
-                    id: 2,
-                    name: "소호",
-                    price: "320,000원",
-                    shape: "square",
-                    description: "블랙 스퀘어 선글라스",
-                    image: "/team/classic/gmsoho.png",
-                  },
-                  {
-                    id: 3,
-                    name: "레이밴 클래식",
-                    price: "198,000원",
-                    shape: "round",
-                    description: "클래식 프레임 선글라스",
-                    image: "/team/classic/rayclassic.png",
-                  },
-                ]}
-                sampleFaceShape={{
-                  name: "타원형",
-                  outline:
-                    "50,8 70,15 85,35 82,65 65,88 50,95 35,88 18,65 15,35 30,15",
-                }}
-              />
-            }
-          />
+        <Route
+          path="/product/:productId"
+          element={
+            <Product
+              favorites={favorites}
+              toggleFavorite={toggleFavorite}
+              cartItems={cartItems}
+              updateCart={updateCart}
+              removeFromCart={removeFromCart}
+            />
+          }
+        />
 
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/welcome" element={<Welcome />} />
+        <Route path="/payment" element={<Payment />} />
+        <Route
+          path="/guest-order-lookup"
+          element={<GuestOrderLookup />}
+        />
+      </Routes>
 
-          <Route
-            path="/mypage"
-            element={
-              <Mypage
-                isLoggedIn={isLoggedIn}
-                setIsLoggedIn={setIsLoggedIn}
-                handleLogoutClick={handleLogoutClick}
-                navigateTo={navigateTo}
-              />
-            }
-          />
+      {isLoginOpen && (
+        <Login
+          onClose={() => setIsLoginOpen(false)}
+          onLoginSuccess={() => {
+            sessionStorage.setItem("chalfitLogin", "true");
+            setIsLoggedIn(true);
+            setIsLoginOpen(false);
+          }}
+        />
+      )}
 
-          <Route
-            path="/cart"
-            element={
-              <Cart
-                cartItems={cartItems}
-                products={products}
-                updateCart={updateCart}
-                removeFromCart={removeFromCart}
-              />
-            }
-          />
-
-          <Route
-            path="/favorites"
-            element={
-              <Favorites
-                favorites={favorites}
-                products={products}
-                toggleFavorite={toggleFavorite}
-                clearFavorites={clearFavorites}
-                cartItems={cartItems}
-                updateCart={updateCart}
-              />
-            }
-          />
-
-          <Route path="/classic" element={<Classic />} />
-          <Route path="/cat-eye" element={<CatEye />} />
-          <Route path="/round" element={<Round />} />
-          <Route path="/sports" element={<Sports />} />
-          <Route path="/casual" element={<Casual />} />
-          <Route path="/trendy" element={<Trendy />} />
-
-          <Route
-            path="/product/:productId"
-            element={
-              <Product
-                favorites={favorites}
-                toggleFavorite={toggleFavorite}
-                cartItems={cartItems}
-                updateCart={updateCart}
-                removeFromCart={removeFromCart}
-              />
-            }
-          />
-
-          <Route path="/payment" element={<Payment />} />
-          <Route
-            path="/guest-order-lookup"
-            element={<GuestOrderLookup />}
-          />
-        </Routes>
-
-        {isLoginOpen && (
-          <Login
-            onClose={() => setIsLoginOpen(false)}
-            onLoginSuccess={() => {
-              sessionStorage.setItem("chalfitLogin", "true");
-              setIsLoggedIn(true);
-              setIsLoginOpen(false);
-            }}
-          />
-        )}
-
-        <PageFooter />
-      </div>
+      <PageFooter />
+    </div>
 
     </BrowserRouter>
   );
