@@ -616,7 +616,13 @@ function handleSubMenuClick(item) {
 
       <PageFooter />
     </div>
+  );
+}
 
+function App() {
+  return (
+    <BrowserRouter basename="/team">
+      <AppInner />
     </BrowserRouter>
   );
 }
