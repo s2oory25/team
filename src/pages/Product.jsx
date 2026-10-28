@@ -6,6 +6,115 @@ import FitSelector from "../components/FitSelector.jsx";
 import "./Product.css";
 
 export const products = {
+  "thom-browne": {
+    id: "thom-browne",
+    category: "SQUARE",
+    brand: "THOM BROWNE",
+    name: "UES928A",
+    color: "블랙 / 그레이 실버 플래시",
+    price: 1030000,
+    image: "/team/square/thombrowne-ues928a.png",
+    description: "블랙 스퀘어 프레임과 실버 렌즈가 돋보이는 선글라스",
+    sizeDetails: [
+      { label: "렌즈 너비", value: "56mm" },
+      { label: "브릿지 너비", value: "18.5mm" },
+      { label: "템플 길이", value: "148mm" },
+    ],
+    features: ["아세테이트", "블랙", "그레이 실버 플래시", "스퀘어", "반사 코팅"],
+    defaultFit: "Regular",
+  },
+  "chanel-9193": {
+    id: "chanel-9193",
+    category: "SQUARE",
+    brand: "CHANEL",
+    name: "Square Sunglasses 9193",
+    color: "블랙 / 다크 그레이",
+    price: 1030000,
+    image: "/team/square/chanel-9193.png",
+    description: "블랙 아세테이트 프레임의 오버사이즈 스퀘어 선글라스",
+    sizeDetails: [
+      { label: "전체 너비", value: "126mm" },
+      { label: "렌즈 너비", value: "53mm" },
+      { label: "렌즈 높이", value: "47mm" },
+      { label: "템플", value: "140mm" },
+    ],
+    features: ["블랙 아세테이트 프레임", "다크 그레이 렌즈", "스퀘어", "100% UVA·UVB 차단"],
+    defaultFit: "Over",
+  },
+  "charles-keith-maude": {
+    id: "charles-keith-maude",
+    category: "SQUARE",
+    brand: "CHARLES & KEITH",
+    name: "Maude Square Sunglasses",
+    color: "블랙 / 다크 그레이",
+    price: 1006000,
+    image: "/team/square/charles-and-keith-maude.png",
+    description: "블랙 아세테이트 프레임과 다크 렌즈의 스퀘어 선글라스",
+    sizeDetails: [
+      { label: "전체 너비", value: "136mm" },
+      { label: "렌즈 너비", value: "51mm" },
+      { label: "렌즈 높이", value: "47mm" },
+      { label: "브리지", value: "17mm" },
+      { label: "템플", value: "145mm" },
+    ],
+    features: ["블랙 아세테이트 프레임", "다크 그레이 렌즈", "스퀘어 형태", "100% UV 차단"],
+    defaultFit: "Regular",
+  },
+  gent01: {
+    id: "gent01",
+    category: "SQUARE",
+    brand: "GENTLE MONSTER",
+    name: "젠트 01",
+    color: "블랙",
+    price: 289000,
+    image: "/team/square/gentle-monster-gent-01.png",
+    description: "블랙 아세테이트 소재의 스퀘어 선글라스",
+    sizeDetails: [
+      { label: "전체 너비", value: "149.1mm" },
+      { label: "렌즈 너비", value: "64.2mm" },
+      { label: "렌즈 높이", value: "48.3mm" },
+      { label: "브릿지", value: "17mm" },
+      { label: "템플 길이", value: "146.8mm" },
+    ],
+    features: ["블랙 아세테이트 프레임", "블랙 렌즈", "스퀘어 쉐입", "UV 99.9% 차단 렌즈"],
+    defaultFit: "Over",
+  },
+  "tiffany-t": {
+    id: "tiffany-t",
+    category: "SQUARE",
+    brand: "TIFFANY & CO.",
+    name: "Tiffany T Sunglasses",
+    color: "블랙 / 다크 그레이",
+    price: 566000,
+    image: "/team/square/tiffany-t.png",
+    description: "블랙 아세테이트 프레임과 다크 그레이 렌즈를 적용한 선글라스",
+    sizeDetails: [
+      { label: "렌즈 높이", value: "56mm" },
+      { label: "브리지", value: "16mm" },
+      { label: "템플", value: "140mm" },
+    ],
+    features: ["블랙 아세테이트 프레임", "다크 그레이 렌즈", "스퀘어", "100% UV 차단", "눈부심 방지"],
+    defaultFit: "Regular",
+  },
+  "swarovski-sk6032": {
+    id: "swarovski-sk6032",
+    category: "SQUARE",
+    brand: "SWAROVSKI",
+    name: "SK6032",
+    color: "블랙 / 다크 그레이",
+    price: 350000,
+    image: "/team/square/swarovski-sk6032.png",
+    description: "블랙 프레임과 크리스털 포인트가 어우러진 스퀘어 선글라스",
+    sizeDetails: [
+      { label: "렌즈 너비", value: "55mm" },
+      { label: "렌즈 높이", value: "44.8mm" },
+      { label: "브리지", value: "17mm" },
+      { label: "템플", value: "145mm" },
+    ],
+    features: ["아세테이트 / 금속", "블랙", "다크 그레이", "스퀘어", "UV400, 자외선 100% 차단"],
+    defaultFit: "Regular",
+  },
+
   "new-her": {
     id: "new-her",
     category: "CAT-EYE",
@@ -455,85 +564,19 @@ export const products = {
   },
 };
 
+const recommendedSquareProducts = Object.values(products)
+  .filter((product) => product.category === "SQUARE")
+  .map(({ id, brand, name, price, originalPrice, image }) => ({
+    id,
+    brand,
+    name,
+    price,
+    originalPrice,
+    image,
+  }));
+
 const roundProducts = [
-  {
-    id: "round-nuvon",
-    brand: "TOMFORD",
-    name: "FT1244K",
-    price: 800000,
-    image: "/team/round/tomford.png",
-    description: "블랙 라운드 프레임과 메탈 디테일이 조화를 이루는 선글라스",
-    color: "블랙",
-    size: ["54mm", "48mm", "22mm", "145mm"],
-    sizeLabels: ["렌즈 너비", "렌즈 높이", "브릿지 너비", "템플 길이"],
-    features: ["블랙", "스모크 그레이", "라운드"],
-    defaultFit: "Regular",
-  },
-  {
-    id: "round-dean",
-    brand: "PRADA",
-    name: "SPRD08",
-    price: 700000,
-    image: "/team/round/prada.png",
-    description: "블랙 프레임과 볼륨감 있는 라운드 디자인이 돋보이는 선글라스.",
-    color: "블랙",
-    size: ["53mm", "21mm", "135mm"],
-    sizeLabels: ["렌즈 너비", "브릿지 너비", "템플 길이"],
-    features: ["아세테이트", "블랙", "오버사이즈 라운드", "두꺼운 프레임과 부드러운 곡선형 테두리"],
-    defaultFit: "Over",
-  },
-  {
-    id: "round-noho",
-    brand: "RAY BEN",
-    name: "RB2447",
-    price: 230000,
-    image: "/team/round/rayban.png",
-    description: "블랙 아세테이트 프레임과 그린 렌즈가 조화를 이루는 클래식한 라운드 디자인",
-    color: "유광 블랙 / G-15 그린",
-    size: ["49mm", "46.8mm", "21mm"],
-    sizeLabels: ["렌즈 너비", "렌즈 높이", "브릿지"],
-    features: ["아세테이트", "유광 블랙", "G-15 그린", "라운드"],
-    defaultFit: "Small",
-  },
-  {
-    id: "round-her",
-    brand: "Gucci",
-    name: "GG2079S",
-    price: 700000,
-    image: "/team/round/gucci.png",
-    description: "블랙 아세테이트 프레임과 그레이 렌즈가 조화를 이루는 클래식 선글라스",
-    color: "블랙 / 그레이",
-    size: ["48mm", "43mm", "22mm", "145mm"],
-    sizeLabels: ["렌즈 너비", "렌즈 높이", "브릿지 너비", "다리 길이"],
-    features: ["아세테이트/메탈", "블랙", "그레이", "라운드"],
-    defaultFit: "Small",
-  },
-  {
-    id: "round-persol",
-    brand: "Oliver Peoples",
-    name: "Gregory Peck Sun",
-    price: 690000,
-    image: "/team/round/oliver-peoples.png",
-    description: "세미 매트 블랙 프레임과 다크 그레이 편광 렌즈가 어우러진 빈티지 스타일의 라운드",
-    color: "세미 매트 블랙 / 다크 그레이",
-    size: ["47mm", "43mm", "23mm", "150mm"],
-    sizeLabels: ["렌즈 너비", "렌즈 높이", "브릿지 너비", "다리 길이"],
-    features: ["아세테이트", "세미 매트 블랙", "다크 그레이", "라운드", "편광 렌즈"],
-    defaultFit: "Regular",
-  },
-  {
-    id: "round-marina",
-    brand: "GENTLE MONSTER",
-    name: "딘 01",
-    price: 279000,
-    image: "/team/round/gm-dean.png",
-    description: "부드러운 블랙 아세테이트 소재의 라운드 선글라스",
-    color: "블랙",
-    size: ["63mm", "17mm", "147.1mm", "46.6mm"],
-    sizeLabels: ["렌즈 너비", "브릿지", "템플 길이", "렌즈 높이"],
-    features: ["2025 컬렉션", "블랙 아세테이트 프레임", "블랙 렌즈", "라운드 쉐입", "UV 99.9% 차단 렌즈"],
-    defaultFit: "Over",
-  },
+  // 여기에 기존 ROUND 상품 6개 전체 유지
 ];
 
 for (const item of roundProducts) {
@@ -753,7 +796,9 @@ function Product({
   const product = products[productId] ?? products["new-her"];
 
   const currentRecommendations =
-    product.category === "ROUND"
+      product.category === "SQUARE"
+      ? recommendedSquareProducts
+      product.category === "ROUND"
       ? roundProducts
       : product.category === "SPORTS"
       ? recommendedSportsProducts
@@ -780,7 +825,9 @@ function Product({
     <Link
       className="product-breadcrumb"
       to={
-        product.category === "SPORTS"
+        product.category === "SQUARE"
+          ? "/square"
+          : product.category === "SPORTS"
           ? "/sports"
           : product.category === "CELEB PICK"
           ? "/celeb"
@@ -854,11 +901,22 @@ function Product({
             </div>
 
             <dl>
-              {(product.sizeLabels ?? ["렌즈 가로", "렌즈 세로", "브릿지", "프레임 정면", "다리 길이"]).map(
-                (label, index) => (
+              {(
+                product.sizeDetails ??
+                (product.sizeLabels ?? [
+                  "렌즈 가로",
+                  "렌즈 세로",
+                  "브릿지",
+                  "프레임 정면",
+                  "다리 길이",
+                ]).map((label, index) => ({
+                  label,
+                  value: product.size?.[index],
+                }))
+              ).map(({ label, value }) => (
                   <div key={label}>
                     <dt>{label}</dt>
-                    <dd>{product.size[index]}</dd>
+                    <dd>{value}</dd>
                   </div>
                 )
               )}

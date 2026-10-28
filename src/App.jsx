@@ -29,6 +29,7 @@ import CatEye from "./pages/Cat-eye.jsx";
 import Round from "./pages/Round.jsx";
 import Casual from "./pages/Casual.jsx";
 import Sports from "./pages/Sports.jsx";
+import Square from "./pages/Square.jsx";
 import Trendy from "./pages/Trendy.jsx";
 import Celeb from "./pages/Celeb.jsx";
 import Product from "./pages/Product.jsx";
@@ -291,6 +292,7 @@ function AppInner() {
 
   function handleSubMenuClick(item) {
     const pagePaths = {
+      스퀘어: "/square",
       클래식: "/classic",
       캣아이: "/cat-eye",
       라운드: "/round",
@@ -536,6 +538,7 @@ function AppInner() {
         />
 
         <Route path="/classic" element={<Classic />} />
+        <Route path="/square" element={<Square />} />
         <Route path="/cat-eye" element={<CatEye />} />
         <Route path="/round" element={<Round />} />
         <Route path="/sports" element={<Sports />} />
