@@ -23,7 +23,7 @@ function handleCardClick() {
 
   return (
       <article
-        className={`product-card product-card-${id}`}
+        className="product-card"
         onClick={handleCardClick}
         role="link"
         tabIndex={0}

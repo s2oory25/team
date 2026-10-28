@@ -25,7 +25,7 @@ function Classic() {
   return (
     <main className="classic-page">
       <section className="hero-banner" aria-label="클래식 선글라스 컬렉션">
-        <img src="/team/classic/banner.png" alt="클래식 선글라스 이미지" />
+        <img src="/team/classic.png" alt="클래식 선글라스 이미지" />
       </section>
 
       <section aria-labelledby="collection-title">

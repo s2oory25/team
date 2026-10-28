@@ -855,17 +855,14 @@ select {
 ================================================== */
 .sports-intro-desktop,
 .trendy-intro-desktop,
-.casual-intro-desktop,
-.cat-eye-intro-desktop {
+.casual-intro-desktop {
   display: block;
 }
 
 .sports-intro-tablet,
 .sports-intro-mobile,
 .trendy-intro-mobile,
-.casual-intro-mobile,
-.cat-eye-intro-tablet,
-.cat-eye-intro-mobile {
+.casual-intro-mobile {
   display: none;
 }
 
@@ -885,6 +882,7 @@ select {
   font: inherit;
   cursor: pointer;
 }
+
 
 .header-menu-icon {
   font-size: 24px;
@@ -1154,15 +1152,6 @@ select {
   }
 
   .sports-intro-tablet {
-    display: block;
-  }
-
-  .cat-eye-intro-desktop,
-  .cat-eye-intro-mobile {
-    display: none;
-  }
-
-  .cat-eye-intro-tablet {
     display: block;
   }
 
@@ -1573,15 +1562,6 @@ select {
   }
 
   .sports-intro-mobile {
-    display: block;
-  }
-
-  .cat-eye-intro-desktop,
-  .cat-eye-intro-tablet {
-    display: none;
-  }
-
-  .cat-eye-intro-mobile {
     display: block;
   }
 
