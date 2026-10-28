@@ -19,6 +19,7 @@ import Cart from "./pages/Cart.jsx";
 import Favorites from "./pages/Favorites.jsx";
 import Mypage from "./pages/Mypage.jsx";
 import InquiryPage from "./pages/InquiryPage.jsx";
+import AccountPage from "./pages/AccountPage.jsx"; 
 import { products } from "./pages/Product.jsx";
 import AiFitting from "./pages/AiFitting.jsx";
 import Classic from "./pages/Classic.jsx";
@@ -48,7 +49,12 @@ function AppContent() {
   return <AppInner navigate={navigate} />;
 }
 
-function App() {
+function AppInner() {
+  const navigate = useNavigate();
+
+  const [accountMessage, setAccountMessage] = useState("");
+  const [profilePhoto, setProfilePhoto] = useState("");
+  const [isChangingPassword, setIsChangingPassword] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
 
@@ -330,16 +336,13 @@ function handleSubMenuClick(item) {
   }
 
 
-function handleLoginClick() {
-  closeMenu();
 
-  if (isLoggedIn) {
-    window.location.href = "/team/mypage";
-    return;
+  function handleLoginClick() {
+    closeMenu();
+    setIsLoginOpen(false);
+    navigate("/mypage");
   }
 
-  setIsLoginOpen((prev) => !prev);
-}
 
   function handleLogoutClick() {
     sessionStorage.removeItem("chalfitLogin");
@@ -347,8 +350,7 @@ function handleLoginClick() {
   }
 
   return (
-    <BrowserRouter basename="/team">
-      <div className="app">
+    <div className="app">
         <Header
           onMenuClick={openMenu}
           onLogoClick={closeMenu}
@@ -387,6 +389,39 @@ function handleLoginClick() {
           <Route path="/" element={<Home />} />
           <Route path="/celeb" element={<Celeb />} />
           <Route path="/inquiry" element={<InquiryPage />} />
+          <Route
+            path="/account"
+            element={
+              <AccountPage
+                accountMessage={accountMessage}
+                setAccountMessage={setAccountMessage}
+                profilePhoto={profilePhoto}
+                setProfilePhoto={setProfilePhoto}
+                isChangingPassword={isChangingPassword}
+                setIsChangingPassword={setIsChangingPassword}
+                navigateTo={navigateTo}
+                handleAccountMenuClick={(menu) => {
+                  const paths = {
+                    account: "/account",
+                    orders: "/mypage",
+                    recent: "/mypage",
+                    likes: "/favorites",
+                    cart: "/cart",
+                    inquiry: "/inquiry",
+                  };
+
+                  if (menu === "logout") {
+                    handleLogoutClick();
+                    navigateTo("/mypage");
+                    return;
+                  }
+
+                  navigateTo(paths[menu] || "/mypage");
+                }}
+              />
+            }
+          />
+
           <Route path="/ai-fitting" element={<AiFitting />} />
           <Route
             path="/ai-fitting"
@@ -449,6 +484,7 @@ function handleLoginClick() {
                 setIsLoggedIn={setIsLoggedIn}
                 handleLogoutClick={handleLogoutClick}
                 navigateTo={navigateTo}
+                onLoginClick={() => setIsLoginOpen(true)}
               />
             }
           />
@@ -512,7 +548,14 @@ function handleLoginClick() {
 
         <PageFooter />
       </div>
+  );
+}
+function App() {
+  return (
+    <BrowserRouter basename="/team">
+      <AppInner />
     </BrowserRouter>
   );
 }
+
 export default App;

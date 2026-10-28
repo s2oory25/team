@@ -1,0 +1,320 @@
+.account-page {
+  width: 100%;
+  min-height: calc(100vh - 72px);
+  min-height: calc(100dvh - 72px);
+  display: flex;
+  flex-direction: column;
+  background: #f8f8f8;
+  color: #111;
+}
+
+.account-title-bar {
+  padding: 18px 32px 14px;
+  border-bottom: 1px solid #aaa;
+}
+
+.account-title-bar h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.account-mobile-intro {
+  display: none;
+}
+
+.account-profile-photo-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  padding: 8px 12px;
+  border: 1px solid #aaa;
+  background: #fff;
+  color: #222;
+  font: inherit;
+  font-size: 12px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.account-profile-photo-input {
+  display: none;
+}
+
+.account-layout {
+  width: 100%;
+  flex: 1;
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 28px;
+  margin: 0;
+  padding: 32px 32px 40px;
+}
+
+.account-sidebar {
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+  border-top: 1px solid #bbb;
+}
+
+.account-sidebar button {
+  min-height: 54px;
+  padding: 0 16px;
+  border: 0;
+  border-bottom: 1px solid #ccc;
+  background: transparent;
+  color: #222;
+  text-align: left;
+  font: inherit;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.account-sidebar button.active {
+  background: #666;
+  color: #fff;
+}
+
+.account-sidebar-label {
+  padding: 20px 12px 8px;
+  color: #888;
+  font-size: 12px;
+}
+
+.account-panel {
+  min-width: 0;
+  padding: 32px;
+  border: 1px solid #ccc;
+  background: #fff;
+}
+
+.account-panel h2 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.account-description {
+  margin: 10px 0 24px;
+  color: #666;
+  font-size: 16px;
+}
+
+.account-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.account-user-summary {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 0 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.account-user-summary strong,
+.account-user-summary small {
+  display: block;
+}
+
+.account-user-summary strong {
+  font-size: 19px;
+}
+
+.account-user-summary small {
+  margin-top: 4px;
+  color: #777;
+  font-size: 14px;
+}
+
+.account-fields-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px 24px;
+}
+
+.account-fields-grid label {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+}
+
+.account-fields-grid label > span {
+  color: #444;
+}
+
+.account-password-control {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.account-password-control > input {
+  flex: 1 1 auto;
+}
+
+.account-password-change-button {
+  min-height: 46px;
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 12px;
+  border: 1px solid #aaa;
+  background: #fff;
+  color: #111;
+  font: inherit;
+  font-size: 13px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.account-password-change-button svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+
+.account-fields-grid input,
+.account-fields-grid select {
+  width: 100%;
+  min-width: 0;
+  height: 46px;
+  padding: 0 12px;
+  border: 1px solid #ccc;
+  border-radius: 0;
+  background: #fff;
+  color: #222;
+  font: inherit;
+  font-size: 15px;
+}
+
+.account-fields-grid input:disabled {
+  background: #eee;
+  color: #777;
+}
+
+.account-address-field {
+  grid-column: 1 / -1;
+}
+
+.account-form-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding-top: 4px;
+}
+
+.account-form-actions button {
+  min-width: 180px;
+  min-height: 52px;
+  padding: 0 24px;
+  border: 1px solid #aaa;
+  background: #fff;
+  color: #111;
+  font: inherit;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.account-form-actions button[type='submit'] {
+  border-color: #050505;
+  background: #050505;
+  color: #fff;
+}
+
+.account-message {
+  margin: 0;
+  color: #666;
+  text-align: center;
+  font-size: 12px;
+}
+
+.account-page .site-footer {
+  margin-top: auto;
+}
+
+/* 회원정보 저장 완료 알림 */
+.account-save-toast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  min-width: 280px;
+  padding: 22px 28px;
+
+  background: rgba(25, 25, 25, 0.94);
+  color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+
+  font-size: 15px;
+  font-weight: 500;
+
+  animation: account-toast-in 0.2s ease-out;
+  pointer-events: none;
+}
+
+.account-save-toast-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+
+  font-size: 15px;
+}
+/* 성별 선택창 화살표 위치 조정 */
+.account-fields-grid select {
+  appearance: none;
+  -webkit-appearance: none;
+
+  padding-right: 36px;
+
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23222' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  background-size: 12px;
+}
+
+
+@keyframes account-toast-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -46%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media (max-width: 900px) {
+  .account-sidebar { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 2px; border: 0; }
+  .account-sidebar button { min-height: 48px; padding: 5px 2px; border: 1px solid #ccc; background: transparent; font-size: 10px; }
+  .account-sidebar button.active { border-color: #aaa; background: #aaa; color: #fff; }
+  .account-sidebar button:nth-of-type(n + 6), .account-sidebar-label { display: none; }
+}
