@@ -18,6 +18,7 @@ import Welcome from "./pages/Welcome.jsx";
 import Cart from "./pages/Cart.jsx";
 import Favorites from "./pages/Favorites.jsx";
 import Mypage from "./pages/Mypage.jsx";
+import OrdersPage from "./pages/OrdersPage.jsx";
 import InquiryPage from "./pages/InquiryPage.jsx";
 import AccountPage from "./pages/AccountPage.jsx"; 
 import { products } from "./pages/Product.jsx";
@@ -389,6 +390,7 @@ function handleSubMenuClick(item) {
           <Route path="/" element={<Home />} />
           <Route path="/celeb" element={<Celeb />} />
           <Route path="/inquiry" element={<InquiryPage />} />
+          <Route path="/orders" element={<OrdersPage />} />
           <Route
             path="/account"
             element={
@@ -403,7 +405,7 @@ function handleSubMenuClick(item) {
                 handleAccountMenuClick={(menu) => {
                   const paths = {
                     account: "/account",
-                    orders: "/mypage",
+                    orders: "/orders",
                     recent: "/mypage",
                     likes: "/favorites",
                     cart: "/cart",

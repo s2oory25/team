@@ -35,35 +35,50 @@ function FavoriteProductCard({
     });
   };
 
+  const handleCardKeyDown = (event) => {
+    // 카드 자체에 포커스가 있을 때만 키보드로 상세페이지 이동
+    if (event.target !== event.currentTarget) return;
+
+    if (event.key === "Enter") {
+      event.preventDefault();
+      goToProduct();
+    }
+  };
+
   return (
     <article
       className="fit-product-card favorite-product-card"
-      onClick={goToProduct}
       role="link"
       tabIndex={0}
-      onKeyDown={(event) => {
-        if (event.key === "Enter") {
-          goToProduct();
-        }
-      }}
+      aria-label={`${brand} ${name} 상세 보기`}
+      onKeyDown={handleCardKeyDown}
     >
-      <div className="fit-product-image">
+      {/* 상품 이미지를 눌렀을 때 상세페이지로 이동 */}
+      <div
+        className="fit-product-image favorite-product-image-clickable"
+        onClick={goToProduct}
+      >
         <img src={image} alt={`${brand} ${name}`} />
       </div>
 
       <div className="fit-product-heading">
-        <div>
+        <div
+          className="favorite-product-info-clickable"
+          onClick={goToProduct}
+        >
           <p className="fit-product-brand">{brand}</p>
           <p className="fit-product-name">{name}</p>
         </div>
 
         <div className="favorite-product-actions">
+          {/* 하트 버튼: 좋아요 해제만 실행 */}
           <button
             className="fit-product-favorite"
             type="button"
             aria-label={`${name} 좋아요 취소`}
             aria-pressed={isFavorite}
             onClick={(event) => {
+              event.preventDefault();
               event.stopPropagation();
               onToggleFavorite?.();
             }}
@@ -73,11 +88,13 @@ function FavoriteProductCard({
             </svg>
           </button>
 
+          {/* 장바구니 버튼: 장바구니 추가만 실행 */}
           <button
             className="favorite-product-cart"
             type="button"
             aria-label={`${name} 장바구니에 담기`}
             onClick={(event) => {
+              event.preventDefault();
               event.stopPropagation();
               onAddCart?.(product);
             }}
@@ -87,6 +104,7 @@ function FavoriteProductCard({
         </div>
       </div>
 
+      {/* 가격 영역 */}
       <div
         className={`fit-product-pricing${hasDiscount ? " has-discount" : ""}`}
       >
