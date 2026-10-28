@@ -7,22 +7,19 @@ function Header({
   onCartClick,
   favoriteCount = 0,
   cartCount = 0,
-}){
+}) {
   return (
     <header className="header">
       <div className="header-left">
         <button
-          className="menu-button"
+          className="header-menu-trigger"
           type="button"
-          aria-label="메뉴 열기"
           onClick={onMenuClick}
+          aria-label="메뉴 열기 및 닫기"
         >
-          ☰
+          <span className="header-menu-icon" aria-hidden="true">☰</span>
+          <span className="header-menu-label" aria-hidden="true">메뉴</span>
         </button>
-
-        <nav className="header-menu" aria-label="주 메뉴">
-          <a href="#products">메뉴</a>
-        </nav>
       </div>
 
       <Link
@@ -35,7 +32,7 @@ function Header({
       </Link>
 
       <nav className="header-right" aria-label="회원 메뉴">
-<Link className="desktop-text" to="/favorites" onClick={onCartClick}>
+        <Link className="desktop-text" to="/favorites" onClick={onCartClick}>
           좋아요
           {favoriteCount > 0 && (
             <span className="header-count">{favoriteCount}</span>
