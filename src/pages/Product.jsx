@@ -125,7 +125,7 @@ export const products = {
     image: "/team/cat-eye-products/dawn.png",
     description: "날렵한 블랙 프레임의 캣아이 선글라스.",
     size: ["53.5 mm", "21 mm", "147.2 mm", "146.3 mm", "33.3 mm"],
-    sizeLabels: ["렌즈 폭", "브리지", "프레임 전면", "사원 길이", "렌즈 높이"],
+    sizeLabels: ["렌즈 폭", "브리지", "프레임 전면", "템플 길이", "렌즈 높이"],
     features: [
       "블랙 아세테이트 프레임",
       "블랙 렌즈",
@@ -564,6 +564,34 @@ export const products = {
   },
 };
 
+// Keep the classic collection separate from legacy IDs reused by other categories.
+const classicProducts = [
+  { id: "classic-rayban-wayfarer", brand: "RAY-BAN", name: "ORIGINAL WAYFARER CLASSIC", price: 270000, image: "/team/classic/rayclassic.png" },
+  { id: "classic-persol-0649", brand: "PERSOL", name: "PO0649NE - Total Black Arrow", price: 615000, image: "/team/classic/persol.png" },
+  { id: "classic-gm-new-her", brand: "GENTLE MONSTER", name: "뉴 허 01", price: 289000, image: "/team/classic/gmNewHer.png" },
+  { id: "classic-celine-triomphe", brand: "CELINE", name: "트리옹프 01", price: 730000, image: "/team/classic/celine.png" },
+  { id: "classic-blue-elephant-marina", brand: "BLUE ELEPHANT", name: "MARINA-S black", price: 69900, image: "/team/classic/blueSblack.png" },
+  { id: "classic-gm-soho", brand: "GENTLE MONSTER", name: "소호 01", price: 279000, image: "/team/classic/gmsoho.png" },
+];
+
+for (const item of classicProducts) {
+  products[item.id] = {
+    ...item,
+    category: "CLASSIC",
+    color: "블랙",
+    description: `${item.brand} ${item.name} 클래식 선글라스`,
+    sizeDetails: [
+      { label: "렌즈 너비", value: "상품 정보 참고" },
+      { label: "브리지 너비", value: "상품 정보 참고" },
+      { label: "템플 길이", value: "상품 정보 참고" },
+    ],
+    features: ["클래식 프레임", "UV 차단"],
+    defaultFit: "Regular",
+  };
+}
+
+const recommendedClassicProducts = classicProducts;
+
 const recommendedSquareProducts = Object.values(products)
   .filter((product) => product.category === "SQUARE")
   .map(({ id, brand, name, price, originalPrice, image }) => ({
@@ -811,6 +839,8 @@ function Product({
                 ? recommendedProducts
                 : product.category === "CELEB PICK"
                   ? recommendedProducts
+                  : product.category === "CLASSIC"
+                    ? recommendedClassicProducts
                   : recommendedProducts;
 
 
@@ -841,6 +871,8 @@ function Product({
           ? "/cat-eye"
           : product.category === "ROUND"
           ? "/round"
+          : product.category === "CLASSIC"
+          ? "/classic"
           : "/classic"
       }
     >
