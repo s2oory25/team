@@ -6,6 +6,115 @@ import FitSelector from "../components/FitSelector.jsx";
 import "./Product.css";
 
 export const products = {
+  "thom-browne": {
+    id: "thom-browne",
+    category: "SQUARE",
+    brand: "THOM BROWNE",
+    name: "UES928A",
+    color: "블랙 / 그레이 실버 플래시",
+    price: 1030000,
+    image: "/team/square/thombrowne-ues928a.png",
+    description: "블랙 스퀘어 프레임과 실버 렌즈가 돋보이는 선글라스",
+    sizeDetails: [
+      { label: "렌즈 너비", value: "56mm" },
+      { label: "브릿지 너비", value: "18.5mm" },
+      { label: "템플 길이", value: "148mm" },
+    ],
+    features: ["아세테이트", "블랙", "그레이 실버 플래시", "스퀘어", "반사 코팅"],
+    defaultFit: "Regular",
+  },
+  "chanel-9193": {
+    id: "chanel-9193",
+    category: "SQUARE",
+    brand: "CHANEL",
+    name: "Square Sunglasses 9193",
+    color: "블랙 / 다크 그레이",
+    price: 1030000,
+    image: "/team/square/chanel-9193.png",
+    description: "블랙 아세테이트 프레임의 오버사이즈 스퀘어 선글라스",
+    sizeDetails: [
+      { label: "전체 너비", value: "126mm" },
+      { label: "렌즈 너비", value: "53mm" },
+      { label: "렌즈 높이", value: "47mm" },
+      { label: "템플", value: "140mm" },
+    ],
+    features: ["블랙 아세테이트 프레임", "다크 그레이 렌즈", "스퀘어", "100% UVA·UVB 차단"],
+    defaultFit: "Over",
+  },
+  "charles-keith-maude": {
+    id: "charles-keith-maude",
+    category: "SQUARE",
+    brand: "CHARLES & KEITH",
+    name: "Maude Square Sunglasses",
+    color: "블랙 / 다크 그레이",
+    price: 1006000,
+    image: "/team/square/charles-and-keith-maude.png",
+    description: "블랙 아세테이트 프레임과 다크 렌즈의 스퀘어 선글라스",
+    sizeDetails: [
+      { label: "전체 너비", value: "136mm" },
+      { label: "렌즈 너비", value: "51mm" },
+      { label: "렌즈 높이", value: "47mm" },
+      { label: "브리지", value: "17mm" },
+      { label: "템플", value: "145mm" },
+    ],
+    features: ["블랙 아세테이트 프레임", "다크 그레이 렌즈", "스퀘어 형태", "100% UV 차단"],
+    defaultFit: "Regular",
+  },
+  gent01: {
+    id: "gent01",
+    category: "SQUARE",
+    brand: "GENTLE MONSTER",
+    name: "젠트 01",
+    color: "블랙",
+    price: 289000,
+    image: "/team/square/gentle-monster-gent-01.png",
+    description: "블랙 아세테이트 소재의 스퀘어 선글라스",
+    sizeDetails: [
+      { label: "전체 너비", value: "149.1mm" },
+      { label: "렌즈 너비", value: "64.2mm" },
+      { label: "렌즈 높이", value: "48.3mm" },
+      { label: "브릿지", value: "17mm" },
+      { label: "템플 길이", value: "146.8mm" },
+    ],
+    features: ["블랙 아세테이트 프레임", "블랙 렌즈", "스퀘어 쉐입", "UV 99.9% 차단 렌즈"],
+    defaultFit: "Over",
+  },
+  "tiffany-t": {
+    id: "tiffany-t",
+    category: "SQUARE",
+    brand: "TIFFANY & CO.",
+    name: "Tiffany T Sunglasses",
+    color: "블랙 / 다크 그레이",
+    price: 566000,
+    image: "/team/square/tiffany-t.png",
+    description: "블랙 아세테이트 프레임과 다크 그레이 렌즈를 적용한 선글라스",
+    sizeDetails: [
+      { label: "렌즈 높이", value: "56mm" },
+      { label: "브리지", value: "16mm" },
+      { label: "템플", value: "140mm" },
+    ],
+    features: ["블랙 아세테이트 프레임", "다크 그레이 렌즈", "스퀘어", "100% UV 차단", "눈부심 방지"],
+    defaultFit: "Regular",
+  },
+  "swarovski-sk6032": {
+    id: "swarovski-sk6032",
+    category: "SQUARE",
+    brand: "SWAROVSKI",
+    name: "SK6032",
+    color: "블랙 / 다크 그레이",
+    price: 350000,
+    image: "/team/square/swarovski-sk6032.png",
+    description: "블랙 프레임과 크리스털 포인트가 어우러진 스퀘어 선글라스",
+    sizeDetails: [
+      { label: "렌즈 너비", value: "55mm" },
+      { label: "렌즈 높이", value: "44.8mm" },
+      { label: "브리지", value: "17mm" },
+      { label: "템플", value: "145mm" },
+    ],
+    features: ["아세테이트 / 금속", "블랙", "다크 그레이", "스퀘어", "UV400, 자외선 100% 차단"],
+    defaultFit: "Regular",
+  },
+
   "new-her": {
     id: "new-her",
     brand: "GENTLE MONSTER",
@@ -450,6 +559,17 @@ export const products = {
   },
 };
 
+const recommendedSquareProducts = Object.values(products)
+  .filter((product) => product.category === "SQUARE")
+  .map(({ id, brand, name, price, originalPrice, image }) => ({
+    id,
+    brand,
+    name,
+    price,
+    originalPrice,
+    image,
+  }));
+
 const recommendedProducts = [
   {
     id: "rayclassic",
@@ -655,7 +775,9 @@ function Product({
   const product = products[productId] ?? products["new-her"];
 
   const currentRecommendations =
-    product.category === "SPORTS"
+    product.category === "SQUARE"
+      ? recommendedSquareProducts
+      : product.category === "SPORTS"
       ? recommendedSportsProducts
       : product.category === "CASUAL"
       ? recommendedCasualProducts
@@ -678,7 +800,9 @@ function Product({
     <Link
       className="product-breadcrumb"
       to={
-        product.category === "SPORTS"
+        product.category === "SQUARE"
+          ? "/square"
+          : product.category === "SPORTS"
           ? "/sports"
           : product.category === "CELEB PICK"
           ? "/celeb"
@@ -748,11 +872,13 @@ function Product({
             </div>
 
             <dl>
-              {["렌즈 가로", "렌즈 세로", "브릿지", "프레임 정면", "다리 길이"].map(
-                (label, index) => (
+              {(product.sizeDetails ?? ["렌즈 가로", "렌즈 세로", "브릿지", "프레임 정면", "다리 길이"].map(
+                (label, index) => ({ label, value: product.size[index] })
+              )).map(
+                ({ label, value }) => (
                   <div key={label}>
                     <dt>{label}</dt>
-                    <dd>{product.size[index]}</dd>
+                    <dd>{value}</dd>
                   </div>
                 )
               )}

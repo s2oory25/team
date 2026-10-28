@@ -28,6 +28,7 @@ import AiFitting from "./pages/AiFitting.jsx";
 import Classic from "./pages/Classic.jsx";
 import Casual from "./pages/Casual.jsx";
 import Sports from "./pages/Sports.jsx";
+import Square from "./pages/Square.jsx";
 import Trendy from "./pages/Trendy.jsx";
 import Celeb from "./pages/Celeb";
 import Product from "./pages/Product.jsx";
@@ -324,6 +325,7 @@ function AppInner() {
 
   function handleSubMenuClick(item) {
     const pagePaths = {
+      스퀘어: "/square",
       클래식: "/classic",
       스포츠: "/sports",
       캐주얼: "/casual",
@@ -568,6 +570,7 @@ function AppInner() {
 
 
         <Route path="/classic" element={<Classic />} />
+          <Route path="/square" element={<Square />} />
         <Route path="/sports" element={<Sports />} />
         <Route path="/casual" element={<Casual />} />
         <Route path="/trendy" element={<Trendy />} />
