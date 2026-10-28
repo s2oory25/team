@@ -9,7 +9,7 @@ const products = [
     name: "UES928A",
     price: 1030000,
     shape: "square",
-    image: "/team/square/thombrowne-ues928a.png",
+    image: "/square/thombrowne-ues928a.png",
   },
   {
     id: "chanel-9193",
@@ -17,7 +17,7 @@ const products = [
     name: "Square Sunglasses 9193",
     price: 1030000,
     shape: "square",
-    image: "/team/square/chanel-9193.png",
+    image: "/square/chanel-9193.png",
   },
   {
     id: "charles-keith-maude",
@@ -25,7 +25,7 @@ const products = [
     name: "Maude Square Sunglasses",
     price: 1006000,
     shape: "square",
-    image: "/team/square/charles-and-keith-maude.png",
+    image: "/square/charles-and-keith-maude.png",
   },
   {
     id: "gent01",
@@ -33,7 +33,7 @@ const products = [
     name: "젠트 01",
     price: 289000,
     shape: "square",
-    image: "/team/square/gentle-monster-gent-01.png",
+    image: "/square/gentle-monster-gent-01.png",
   },
   {
     id: "tiffany-t",
@@ -41,7 +41,7 @@ const products = [
     name: "Tiffany T Sunglasses",
     price: 566000,
     shape: "square",
-    image: "/team/square/tiffany-t.png",
+    image: "/square/tiffany-t.png",
   },
   {
     id: "swarovski-sk6032",
@@ -49,7 +49,7 @@ const products = [
     name: "SK6032",
     price: 350000,
     shape: "square",
-    image: "/team/square/swarovski-sk6032.png",
+    image: "/square/swarovski-sk6032.png",
   },
 ];
 
@@ -79,7 +79,7 @@ function Square() {
         aria-label="스퀘어 선글라스 컬렉션"
       >
         <img
-          src="/team/square/square.png"
+          src="/square/square.png"
           alt=""
         />
       </section>
