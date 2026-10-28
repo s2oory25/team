@@ -19,6 +19,8 @@ import Cart from "./pages/Cart.jsx";
 import Favorites from "./pages/Favorites.jsx";
 import Mypage from "./pages/Mypage.jsx";
 import OrdersPage from "./pages/OrdersPage.jsx";
+import OrderDetailPage from "./pages/OrderDetailPage.jsx";
+import ShippingPage from "./pages/ShippingPage.jsx";
 import InquiryPage from "./pages/InquiryPage.jsx";
 import AccountPage from "./pages/AccountPage.jsx"; 
 import { products } from "./pages/Product.jsx";
@@ -58,7 +60,7 @@ function AppInner() {
   const [isChangingPassword, setIsChangingPassword] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
-
+  const [selectedOrder, setSelectedOrder] = useState(null);
   // 좋아요 상품 ID 목록
   const [favorites, setFavorites] = useState(() => {
     try {
@@ -390,7 +392,15 @@ function handleSubMenuClick(item) {
           <Route path="/" element={<Home />} />
           <Route path="/celeb" element={<Celeb />} />
           <Route path="/inquiry" element={<InquiryPage />} />
-          <Route path="/orders" element={<OrdersPage />} />
+          <Route
+            path="/orders"
+            element={<OrdersPage setSelectedOrder={setSelectedOrder} />}
+          />
+          <Route path="/shipping" element={<ShippingPage />} />
+          <Route
+            path="/order-detail"
+            element={<OrderDetailPage selectedOrder={selectedOrder} />}
+          />
           <Route
             path="/account"
             element={

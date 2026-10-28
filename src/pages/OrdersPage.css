@@ -337,6 +337,23 @@
   margin-top: auto;
 }
 
+
+.order-card-header .order-detail-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.order-detail-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  font-size: 20px;
+  transform: translateY(-1px);
+}
+
 /* 태블릿 */
 @media (max-width: 900px) {
   .orders-title-bar {

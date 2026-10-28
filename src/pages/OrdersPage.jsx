@@ -124,10 +124,13 @@ export default function OrdersPage({ setSelectedOrder }) {
 
                 <button
                   type="button"
+                  className="order-detail-button"
                   onClick={() => openOrderDetail(order)}
                 >
-                  주문 상세보기 ›
+                  <span>주문 상세보기</span>
+                  <span className="order-detail-arrow">›</span>
                 </button>
+
               </header>
 
               <div className="order-card-body">
@@ -182,7 +185,7 @@ export default function OrdersPage({ setSelectedOrder }) {
 
                       <button
                         type="button"
-                        onClick={() => openOrderDetail(order)}
+                        onClick={() => navigate("/shipping")}
                       >
                         배송 조회하기
                       </button>
