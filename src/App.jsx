@@ -18,6 +18,9 @@ import Welcome from "./pages/Welcome.jsx";
 import Cart from "./pages/Cart.jsx";
 import Favorites from "./pages/Favorites.jsx";
 import Mypage from "./pages/Mypage.jsx";
+import OrdersPage from "./pages/OrdersPage.jsx";
+import OrderDetailPage from "./pages/OrderDetailPage.jsx";
+import ShippingPage from "./pages/ShippingPage.jsx";
 import InquiryPage from "./pages/InquiryPage.jsx";
 import AccountPage from "./pages/AccountPage.jsx";
 import { products } from "./pages/Product.jsx";
@@ -79,7 +82,7 @@ function AppInner() {
     setInquiryMessage("");
     setShowInquirySuccess(true);
   }
-
+  const [selectedOrder, setSelectedOrder] = useState(null);
 
   // 좋아요 상품 ID 목록
   const [favorites, setFavorites] = useState(() => {
@@ -444,7 +447,7 @@ function AppInner() {
               handleAccountMenuClick={(menu) => {
                 const paths = {
                   account: "/account",
-                  orders: "/mypage",
+                  orders: "/orders",
                   recent: "/mypage",
                   likes: "/favorites",
                   cart: "/cart",
@@ -553,6 +556,16 @@ function AppInner() {
             />
           }
         />
+        <Route
+          path="/orders"
+          element={<OrdersPage setSelectedOrder={setSelectedOrder} />}
+        />
+        <Route path="/shipping" element={<ShippingPage />} />
+        <Route
+          path="/order-detail"
+          element={<OrderDetailPage selectedOrder={selectedOrder} />}
+        />
+
 
         <Route path="/classic" element={<Classic />} />
         <Route path="/sports" element={<Sports />} />

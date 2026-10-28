@@ -66,7 +66,8 @@ export default function AccountPage(props) {
           <section className="account-title-bar">
             <h1>회원정보 수정</h1>
           </section>
-          <p className="account-mobile-intro">회원정보를 확인하고 필요한 정보를 수정해보세요.</p>
+          <p className="account-description">회원님의 정보를 확인하고 수정할 수 있습니다.</p>
+          {/* <p className="account-mobile-intro">회원정보를 확인하고 필요한 정보를 수정해보세요.</p> */}
 
           <div className="account-layout">
             <aside className="account-sidebar" aria-label="마이페이지 메뉴">
@@ -85,7 +86,6 @@ export default function AccountPage(props) {
 
             <section className="account-panel">
               <h2>회원정보 수정</h2>
-              <p className="account-description">회원님의 정보를 확인하고 수정할 수 있습니다.</p>
 
               <form
                 className="account-form"
