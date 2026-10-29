@@ -59,7 +59,7 @@ export default function CelebPick() {
                 </div>
 
                 <div className="overlay-text-box">
-                  <span className="overlay-tag">뷔 착용 *</span>
+                  <span className="overlay-tag">BTS 뷔 착용 *</span>
                   <span className="overlay-name">스피드</span>
                   <span className="overlay-price">210,000</span>
                 </div>
@@ -88,7 +88,7 @@ export default function CelebPick() {
                 </div>
 
                 <div className="overlay-text-box">
-                  <span className="overlay-tag">정해인 착용 *</span>
+                  <span className="overlay-tag">배우 정해인 착용 *</span>
                   <span className="overlay-name">사이버 다이노</span>
                   <span className="overlay-price">328,800</span>
                 </div>
