@@ -44,9 +44,15 @@ export default function MyPage(props) {
 
   const {
     isLoggedIn,
+    cartItems = {},
     profilePhoto,
     handleProfileCardClick,
   } = props;
+  const cartCount = Object.values(cartItems).reduce(
+    (total, quantity) =>
+      total + (Number.isInteger(quantity) && quantity > 0 ? quantity : 0),
+    0
+  );
 
   return (
     <main className="mypage-screen">
@@ -121,7 +127,7 @@ export default function MyPage(props) {
             onClick={() => navigate("/cart")}
           >
             <span aria-hidden="true">🛒</span>
-            <strong>0</strong>
+            <strong>{cartCount}</strong>
             <small>장바구니</small>
           </button>
 

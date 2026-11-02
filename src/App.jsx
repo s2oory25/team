@@ -525,6 +525,7 @@ function AppInner() {
           element={
             <Mypage
               isLoggedIn={isLoggedIn}
+              cartItems={cartItems}
               setIsLoggedIn={setIsLoggedIn}
               handleLogoutClick={handleLogoutClick}
               navigateTo={navigateTo}
