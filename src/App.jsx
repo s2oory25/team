@@ -26,11 +26,15 @@ import AccountPage from "./pages/AccountPage.jsx";
 import { products } from "./pages/Product.jsx";
 import AiFitting from "./pages/AiFitting.jsx";
 import Classic from "./pages/Classic.jsx";
+import Square from "./pages/Square.jsx";
+import CatEye from "./pages/Cat-eye.jsx";
+import Round from "./pages/Round.jsx";
 import Casual from "./pages/Casual.jsx";
 import Sports from "./pages/Sports.jsx";
 import Trendy from "./pages/Trendy.jsx";
 import Celeb from "./pages/Celeb";
 import Product from "./pages/Product.jsx";
+import RecentPage from "./pages/RecentPage.jsx";
 import Payment from "./pages/Payment.jsx";
 import GuestOrderLookup from "./pages/GuestOrderLookup.jsx";
 // import GuestOrderLookupPage from "./pages/GuestOrderLookup.jsx";
@@ -324,6 +328,9 @@ function AppInner() {
 
   function handleSubMenuClick(item) {
     const pagePaths = {
+      스퀘어: "/square",
+      라운드: "/round",
+      캣아이: "/cat-eye",
       클래식: "/classic",
       스포츠: "/sports",
       캐주얼: "/casual",
@@ -448,7 +455,7 @@ function AppInner() {
                 const paths = {
                   account: "/account",
                   orders: "/orders",
-                  recent: "/mypage",
+                  recent: "/recent",
                   likes: "/favorites",
                   cart: "/cart",
                   inquiry: "/inquiry",
@@ -561,6 +568,7 @@ function AppInner() {
           path="/orders"
           element={<OrdersPage setSelectedOrder={setSelectedOrder} />}
         />
+        <Route path="/recent" element={<RecentPage products={products} />} />
         <Route path="/shipping" element={<ShippingPage />} />
         <Route
           path="/order-detail"
@@ -569,6 +577,9 @@ function AppInner() {
 
 
         <Route path="/classic" element={<Classic />} />
+        <Route path="/square" element={<Square />} />
+        <Route path="/cat-eye" element={<CatEye />} />
+        <Route path="/round" element={<Round />} />
         <Route path="/sports" element={<Sports />} />
         <Route path="/casual" element={<Casual />} />
         <Route path="/trendy" element={<Trendy />} />

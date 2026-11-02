@@ -448,6 +448,24 @@ export const products = {
     features: ["블랙 아세테이트 프레임", "UV 99.9% 차단"],
     defaultFit: "Regular",
   },
+  "cat-eye-dawn": { id: "cat-eye-dawn", category: "CAT-EYE", brand: "GENTLE MONSTER", name: "던 01", color: "블랙", price: 340000, image: "/team/cat-eye-products/dawn.png", video: "/team/product-360/cat-eye-dawn.mp4", description: "날렵하게 올라간 프레임의 캣아이 선글라스.", size: ["52mm", "39mm", "20mm", "145mm", "140mm"], features: ["캣아이 프레임", "UV 차단 렌즈"], defaultFit: "Regular" },
+  "cat-eye-spra09": { id: "cat-eye-spra09", category: "CAT-EYE", brand: "PRADA", name: "SPRA09", color: "블랙", price: 700000, image: "/team/cat-eye-products/spra09.png", video: "/team/product-360/cat-eye-spra09.mp4", description: "세련된 캣아이 실루엣의 프라다 선글라스.", size: ["54mm", "40mm", "19mm", "145mm", "140mm"], features: ["캣아이 프레임", "UV 차단 렌즈"], defaultFit: "Regular" },
+  "cat-eye-ever": { id: "cat-eye-ever", category: "CAT-EYE", brand: "BLUE ELEPHANT", name: "EVER", color: "블랙", price: 49900, image: "/team/cat-eye-products/ever.png", video: "/team/product-360/cat-eye-ever.mp4", description: "데일리로 착용하기 좋은 캣아이 선글라스.", size: ["53mm", "39mm", "19mm", "145mm", "140mm"], features: ["캣아이 프레임", "UV 차단 렌즈"], defaultFit: "Regular" },
+  "cat-eye-celine-triomphe": { id: "cat-eye-celine-triomphe", category: "CAT-EYE", brand: "CELINE", name: "트리옹프 15", color: "블랙", price: 730000, image: "/team/cat-eye-products/celine-triomphe.png", video: "/team/product-360/cat-eye-celine-triomphe.mp4", description: "트리옹프 디테일을 더한 캣아이 선글라스.", size: ["54mm", "39mm", "19mm", "145mm", "140mm"], features: ["캣아이 프레임", "UV 차단 렌즈"], defaultFit: "Regular" },
+  "cat-eye-carin-celly": { id: "cat-eye-carin-celly", category: "CAT-EYE", brand: "CARIN", name: "CELLY R_C1", color: "블랙", price: 218000, image: "/team/cat-eye-products/carin-celly.png", video: "/team/product-360/cat-eye-carin-celly.mp4", description: "부드러운 곡선과 날렵한 끝선이 돋보이는 캣아이 선글라스.", size: ["53mm", "39mm", "19mm", "145mm", "140mm"], features: ["캣아이 프레임", "UV 차단 렌즈"], defaultFit: "Regular" },
+  "cat-eye-devon": { id: "cat-eye-devon", category: "CAT-EYE", brand: "GENTLE MONSTER", name: "데본 01", color: "블랙", price: 340000, image: "/team/cat-eye-products/devon.png", video: "/team/product-360/cat-eye-devon.mp4", description: "도회적인 무드의 캣아이 선글라스.", size: ["53mm", "40mm", "19mm", "145mm", "140mm"], features: ["캣아이 프레임", "UV 차단 렌즈"], defaultFit: "Regular" },
+  "round-nuvon": { id: "round-nuvon", category: "ROUND", brand: "TOM FORD", name: "FT1244K", color: "블랙", price: 800000, image: "/team/round/tomford.png", video: "/team/product-360/round-nuvon.mp4", description: "클래식한 원형 프레임의 라운드 선글라스.", size: ["51mm", "45mm", "20mm", "145mm", "140mm"], features: ["라운드 프레임", "UV 차단 렌즈"], defaultFit: "Regular" },
+  "round-dean": { id: "round-dean", category: "ROUND", brand: "PRADA", name: "SPRD08", color: "블랙", price: 700000, image: "/team/round/prada.png", video: "/team/product-360/round-dean.mp4", description: "미니멀한 디자인의 라운드 선글라스.", size: ["52mm", "44mm", "20mm", "145mm", "140mm"], features: ["라운드 프레임", "UV 차단 렌즈"], defaultFit: "Regular" },
+  "round-noho": { id: "round-noho", category: "ROUND", brand: "RAY-BAN", name: "RB2447", color: "블랙", price: 230000, image: "/team/round/rayban.png", video: "/team/product-360/round-noho.mp4", description: "레트로한 감성의 라운드 선글라스.", size: ["49mm", "46mm", "21mm", "145mm", "140mm"], features: ["라운드 프레임", "UV 차단 렌즈"], defaultFit: "Regular" },
+  "round-her": { id: "round-her", category: "ROUND", brand: "GUCCI", name: "GG2079S", color: "블랙", price: 700000, image: "/team/round/gucci.png", video: "/team/product-360/round-her.mp4", description: "부드러운 원형 실루엣의 라운드 선글라스.", size: ["52mm", "44mm", "20mm", "145mm", "140mm"], features: ["라운드 프레임", "UV 차단 렌즈"], defaultFit: "Regular" },
+  "round-persol": { id: "round-persol", category: "ROUND", brand: "OLIVER PEOPLES", name: "Gregory Peck Sun", color: "브라운", price: 690000, image: "/team/round/oliver-peoples.png", video: "/team/product-360/round-persol.mp4", description: "빈티지한 매력의 라운드 선글라스.", size: ["50mm", "45mm", "21mm", "145mm", "140mm"], features: ["라운드 프레임", "UV 차단 렌즈"], defaultFit: "Regular" },
+  "round-marina": { id: "round-marina", category: "ROUND", brand: "GENTLE MONSTER", name: "딘 01", color: "블랙", price: 279000, image: "/team/round/gm-dean.png", video: "/team/product-360/round-marina.mp4", description: "모던한 디자인의 라운드 선글라스.", size: ["52mm", "44mm", "20mm", "145mm", "140mm"], features: ["라운드 프레임", "UV 차단 렌즈"], defaultFit: "Regular" },
+  "thom-browne": { id: "thom-browne", category: "SQUARE", brand: "THOM BROWNE", name: "UES928A", color: "블랙 / 그레이 실버 플래시", price: 1030000, image: "/team/square/thombrowne-ues928a.png", video: "/team/product-360/thom-browne.mp4", description: "블랙 스퀘어 프레임과 실버 렌즈가 돋보이는 선글라스.", size: ["56mm", "45mm", "18.5mm", "148mm", "140mm"], features: ["아세테이트", "블랙", "스퀘어", "반사 코팅"], defaultFit: "Regular" },
+  "chanel-9193": { id: "chanel-9193", category: "SQUARE", brand: "CHANEL", name: "Square Sunglasses 9193", color: "블랙 / 다크 그레이", price: 1030000, image: "/team/square/chanel-9193.png", video: "/team/product-360/chanel-9193.mp4", description: "블랙 아세테이트 프레임의 오버사이즈 스퀘어 선글라스.", size: ["53mm", "47mm", "19mm", "140mm", "140mm"], features: ["블랙 아세테이트 프레임", "다크 그레이 렌즈", "스퀘어"], defaultFit: "Over" },
+  "charles-keith-maude": { id: "charles-keith-maude", category: "SQUARE", brand: "CHARLES & KEITH", name: "Maude Square Sunglasses", color: "블랙 / 다크 그레이", price: 1006000, image: "/team/square/charles-and-keith-maude.png", video: "/team/product-360/charles-keith-maude.mp4", description: "블랙 아세테이트 프레임과 다크 렌즈의 스퀘어 선글라스.", size: ["51mm", "47mm", "17mm", "145mm", "140mm"], features: ["블랙 아세테이트 프레임", "다크 그레이 렌즈", "스퀘어"], defaultFit: "Regular" },
+  "gent01": { id: "gent01", category: "SQUARE", brand: "GENTLE MONSTER", name: "젠트 01", color: "블랙", price: 289000, image: "/team/square/gentle-monster-gent-01.png", video: "/team/product-360/gent01.mp4", description: "블랙 아세테이트 소재의 스퀘어 선글라스.", size: ["64mm", "48mm", "17mm", "147mm", "140mm"], features: ["블랙 아세테이트", "스퀘어 쉐입", "UV 99.9% 차단"], defaultFit: "Over" },
+  "tiffany-t": { id: "tiffany-t", category: "SQUARE", brand: "TIFFANY & CO.", name: "Tiffany T Sunglasses", color: "블랙 / 다크 그레이", price: 566000, image: "/team/square/tiffany-t.png", video: "/team/product-360/tiffany-t.mp4", description: "블랙 아세테이트 프레임과 다크 그레이 렌즈를 적용한 선글라스.", size: ["56mm", "45mm", "16mm", "140mm", "140mm"], features: ["블랙 아세테이트", "스퀘어", "100% UV 차단"], defaultFit: "Regular" },
+  "swarovski-sk6032": { id: "swarovski-sk6032", category: "SQUARE", brand: "SWAROVSKI", name: "SK6032", color: "블랙 / 다크 그레이", price: 350000, image: "/team/square/swarovski-sk6032.png", video: "/team/product-360/swarovski-sk6032.mp4", description: "블랙 프레임과 크리스털 포인트가 어우러진 스퀘어 선글라스.", size: ["55mm", "45mm", "17mm", "145mm", "140mm"], features: ["아세테이트 / 금속", "스퀘어", "UV400 차단"], defaultFit: "Regular" },
 };
 
 const recommendedProducts = [
@@ -654,6 +672,19 @@ function Product({
   const [isSizeGuideOpen, setIsSizeGuideOpen] = useState(false);
   const product = products[productId] ?? products["new-her"];
 
+  useEffect(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem("chalfitRecentlyViewed") || "[]");
+      const recentIds = Array.isArray(saved) ? saved : [];
+      localStorage.setItem(
+        "chalfitRecentlyViewed",
+        JSON.stringify([product.id, ...recentIds.filter((id) => id !== product.id)].slice(0, 20)),
+      );
+    } catch {
+      localStorage.setItem("chalfitRecentlyViewed", JSON.stringify([product.id]));
+    }
+  }, [product.id]);
+
   const currentRecommendations =
     product.category === "SPORTS"
       ? recommendedSportsProducts
@@ -680,6 +711,12 @@ function Product({
       to={
         product.category === "SPORTS"
           ? "/sports"
+          : product.category === "CAT-EYE"
+          ? "/cat-eye"
+          : product.category === "ROUND"
+          ? "/round"
+          : product.category === "SQUARE"
+          ? "/square"
           : product.category === "CELEB PICK"
           ? "/celeb"
           : product.category === "CASUAL"
