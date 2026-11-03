@@ -45,7 +45,10 @@ function handleCardClick() {
         <button
           className="fit-label"
           type="button"
-          onClick={(event) => event.stopPropagation()}
+          onClick={(event) => {
+            event.stopPropagation();
+            navigate("/ai-fitting");
+          }}
         >
           AI 피팅
         </button>

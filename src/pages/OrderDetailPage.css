@@ -20,10 +20,19 @@
 }
 
 .order-detail-number {
-  margin: 0;
-  padding: 10px 24px 0;
+  margin: 10px 0 0;
+  padding: 0 24px;
   color: #444;
   font-size: 16px;
+  line-height: 1.5;
+}
+
+.order-detail-date {
+  margin: 0;
+  padding: 0 24px 12px;
+  color: #444;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 .order-detail-content {
@@ -159,7 +168,8 @@
   .order-detail-page { min-height: calc(100vh - 52px); min-height: calc(100dvh - 52px); }
   .order-detail-title-bar { padding: 16px 16px 12px; }
   .order-detail-title-bar h1 { font-size: 27px; }
-  .order-detail-number { padding: 10px 16px 0; font-size: 14px; }
+  .order-detail-number { margin-top: 10px; padding: 0 16px; font-size: 14px; }
+  .order-detail-date { padding: 0 16px 10px; font-size: 14px; }
   .order-detail-content { width: calc(100% - 28px); gap: 28px; margin: 26px auto 40px; }
   .order-detail-section h2 { margin-left: 2px; font-size: 20px; }
   .order-detail-product { min-height: 108px; gap: 10px; padding: 10px; }

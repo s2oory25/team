@@ -107,7 +107,7 @@ function ProductDetailSummary({
 
 
         <div className="product-actions">
-          <button className="product-ai-button" type="button">
+          <button className="product-ai-button" type="button" onClick={() => navigate("/ai-fitting")}>
             AI 피팅 <span aria-hidden="true">›</span>
           </button>
           <button

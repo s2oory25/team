@@ -1,7 +1,9 @@
 // 기존 App.jsx의 페이지 JSX를 그대로 분리했습니다.
 import './ShippingPage.css'
 export default function ShippingPage(props) {
-  const { activeMenu, setActiveMenu, menuOpen, setMenuOpen, categoryOpen, setCategoryOpen, styleOpen, setStyleOpen, customerOpen, setCustomerOpen, isLoggedIn, setIsLoggedIn, mobileMypageOpen, setMobileMypageOpen, selectedCustomerItem, setSelectedCustomerItem, currentPage, setCurrentPage, selectedOrder, setSelectedOrder, selectedPhoto, setSelectedPhoto, photoPreview, setPhotoPreview, analysisMessage, setAnalysisMessage, isAnalyzing, setIsAnalyzing, hasAnalyzed, setHasAnalyzed, inquiryType, setInquiryType, inquiryEmail, setInquiryEmail, inquiryContent, setInquiryContent, showInquiryFaq, setShowInquiryFaq, inquiryMessage, setInquiryMessage, accountMessage, setAccountMessage, isChangingPassword, setIsChangingPassword, openFaqIndex, setOpenFaqIndex, cartAgreement, setCartAgreement, cartItems, setCartItems, menuItems, categoryItems, styleItems, customerItems, mypageItems, faqItems, faqDetails, products, closeSubmenus, navigateTo, handleMenuClick, handleMobileMypageClick, handleSubMenuClick, handleMobileCustomerClick, handleCustomerItemClick, handleInquirySubmit, handleLoginClick, handleLogoutClick, handleProfileCardClick, handleAccountMenuClick, openMenu, closeMenu, handlePhotoChange, handleAnalyze, handleRetry, selectedCartItems, cartSubtotal, orderDetail, sampleFaceShape } = props
+  const { selectedOrder } = props
+  const orderNumber = selectedOrder?.number || "CF20260907-1234"
+  const orderDate = selectedOrder?.date?.slice(0, 10) || "2026.09.07"
   return (
         <main className="shipping-page">
           <section className="shipping-title-bar">
@@ -10,8 +12,8 @@ export default function ShippingPage(props) {
           <p className="shipping-intro">주문하신 상품의 배송 현황을 확인할 수 있습니다.</p>
           <section className="shipping-content">
             <div className="shipping-order-summary">
-              <span>주문일:　2026.09.07</span>
-              <span>주문번호:　<button className="shipping-order-link" type="button" onClick={() => navigateTo('orders')}>CF20260907-1234</button></span>
+              <span>주문일:　{orderDate}</span>
+              <span>주문번호:　<button className="shipping-order-link" type="button" onClick={() => window.history.back()}>{orderNumber}</button></span>
             </div>
             <section className="shipping-progress-card" aria-label="배송 진행 상황">
               <h2>배송 진행 현황</h2>

@@ -473,7 +473,6 @@ function AppInner() {
           }
         />
 
-        <Route path="/ai-fitting" element={<AiFitting />} />
         <Route
           path="/ai-fitting"
           element={
@@ -569,7 +568,10 @@ function AppInner() {
           element={<OrdersPage setSelectedOrder={setSelectedOrder} />}
         />
         <Route path="/recent" element={<RecentPage products={products} />} />
-        <Route path="/shipping" element={<ShippingPage />} />
+        <Route
+          path="/shipping"
+          element={<ShippingPage selectedOrder={selectedOrder} />}
+        />
         <Route
           path="/order-detail"
           element={<OrderDetailPage selectedOrder={selectedOrder} />}
