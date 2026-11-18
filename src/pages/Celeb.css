@@ -6,9 +6,8 @@
 
 .celeb-page-root {
   width: 100%;
-  height: calc(100vh - 200px);
-  min-height: 0;
-  overflow: hidden;
+  min-height: max(calc(100vh - 200px), 680px);
+  overflow: visible;
   display: flex;
   flex-direction: column;
   background-color: #fff;
@@ -153,6 +152,9 @@
 }
 
 @media (min-width: 1025px) {
+  .celeb-main-content {
+    min-height: 650px;
+  }
   .celeb-cards-grid {
     margin-top: 70px;
     gap: 28px;

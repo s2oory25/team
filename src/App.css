@@ -51,9 +51,8 @@ select {
 }
 
 .app:has(.celeb-page-root) {
-  height: 100vh;
-  min-height: 0;
-  overflow: hidden;
+  min-height: 100vh;
+  overflow: visible;
 }
 
 .app:has(.celeb-page-root)>.footer {
