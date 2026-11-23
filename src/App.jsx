@@ -372,8 +372,7 @@ function AppInner() {
 
   function handleLoginClick() {
     closeMenu();
-    setIsLoginOpen(false);
-    navigate("/mypage");
+    setIsLoginOpen(true);
   }
 
 
