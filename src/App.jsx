@@ -387,6 +387,13 @@ function AppInner() {
         onMenuClick={openMenu}
         onLogoClick={closeMenu}
         onLoginClick={handleLoginClick}
+        onProfileClick={() => {
+          if (isLoggedIn) {
+            navigateTo("/mypage");
+          } else {
+            handleLoginClick();
+          }
+        }}
         onCartClick={closeMenu}
         cartCount={cartCount}
         favoriteCount={favoriteCount}

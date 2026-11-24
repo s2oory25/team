@@ -4,6 +4,7 @@ function Header({
   onMenuClick,
   onLogoClick,
   onLoginClick,
+  onProfileClick,
   onCartClick,
   favoriteCount = 0,
   cartCount = 0,
@@ -77,8 +78,8 @@ function Header({
         <button
           className="header-login-button"
           type="button"
-          onClick={onLoginClick}
-          aria-label="로그인"
+          onClick={onProfileClick || onLoginClick}
+          aria-label="마이페이지"
         >
           <img src="/team/header_png/login.png" alt="" />
         </button>
